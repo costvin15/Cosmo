@@ -1,0 +1,45 @@
+{% extends "View/layout_login.twig" %}
+
+{% block title %}Registro{% endblock %}
+
+{% block content %}
+    <div class="register-box">
+        <div class="login-logo">
+            <a href="{{ base_url() }}"><b>Cosmo</b>Telemídia</a>
+        </div>
+
+        <div class="register-box-body">
+            <p class="login-box-msg">Registro de novo membro</p>
+
+            <div class="form-group has-feedback">
+                <input type="email" class="form-control" placeholder="Email" id="frmregister-email" name="frmregister-email">
+                <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+            </div>
+            <div class="form-group has-feedback">
+                <input type="text" class="form-control" placeholder="Nome Completo" id="frmregister-fullname" name="frmregister-fullname">
+                <span class="glyphicon glyphicon-user form-control-feedback"></span>
+            </div>
+            <div class="form-group has-feedback">
+                <input type="password" class="form-control" placeholder="Senha" id="frmregister-password" name="frmregister-password">
+                <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+            </div>
+            <div class="row">
+                <div class="col-xs-8">
+                    &nbsp;
+                </div>
+                <!-- /.col -->
+                <div class="col-xs-4">
+                    <button type="button" class="btn btn-primary btn-block btn-flat" id="btnCreateAcount">Criar conta</button>
+                </div>
+                <!-- /.col -->
+            </div>
+
+            <a href="{{ path_for('login.index') }}" class="text-center">Já sou membro</a>
+        </div>
+        <!-- /.form-box -->
+    </div>
+{% endblock %}
+
+{% block javascript %}
+    <script src="{{ base_url() }}/assets/js/pages/registerjs/dist/registerjs.min.js"></script>
+{% endblock %}

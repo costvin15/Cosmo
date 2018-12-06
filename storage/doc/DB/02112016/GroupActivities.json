@@ -1,0 +1,12 @@
+{ 
+    "_id" : ObjectId("581a10bd7b3ceb04bb7b47cd"), 
+    "name" : "Comandos print, read, atribuição"
+}
+{ 
+    "_id" : ObjectId("581a1cab7b3ceb04bb7b47d2"), 
+    "name" : "Comando IF"
+}
+{ 
+    "_id" : ObjectId("581a237c7b3ceb04bb7b47d7"), 
+    "name" : "Comando Caso"
+}

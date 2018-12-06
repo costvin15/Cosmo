@@ -1,0 +1,185 @@
+{% extends "View/layout.twig" %}
+{% block pagetitle %}Administração do Cosmo - Novo usuário{% endblock %}
+{% block title %}Administração do Cosmo{% endblock %}
+
+{% block scripts %}
+    {% if formCreate is defined %}
+    <script src="{{ base_url() }}/assets/js/pages/admin-user-createjs/dist/admin-user-createjs.min.js"></script>
+    {% endif %}
+
+    {% if formUpdate is defined %}
+    <script src="{{ base_url() }}/assets/js/pages/admin-user-updatejs/dist/admin-user-updatejs.min.js"></script>
+    {% endif %}
+{% endblock %}
+
+{% block css %}
+{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-3">
+
+            <!-- Profile Image -->
+            <div class="box box-primary">
+                <div class="box-body box-profile">
+                    {% if avatar is defined %}
+                    <img class="profile-user-img img-responsive img-circle"
+                         id="img-frmuser-avatar"
+                         src="{{ avatar }}"
+                         alt="User profile picture">
+                    {% else %}
+                    <img class="profile-user-img img-responsive img-circle"
+                         id="img-frmuser-avatar"
+                         src="http://localhost/GitHub/cosmo/public/photo/get/user/0"
+                         alt="User profile picture">
+                    {% endif %}
+
+                    <input type="file" class="hidden" id="input-frmuser-fileupload">
+
+                    <h3 class="profile-username text-center">{{ user.fullname }}</h3>
+
+                    <button class="btn btn-primary btn-block" id="btn-alter-image"><b>Alterar Imagem</b></button>
+                </div>
+                <!-- /.box-body -->
+            </div>
+            <!-- /.box -->
+        </div>
+        <!-- /.col -->
+        <div class="col-md-9">
+            <div class="nav-tabs-custom">
+                <ul class="nav nav-tabs">
+                    <li class="active"><a href="#profile" data-toggle="tab">Dados Usuário</a></li>
+                </ul>
+                <div class="tab-content">
+                    <div class="tab-pane active" id="profile">
+                        <form class="form-horizontal">
+                            <div class="form-group">
+                                {% if formUpdate is defined %}
+                                <label for="input-frmuser-email" class="col-sm-2 control-label">Email</label>
+                                <div class="col-sm-10">
+                                    <input type="email" class="form-control" id="input-frmuser-email" value="{{ user.username }}" disabled placeholder="Email">
+                                </div>
+                                {% endif %}
+
+                                {% if formCreate is defined %}
+                                <label for="input-frmuser-email" class="col-sm-2 control-label">Email</label>
+                                <div class="col-sm-10">
+                                    <input type="email" class="form-control" id="input-frmuser-email" placeholder="Email">
+                                </div>
+                                {% endif %}
+                            </div>
+                            <div class="form-group">
+                                <label for="input-frmuser-name" class="col-sm-2 control-label">Nome completo</label>
+
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="input-frmuser-name" value="{{ user.fullname }}"
+                                           placeholder="Nome completo">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="input-frmuser-password" class="col-sm-2 control-label">Senha</label>
+
+                                {% if formCreate is defined %}
+                                <div class="col-sm-10">
+                                    <input type="password" class="form-control" id="input-frmuser-password">
+                                </div>
+                                {% endif %}
+
+
+                                {% if formUpdate is defined %}
+                                <div class="col-sm-10">
+                                    <button type="button" class="btn btn-danger" data-toggle="modal"
+                                            data-target="#modal-alter-password"
+                                            id="btn-alter-password">Alterar senha</button>
+                                </div>
+                                {% endif %}
+                            </div>
+
+                            {% if show_adm is defined %}
+                            <div class="form-group">
+                                <div class="col-sm-offset-2 col-sm-10">
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox" id="input-frmuser-administrator" {{ user.administrator ? 'checked' : '' }}> Administrador</a>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endif %}
+
+                            {% if formCreate is defined %}
+                            <div class="form-group">
+                                <div class="col-sm-offset-2 col-sm-2">
+                                    <button type="submit" class="btn btn-success" id="btn-create-user">Criar usuário</button>
+                                </div>
+                                <div class="col-sm-2">
+                                    <a href="{{ path_for('administrator.control.users') }}" class="btn btn-default">Voltar</a>
+                                </div>
+                            </div>
+                            {% endif %}
+
+                            {% if formUpdate is defined %}
+                            <input type="hidden" id="input-hidden-id" value="{{ id }}">
+                            <div class="form-group">
+                                <div class="col-sm-offset-2 col-sm-2">
+                                    <button type="submit" class="btn btn-success" id="btn-create-user">Alterar usuário</button>
+                                </div>
+                                <div class="col-sm-2">
+                                    <a href="{{ path_for('administrator.control.users') }}" class="btn btn-default">Voltar</a>
+                                </div>
+                            </div>
+                            {% endif %}
+                        </form>
+                    </div>
+                    <!-- /.tab-pane -->
+                </div>
+                <!-- /.tab-content -->
+            </div>
+            <!-- /.nav-tabs-custom -->
+        </div>
+        <!-- /.col -->
+    </div>
+    <!-- /.row -->
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="modal-alter-password">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span></button>
+                    <h4 class="modal-title">Alterar Senha</h4>
+                </div>
+                <div class="modal-body">
+                    <form class="form-horizontal">
+                        <div class="form-group">
+                            <label for="input-frmuser-name" class="col-sm-3 control-label">Senha atual</label>
+                            <div class="col-sm-9">
+                                <input type="password" class="form-control" id="input-frmuser-password-actual" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="input-frmuser-name" class="col-sm-3 control-label">Nova senha</label>
+                            <div class="col-sm-9">
+                                <input type="password" class="form-control" id="input-frmuser-new-password" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="input-frmuser-name" class="col-sm-3 control-label">Repita nova senha</label>
+                            <div class="col-sm-9">
+                                <input type="password" class="form-control" id="input-frmuser-repeat-new-password" />
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Fechar</button>
+                    <button type="button" class="btn btn-primary">Alterar Senha</button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+{% endblock %}

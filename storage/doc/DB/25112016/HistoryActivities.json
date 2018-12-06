@@ -1,0 +1,2464 @@
+{ 
+    "_id" : ObjectId("581e2d29b47dc23f1a431fe1"), 
+    "user" : DBRef("User", ObjectId("581687d05bd49c42bba91ac9"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("580ff69b5bd49c0ac5809682"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-05T19:04:09.000+0000"), 
+    "time_end" : ISODate("2016-11-05T19:24:09.000+0000"), 
+    "code" : "n1, n2 = io.read(\"*number\",\"*number\");\n\nprint(n1+n2);"
+}
+{ 
+    "_id" : ObjectId("582090e8b47dc215dc2e1011"), 
+    "user" : DBRef("User", ObjectId("5808038d4b28a10c6cbc5c3c"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("580ff69b5bd49c0ac5809682"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-07T14:34:16.000+0000"), 
+    "time_end" : ISODate("2016-11-07T14:52:16.000+0000"), 
+    "code" : "    local number1, number2 = io.read(\"*number\", \"*number\")\n\n    soma = number1 + number2\n    print (soma)"
+}
+{ 
+    "_id" : ObjectId("5820b598b47dc244790bfbe1"), 
+    "user" : DBRef("User", ObjectId("581687d05bd49c42bba91ac9"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a26437b3ceb04bb7b47db"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-07T17:10:48.000+0000"), 
+    "time_end" : ISODate("2016-11-07T17:25:48.000+0000"), 
+    "code" : "a,b = io.read(\"*number\", \"*number\");\nif a>b then\n    print(a);\nelse\n    print(b);\nend\n\n"
+}
+{ 
+    "_id" : ObjectId("5820b673b47dc255433d4881"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f036494"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("580ff69b5bd49c0ac5809682"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-07T17:14:27.000+0000"), 
+    "time_end" : ISODate("2016-11-07T17:21:27.000+0000"), 
+    "code" : "a = io.read(\"*number\")\nb = io.read(\"*number\")\nsoma = a + b\n\nprint(soma)"
+}
+{ 
+    "_id" : ObjectId("5820b6b1b47dc2557c2f1c51"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f036480"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("580ff69b5bd49c0ac5809682"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-07T17:15:29.000+0000"), 
+    "time_end" : ISODate("2016-11-07T17:29:29.000+0000"), 
+    "code" : "a = io.read(\"*number\")\nb = io.read(\"*number\")\nx = a+b\nprint (x)"
+}
+{ 
+    "_id" : ObjectId("5820b6eab47dc254c7091921"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f036494"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a2b2a7b3ceb04bb7b47df"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-07T17:16:26.000+0000"), 
+    "time_end" : ISODate("2016-11-07T17:33:26.000+0000"), 
+    "code" : "a = io.read(\"*number\")\nb = io.read(\"*number\")\nc = io.read(\"*number\")\n\nsoma = a + b\ni = soma>c\n\nprint(i)"
+}
+{ 
+    "_id" : ObjectId("5820b733b47dc2575774e061"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f0364ae"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("580ff69b5bd49c0ac5809682"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-07T17:17:39.000+0000"), 
+    "time_end" : ISODate("2016-11-07T17:37:39.000+0000"), 
+    "code" : "a, b = io.read(\"*number\", \"*number\")\nif (a>-10000 and a<10000 and b>-10000 and b<10000) then\n    print(a+b)\nelse\n    print(\"erro\")\nend"
+}
+{ 
+    "_id" : ObjectId("5820b738b47dc256b71951e1"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f036484"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("580ff69b5bd49c0ac5809682"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-07T17:17:44.000+0000"), 
+    "time_end" : ISODate("2016-11-07T17:27:44.000+0000"), 
+    "code" : "a=io.read('*number')\nb=io.read('*number')\nprint(a+b);"
+}
+{ 
+    "_id" : ObjectId("5820b744b47dc2568c6a4741"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f03647f"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("580ff69b5bd49c0ac5809682"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-07T17:17:56.000+0000"), 
+    "time_end" : ISODate("2016-11-07T17:26:56.000+0000"), 
+    "code" : "n1 = io.read(\"*number\")\nn2 = io.read(\"*number\")\nsoma = (n1+n2)\nprint (soma)"
+}
+{ 
+    "_id" : ObjectId("5820b76db47dc256b8189081"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f036480"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a2b2a7b3ceb04bb7b47df"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-07T17:18:37.000+0000"), 
+    "time_end" : ISODate("2016-11-07T17:31:37.000+0000"), 
+    "code" : "a, b, c = io.read(\"*number\"), io.read(\"*number\"), io.read(\"*number\")\nif a+b>c then\n    print (\"true\")\nelse\n    print (\"false\")\nend\n"
+}
+{ 
+    "_id" : ObjectId("5820b7c3b47dc2568c6a4742"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f0364a3"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("580ff69b5bd49c0ac5809682"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-07T17:20:03.000+0000"), 
+    "time_end" : ISODate("2016-11-07T17:30:03.000+0000"), 
+    "code" : "a=io.read('*number')\nb=io.read('*number')\nprint(a+b)\n"
+}
+{ 
+    "_id" : ObjectId("5820b7c8b47dc256b8189082"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f0364aa"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("580ff69b5bd49c0ac5809682"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-07T17:20:08.000+0000"), 
+    "time_end" : ISODate("2016-11-07T17:25:08.000+0000"), 
+    "code" : "n1,n2= io.read(\"*number\",\"*number\")\nresultado= n1+n2\nprint(resultado)"
+}
+{ 
+    "_id" : ObjectId("5820b7e0b47dc256ac74b971"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f03648b"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("580ff69b5bd49c0ac5809682"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-07T17:20:32.000+0000"), 
+    "time_end" : ISODate("2016-11-07T17:31:32.000+0000"), 
+    "code" : "x=io.read('*number')\ny=io.read('*number')\nprint(x+y)\n"
+}
+{ 
+    "_id" : ObjectId("5820b7e5b47dc256ac74b972"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f036484"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a2b2a7b3ceb04bb7b47df"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-07T17:20:37.000+0000"), 
+    "time_end" : ISODate("2016-11-07T17:39:37.000+0000"), 
+    "code" : "a1=io.read('*number')\na2=io.read('*number')\na3=io.read('*number')\n\nteste=a1+a2>a3\nprint(teste)\n\n"
+}
+{ 
+    "_id" : ObjectId("5820b7feb47dc2575774e062"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f036480"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a2edd7b3ceb04bb7b47e6"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-07T17:21:02.000+0000"), 
+    "time_end" : ISODate("2016-11-07T17:37:02.000+0000"), 
+    "code" : "x = io.read(\"*number\")\ny = x^2-(2*x)+3\nprint (y)\n"
+}
+{ 
+    "_id" : ObjectId("582b768fb47dc27a9a1fc451"), 
+    "user" : DBRef("User", ObjectId("581687d05bd49c42bba91ac9"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("582b75ba4c58576aff063500"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-15T20:56:47.000+0000"), 
+    "time_end" : ISODate("2016-11-15T21:03:47.000+0000"), 
+    "code" : "print(\"False\")"
+}
+{ 
+    "_id" : ObjectId("5820b80fb47dc256fc5b4111"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f03648a"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("580ff69b5bd49c0ac5809682"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-07T17:21:19.000+0000"), 
+    "time_end" : ISODate("2016-11-07T17:41:19.000+0000"), 
+    "code" : "a,b=io.read('*number'), io.read('*number')\nsoma=a+b\nprint(soma)\n"
+}
+{ 
+    "_id" : ObjectId("5820b862b47dc2575e2e2931"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f03648d"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("580ff69b5bd49c0ac5809682"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-07T17:22:42.000+0000"), 
+    "time_end" : ISODate("2016-11-07T17:41:42.000+0000"), 
+    "code" : "a,b=io.read('*number'),io.read('*number')\nsoma=a+b\nprint(soma)"
+}
+{ 
+    "_id" : ObjectId("5820b8afb47dc256fc5b4112"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f03648e"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("580ff69b5bd49c0ac5809682"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-07T17:23:59.000+0000"), 
+    "time_end" : ISODate("2016-11-07T17:31:59.000+0000"), 
+    "code" : "a,b=io.read(\"*number\", \"*number\")\ns = a+b\nprint(s)"
+}
+{ 
+    "_id" : ObjectId("5820b8c3b47dc259c46025e1"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f0364b1"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("580ff69b5bd49c0ac5809682"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-07T17:24:19.000+0000"), 
+    "time_end" : ISODate("2016-11-07T17:41:19.000+0000"), 
+    "code" : "a,b=io.read('*number', '*number')\nsoma=a+b\nprint (soma)"
+}
+{ 
+    "_id" : ObjectId("5820b8c4b47dc2568e476c71"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f0364a0"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("580ff69b5bd49c0ac5809682"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-07T17:24:20.000+0000"), 
+    "time_end" : ISODate("2016-11-07T17:30:20.000+0000"), 
+    "code" : "a = io.read(\"*number\")\nb = io.read(\"*number\")\n\nif a < 10000 and a> -10000 then\n    print(a+b)\nelse\n    print(\"Erro\")\nend\n"
+}
+{ 
+    "_id" : ObjectId("5820b8c6b47dc259c9470d01"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f036482"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("580ff69b5bd49c0ac5809682"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-07T17:24:22.000+0000"), 
+    "time_end" : ISODate("2016-11-07T17:33:22.000+0000"), 
+    "code" : "a,b = io.read(\"*number\", \"*number\");\nif (a >= -10000 and a <=10000) then\n    if (b >= -10000 and b <=10000) then\n        soma = a + b\n        print(soma)\n    end\nend"
+}
+{ 
+    "_id" : ObjectId("5820b8d4b47dc2568e476c72"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f0364ae"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a2b2a7b3ceb04bb7b47df"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-07T17:24:36.000+0000"), 
+    "time_end" : ISODate("2016-11-07T17:38:36.000+0000"), 
+    "code" : "a, b, c = io.read(\"*number\", \"*number\", \"*number\")\nsoma = a+b\nif (a>-10000 and a<10000 and b>-10000 and b<10000 and c>-10000 and c<10000) then\n    if (soma>c) then\n        print(\"true\")\n    else\n        print(\"false\")\n    end\nelse\n    print(\"erro\")\nend"
+}
+{ 
+    "_id" : ObjectId("5820b8dcb47dc256fc5b4113"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f036480"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a32397b3ceb04bb7b47ea"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-07T17:24:44.000+0000"), 
+    "time_end" : ISODate("2016-11-07T17:32:44.000+0000"), 
+    "code" : "a = io.read(\"*number\")\nb = io.read(\"*number\")\nif a>b then\n    print (\"Time1\")\n    elseif b==a then\n    print (\"Empate\")\n    else\n     print (\"Time2\")\n    end\n\n"
+}
+{ 
+    "_id" : ObjectId("5820b8e0b47dc2557c2f1c52"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f03647f"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a2b2a7b3ceb04bb7b47df"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-07T17:24:48.000+0000"), 
+    "time_end" : ISODate("2016-11-07T17:40:48.000+0000"), 
+    "code" : "a,b,c = io.read(\"*number\",\"*number\",\"*number\")\nsomav = (a+b)>c\nprint (somav)"
+}
+{ 
+    "_id" : ObjectId("5820b8e2b47dc259c23ad071"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f036484"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a2c5e7b3ceb04bb7b47e1"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-07T17:24:50.000+0000"), 
+    "time_end" : ISODate("2016-11-07T17:33:50.000+0000"), 
+    "code" : "a1=io.read('*number')\na2=io.read('*number')\na3=io.read('*number')\n\nmedia=(a1+a2+a3)>=7\nprint (media)"
+}
+{ 
+    "_id" : ObjectId("5820b8f1b47dc256b8189083"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f03649f"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a26437b3ceb04bb7b47db"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-07T17:25:05.000+0000"), 
+    "time_end" : ISODate("2016-11-07T17:40:05.000+0000"), 
+    "code" : "a = io.read(\"*number\")\nb = io.read(\"*number\")\nif a > b then\n    print (a)\nelse\n    print(b)\n    end"
+}
+{ 
+    "_id" : ObjectId("5820b8f5b47dc259422b79a1"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f0364a5"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("580ff69b5bd49c0ac5809682"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-07T17:25:09.000+0000"), 
+    "time_end" : ISODate("2016-11-07T17:39:09.000+0000"), 
+    "code" : "\na, b = io.read(\"*number\", \"*number\")\n\nsoma = a + b\n\nprint(soma)"
+}
+{ 
+    "_id" : ObjectId("5820b917b47dc259c23ad072"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f036494"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a316e7b3ceb04bb7b47e8"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-07T17:25:43.000+0000"), 
+    "time_end" : ISODate("2016-11-07T17:45:43.000+0000"), 
+    "code" : "a = io.read(\"*number\")\nb = io.read(\"*number\")\nc = io.read(\"*number\")\n\nif a>b and b>c then\n    maior = a\n    elseif b>c then\n        maior = b\n    else\n        maior = c\nend\n\nprint(maior)"
+}
+{ 
+    "_id" : ObjectId("5820b91fb47dc25ae1660501"), 
+    "user" : DBRef("User", ObjectId("581687d05bd49c42bba91ac9"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a32397b3ceb04bb7b47ea"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-07T17:25:51.000+0000"), 
+    "time_end" : ISODate("2016-11-07T17:45:51.000+0000"), 
+    "code" : "a,b = io.read(\"*number\", \"*number\");\n\nif a>b then \n    print(\"Time1\"); \nelseif a<b then \n    print(\"Time2\"); \nelse print(\"Empate\"); end;"
+}
+{ 
+    "_id" : ObjectId("5820b92fb47dc2557c2f1c53"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f03649f"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("580ff69b5bd49c0ac5809682"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-07T17:26:07.000+0000"), 
+    "time_end" : ISODate("2016-11-07T17:42:07.000+0000"), 
+    "code" : "a = io.read(\"*number\")\nb = io.read(\"*number\")\n\nresultado = a +b\nprint(resultado)"
+}
+{ 
+    "_id" : ObjectId("5820b932b47dc259c576d731"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f0364ad"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("580ff69b5bd49c0ac5809682"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-07T17:26:10.000+0000"), 
+    "time_end" : ISODate("2016-11-07T17:45:10.000+0000"), 
+    "code" : "a, b = io.read(\"*number\",\"*number\")\n\n        print(a+b)\n\n"
+}
+{ 
+    "_id" : ObjectId("5820b93cb47dc259c23ad073"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f03647f"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a2c5e7b3ceb04bb7b47e1"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-07T17:26:20.000+0000"), 
+    "time_end" : ISODate("2016-11-07T17:44:20.000+0000"), 
+    "code" : "a,b,c = io.read(\"*number\",\"*number\",\"*number\")\r\nmedia = (a+b+c)/3 >= 7\r\nprint (media)"
+}
+{ 
+    "_id" : ObjectId("5820b967b47dc25a3036a2c1"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f036480"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a26437b3ceb04bb7b47db"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-07T17:27:03.000+0000"), 
+    "time_end" : ISODate("2016-11-07T17:38:03.000+0000"), 
+    "code" : "a, b = io.read(\"*number\"), io.read(\"*number\")\nif a>b then\n    print (a)\nelse\n    print(b)\nend\n"
+}
+{ 
+    "_id" : ObjectId("5820b97ab47dc25ae1660502"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f036494"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a26437b3ceb04bb7b47db"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-07T17:27:22.000+0000"), 
+    "time_end" : ISODate("2016-11-07T17:33:22.000+0000"), 
+    "code" : "a = io.read(\"*number\")\nb = io.read(\"*number\")\n\n\nif a>b then\n    r = a\nelse\n    r = b\nend\n\nprint(r)\n"
+}
+{ 
+    "_id" : ObjectId("5820b98bb47dc25b9b13a761"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f0364aa"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a2b2a7b3ceb04bb7b47df"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-07T17:27:39.000+0000"), 
+    "time_end" : ISODate("2016-11-07T17:38:39.000+0000"), 
+    "code" : "n1,n2,n3 = io.read(\"*number\",\"*number\",\"*number\")\nteste = n1+n2>n3\nprint(teste)"
+}
+{ 
+    "_id" : ObjectId("5820b994b47dc259c23ad074"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f036496"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a26437b3ceb04bb7b47db"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-07T17:27:48.000+0000"), 
+    "time_end" : ISODate("2016-11-07T17:34:48.000+0000"), 
+    "code" : "\na,b= io.read(\"*number\"),io.read(\"*number\");\nmaior = math.max(a,b)\nprint(maior)\n\n\n"
+}
+{ 
+    "_id" : ObjectId("5820b9b1b47dc259c9470d02"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f036482"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a26437b3ceb04bb7b47db"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-07T17:28:17.000+0000"), 
+    "time_end" : ISODate("2016-11-07T17:33:17.000+0000"), 
+    "code" : "a,b = io.read (\"*number\", \"*number\")\nif (a>=-10000 and a<=10000) then\n    if (b>=-10000 and b<=10000) then\n        if(a > b) then\n            print(a)\n        else\n            print (b)\n        end\n    end\nend\n"
+}
+{ 
+    "_id" : ObjectId("5820b9d0b47dc25b2020bb21"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f036496"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("580ff69b5bd49c0ac5809682"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-07T17:28:48.000+0000"), 
+    "time_end" : ISODate("2016-11-07T17:45:48.000+0000"), 
+    "code" : "a,b = io.read(\"*number\"),io.read(\"*number\");\nprint(a+b)"
+}
+{ 
+    "_id" : ObjectId("5820b9d6b47dc259c46025e2"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f03649e"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("580ff69b5bd49c0ac5809682"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-07T17:28:54.000+0000"), 
+    "time_end" : ISODate("2016-11-07T17:40:54.000+0000"), 
+    "code" : "a,b = io.read(\"*number\",\"*number\");\nprint(a+b);\n"
+}
+{ 
+    "_id" : ObjectId("5820b9eab47dc25b2020bb22"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f036494"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a2c5e7b3ceb04bb7b47e1"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-07T17:29:14.000+0000"), 
+    "time_end" : ISODate("2016-11-07T17:42:14.000+0000"), 
+    "code" : "a = io.read(\"*number\")\nb = io.read(\"*number\")\nc = io.read(\"*number\")\n\nsoma = a + b + c\nmedia = soma/3\nr = media >= 7\n\nprint(r)\n"
+}
+{ 
+    "_id" : ObjectId("5820ba07b47dc25c9d2231d1"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f0364b1"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a26437b3ceb04bb7b47db"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-07T17:29:43.000+0000"), 
+    "time_end" : ISODate("2016-11-07T17:36:43.000+0000"), 
+    "code" : "a,b=io.read('*number','*number')\nif a>b then\n    print (a)\nelse\n    print (b)\nend"
+}
+{ 
+    "_id" : ObjectId("5820ba11b47dc25ca326aef1"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f0364af"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("580ff69b5bd49c0ac5809682"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-07T17:29:53.000+0000"), 
+    "time_end" : ISODate("2016-11-07T17:42:53.000+0000"), 
+    "code" : "a= io.read(\"*number*\") b= io.read(\"*number*\")\nsoma= (a+b)\nprint (soma)"
+}
+{ 
+    "_id" : ObjectId("5820ba2db47dc25c975e5791"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f036480"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a316e7b3ceb04bb7b47e8"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-07T17:30:21.000+0000"), 
+    "time_end" : ISODate("2016-11-07T17:50:21.000+0000"), 
+    "code" : "a, b, c = io.read(\"*number\"), io.read(\"*number\"), io.read(\"*number\")\nif a>b and a> c then\n    print(a)\nelseif b>a and b>c then\n    print(b)\nelse\n    print(c)\nend\n"
+}
+{ 
+    "_id" : ObjectId("5820ba34b47dc25ca1573141"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f036486"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("580ff69b5bd49c0ac5809682"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-07T17:30:28.000+0000"), 
+    "time_end" : ISODate("2016-11-07T17:35:28.000+0000"), 
+    "code" : "a,b = io.read ('*number', '*number')\n\n\nif a >= -10000 and a<= 10000 then\n    if b >= -10000 and b<= 10000 then\n    soma = a + b;   \n    \n    end\nend\n\n\nprint (soma)\n\n"
+}
+{ 
+    "_id" : ObjectId("5820ba4ab47dc259422b79a2"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f03649f"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a2edd7b3ceb04bb7b47e6"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-07T17:30:50.000+0000"), 
+    "time_end" : ISODate("2016-11-07T17:39:50.000+0000"), 
+    "code" : "x = io.read(\"*number\")\nf = ((x*x) - 2 * x + 3)\nprint (f)"
+}
+{ 
+    "_id" : ObjectId("5820ba5cb47dc25d5f231771"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f0364ae"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a2edd7b3ceb04bb7b47e6"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-07T17:31:08.000+0000"), 
+    "time_end" : ISODate("2016-11-07T17:38:08.000+0000"), 
+    "code" : "x = io.read(\"*number\")\nf = (x*x) - (2*x) + 3\nprint(f)"
+}
+{ 
+    "_id" : ObjectId("5820ba64b47dc25d5d7d4511"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f036482"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a2b2a7b3ceb04bb7b47df"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-07T17:31:16.000+0000"), 
+    "time_end" : ISODate("2016-11-07T17:36:16.000+0000"), 
+    "code" : "a,b,c = io.read(\"*number\", \"*number\", \"*number\")\nif (a>=-10000 and a<=10000) then\n    if (b>=-10000 and b<=10000) then\n        if (c>=-10000 and c<=10000) then\n            saida=(a+b)>c\n            print (saida)\n        end\n    end\nend\n"
+}
+{ 
+    "_id" : ObjectId("5820ba64b47dc25ca64a48a1"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f0364ad"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a26437b3ceb04bb7b47db"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-07T17:31:16.000+0000"), 
+    "time_end" : ISODate("2016-11-07T17:38:16.000+0000"), 
+    "code" : "a,b=io.read(\"*number\",\"*number\")\nif a>b then\n    print(a)\nelse print(b)\nend \n"
+}
+{ 
+    "_id" : ObjectId("5820ba6ab47dc259c576d732"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f036494"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a2edd7b3ceb04bb7b47e6"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-07T17:31:22.000+0000"), 
+    "time_end" : ISODate("2016-11-07T17:41:22.000+0000"), 
+    "code" : "x = io.read(\"*number\")\n\nf = (x*x) - (2*x) + 3\n\nprint(f)"
+}
+{ 
+    "_id" : ObjectId("5820ba6db47dc25d5f231772"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f036496"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a2b2a7b3ceb04bb7b47df"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-07T17:31:25.000+0000"), 
+    "time_end" : ISODate("2016-11-07T17:48:25.000+0000"), 
+    "code" : "a,b,c = io.read(\"*number\"),io.read(\"*number\"),io.read(\"*number\");\nsoma = a+b\nprint(soma>c)"
+}
+{ 
+    "_id" : ObjectId("5820ba6fb47dc25dcf647511"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f03648d"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a2b2a7b3ceb04bb7b47df"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-07T17:31:27.000+0000"), 
+    "time_end" : ISODate("2016-11-07T17:40:27.000+0000"), 
+    "code" : "a,b,c=io.read('*number'),io.read('*number'),io.read('*number')\nsoma=(a+b>c)\nprint(soma)"
+}
+{ 
+    "_id" : ObjectId("5820ba6fb47dc25d600d9c01"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f03647f"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a32397b3ceb04bb7b47ea"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-07T17:31:27.000+0000"), 
+    "time_end" : ISODate("2016-11-07T17:46:27.000+0000"), 
+    "code" : "teamonegoals = io.read(\"*number\")\nteamtwogoals = io.read(\"*number\")\nif teamonegoals > teamtwogoals then\n    winner = (\"Time1\")\nelse\n    if teamtwogoals > teamonegoals then\n        winner = (\"Time2\")\n    else\n        winner = (\"Empate\")\n    end\nend\nprint (winner)"
+}
+{ 
+    "_id" : ObjectId("5820ba76b47dc25c9d2231d2"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f03648a"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a2b2a7b3ceb04bb7b47df"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-07T17:31:34.000+0000"), 
+    "time_end" : ISODate("2016-11-07T17:42:34.000+0000"), 
+    "code" : "a,b,c=io.read('*number'),io.read('*number'),io.read('*number')\nverdadeiro=(a+b)>c\nprint(verdadeiro)"
+}
+{ 
+    "_id" : ObjectId("5820baaeb47dc25e345589c1"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f03649f"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a2b2a7b3ceb04bb7b47df"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-07T17:32:30.000+0000"), 
+    "time_end" : ISODate("2016-11-07T17:45:30.000+0000"), 
+    "code" : "a,b,c = io.read(\"*number\", \"*number\", \"*number\")\nresultado = (a+b) > c\nprint(resultado)"
+}
+{ 
+    "_id" : ObjectId("5820bac6b47dc25e42228471"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f0364a0"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a2b2a7b3ceb04bb7b47df"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-07T17:32:54.000+0000"), 
+    "time_end" : ISODate("2016-11-07T17:42:54.000+0000"), 
+    "code" : "a,b,c = io.read(\"*number\",\"*number\",\"*number\")\n\n\nif (a + b) > c then\n    print(\"true\");\nelse\n    print(\"false\");\nend\n"
+}
+{ 
+    "_id" : ObjectId("5820bacdb47dc259c576d733"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f036496"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a2c5e7b3ceb04bb7b47e1"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-07T17:33:01.000+0000"), 
+    "time_end" : ISODate("2016-11-07T17:48:01.000+0000"), 
+    "code" : "a,b,c = io.read(\"*number\"),io.read(\"*number\"),io.read(\"*number\")\nmed = (a+b+c)/3\nprint(med>=7)"
+}
+{ 
+    "_id" : ObjectId("5820badab47dc25e4d0486b1"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f0364ae"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a26437b3ceb04bb7b47db"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-07T17:33:14.000+0000"), 
+    "time_end" : ISODate("2016-11-07T17:40:14.000+0000"), 
+    "code" : "a, b = io.read(\"*number\", \"*number\")\nif (a>-10000 and a<10000 and b>-10000 and b<10000) then\n    if (a>b) then\n        print(a)\n    else\n        print(b)\n    end\nelse\n    print(\"erro\")\nend"
+}
+{ 
+    "_id" : ObjectId("5820bae4b47dc25e345589c2"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f03648a"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a26437b3ceb04bb7b47db"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-07T17:33:24.000+0000"), 
+    "time_end" : ISODate("2016-11-07T17:53:24.000+0000"), 
+    "code" : "a,b=io.read('*number'),io.read('*number')\nprint(math.max(a,b))"
+}
+{ 
+    "_id" : ObjectId("5820bb03b47dc25ca64a48a2"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f036482"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a2c5e7b3ceb04bb7b47e1"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-07T17:33:55.000+0000"), 
+    "time_end" : ISODate("2016-11-07T17:48:55.000+0000"), 
+    "code" : "a, b, c = io.read(\"*number\", \"*number\", \"*number\")\nif (a>=-10000 and a<=10000) then\n    if (b>=-10000 and b<=10000) then\n        if (c>=-10000 and c<=10000) then\n            media=(a+b+c)/3\n            cond = media >= 7\n            print (cond)\n        end\n    end\nend\n"
+}
+{ 
+    "_id" : ObjectId("5820bb25b47dc25e755895c1"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f03648d"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a26437b3ceb04bb7b47db"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-07T17:34:29.000+0000"), 
+    "time_end" : ISODate("2016-11-07T17:41:29.000+0000"), 
+    "code" : "a,b=io.read('*number'),io.read('*number')\nprint(math.max(a,b))"
+}
+{ 
+    "_id" : ObjectId("5820bb2bb47dc25f2842d741"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f03649c"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("580ff69b5bd49c0ac5809682"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-07T17:34:35.000+0000"), 
+    "time_end" : ISODate("2016-11-07T17:49:35.000+0000"), 
+    "code" : "a, b=io.read(\"*number\", \"*number\")\nprint(a+b)\n\n\n\n"
+}
+{ 
+    "_id" : ObjectId("5820bb43b47dc25c9d2231d3"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f0364ad"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a2b2a7b3ceb04bb7b47df"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-07T17:34:59.000+0000"), 
+    "time_end" : ISODate("2016-11-07T17:48:59.000+0000"), 
+    "code" : "a,b,c=io.read(\"*number\",\"*number\",\"*number\")\nif a+b>c then\n    print(\"true\") \n    else print(\"false\")\nend\n"
+}
+{ 
+    "_id" : ObjectId("5820bb73b47dc25f2b6906b1"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f036496"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a2edd7b3ceb04bb7b47e6"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-07T17:35:47.000+0000"), 
+    "time_end" : ISODate("2016-11-07T17:55:47.000+0000"), 
+    "code" : "a = io.read(\"*number\")\nr = a*a - 2*a + 3\nprint(r)"
+}
+{ 
+    "_id" : ObjectId("5820bba0b47dc25f2b6906b2"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f03648a"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a2c5e7b3ceb04bb7b47e1"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-07T17:36:32.000+0000"), 
+    "time_end" : ISODate("2016-11-07T17:42:32.000+0000"), 
+    "code" : "a,b,c=io.read('*number'),io.read('*number'),io.read('*number')\nmedia=(a+b+c/2)>=7\nprint(media)"
+}
+{ 
+    "_id" : ObjectId("5820bba4b47dc25ca64a48a3"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f0364ae"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a2c5e7b3ceb04bb7b47e1"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-07T17:36:36.000+0000"), 
+    "time_end" : ISODate("2016-11-07T17:51:36.000+0000"), 
+    "code" : "a, b, c = io.read(\"*number\", \"*number\", \"*number\")\nmedia = (a+b+c)/3\nif (a>-10000 and a<10000 and b>-10000 and b<10000 and c>-10000 and c<10000) then\n    if (media>=7) then\n        print(\"true\")\n    else \n        print(\"false\")\n    end\nelse\n    print(\"erro\")\nend"
+}
+{ 
+    "_id" : ObjectId("5820bbb5b47dc25eab661ab1"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f03648d"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a2c5e7b3ceb04bb7b47e1"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-07T17:36:53.000+0000"), 
+    "time_end" : ISODate("2016-11-07T17:46:53.000+0000"), 
+    "code" : "a,b,c=io.read('*number'),io.read('*number'),io.read('*number')\nsoma=(((a+b+c)/3)>=7)\nprint(soma)"
+}
+{ 
+    "_id" : ObjectId("5820bbc9b47dc25f2d0e35b1"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f036496"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a316e7b3ceb04bb7b47e8"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-07T17:37:13.000+0000"), 
+    "time_end" : ISODate("2016-11-07T17:46:13.000+0000"), 
+    "code" : "a,b,c = io.read(\"*number\"),io.read(\"*number\"),io.read(\"*number\")\nmaior = math.max(a,b,c)\nprint(maior)"
+}
+{ 
+    "_id" : ObjectId("5820bbdab47dc25f2e159e71"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f0364ad"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a2c5e7b3ceb04bb7b47e1"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-07T17:37:30.000+0000"), 
+    "time_end" : ISODate("2016-11-07T17:53:30.000+0000"), 
+    "code" : "a,b,c=io.read(\"*number\",\"*number\",\"*number\")\nif a+b+c/3>=7 then\n    print(\"true\") else\n        print(\"false\")\nend "
+}
+{ 
+    "_id" : ObjectId("5820bbe8b47dc25e755895c2"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f03647c"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("580ff69b5bd49c0ac5809682"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-07T17:37:44.000+0000"), 
+    "time_end" : ISODate("2016-11-07T17:44:44.000+0000"), 
+    "code" : "a=io.read(\"*number\")\nb=io.read(\"*number\")\nif(10000<a or a<-10000) then\n    print(\"Error\")\n    end\nprint(a+b)"
+}
+{ 
+    "_id" : ObjectId("5820bc05b47dc25f2e159e72"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f03648a"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a2edd7b3ceb04bb7b47e6"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-07T17:38:13.000+0000"), 
+    "time_end" : ISODate("2016-11-07T17:55:13.000+0000"), 
+    "code" : "x=io.read('*number')\nequacao=((x^2)-(2*x)+3)\nprint(equacao)"
+}
+{ 
+    "_id" : ObjectId("5820bc2cb47dc25f2842d742"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f0364ae"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a316e7b3ceb04bb7b47e8"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-07T17:38:52.000+0000"), 
+    "time_end" : ISODate("2016-11-07T17:47:52.000+0000"), 
+    "code" : "a, b, c = io.read(\"*number\", \"*number\", \"*number\")\nif (a>-10000 and a<10000 and b>-10000 and b<10000 and c>-10000 and c<10000) then\n    if (a>b and a>c) then\n        print(a)\n    elseif (b>c) then\n        print(b)\n    else\n        print(c)\n    end\nelse\n    print(\"erro\")\nend"
+}
+{ 
+    "_id" : ObjectId("5820bc53b47dc259422b79a3"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f03647f"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a336f7b3ceb04bb7b47ec"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-07T17:39:31.000+0000"), 
+    "time_end" : ISODate("2016-11-07T17:48:31.000+0000"), 
+    "code" : "a,b,c = io.read(\"*number\",\"*number\",\"*number\")\nif (a==b) and (b==c) and (c==a) then\n    triangle = (\"equilatero\")\nelse\n    if (a==b) and (b==c) and (c~=a) then\n        triangle = (\"isosceles\")\n    else\n        if (a~=b) and (b==c) then\n            triangle = (\"isosceles\")\n        else\n            if (a==c) and (b~=a) then \n                triangle = (\"isosceles\")\n                else\n        if (a~=b) and (b~=c) and (c~=a) then\n        triangle = (\"escaleno\")\n        end\n    end\nend\nend\nend\n\nprint (triangle)"
+}
+{ 
+    "_id" : ObjectId("5820bc75b47dc25f2a7ece11"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f03647c"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a2b2a7b3ceb04bb7b47df"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-07T17:40:05.000+0000"), 
+    "time_end" : ISODate("2016-11-07T17:49:05.000+0000"), 
+    "code" : "a=io.read(\"*number\")\nb=io.read(\"*number\")\nc=io.read(\"*number\")\nprint(a+b>c)"
+}
+{ 
+    "_id" : ObjectId("5820bc8eb47dc25e755895c3"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f03649e"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a2b2a7b3ceb04bb7b47df"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-07T17:40:30.000+0000"), 
+    "time_end" : ISODate("2016-11-07T17:48:30.000+0000"), 
+    "code" : "a,b,c = io.read(\"*number\",\"*number\",\"*number\");\nif a+b>c then \n    print (\"true\")\nelse  \n    print (\"false\")\nend"
+}
+{ 
+    "_id" : ObjectId("5820bcb8b47dc25e345589c3"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f03648d"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a2edd7b3ceb04bb7b47e6"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-07T17:41:12.000+0000"), 
+    "time_end" : ISODate("2016-11-07T17:51:12.000+0000"), 
+    "code" : "a=io.read('*number')\nequacao= (a^2 - 2*a + 3)\nprint(equacao)"
+}
+{ 
+    "_id" : ObjectId("5820bcb9b47dc25ca50e19c1"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f03649f"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a2c5e7b3ceb04bb7b47e1"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-07T17:41:13.000+0000"), 
+    "time_end" : ISODate("2016-11-07T17:55:13.000+0000"), 
+    "code" : "a,b,c = io.read(\"*number\", \"*number\", \"*number\")\n\nresultado = (a+b+c)/3\n\nteste = resultado >= 7\nprint (teste)"
+}
+{ 
+    "_id" : ObjectId("5820bcc9b47dc25f2a7ece12"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f0364ae"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a32397b3ceb04bb7b47ea"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-07T17:41:29.000+0000"), 
+    "time_end" : ISODate("2016-11-07T17:52:29.000+0000"), 
+    "code" : "a, b = io.read(\"*number\", \"*number\")\nif (a>0 and a<10 and b>0 and b<10) then\n    if (a>b) then\n        print(\"Time1\")\n    elseif (a<b) then\n        print(\"Time2\")\n    else\n        print(\"Empate\")\n    end\nelse\n    print(\"erro\")\nend"
+}
+{ 
+    "_id" : ObjectId("58359d2fb47dc2125f4e8261"), 
+    "user" : DBRef("User", ObjectId("581687d05bd49c42bba91ac9"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("582b76574c58576aff063505"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-23T13:44:15.000+0000"), 
+    "time_end" : ISODate("2016-11-23T13:55:15.000+0000"), 
+    "code" : "\n    print(\"True\")"
+}
+{ 
+    "_id" : ObjectId("5820bcd2b47dc25f2e159e73"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f036484"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a32397b3ceb04bb7b47ea"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-07T17:41:38.000+0000"), 
+    "time_end" : ISODate("2016-11-07T17:58:38.000+0000"), 
+    "code" : "time1=io.read('*number')\ntime2=io.read('*number')\nif time1>time2 then\n  print('Time1')\nelse\n     if time2>time1 then\n        print ('Time2')\n     else\n         print('Empate')\n    end\nend\n \n"
+}
+{ 
+    "_id" : ObjectId("5820bcecb47dc25f2a7ece13"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f036482"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a2edd7b3ceb04bb7b47e6"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-07T17:42:04.000+0000"), 
+    "time_end" : ISODate("2016-11-07T17:59:04.000+0000"), 
+    "code" : "x = io.read(\"*number\")\nif (x>=-10000 and x<=10000) then\n    resul = x^2 - 2*x + 3\n    print (resul)\nend\n\n    "
+}
+{ 
+    "_id" : ObjectId("5820bcf4b47dc25e345589c4"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f03648a"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a316e7b3ceb04bb7b47e8"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-07T17:42:12.000+0000"), 
+    "time_end" : ISODate("2016-11-07T17:49:12.000+0000"), 
+    "code" : "a,b,c=io.read('*number'),io.read('*number'),io.read('*number')\nprint(math.max(a,b,c))"
+}
+{ 
+    "_id" : ObjectId("5820bd15b47dc25f2842d743"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f0364af"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a26437b3ceb04bb7b47db"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-07T17:42:45.000+0000"), 
+    "time_end" : ISODate("2016-11-07T17:47:45.000+0000"), 
+    "code" : "a,b= io.read(\"*number\", \"*number\")\nif a>b then \n    print (a)\nelse\n    print (b)\n    end"
+}
+{ 
+    "_id" : ObjectId("5820bd18b47dc25f2e159e74"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f0364aa"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a26437b3ceb04bb7b47db"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-07T17:42:48.000+0000"), 
+    "time_end" : ISODate("2016-11-07T17:53:48.000+0000"), 
+    "code" : "n1,n2=io.read(\"*number\",\"*number\")\nif n1>n2 then\n    print(n1)\nelse\n    print(n2)\n    end\n   "
+}
+{ 
+    "_id" : ObjectId("5820bd29b47dc25ca64a48a4"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f0364a0"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a2c5e7b3ceb04bb7b47e1"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-07T17:43:05.000+0000"), 
+    "time_end" : ISODate("2016-11-07T17:57:05.000+0000"), 
+    "code" : "a,b,c = io.read(\"*number\",\"*number\",\"*number\")\n\n\nif a< 10000 and a > -10000 and b< 10000 and b > -10000 and c< 10000 and c > -10000 then\nmedia = (a+b+c)/ 3\n    if media >= 7 then\n    print(\"true\");\n    else\n    print(\"False\");\n    end\nelse\n    print(\"Os nueros nao estão no intervalo\");\nend\n"
+}
+{ 
+    "_id" : ObjectId("5820bd4bb47dc25ca64a48a5"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f03648d"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a316e7b3ceb04bb7b47e8"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-07T17:43:39.000+0000"), 
+    "time_end" : ISODate("2016-11-07T17:57:39.000+0000"), 
+    "code" : "a,b,c=io.read('*number'),io.read('*number'),io.read('*number')\nprint(math.max(a,b,c))"
+}
+{ 
+    "_id" : ObjectId("5820bd5db47dc25ca50e19c2"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f03649c"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a2c5e7b3ceb04bb7b47e1"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-07T17:43:57.000+0000"), 
+    "time_end" : ISODate("2016-11-07T18:00:57.000+0000"), 
+    "code" : "a,b,c=io.read(\"*number\",\"*number\",\"*number\")\nm=(a+b+c)/3\nif m>=7 then\nprint(\"true\")\nelse\nprint(\"false\")\nend\n\n"
+}
+{ 
+    "_id" : ObjectId("5820bd5eb47dc25eab661ab2"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f0364a3"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a32397b3ceb04bb7b47ea"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-07T17:43:58.000+0000"), 
+    "time_end" : ISODate("2016-11-07T17:52:58.000+0000"), 
+    "code" : "a,b=io.read(\"*number\",\"*number\")\nif (a>b) then \n    print(\"Time1\")\nelseif(b>a) then\n    print(\"Time2\")\nelseif(a==b) then\n    print(\"Empate\")\n    end"
+}
+{ 
+    "_id" : ObjectId("5820bd7db47dc25eab661ab3"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f036496"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a32397b3ceb04bb7b47ea"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-07T17:44:29.000+0000"), 
+    "time_end" : ISODate("2016-11-07T18:00:29.000+0000"), 
+    "code" : "Time1,Time2 = io.read(\"*number\"),io.read(\"*number\")\nif Time1==Time2 then \n    print(\"empate\")\nend\nif Time1>Time2 then \n    print(\"Time1\")\nend\nif Time1<Time2 then\n    print(\"Time2\")\nend"
+}
+{ 
+    "_id" : ObjectId("5820bdadb47dc25e755895c4"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f036482"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a316e7b3ceb04bb7b47e8"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-07T17:45:17.000+0000"), 
+    "time_end" : ISODate("2016-11-07T18:01:17.000+0000"), 
+    "code" : "a,b,c = io.read(\"*number\", \"*number\",\"*number\")\nif (a>=-10000 and a<=10000) then\n    if (b>=-10000 and b<=10000) then\n        if (c>=-10000 and c<=10000) then\n            maior = a\n            if (b > maior) then\n                maior=b\n            end\n            if(c > maior) then\n                maior=c\n            end\n            print(maior)\n        end\n    end\nend\n"
+}
+{ 
+    "_id" : ObjectId("5820bdb8b47dc25e345589c5"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f03647c"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a2edd7b3ceb04bb7b47e6"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-07T17:45:28.000+0000"), 
+    "time_end" : ISODate("2016-11-07T18:04:28.000+0000"), 
+    "code" : "x=io.read(\"*number\")\nresposta=x^2-2*x+3\nprint(resposta)"
+}
+{ 
+    "_id" : ObjectId("5820bdd8b47dc25ca64a48a6"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f036486"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a2c5e7b3ceb04bb7b47e1"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-07T17:46:00.000+0000"), 
+    "time_end" : ISODate("2016-11-07T18:05:00.000+0000"), 
+    "code" : "a,b,c = io.read ('*number', '*number', '*number')\n\n\nif a>= -10000 and a<= 10000 and b>= -10000 and b<= 10000 then\n    \nmedia = (a+b+c)/3\n    \n if media >=7 then\n print ('true')\n    else \n    print ('false')\n    end\nend\n\n    \n\n   \n\n\n"
+}
+{ 
+    "_id" : ObjectId("5820be03b47dc25eab661ab4"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f0364a5"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a2b2a7b3ceb04bb7b47df"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-07T17:46:43.000+0000"), 
+    "time_end" : ISODate("2016-11-07T17:57:43.000+0000"), 
+    "code" : "a, b, c= io.read ('*number', '*number', '*number')\npri=a+b>c\nprint (pri)\n"
+}
+{ 
+    "_id" : ObjectId("5820be08b47dc263d324ce71"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f03647f"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a3f4a7b3ceb04bb7b47f7"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-07T17:46:48.000+0000"), 
+    "time_end" : ISODate("2016-11-07T17:59:48.000+0000"), 
+    "code" : "a = io.read(\"*number\")\nif a == 1 then\n    print(\"janeiro\")\nelseif a == 12 then\n    print(\"fevereiro\")\nend"
+}
+{ 
+    "_id" : ObjectId("5820be2bb47dc25ca50e19c3"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f036484"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a3f4a7b3ceb04bb7b47f7"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-07T17:47:23.000+0000"), 
+    "time_end" : ISODate("2016-11-07T18:05:23.000+0000"), 
+    "code" : "mes=io.read('*number')\n\nif(mes==1)then\n    print('janeiro')\nelseif (mes==2)then \n    print('fevereiro')\nelseif (mes==3)then \n    print('marco')\nelseif (mes==4)then \n    print('abril')\nelseif (mes==5)then \n    print('maio')\nelseif (mes==6)then \n    print('junho')\nelseif (mes==7)then \n    print('julho')\nelseif (mes==8)then \n    print('agosto')\nelseif (mes==9)then \n    print('setembro')\nelseif (mes==10)then \n    print('outubro')\nelseif (mes==11)then \n    print('novembro')\nelseif (mes==12)then \n    print('dezembro')\nelse\n    print('invalido')\nend\n    "
+}
+{ 
+    "_id" : ObjectId("5820be3fb47dc25f2e159e75"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f03648e"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a26437b3ceb04bb7b47db"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-07T17:47:43.000+0000"), 
+    "time_end" : ISODate("2016-11-07T17:59:43.000+0000"), 
+    "code" : "a,b=io.read(\"*number\"), io.read(\"*number\")\nprint(math.max(a,b))\n"
+}
+{ 
+    "_id" : ObjectId("5820be8bb47dc259422b79a4"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f036482"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a32397b3ceb04bb7b47ea"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-07T17:48:59.000+0000"), 
+    "time_end" : ISODate("2016-11-07T17:55:59.000+0000"), 
+    "code" : "a,b = io.read(\"*number\", \"*number\")\nif (a>=0 and a<=10) then\n    if(b>=0 and b<=10) then\n        if (a>b) then\n            resul = \"Time1\"\n        elseif(a<b) then\n            resul = \"Time2\"\n        else\n            resul = \"Empate\"\n        end\n        print(resul)\n    end\nend\n"
+}
+{ 
+    "_id" : ObjectId("5820be91b47dc25f2e159e76"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f03647c"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a32397b3ceb04bb7b47ea"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-07T17:49:05.000+0000"), 
+    "time_end" : ISODate("2016-11-07T17:57:05.000+0000"), 
+    "code" : "time1=io.read(\"*number\")\ntime2=io.read(\"*number\")\nif(time1>time2) then\n    print(\"Time1\")\nend\nif(time1<time2) then\n    print(\"Time2\") \n    else\n    print(\"Empate\")\nend"
+}
+{ 
+    "_id" : ObjectId("5820be9eb47dc25e65252f22"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f03649c"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a2edd7b3ceb04bb7b47e6"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-07T17:49:18.000+0000"), 
+    "time_end" : ISODate("2016-11-07T18:05:18.000+0000"), 
+    "code" : "x,r=io.read(\"*number\",\"*number\")\nr=x*x-2*x+3\nprint(r)"
+}
+{ 
+    "_id" : ObjectId("5820bea3b47dc25ca50e19c4"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f036484"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a26437b3ceb04bb7b47db"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-07T17:49:23.000+0000"), 
+    "time_end" : ISODate("2016-11-07T18:08:23.000+0000"), 
+    "code" : "a=io.read('*number')\nb=io.read('*number')\n\nif a>b then\n    print(a)\nelse\n    print (b)\nend"
+}
+{ 
+    "_id" : ObjectId("5820bea5b47dc264a05b8101"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f0364b1"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a32397b3ceb04bb7b47ea"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-07T17:49:25.000+0000"), 
+    "time_end" : ISODate("2016-11-07T17:59:25.000+0000"), 
+    "code" : "a,b=io.read('*number', '*number')\nif a==b then\n    print ('Empate')\nelse\n    if a>b then\n        print ('Time1')\n    else\n        print ('Time2')\n    end\nend"
+}
+{ 
+    "_id" : ObjectId("5820bea7b47dc263d324ce72"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f03648a"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a32397b3ceb04bb7b47ea"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-07T17:49:27.000+0000"), 
+    "time_end" : ISODate("2016-11-07T18:02:27.000+0000"), 
+    "code" : "a,b=io.read('*number'),io.read('*number')\nif a>b then\n    print('Time1')\nelseif b>a then\n    print('Time2')\nelse\n    print('empate')\nend    "
+}
+{ 
+    "_id" : ObjectId("5820bebfb47dc25ca50e19c5"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f0364aa"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a2c5e7b3ceb04bb7b47e1"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-07T17:49:51.000+0000"), 
+    "time_end" : ISODate("2016-11-07T17:56:51.000+0000"), 
+    "code" : "n1,n2,n3=io.read(\"*number\",\"*number\",\"*number\")\nmedia=(n1+n2+n3)/3>=7\nprint (media)"
+}
+{ 
+    "_id" : ObjectId("5820beddb47dc259422b79a5"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f036494"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a3f4a7b3ceb04bb7b47f7"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-07T17:50:21.000+0000"), 
+    "time_end" : ISODate("2016-11-07T18:05:21.000+0000"), 
+    "code" : "a = io.read(\"*number\")\r\n\r\nif a>=1 and a<=12 then\r\n    if a == 1 then\r\n    mes = \"janeiro\"\r\n        elseif a == 2 then\r\n        mes = \"fevereiro\"\r\n        elseif a == 3 then\r\n        mes = \"março\"\r\n        elseif a == 4 then\r\n        mes = \"abril\"\r\n        elseif a == 5 then\r\n        mes = \"maio\"\r\n        elseif a == 6 then\r\n        mes = \"junho\"\r\n        elseif a == 7 then\r\n        mes = \"julho\"\r\n        elseif a == 8 then\r\n        mes = \"agosto\"\r\n        elseif a == 9 then\r\n        mes = \"setembro\"\r\n        elseif a == 10 then\r\n        mes = \"outubro\"\r\n        elseif a == 11 then\r\n        mes = \"novembro\"\r\n        else\r\n        mes = \"dezembro\"\r\n       end\r\nelse\r\nprint(\"valor nao esta no intervalo\")\r\nend\r\nprint (mes)\r\n"
+}
+{ 
+    "_id" : ObjectId("5820bef5b47dc25eab661ab5"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f0364a0"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a2edd7b3ceb04bb7b47e6"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-07T17:50:45.000+0000"), 
+    "time_end" : ISODate("2016-11-07T18:07:45.000+0000"), 
+    "code" : "x = io.read(\"*number\")\n\n\nif x< 10000 and x > -10000 then\n    funcao = x^2 - 2*x + 3;\n    print(funcao);\nelse\n    print(\"Os nueros nao estão no intervalo\");\nend"
+}
+{ 
+    "_id" : ObjectId("5820bf1eb47dc25ca50e19c6"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f03649e"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a2edd7b3ceb04bb7b47e6"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-07T17:51:26.000+0000"), 
+    "time_end" : ISODate("2016-11-07T18:02:26.000+0000"), 
+    "code" : "x=io.read(\"*number\");\nresultado=x*x-2*x+3;\nprint(resultado);"
+}
+{ 
+    "_id" : ObjectId("5820bf45b47dc25ca50e19c7"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f0364af"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a2c5e7b3ceb04bb7b47e1"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-07T17:52:05.000+0000"), 
+    "time_end" : ISODate("2016-11-07T18:12:05.000+0000"), 
+    "code" : "a,b,c = io.read(\"*number\", \"*number\", \"*number\")\nmedia=(a+b+c)/3>=7\nprint (media)\n"
+}
+{ 
+    "_id" : ObjectId("5820bf4eb47dc25f2e159e77"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f0364ad"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a316e7b3ceb04bb7b47e8"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-07T17:52:14.000+0000"), 
+    "time_end" : ISODate("2016-11-07T18:03:14.000+0000"), 
+    "code" : "a,b,c=io.read(\"*number\",\"*number\",\"*number\")\nif a>b and a>c then\n    print(a) \nelseif b>a and b>c then\n    print(b)\nelseif c>a and c>b then\n    print(c)\nend     \n"
+}
+{ 
+    "_id" : ObjectId("5820bf77b47dc265b10b0f91"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f036484"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a2edd7b3ceb04bb7b47e6"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-07T17:52:55.000+0000"), 
+    "time_end" : ISODate("2016-11-07T18:09:55.000+0000"), 
+    "code" : "x=io.read('*number')\n\ncalc=((x^2)-(2*x))+3\n\nprint(calc)"
+}
+{ 
+    "_id" : ObjectId("5820bf7ab47dc25e755895c5"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f03648b"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a2b2a7b3ceb04bb7b47df"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-07T17:52:58.000+0000"), 
+    "time_end" : ISODate("2016-11-07T18:02:58.000+0000"), 
+    "code" : "n1,n2,n3=io.read('*number','*number','*number')\nif (n1+n2)>n3 then\n    print(true)\nelse\n    print(false)\n    end"
+}
+{ 
+    "_id" : ObjectId("5820bf8ab47dc25ca64a48a7"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f0364a0"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a26437b3ceb04bb7b47db"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-07T17:53:14.000+0000"), 
+    "time_end" : ISODate("2016-11-07T18:00:14.000+0000"), 
+    "code" : "a,b = io.read(\"*number\",\"*number\")\n\n\nif a< 10000 and a > -10000 and b< 10000 and b > -10000  then\n    \n    if a> b then\n    \n    print(a);\n    else\n    print(b);\n    end\nend"
+}
+{ 
+    "_id" : ObjectId("5820bf9bb47dc263d324ce73"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f036494"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a32397b3ceb04bb7b47ea"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-07T17:53:31.000+0000"), 
+    "time_end" : ISODate("2016-11-07T18:06:31.000+0000"), 
+    "code" : "a = io.read(\"*number\")\nb = io.read(\"*number\")\n\nif a - b == 0 then\n    r = \"Empate\"\nelseif a - b > 0 then\n    r = \"Time1\"\nelse\n    r = \"Time2\"\nend\n\nprint(r)"
+}
+{ 
+    "_id" : ObjectId("5820bfa5b47dc25ca50e19c8"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f03648d"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a32397b3ceb04bb7b47ea"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-07T17:53:41.000+0000"), 
+    "time_end" : ISODate("2016-11-07T18:06:41.000+0000"), 
+    "code" : "a,b=io.read('*number'),io.read('*number')\nif a==b then\nprint('Empate')\nelseif a>b then\nprint('Time1')\nelse\nprint('Time2')\nend"
+}
+{ 
+    "_id" : ObjectId("5820bfcfb47dc264a05b8102"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f0364a5"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a32397b3ceb04bb7b47ea"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-07T17:54:23.000+0000"), 
+    "time_end" : ISODate("2016-11-07T18:02:23.000+0000"), 
+    "code" : "time1, time2= io.read ('*number', '*number') \nif time1 > time2 then\n    print ('Time1')\nelseif time1 == time2 then\n    print ('Empate')\nelse\n    print ('Time2')\nend"
+}
+{ 
+    "_id" : ObjectId("5820bff1b47dc25eab661ab6"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f0364aa"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a2edd7b3ceb04bb7b47e6"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-07T17:54:57.000+0000"), 
+    "time_end" : ISODate("2016-11-07T18:13:57.000+0000"), 
+    "code" : "x1=io.read(\"*number\")\nfuncao=x1^2-x1*2+3\nprint (funcao)"
+}
+{ 
+    "_id" : ObjectId("5820bffbb47dc25f2e159e78"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f03648e"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a32397b3ceb04bb7b47ea"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-07T17:55:07.000+0000"), 
+    "time_end" : ISODate("2016-11-07T18:01:07.000+0000"), 
+    "code" : "a,b=io.read(\"*number\", \"*number\")\nif a==b then\n    print('Empate')\nelse\n    if a>b then\n        print('Time1')\n    else \n        print('Time2')\n    end\nend"
+}
+{ 
+    "_id" : ObjectId("5820c001b47dc25e755895c6"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f0364af"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a2edd7b3ceb04bb7b47e6"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-07T17:55:13.000+0000"), 
+    "time_end" : ISODate("2016-11-07T18:12:13.000+0000"), 
+    "code" : "a= io.read(\"*number\")\neq= (a^2-2*a+3)\nprint (eq)"
+}
+{ 
+    "_id" : ObjectId("5820c019b47dc259422b79a6"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f03648a"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a336f7b3ceb04bb7b47ec"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-07T17:55:37.000+0000"), 
+    "time_end" : ISODate("2016-11-07T18:10:37.000+0000"), 
+    "code" : "a,b,c=io.read('*number'),io.read('*number'),io.read('*number')\nif a==b and b==c then\n    print('equilatero')\nelseif a~=b and b~=c then\n    print('escaleno')\nelse\n    print('isosceles')\nend"
+}
+{ 
+    "_id" : ObjectId("5820c030b47dc268797fccb1"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f0364a0"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a316e7b3ceb04bb7b47e8"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-07T17:56:00.000+0000"), 
+    "time_end" : ISODate("2016-11-07T18:06:00.000+0000"), 
+    "code" : "a,b,c = io.read(\"*number\",\"*number\",\"*number\")\n\n\nif a< 10000 and a > -10000 and b< 10000 and b > -10000 and c< 10000 and c > -10000 then\n\n    if a >b and a > c  then\n    print(a);\n    elseif b >a and b > c  then\n    print(b);\n    else\n    print(c)\n    end\nelse\n    print(\"Os nueros nao estão no intervalo\");\nend"
+}
+{ 
+    "_id" : ObjectId("5820c039b47dc25e755895c7"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f03648e"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a316e7b3ceb04bb7b47e8"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-07T17:56:09.000+0000"), 
+    "time_end" : ISODate("2016-11-07T18:09:09.000+0000"), 
+    "code" : "a,b,c=io.read(\"*number\", \"*number\", \"*number\")\nprint(math.max(a,b,c))"
+}
+{ 
+    "_id" : ObjectId("5820c03fb47dc25eab661ab7"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f036494"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a336f7b3ceb04bb7b47ec"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-07T17:56:15.000+0000"), 
+    "time_end" : ISODate("2016-11-07T18:07:15.000+0000"), 
+    "code" : "a = io.read(\"*number\")\nb = io.read(\"*number\")\nc = io.read(\"*number\")\n\nif a == b and b == c then\n    t = \"equilatero\"\nelseif a == b or a == c or b == c then\n    t = \"isoceles\"\nelse\n    t = \"escaleno\"\nend\n\nprint(t)"
+}
+{ 
+    "_id" : ObjectId("5820c042b47dc263d324ce74"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f0364ad"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a32397b3ceb04bb7b47ea"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-07T17:56:18.000+0000"), 
+    "time_end" : ISODate("2016-11-07T18:05:18.000+0000"), 
+    "code" : "a,b=io.read(\"*number\",\"*number\")\nif a>b then\n    print(\"Time1\")\nelseif b>a then\n    print(\"Time2\")\nelseif a==b then\n    print(\"Empate\")\nend"
+}
+{ 
+    "_id" : ObjectId("5820c047b47dc25e755895c8"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f03649f"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a32397b3ceb04bb7b47ea"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-07T17:56:23.000+0000"), 
+    "time_end" : ISODate("2016-11-07T18:07:23.000+0000"), 
+    "code" : "a, b = io.read(\"*number\", \"*number\")\n\nif a > b then\n    print(\"Time1\")\nelseif\n    b > a then\n    print(\"Time2\")\nelse\n    print(\"Empate\")\n    end"
+}
+{ 
+    "_id" : ObjectId("5820c047b47dc268b947dc31"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f036496"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a336f7b3ceb04bb7b47ec"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-07T17:56:23.000+0000"), 
+    "time_end" : ISODate("2016-11-07T18:13:23.000+0000"), 
+    "code" : "a,b,c = io.read(\"*number\"),io.read(\"*number\"),io.read(\"*number\")\nif (a==b or b==a) and (b==c or c==b) and (c==a or a==c) then \n    print(\"equilatero\")\nelseif (a~=b or b~=a) and (b~=c or c~=b) and (c~=a or a~=c) then\n    print(\"escaleno\")\nelse\n    print(\"isosceles\")\nend"
+}
+{ 
+    "_id" : ObjectId("5820c049b47dc268bb074da1"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f036482"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a336f7b3ceb04bb7b47ec"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-07T17:56:25.000+0000"), 
+    "time_end" : ISODate("2016-11-07T18:13:25.000+0000"), 
+    "code" : "a,b,c = io.read(\"*number\", \"*number\", \"*number\")\nif (a>=1 and a<=50) then\n    if (b>=1 and b<=50) then\n        if (c>=1 and c<=50) then\n            if (a == b and b==c) then\n                resul=\"equilatero\"\n            elseif((a==b and b~=c) or(a==c and c~=b) or (b==c and c~=a)) then\n                resul = \"isosceles\"\n            else\n                resul = \"escaleno\"\n            end\n            print(resul)\n        end\n    end\nend\n"
+}
+{ 
+    "_id" : ObjectId("5820c04eb47dc25ca50e19c9"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f036480"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a3f4a7b3ceb04bb7b47f7"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-07T17:56:30.000+0000"), 
+    "time_end" : ISODate("2016-11-07T18:04:30.000+0000"), 
+    "code" : "x = io.read(\"*number\")\nif x==1 then\n    print (\"janeiro\")\nelseif x==2 then\n    print (\"fevereiro\")\n    elseif x==3 then\n    print (\"março\")\n    elseif x==4 then\n    print (\"abril\")\n    elseif x==5 then\n    print (\"maio\")\n    elseif x==6 then\n    print (\"junho\")\n    elseif x==7 then\n    print (\"julho\")\n    elseif x==8 then\n    print (\"agosto\")\n    elseif x==9 then\n    print (\"setembro\")\n    elseif x==10 then\n    print (\"outubro\")\n    elseif x==11 then\n    print (\"novembro\")\n    else\n    print (\"dezembro\")\nend\n\n   "
+}
+{ 
+    "_id" : ObjectId("5820c07ab47dc265b10b0f92"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f0364aa"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a316e7b3ceb04bb7b47e8"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-07T17:57:14.000+0000"), 
+    "time_end" : ISODate("2016-11-07T18:06:14.000+0000"), 
+    "code" : "n1,n2,n3=io.read(\"*number\",\"*number\",\"*number\")\nif n1>n2 and n1>n3 then\n    print(n1)\nelseif\n    n2>n1 and n2>n3 then\n        print(n2)\n     else\n         print(n3)\n         end"
+}
+{ 
+    "_id" : ObjectId("5820c0b2b47dc265b10b0f93"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f0364af"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a316e7b3ceb04bb7b47e8"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-07T17:58:10.000+0000"), 
+    "time_end" : ISODate("2016-11-07T18:18:10.000+0000"), 
+    "code" : "a,b,c= io.read('*number', '*number','*number' )\nif a> b and a>c then \n    print(a)\nelseif b>a and b>c then\n    print (b)\nelse\n    prnt(c)\nend"
+}
+{ 
+    "_id" : ObjectId("5820c0c8b47dc263d324ce75"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f03648b"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a2c5e7b3ceb04bb7b47e1"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-07T17:58:32.000+0000"), 
+    "time_end" : ISODate("2016-11-07T18:10:32.000+0000"), 
+    "code" : "n1,n2,n3=io.read('*number','*number','*number')\nif (n1+n2+n3)/3>=7 then\n    print('true')\nelse\n    print('false1')\n    end"
+}
+{ 
+    "_id" : ObjectId("5820c11cb47dc25e755895c9"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f0364aa"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a32397b3ceb04bb7b47ea"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-07T17:59:56.000+0000"), 
+    "time_end" : ISODate("2016-11-07T18:04:56.000+0000"), 
+    "code" : "t1,t2=io.read(\"*number\",\"*number\")\nif t1>t2 then\n    print(\"Time1\")\nelseif\n    t2>t1 then\n        print(\"Time2\")\n    else\n        print(\"Empate\")\n        end"
+}
+{ 
+    "_id" : ObjectId("5820c128b47dc268797fccb2"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f03649c"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a26437b3ceb04bb7b47db"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-07T18:00:08.000+0000"), 
+    "time_end" : ISODate("2016-11-07T18:18:08.000+0000"), 
+    "code" : "a,b=io.read(\"*number\",\"*number\")\nif a>b then\n    print(a)\nelse\n    print(b)\nend"
+}
+{ 
+    "_id" : ObjectId("5820c179b47dc26ac7732a41"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f0364af"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a32397b3ceb04bb7b47ea"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-07T18:01:29.000+0000"), 
+    "time_end" : ISODate("2016-11-07T18:18:29.000+0000"), 
+    "code" : "t1,t2= io.read('*number', '*number')\nif t1>t2 then\n    print('Time1')\nelseif t2>t1 then\n    print ('Time2')\nelse\n    print ('Empate')\nend\n"
+}
+{ 
+    "_id" : ObjectId("5820c17cb47dc269c7433a01"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f0364a0"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a32397b3ceb04bb7b47ea"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-07T18:01:32.000+0000"), 
+    "time_end" : ISODate("2016-11-07T18:14:32.000+0000"), 
+    "code" : "a,b = io.read(\"*number\",\"*number\")\n\n\nif a<= 10 and a >= 0 and b<= 10 and b >= 0 then\n    \n    if a == b then\n    print(\"Empate\");\n    elseif a > b    then\n    print(\"Time1\");\n    else\n    print(\"Time2\");\n    end\nelse\n    print(\"Não esta no intervalo\");\nend"
+}
+{ 
+    "_id" : ObjectId("5820c1a6b47dc269c7433a02"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f03649e"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a32397b3ceb04bb7b47ea"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-07T18:02:14.000+0000"), 
+    "time_end" : ISODate("2016-11-07T18:22:14.000+0000"), 
+    "code" : "t1,t2=io.read(\"*number\",\"*number\")\nif t1>t2 then \n    print(\"Time1\")\nelseif t2>t1 then \n    print(\"Time2\")\nelse \n    print(\"Empate\")\nend\n\n\n"
+}
+{ 
+    "_id" : ObjectId("5820c1beb47dc269215039e1"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f0364b1"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a3f4a7b3ceb04bb7b47f7"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-07T18:02:38.000+0000"), 
+    "time_end" : ISODate("2016-11-07T18:13:38.000+0000"), 
+    "code" : "a=io.read('*number')\nif a==1 then\n    print ('janeiro')\nelseif a==2 then\n    print ('fevereiro')\nelseif a==3 then\n    print ('março')\nelseif a==4 then\n    print ('abril')\nelseif a==5 then\n    print ('maio')\nelseif a==6 then\n    print ('junho')\nelseif a==7 then\n    print ('julho')\nelseif a==8 then\n    print ('agosto')\nelseif a==9 then\n    print ('setembro')\nelseif a==10 then\n    print ('outubro')\nelseif a==11 then\n    print ('novembro')\nelseif a==12 then\n    print ('dezembro')\nelse\n    end"
+}
+{ 
+    "_id" : ObjectId("5820c1feb47dc269185f4e61"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f03647c"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a336f7b3ceb04bb7b47ec"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-07T18:03:42.000+0000"), 
+    "time_end" : ISODate("2016-11-07T18:13:42.000+0000"), 
+    "code" : "a=io.read(\"*number\")\nb=io.read(\"*number\")\nc=io.read(\"*number\")\nladosiguais=0\nif(a==b) then\n    ladosiguais=ladosiguais+1\nend\nif(a==c) then\n    ladosiguais=ladosiguais+1\nend\nif(c==b) then\n    ladosiguais=ladosiguais+1\nend\nif(ladosiguais==0) then\n    print(\"escaleno\")\nend\nif(ladosiguais==1) then\n    print(\"isosceles\")\nend\nif(ladosiguais==3) then\n    print(\"equilatero\")\nend"
+}
+{ 
+    "_id" : ObjectId("5820c201b47dc25e755895ca"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f036484"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a336f7b3ceb04bb7b47ec"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-07T18:03:45.000+0000"), 
+    "time_end" : ISODate("2016-11-07T18:14:45.000+0000"), 
+    "code" : "a=io.read('*number')\nb=io.read('*number')\nc=io.read('*number')\n\nif(a==b and a==c)then\n    print('equilatero')\nelseif (a==b and a~=c) then\n    print('isosceles')\nelseif (a==c and a~=b) then\n    print('isosceles')\nelseif (c==b and a~=c) then\n    print('isosceles')\nelse\n    print('escaleno')\nend\n"
+}
+{ 
+    "_id" : ObjectId("5820c20eb47dc268797fccb3"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f0364a3"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a316e7b3ceb04bb7b47e8"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-07T18:03:58.000+0000"), 
+    "time_end" : ISODate("2016-11-07T18:14:58.000+0000"), 
+    "code" : "a,b,c=io.read('*number','*number','*number')\nif a>b and a>c then\n    print(a)\nelseif b>a and b>c then\n    print(b)\nelseif c>a and c>b then\n    print(c)\n    end"
+}
+{ 
+    "_id" : ObjectId("5820c212b47dc269215039e2"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f03649f"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a336f7b3ceb04bb7b47ec"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-07T18:04:02.000+0000"), 
+    "time_end" : ISODate("2016-11-07T18:20:02.000+0000"), 
+    "code" : "a,b,c = io.read(\"*number\",\"*number\",\"*number\")\n\nif a == b then\n    if a == c then\n        print(\"equilatero\")\n    else\n        print(\"isosceles\")\n        end\nelseif b == c then\n    if b == a then\n        print(\"equilatero\")\n    else\n        print(\"isosceles\")\n    end\nelse\n    print(\"escaleno\")\nend\n"
+}
+{ 
+    "_id" : ObjectId("5820c217b47dc265b10b0f94"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f03648e"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a3f4a7b3ceb04bb7b47f7"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-07T18:04:07.000+0000"), 
+    "time_end" : ISODate("2016-11-07T18:11:07.000+0000"), 
+    "code" : "a=io.read(\"*number\")\nif a==1 then\n    print('janeiro')\nelseif a==2 then\n    print('fevereiro')\n    elseif a==3 then\n    print('marco')\n    elseif a==4 then\n    print('abril')\n    elseif a==5 then\n    print('maio')\n    elseif a==6 then\n    print('junho')\n    elseif a==7 then\n    print('julho')\n    elseif a==8 then\n    print('agosto')\n    elseif a==9 then\n    print('setembro')\n    elseif a==10 then\n    print('outrubro')\n    elseif a==11 then\n    print('novembro')\n    elseif a==12 then\n    print('dezembro')\nend"
+}
+{ 
+    "_id" : ObjectId("5820c24db47dc25e755895cb"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f036482"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a3f4a7b3ceb04bb7b47f7"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-07T18:05:01.000+0000"), 
+    "time_end" : ISODate("2016-11-07T18:21:01.000+0000"), 
+    "code" : "n = io.read(\"*number\")\nif (n >= 1 and n <= 12) then\n    if (n==1) then\n        mes=\"janeiro\";\n    elseif (n==2) then\n        mes = \"fevereiro\"\n    elseif (n==3) then\n        mes = \"março\"\n    elseif (n==4) then\n        mes = \"abril\"\n    elseif (n==5) then\n        mes = \"maio\"\n    elseif (n==6) then\n        mes = \"junho\"\n    elseif (n==7) then\n        mes = \"julho\"\n    elseif (n==8) then\n        mes = \"agosto\"\n    elseif (n==9) then\n        mes = \"setembro\"\n    elseif (n==10) then\n        mes = \"outubro\"\n    elseif (n==11) then\n        mes = \"novembro\"\n    else\n        mes=\"dezembro\"\n    end\n    print (mes)\nend\n"
+}
+{ 
+    "_id" : ObjectId("5820c25db47dc265b10b0f95"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f03648d"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a336f7b3ceb04bb7b47ec"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-07T18:05:17.000+0000"), 
+    "time_end" : ISODate("2016-11-07T18:23:17.000+0000"), 
+    "code" : "a,b,c=io.read('*number'),io.read('*number'),io.read('*number')\nif a~=b and a~=c then\n    print('escaleno')\nelseif a==b and b==c then\n    print('equilatero')\nelse\n    print('isosceles')\nend"
+}
+{ 
+    "_id" : ObjectId("5820c27ab47dc268b947dc32"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f036496"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a3f4a7b3ceb04bb7b47f7"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-07T18:05:46.000+0000"), 
+    "time_end" : ISODate("2016-11-07T18:20:46.000+0000"), 
+    "code" : "n = io.read(\"*number\")\nif n==1 then \n    print(\"janeiro\")\nend\nif n==2 then \n    print(\"fevereiro\")\nend\nif n==3 then \n    print(\"março\")\nend\nif n==4 then \n    print(\"abril\")\nend\nif n==5 then \n    print(\"maio\")\nend\nif n==6 then \n    print(\"junho\")\nend\nif n==7 then \n    print(\"julho\")\nend\nif n==8 then \n    print(\"agosto\")\nend\nif n==9 then \n    print(\"setembro\")\nend\nif n==10 then \n    print(\"outubro\")\nend\nif n==11 then \n    print(\"novembro\")\nend\nif n==12 then \n    print(\"dezembro\")\nend"
+}
+{ 
+    "_id" : ObjectId("5820c280b47dc26ac7732a42"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f03648a"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a3f4a7b3ceb04bb7b47f7"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-07T18:05:52.000+0000"), 
+    "time_end" : ISODate("2016-11-07T18:14:52.000+0000"), 
+    "code" : "a=io.read('*number')\nif a==1 then \n    print('janeiro')\nelseif a==2 then\n    print('fevereiro')\nelseif a==3 then\n    print('março')\nelseif a==4 then \n    print('abril')\nelseif a==5 then\n    print('maio')\nelseif a==6 then\n    print('junho')\nelseif a==7 then\n    print('julho')\nelseif a==8 then\n    print('agosto')\nelseif a==9 then\n    print('setembro')\nelseif a==10 then\n    print('outubro')\nelseif a==11 then\n    print('novembro')\nelse\n    print('dezembro')\nend    \n    "
+}
+{ 
+    "_id" : ObjectId("5820c29ab47dc25e755895cc"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f03647c"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a26437b3ceb04bb7b47db"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-07T18:06:18.000+0000"), 
+    "time_end" : ISODate("2016-11-07T18:12:18.000+0000"), 
+    "code" : "a=io.read(\"*number\")\nb=io.read(\"*number\")\nif(a>b) then\n    print(a)\nend\nif(b>a) then\n    print(b)\nend\nif(a==b) then\n    print(\"error\")\nend"
+}
+{ 
+    "_id" : ObjectId("5820c2edb47dc25ca64a48a8"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f03647c"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a2c5e7b3ceb04bb7b47e1"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-07T18:07:41.000+0000"), 
+    "time_end" : ISODate("2016-11-07T18:21:41.000+0000"), 
+    "code" : "a=io.read(\"*number\")\nb=io.read(\"*number\")\nc=io.read(\"*number\")\nprint(a+b+b>7)"
+}
+{ 
+    "_id" : ObjectId("5820c34cb47dc268c3693971"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f036488"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("580ff69b5bd49c0ac5809682"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-07T18:09:16.000+0000"), 
+    "time_end" : ISODate("2016-11-07T18:19:16.000+0000"), 
+    "code" : "a = io.read (\"*number\")\nb = io.read (\"*number\")\nsoma = (a+b)\nprint (soma)"
+}
+{ 
+    "_id" : ObjectId("5820c368b47dc26d6a39f3c1"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f0364a5"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a316e7b3ceb04bb7b47e8"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-07T18:09:44.000+0000"), 
+    "time_end" : ISODate("2016-11-07T18:27:44.000+0000"), 
+    "code" : "a, b, c = io.read ('*number', '*number', '*number')\nif a>b and a>c then\n    print (a)\nend\nif b>c and b>a then\n    print (b)\nend\nif c>a and c>b then\n    print (c)\nend\n"
+}
+{ 
+    "_id" : ObjectId("5820c368b47dc269c7433a03"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f0364af"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a2b2a7b3ceb04bb7b47df"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-07T18:09:44.000+0000"), 
+    "time_end" : ISODate("2016-11-07T18:18:44.000+0000"), 
+    "code" : "a,b,c = io.read('*number','*number','*number')\nteste= (a+b)>c\nprint(teste)"
+}
+{ 
+    "_id" : ObjectId("5820c39eb47dc26ac7732a43"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f0364a0"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a3f4a7b3ceb04bb7b47f7"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-07T18:10:38.000+0000"), 
+    "time_end" : ISODate("2016-11-07T18:25:38.000+0000"), 
+    "code" : "a = io.read(\"*number\")\n\n\nif a>= 1 and a <= 12  then\n\n    if a == 1 then\n    print(\"janeiro\");\n    elseif a==2 then\n    print(\"feveiro\");\n    elseif a==3 then\n    print(\"março\");\n    elseif a==4 then\n    print(\"abril\");\n    elseif a==5 then\n    print(\"maio\");\n    elseif a==6 then\n    print(\"junho\");\n    elseif a==7 then\n    print(\"julho\");\n    elseif a==9 then\n    print(\"agosto\");\n    elseif a==9 then\n    print(\"setembro\");\n    elseif a==10 then\n    print(\"outubro\");\n    elseif a==11 then\n    print(\"novembro\");\n    else\n        print(\"dezembro\");\n    end\nelse\n    print(\"Os numeros nao estão no intervalo\");\nend"
+}
+{ 
+    "_id" : ObjectId("5820c3a7b47dc25e755895cd"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f03647f"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a2edd7b3ceb04bb7b47e6"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-07T18:10:47.000+0000"), 
+    "time_end" : ISODate("2016-11-07T18:20:47.000+0000"), 
+    "code" : "x = io.read(\"*number\")\r\nf = (x^2 - 2*x +3)\r\nprint (f)"
+}
+{ 
+    "_id" : ObjectId("5820c421b47dc269185f4e62"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f0364ae"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a3f4a7b3ceb04bb7b47f7"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-07T18:12:49.000+0000"), 
+    "time_end" : ISODate("2016-11-07T18:28:49.000+0000"), 
+    "code" : "a = io.read(\"*number\")\nif (a>=1 and a<=12) then\n    if (a==1) then\n        print(\"janeiro\")\n    elseif (a==2) then\n        print(\"fevereiro\")\n    elseif (a==3) then\n        print(\"março\")\n    elseif (a==4) then\n        print(\"abril\")\n    elseif (a==5) then\n        print(\"maio\")\n    elseif (a==6) then\n        print(\"junho\")\n    elseif (a==7) then\n        print(\"julho\")\n    elseif (a==8) then\n        print(\"agosto\")\n    elseif (a==9) then\n        print(\"setembro\")\n    elseif (a==10) then\n        print(\"outubro\")\n    elseif (a==11) then\n        print(\"novembro\")\n    elseif (a==12) then\n        print(\"dezembro\")\n    else\n        print(\"erro\")\n    end\nelse\n    print(\"erro\")\nend"
+}
+{ 
+    "_id" : ObjectId("5820c42ab47dc26d6a39f3c2"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f0364ad"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a3f4a7b3ceb04bb7b47f7"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-07T18:12:58.000+0000"), 
+    "time_end" : ISODate("2016-11-07T18:31:58.000+0000"), 
+    "code" : "a=io.read(\"*number\")\nif a==1 then\n    print(\"janeiro\")\nelseif a==2 then\n    print(\"fevereiro\")\nelseif a==3 then\n    print(\"marco\")\nelseif a==4 then\n    print(\"abril\")\nelseif a==5 then\n    print(\"maio\")\nelseif a==6 then\n    print(\"junho\")\nelseif a==7 then\n    print(\"julho\")\nelseif a==8 then\n    print(\"agosto\")\nelseif a==9 then\n    print(\"setembro\")\nelseif a==10 then\n    print(\"outubro\")\nelseif a==11 then\n    print(\"novembro\")\nelseif a==12 then\n    print(\"dezembro\")\nend"
+}
+{ 
+    "_id" : ObjectId("5820c437b47dc26ac7732a44"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f036499"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a3f4a7b3ceb04bb7b47f7"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-07T18:13:11.000+0000"), 
+    "time_end" : ISODate("2016-11-07T18:29:11.000+0000"), 
+    "code" : "\nn1=io.read(\"*number\")\nif n1==1 then\n    print('janeiro')\nelseif n1==2 then\n    print('fevereiro')\nelseif n1==3 then\n    print('marco')\nelseif n1==4 then\n    print('abril')\nelseif n1==5 then\n    print('maio')\nelseif n1==6 then\n    print('junho')\nelseif n1==7 then\n    print('julho')\nelseif n1==8 then\n    print('agosto')\nelseif n1==9 then\n    print('setembro')\nelseif n1==10 then\n    print('outubro')\nelseif n1==11 then\n    print('novembro')\nelseif n1==12 then\n    print('dezembro')\nelse \n    print('numero fora do intervalo')\nend\n    "
+}
+{ 
+    "_id" : ObjectId("5820c43db47dc269185f4e63"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f03649c"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a3f4a7b3ceb04bb7b47f7"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-07T18:13:17.000+0000"), 
+    "time_end" : ISODate("2016-11-07T18:26:17.000+0000"), 
+    "code" : "mes=io.read(\"*number\")\nif (mes==1) then\n    print(\"janeiro\")\nelseif (mes==2) then\n    print(\"fevereiro\")\nelseif (mes==3) then\n    print (\"março\")\nelseif (mes==4) then\n    print (\"abril\")\nelseif (mes==5) then\n    print (\"maio\")\nelseif (mes==6) then\n    print (\"junho\")\nelseif (mes==7) then\n    print (\"julho\")\nelseif (mes==8) then\n    print (\"agosto\")\nelseif (mes==9) then\n    print (\"setembro\")\nelseif (mes==10) then\n    print (\"outubro\")\nelseif (mes==11) then\n    print (\"novembro\")\nelse\n    print (\"dezembro\")\nend\n\n    \n"
+}
+{ 
+    "_id" : ObjectId("5820c45cb47dc269185f4e64"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f036486"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a3f4a7b3ceb04bb7b47f7"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-07T18:13:48.000+0000"), 
+    "time_end" : ISODate("2016-11-07T18:29:48.000+0000"), 
+    "code" : "x=io.read ('*number')\n\nif x>=1 and x<=12 then\n\n    if x==1 then\n        print ('janeiro');\n        elseif x==2 then\n        print ('fevereiro');\n        elseif x==3 then\n        print ('março');\n        elseif x==4 then\n        print ('abril');\n        elseif x==5 then\n        print ('maio');\n        elseif x==6 then\n        print ('junho');\n        elseif x==7 then\n        print ('julho');\n        elseif x==8 then\n        print ('agosto');\n        elseif x==9 then\n        print ('setembro');\n        elseif x==10 then\n        print ('outubro');\n        elseif x==11 then\n        print ('novembro');\n        else\n        print ('dezembro');\n    end\nelse\n    print ('erro');\n    end                                        \n            \n\n"
+}
+{ 
+    "_id" : ObjectId("5820c485b47dc25e755895ce"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f0364af"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a336f7b3ceb04bb7b47ec"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-07T18:14:29.000+0000"), 
+    "time_end" : ISODate("2016-11-07T18:34:29.000+0000"), 
+    "code" : "a,b,c= io.read('*number','*number','*number')\nif a==b then\n    print('equilatero')\nelseif a==c then\n    print ('isosceles')\nelse\n    print ('escaleno')\n    end"
+}
+{ 
+    "_id" : ObjectId("5820c4abb47dc27003351911"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f0364a5"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a3f4a7b3ceb04bb7b47f7"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-07T18:15:07.000+0000"), 
+    "time_end" : ISODate("2016-11-07T18:32:07.000+0000"), 
+    "code" : "mes = io.read(\"*number\")\n\nif mes == 1 then\n    print(\"janeiro\")\n    end\nif mes == 12 then\n    print(\"dezembro\")\n    end\n"
+}
+{ 
+    "_id" : ObjectId("5820c4afb47dc269c7433a04"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f0364ad"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a2edd7b3ceb04bb7b47e6"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-07T18:15:11.000+0000"), 
+    "time_end" : ISODate("2016-11-07T18:30:11.000+0000"), 
+    "code" : "x=io.read(\"*number\")\nprint((x*x)-(x+x) + 3)"
+}
+{ 
+    "_id" : ObjectId("5820c50ab47dc25e755895cf"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f0364a3"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a3f4a7b3ceb04bb7b47f7"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-07T18:16:42.000+0000"), 
+    "time_end" : ISODate("2016-11-07T18:27:42.000+0000"), 
+    "code" : "a=io.read('*number')\nif a==1 then print('janeiro')\nelseif a==2 then print('fevereiro')\nelseif a==3 then print('março')\nelseif a==4 then print('abril')\nelseif a==5 then print('maio')\nelseif a==6 then print('junho')\nelseif a==7 then print('julho')\nelseif a==8 then print('agosto')\nelseif a==9 then print('setembro')\nelseif a==10 then print('outubro')\nelseif a==11 then print ('novembro')\nelseif a==12 then print('dezembro')\n    end"
+}
+{ 
+    "_id" : ObjectId("5820c51cb47dc269c7433a05"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f0364aa"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a336f7b3ceb04bb7b47ec"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-07T18:17:00.000+0000"), 
+    "time_end" : ISODate("2016-11-07T18:34:00.000+0000"), 
+    "code" : "a,b,c=io.read(\"*number\",\"*number\",\"*number\")\nif a==b then\n    print(\"equilatero\")\nelseif a==c then\n    print(\"isosceles\")\nelse\n    print(\"escaleno\")\nend"
+}
+{ 
+    "_id" : ObjectId("5820c531b47dc26d6a39f3c3"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f03648b"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a32397b3ceb04bb7b47ea"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-07T18:17:21.000+0000"), 
+    "time_end" : ISODate("2016-11-07T18:29:21.000+0000"), 
+    "code" : "a,b=io.read('*number','*number')\nif a>b then\n    print('Time1')\n        elseif a<b then\n            print('Time2')\n        elseif a==b then\n            print('Empate')\n        end"
+}
+{ 
+    "_id" : ObjectId("5820c57cb47dc27003351912"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f03648e"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a2b2a7b3ceb04bb7b47df"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-07T18:18:36.000+0000"), 
+    "time_end" : ISODate("2016-11-07T18:26:36.000+0000"), 
+    "code" : "a,b,c=io.read(\"*number\"), io.read(\"*number\"), io.read(\"*number\")\nverdadeiro=((a+b)>c)\n    print(verdadeiro)"
+}
+{ 
+    "_id" : ObjectId("5820c609b47dc25e755895d0"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f03649c"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a2b2a7b3ceb04bb7b47df"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-07T18:20:57.000+0000"), 
+    "time_end" : ISODate("2016-11-07T18:30:57.000+0000"), 
+    "code" : "a,b,c=io.read(\"*number\",\"*number\",\"*number\")\nif (a+b)>c then\n    print(\"true\")\nelse\n    print (\"false\")\nend\n\n    "
+}
+{ 
+    "_id" : ObjectId("5820c621b47dc26fb459ad01"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f036488"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a2b2a7b3ceb04bb7b47df"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-07T18:21:21.000+0000"), 
+    "time_end" : ISODate("2016-11-07T18:33:21.000+0000"), 
+    "code" : "a = io.read (\"*number\")\nb = io.read (\"*number\")\nc = io.read (\"*number\")\nteste = a+b>c\nprint (teste)"
+}
+{ 
+    "_id" : ObjectId("5820c67ab47dc27003351913"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f0364ab"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("580ff69b5bd49c0ac5809682"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-07T18:22:50.000+0000"), 
+    "time_end" : ISODate("2016-11-07T18:37:50.000+0000"), 
+    "code" : "n1,n2 = io.read(\"*number\",\"*number\")\n\nsoma = n1 + n2\n\nprint(soma)"
+}
+{ 
+    "_id" : ObjectId("5820c6bcb47dc269c7433a06"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f03649e"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a26437b3ceb04bb7b47db"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-07T18:23:56.000+0000"), 
+    "time_end" : ISODate("2016-11-07T18:38:56.000+0000"), 
+    "code" : "a,b=io.read(\"*number\",\"*number\")\nif a>b then print(a)\nelse print(b)\nend\n"
+}
+{ 
+    "_id" : ObjectId("5820c6e1b47dc265b10b0f96"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f0364a5"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a2c5e7b3ceb04bb7b47e1"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-07T18:24:33.000+0000"), 
+    "time_end" : ISODate("2016-11-07T18:42:33.000+0000"), 
+    "code" : "a, b, c = io.read(\"*number\", \"*number\", \"*number\")\nmedia = (a+b+c)/3\nif media >= 7 then\n    print (\"true\")\nelse\n    print (\"false\")\n    end"
+}
+{ 
+    "_id" : ObjectId("5820c749b47dc273d47daad1"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f0364af"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a3f4a7b3ceb04bb7b47f7"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-07T18:26:17.000+0000"), 
+    "time_end" : ISODate("2016-11-07T18:31:17.000+0000"), 
+    "code" : "mes=io.read('*number')\nif mes == 1 then \n    print ('janeiro')\n    elseif mes == 2 then \n    print ('fevereiro')\n    elseif mes == 3 then \n    print ('março')\n    elseif mes == 4 then \n    print ('abril')\n    elseif mes == 5 then \n    print ('maio')\n    elseif mes == 6 then \n    print ('junho')\n    elseif mes == 7 then \n    print ('julho')\n    elseif mes == 8 then \n    print ('agosto')\n    elseif mes == 9 then \n    print ('setembro')\n    elseif mes == 10 then \n    print ('outubro')\n    elseif mes == 11 then \n    print ('novembro')\nelse\n    print ('dezembro')\nend"
+}
+{ 
+    "_id" : ObjectId("5820c76db47dc265b10b0f97"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f0364ab"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a26437b3ceb04bb7b47db"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-07T18:26:53.000+0000"), 
+    "time_end" : ISODate("2016-11-07T18:37:53.000+0000"), 
+    "code" : "n1, n2 = io.read(\"*number\",\"*number\")\n\nif(n1>n2) then\n    print(n1)\n    \nelse \n    print(n2)\n\nend"
+}
+{ 
+    "_id" : ObjectId("5820c774b47dc273d1212821"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f0364a5"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a26437b3ceb04bb7b47db"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-07T18:27:00.000+0000"), 
+    "time_end" : ISODate("2016-11-07T18:47:00.000+0000"), 
+    "code" : "a,b = io.read ('*number', '*number')\nprint (math.max (a,b))\n"
+}
+{ 
+    "_id" : ObjectId("5820c779b47dc273d36c1da1"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f0364ad"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a336f7b3ceb04bb7b47ec"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-07T18:27:05.000+0000"), 
+    "time_end" : ISODate("2016-11-07T18:44:05.000+0000"), 
+    "code" : "a,b,c=io.read(\"*number\",\"*number\",\"*number\")\nif a==b and a==c then\n    print(\"equilatero\")\nelseif a~=b and a~=c and b~=c then\n    print(\"escaleno\")\nelse print (\"isosceles\")\nend"
+}
+{ 
+    "_id" : ObjectId("5820c78eb47dc269c7433a07"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f0364b1"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a2b2a7b3ceb04bb7b47df"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-07T18:27:26.000+0000"), 
+    "time_end" : ISODate("2016-11-07T18:36:26.000+0000"), 
+    "code" : "a,b,c=io.read('*number', '*number', '*number')\nverdadeiro=((a+b)>c)\nprint(verdadeiro)"
+}
+{ 
+    "_id" : ObjectId("5820c7a5b47dc25e755895d1"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f0364ae"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a336f7b3ceb04bb7b47ec"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-07T18:27:49.000+0000"), 
+    "time_end" : ISODate("2016-11-07T18:42:49.000+0000"), 
+    "code" : "a, b, c = io.read(\"*number\", \"*number\", \"*number\")\nif (a>=1 and a<=50 and b>=1 and b<=50 and c>=1 and c<=50) then\n    if (a==b and a==c and b==c) then\n        print(\"equilatero\")\n    elseif (a~=b and a~=c and b~=c) then\n        print(\"escaleno\")\n    else\n        print(\"isosceles\")\n    end\nelse\n    print(\"erro\")\nend"
+}
+{ 
+    "_id" : ObjectId("5820c842b47dc273d47daad2"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f0364b1"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a316e7b3ceb04bb7b47e8"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-07T18:30:26.000+0000"), 
+    "time_end" : ISODate("2016-11-07T18:35:26.000+0000"), 
+    "code" : "a,b,c=io.read('*number', '*number', '*number')\nprint(math.max(a,b,c))"
+}
+{ 
+    "_id" : ObjectId("5820c844b47dc27003351914"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f036486"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a2b2a7b3ceb04bb7b47df"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-07T18:30:28.000+0000"), 
+    "time_end" : ISODate("2016-11-07T18:40:28.000+0000"), 
+    "code" : "x1, x2, x3 = io.read ('*number', '*number', '*number')\n\nif x1>=-10000 and x1<=10000 and\n    x2>=-10000 and x2<=10000 and\n        x3>=-10000 and x3<=10000 then\n            \n        if (x1+x2)>x3 then\n            print ('true')\n        else \n            print ('false')\n        end\n    end\n        \n"
+}
+{ 
+    "_id" : ObjectId("5820c86cb47dc268b947dc33"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f0364ab"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a2b2a7b3ceb04bb7b47df"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-07T18:31:08.000+0000"), 
+    "time_end" : ISODate("2016-11-07T18:40:08.000+0000"), 
+    "code" : "n1, n2, n3 = io.read(\"*number\",\"*number\",\"*number\")\n\nif (n1+n2 > n3) then\n    soma = true\n    print(soma)\n    \nelse \n    soma = false\n    print(soma)\n    \nend"
+}
+{ 
+    "_id" : ObjectId("5820c87ab47dc273d1212822"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f03648e"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a2c5e7b3ceb04bb7b47e1"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-07T18:31:22.000+0000"), 
+    "time_end" : ISODate("2016-11-07T18:42:22.000+0000"), 
+    "code" : "a,b,c=io.read(\"*number\"), io.read(\"*number\"), io.read(\"*number\")\nmedia=(a+b+c)>=7\n    print(media)\n"
+}
+{ 
+    "_id" : ObjectId("5820c8d4b47dc273d36c1da2"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f0364b1"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a2c5e7b3ceb04bb7b47e1"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-07T18:32:52.000+0000"), 
+    "time_end" : ISODate("2016-11-07T18:39:52.000+0000"), 
+    "code" : "a,b,c=io.read('*number', '*number', '*number')\nmedia=(a+b+c)/3>=7\nprint(media)"
+}
+{ 
+    "_id" : ObjectId("582108b6b47dc242c350b3e1"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f03649f"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a3f4a7b3ceb04bb7b47f7"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-07T23:05:26.000+0000"), 
+    "time_end" : ISODate("2016-11-07T23:19:26.000+0000"), 
+    "code" : "mes = io.read('*number')\n\nif mes == 1 then\n    print ('janeiro')\nelseif mes == 2 then\n    print('fevereiro')\nelseif mes == 3 then\n    print('março')\nelseif mes == 4 then\n    print('abril')\nelseif mes == 5 then\n    print('maio')\nelseif mes == 6 then\n    print('junho')\nelseif mes == 7 then\n    print('julho')\nelseif mes == 8 then\n    print('agosto')\nelseif mes == 9 then\n    print('setembro')\nelseif mes == 10 then\n    print('outubro')\nelseif mes == 11 then\n    print('novembro')\nelseif mes == 12 then\n    print ('dezembro')\nelse\n    print ('não existe')\n    end"
+}
+{ 
+    "_id" : ObjectId("58225dc4b47dc2633f6fe451"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f036499"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a336f7b3ceb04bb7b47ec"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-08T23:20:36.000+0000"), 
+    "time_end" : ISODate("2016-11-08T23:26:36.000+0000"), 
+    "code" : "n1=io.read(\"*number\")\nn2=io.read(\"*number\")\nn3=io.read(\"*number\")\nif\nn1~=n2 and n1~=n3 and n2~=n3 then\n    print('Escaleno')\nelseif n1==n2 and n1==n3 and n2==n3 then\n    print('equilatero')\nelseif n1==n2 and n1==n3 and n2~=n3 then\n    print('isoceles')\nend\n\n"
+}
+{ 
+    "_id" : ObjectId("58225fa9b47dc26103634ec1"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f036499"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("580ff69b5bd49c0ac5809682"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-08T23:28:41.000+0000"), 
+    "time_end" : ISODate("2016-11-08T23:40:41.000+0000"), 
+    "code" : "n1=io.read(\"*number\")\nn2=io.read(\"*number\")\nsoma=n1+n2 \nprint(soma)"
+}
+{ 
+    "_id" : ObjectId("58227721b47dc26ecd5b9721"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f03649f"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a316e7b3ceb04bb7b47e8"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-09T01:08:49.000+0000"), 
+    "time_end" : ISODate("2016-11-09T01:17:49.000+0000"), 
+    "code" : "a,b,c = io.read('*number', '*number', '*number')\nmaior = a\n\nif b > maior then\n    maior = b\nend\nif c > maior then\n    maior = c\nend\n    print(maior)"
+}
+{ 
+    "_id" : ObjectId("5822ae4bb47dc24c671cd6d1"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f0364ab"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a2c5e7b3ceb04bb7b47e1"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-09T05:04:11.000+0000"), 
+    "time_end" : ISODate("2016-11-09T05:09:11.000+0000"), 
+    "code" : "n1, n2, n3 = io.read(\"*number\",\"*number\",\"*number\")\nmedia = (n1 + n2 + n3)/3\nteste = (media >= 7)\nprint(teste)"
+}
+{ 
+    "_id" : ObjectId("5823dda3b47dc23b92105861"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f0364ab"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a336f7b3ceb04bb7b47ec"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-10T02:38:27.000+0000"), 
+    "time_end" : ISODate("2016-11-10T02:46:27.000+0000"), 
+    "code" : "a = io.read(\"*number\")\nb = io.read(\"*number\")\nc = io.read(\"*number\")\n\n\nif((a>=1 and a<=50) and (b>=1 and b<=50) and (c>=1 and c<=50)) then\n    if(a == b and b == c) then\n\tprint(\"equilatero\")\n\n\telseif(( a == b and b ~= c ) or (a == c and a ~=b) or (b == c and b ~= a)) then\n\tprint(\"isosceles\")\n\n    elseif((a ~= b) and (b ~= c) and (c ~= a)) then\n\ttri = \"escaleno\"\n\t  print(tri)\n\n\nend\nend"
+}
+{ 
+    "_id" : ObjectId("5823df26b47dc22c915d8bc1"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f0364ab"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a316e7b3ceb04bb7b47e8"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-10T02:44:54.000+0000"), 
+    "time_end" : ISODate("2016-11-10T03:01:54.000+0000"), 
+    "code" : "a, b, c = io.read(\"*number\",\"*number\",\"*number\")\nif(a>b and b>c) then\n    print(a)\nelseif(b>a and b>c) then\n    print(b)\nelse\n    print(c)\nend\n"
+}
+{ 
+    "_id" : ObjectId("5823e055b47dc22c8a38bd01"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f0364ab"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a2edd7b3ceb04bb7b47e6"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-10T02:49:57.000+0000"), 
+    "time_end" : ISODate("2016-11-10T03:05:57.000+0000"), 
+    "code" : "x = io.read(\"*number\")\n\nfun = (x*x) - (2*x) + 3\n\nprint(fun)"
+}
+{ 
+    "_id" : ObjectId("5823e289b47dc22c915d8bc2"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f0364ab"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a3f4a7b3ceb04bb7b47f7"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-10T02:59:21.000+0000"), 
+    "time_end" : ISODate("2016-11-10T03:06:21.000+0000"), 
+    "code" : "n1 = io.read(\"*number\")\n\nif(n1>=1 and n1<=12) then\n    if(n1 == 1) then\n        print(\"janeiro\")\n    elseif(n1 == 2) then\n        print(\"fevereiro\")\n    elseif(n1 == 3) then\n        print(\"marco\")\n    elseif(n1 == 4) then\n        print(\"abril\")\n    elseif(n1 == 5) then\n        print(\"maio\")\n    elseif(n1 == 6) then\n        print(\"junho\")\n    elseif(n1 == 7) then\n        print(\"julho\")\n    elseif(n1 == 8) then\n        print(\"agosto\")\n    elseif(n1 == 9) then\n        print(\"setembro\")\n    elseif(n1 == 10) then\n        print(\"outubro\")\n    elseif(n1 == 11) then\n        print(\"novembro\")\n    elseif(n1 == 12) then\n        print(\"dezembro\")\n    end\nend\n"
+}
+{ 
+    "_id" : ObjectId("5823e36ab47dc22c862f42f1"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f0364ab"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a32397b3ceb04bb7b47ea"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-10T03:03:06.000+0000"), 
+    "time_end" : ISODate("2016-11-10T03:16:06.000+0000"), 
+    "code" : "a, b = io.read(\"*number\",\"*number\")\n\nif (a == b) then\n    print(\"Empate\")\nelseif(a>b) then\n    print(\"Time1\")\nelse\n    print(\"Time2\")\nend\n"
+}
+{ 
+    "_id" : ObjectId("58253af7b47dc245ca4f1761"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f03648b"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a26437b3ceb04bb7b47db"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-11T03:28:55.000+0000"), 
+    "time_end" : ISODate("2016-11-11T03:38:55.000+0000"), 
+    "code" : "a,b=io.read('*number','*number')\nif (a>=-10000 and a<=10000) and (b>=-10000 and b<=10000) then\n    if a>b then\n    print(a)\nelse\n    print(b)\nend\nend"
+}
+{ 
+    "_id" : ObjectId("58254039b47dc26322470e61"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f03648b"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a316e7b3ceb04bb7b47e8"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-11T03:51:21.000+0000"), 
+    "time_end" : ISODate("2016-11-11T04:05:21.000+0000"), 
+    "code" : "a,b,c=io.read('*number','*number','*number')\nif (a>=-10000 and a<=10000) and (b>=-10000 and b<=10000) and (c>=-10000 and c<=10000) then\nif a>b and a>c then\n    print(a)\nelseif\n    b>a and b>c then\n    print(b)\nelse\n    print(c)\nend\nend"
+}
+{ 
+    "_id" : ObjectId("582547a3b47dc2798e162e51"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f03648b"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a3f4a7b3ceb04bb7b47f7"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-11T04:22:59.000+0000"), 
+    "time_end" : ISODate("2016-11-11T04:32:59.000+0000"), 
+    "code" : "data=io.read('*number')\nif data>=1 and data<=12 then\n    if data==1 then\n    print('janeiro')\n    elseif data==2 then\n    print('fevereiro')\n    elseif data==3 then\n    print('março')\n    elseif data==4 then\n    print('abril')\n    elseif data==5 then\n    print('maio')\n    elseif data==6 then\n    print('junho')\n    elseif data==7 then\n    print('julho')\n    elseif data==8 then\n    print('agosto')\n    elseif data==9 then\n    print('setembro')\n    elseif data==10 then\n    print('outubro')\nelseif data==11 then\n    print('novembro')\nelse\n    print('dezembro')\nend\nend"
+}
+{ 
+    "_id" : ObjectId("5827c673b47dc2228475c571"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f0364aa"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a3f4a7b3ceb04bb7b47f7"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-13T01:48:35.000+0000"), 
+    "time_end" : ISODate("2016-11-13T02:06:35.000+0000"), 
+    "code" : "n1=io.read(\"*number\")\nif n1==1 then\n    print(\"janeiro\")\nelseif n1==2 then\n    print(\"fevereiro\")\nelseif n1==3 then\n    print(\"março\")\nelseif n1==4 then\n    print(\"abril\")\nelseif n1==5 then\n    print(\"maio\")\nelseif n1==6 then\n    print(\"junho\")\nelseif n1==7 then\n    print(\"julho\")\nelseif n1==8 then\n    print(\"agosto\")\nelseif n1==9 then\n    print(\"setembro\")\nelseif n1==10 then\n    print(\"outubro\")\nelseif n1==11 then\n    print(\"novembro\")\nelseif n1==12 then\n    print(\"dezembro\")\nend\n  "
+}
+{ 
+    "_id" : ObjectId("582808bcb47dc24bf445cc11"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f0364a8"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("580ff69b5bd49c0ac5809682"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-13T06:31:24.000+0000"), 
+    "time_end" : ISODate("2016-11-13T06:48:24.000+0000"), 
+    "code" : "int1 = io.read ('*number')\nint2 = io.read ('*number') \nif int1 and int2 < -10000 or int1 and int2 > 10000 then \n    print ('erro') \nelse \n    soma = int1 + int2\nend\nprint (soma)"
+}
+{ 
+    "_id" : ObjectId("5828a4e6b47dc26f8461e4a1"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f036486"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a316e7b3ceb04bb7b47e8"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-13T17:37:42.000+0000"), 
+    "time_end" : ISODate("2016-11-13T17:52:42.000+0000"), 
+    "code" : "a,b,c = io.read('*number'), io.read ('*number'), io.read('*number')\n\nif a>=-10000 and a<= 10000 then\n\n    if b>=-10000 and  b<=10000 then\n        \n        if c>=-10000 and b<= 10000 then\n         end\n    end     \nend\n\n\nif a>b and a>c then\n    print (a)\nelseif b>a and b>c then\n    print (b)\nelse\n    print (c)\nend"
+}
+{ 
+    "_id" : ObjectId("5828ce36b47dc23c846592e1"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f03647f"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a26437b3ceb04bb7b47db"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-13T20:33:58.000+0000"), 
+    "time_end" : ISODate("2016-11-13T20:42:58.000+0000"), 
+    "code" : "a,b = io.read(\"*number\"), io.read(\"*number\")\nn1 = math.max(a,b)\nprint (n1)"
+}
+{ 
+    "_id" : ObjectId("5828ce5eb47dc234ba213fb1"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f03647f"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a316e7b3ceb04bb7b47e8"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-13T20:34:38.000+0000"), 
+    "time_end" : ISODate("2016-11-13T20:45:38.000+0000"), 
+    "code" : "a,b,c = io.read(\"*number\"), io.read(\"*number\"), io.read(\"*number\")\nn1 = math.max(a,b,c)\nprint (n1)"
+}
+{ 
+    "_id" : ObjectId("5828d5cbb47dc2134f1c86a1"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f036486"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a26437b3ceb04bb7b47db"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-13T21:06:19.000+0000"), 
+    "time_end" : ISODate("2016-11-13T21:16:19.000+0000"), 
+    "code" : "a = io.read ('*number')\n\nb = io.read ('*number')\n\n\nif a>= -10000 and a<=10000 then\n    if b>=-10000 and b<=10000 then\n        end\nend\n\nif a > b then\n    \n    print (a)\n    \n    else \n    \n    print (b)\n    \nend\n\n"
+}
+{ 
+    "_id" : ObjectId("5829c5a7b47dc243e7795871"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f0364a8"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a26437b3ceb04bb7b47db"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-14T14:09:43.000+0000"), 
+    "time_end" : ISODate("2016-11-14T14:15:43.000+0000"), 
+    "code" : "int1, int2 = io.read ('*number'), io.read ('*number')\r\nif int1 >= - 10000 and int1 <= 10000 then\r\n\tmaior = math.max (int1, int2)\r\n    elseif int2 >= - 10000 and int2 <= 10000 then\r\n    maior = math.max (int1, int2)\r\n\t\telse\r\n\t\t print ('erro')\r\nend\r\nprint (maior)\r\n\r\n"
+}
+{ 
+    "_id" : ObjectId("5829c839b47dc26d673f3ef1"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f0364a8"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a2c5e7b3ceb04bb7b47e1"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-14T14:20:41.000+0000"), 
+    "time_end" : ISODate("2016-11-14T14:32:41.000+0000"), 
+    "code" : "int1, int2, int3 = io.read ('*number'), io.read ('*number'), io.read ('*number')\r\nif int1 >= - 10000 and int1 <= 10000 then\r\n\tmedia = ((int1 + int2 + int3) / 3 >= 7)\r\n    elseif int2 >= - 10000 and int2 <= 10000 then\r\n\t\tmedia = ((int1 + int2 + int3) / 3 >= 7)\r\n\t\telseif int3 >= - 10000 and int3 <= 10000 then\r\n\t\t\tmedia = ((int1 + int2 + int3) / 3 >= 7)\r\n\t\telse\r\n\t\t print (media)\r\nend\r\nprint (media)\r\n"
+}
+{ 
+    "_id" : ObjectId("5829e4ecb47dc26d706393b1"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f036486"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a2edd7b3ceb04bb7b47e6"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-14T16:23:08.000+0000"), 
+    "time_end" : ISODate("2016-11-14T16:39:08.000+0000"), 
+    "code" : "\n\nx = io.read ('*number')\n\n\nf = ((x^2)-(2*x)+3)\n\nprint (f)\n\n\n\n"
+}
+{ 
+    "_id" : ObjectId("5829ea70b47dc2152f7dacf1"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f036486"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a336f7b3ceb04bb7b47ec"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-14T16:46:40.000+0000"), 
+    "time_end" : ISODate("2016-11-14T16:52:40.000+0000"), 
+    "code" : "a,b,c = io.read(\"*number\"), io.read(\"*number\"), io.read(\"*number\")\nif (a==b) and (b==c) and (c==a) then\n    print (\"equilatero\")\nelse\n    if (a~=b) and (b~=c) and (c~=a) then\n        print (\"escaleno\")\n    else\n        if (a~=b) and (a==c) then\n            print (\"isosceles\")\n            end\n        end\n    end"
+}
+{ 
+    "_id" : ObjectId("5829f529b47dc22708132e01"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f03649a"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("580ff69b5bd49c0ac5809682"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-14T17:32:25.000+0000"), 
+    "time_end" : ISODate("2016-11-14T17:41:25.000+0000"), 
+    "code" : "a,b = io.read (\"*number\"), io.read (\"*number\")\r\nif a >= -10000 and 10000 >= a and b >= -10000 and 10000 >= b then\r\n\tsoma = (a + b)\r\nend\r\nprint (soma)\r\n"
+}
+{ 
+    "_id" : ObjectId("5829f616b47dc22788020c21"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f03649a"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a2edd7b3ceb04bb7b47e6"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-14T17:36:22.000+0000"), 
+    "time_end" : ISODate("2016-11-14T17:41:22.000+0000"), 
+    "code" : "x = io.read (\"*number\")\r\nif x >= -10000 and 10000 >= 10000 then\r\n\tres = ((x^2) - (2 * x) + 3)\r\nend\r\nprint (res)\r\n"
+}
+{ 
+    "_id" : ObjectId("5829f634b47dc2275f7c2941"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f03649c"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a316e7b3ceb04bb7b47e8"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-14T17:36:52.000+0000"), 
+    "time_end" : ISODate("2016-11-14T17:52:52.000+0000"), 
+    "code" : "a,b,c=io.read(\"*number\",\"*number\",\"*number\")\nmaior=io.read(\"*number\")\n    \nmaior = a\nif b>a then\n    maior=b\nend\nif c>b then\n    maior=c\nend\nprint(maior)"
+}
+{ 
+    "_id" : ObjectId("5829f6c5b47dc227cf7fc201"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f0364a2"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("580ff69b5bd49c0ac5809682"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-14T17:39:17.000+0000"), 
+    "time_end" : ISODate("2016-11-14T17:49:17.000+0000"), 
+    "code" : "a,b=io.read(\"*number\",\"*number\")\nprint(a+b)"
+}
+{ 
+    "_id" : ObjectId("5829f747b47dc227cf7fc202"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f0364a2"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a26437b3ceb04bb7b47db"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-14T17:41:27.000+0000"), 
+    "time_end" : ISODate("2016-11-14T17:51:27.000+0000"), 
+    "code" : "a,b=io.read(\"*number\",\"*number\")\nif a>b then\n    print(a)\nelse print(b)\nend"
+}
+{ 
+    "_id" : ObjectId("5829f768b47dc2278766b0a1"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f0364a1"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("580ff69b5bd49c0ac5809682"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-14T17:42:00.000+0000"), 
+    "time_end" : ISODate("2016-11-14T17:47:00.000+0000"), 
+    "code" : "a, b= io.read ('*number', '*number')\nprint (a+b)"
+}
+{ 
+    "_id" : ObjectId("5829f78eb47dc2275a558f91"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f03648c"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a26437b3ceb04bb7b47db"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-14T17:42:38.000+0000"), 
+    "time_end" : ISODate("2016-11-14T17:58:38.000+0000"), 
+    "code" : "a, b = io.read(\"*number\"), io.read(\"*number\")\n\nmaior = a\nif maior < b then\n    maior = b\nend    \nprint(maior)"
+}
+{ 
+    "_id" : ObjectId("5829f7c8b47dc2278766b0a2"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f03648c"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("580ff69b5bd49c0ac5809682"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-14T17:43:36.000+0000"), 
+    "time_end" : ISODate("2016-11-14T17:55:36.000+0000"), 
+    "code" : "a, b = io.read(\"*number\"), io.read(\"*number\")\nprint(a + b)"
+}
+{ 
+    "_id" : ObjectId("5829f7d2b47dc277133c4701"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f0364a1"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("580ff69b5bd49c0ac5809682"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-14T17:43:46.000+0000"), 
+    "time_end" : ISODate("2016-11-14T17:57:46.000+0000"), 
+    "code" : "a, b = io.read ('*number', '*number')\nprint (a+b)"
+}
+{ 
+    "_id" : ObjectId("5829f7eeb47dc229fb280881"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f03649a"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a316e7b3ceb04bb7b47e8"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-14T17:44:14.000+0000"), 
+    "time_end" : ISODate("2016-11-14T18:02:14.000+0000"), 
+    "code" : "a,b,c = io.read (\"*number\"),io.read (\"*number\"),io.read (\"*number\")\r\nif a>=b and a>=c then\r\n\tmaior = a\r\nelseif b>=a and b>=c then\r\n\tmaior = b\r\nelseif c>=a and c>=b then\r\n\tmaior = c\r\nend\r\nprint (maior)"
+}
+{ 
+    "_id" : ObjectId("5829f7f4b47dc22785027f41"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f0364a2"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a2b2a7b3ceb04bb7b47df"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-14T17:44:20.000+0000"), 
+    "time_end" : ISODate("2016-11-14T18:04:20.000+0000"), 
+    "code" : "a,b,c=io.read(\"*number\",\"*number\",\"*number\")\nop= (a+b)>c\nprint(op)"
+}
+{ 
+    "_id" : ObjectId("5829f801b47dc22785027f42"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f0364a1"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a26437b3ceb04bb7b47db"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-14T17:44:33.000+0000"), 
+    "time_end" : ISODate("2016-11-14T18:02:33.000+0000"), 
+    "code" : "a, b = io.read ('*number', '*numebr')\nprint (math.max(a,b))"
+}
+{ 
+    "_id" : ObjectId("5829f871b47dc2278766b0a3"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f0364a2"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a2c5e7b3ceb04bb7b47e1"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-14T17:46:25.000+0000"), 
+    "time_end" : ISODate("2016-11-14T18:04:25.000+0000"), 
+    "code" : "a,b,c=io.read(\"*number\",\"*number\",\"*number\")\nop=(a+b+c)/3>=7\nprint(op)"
+}
+{ 
+    "_id" : ObjectId("5829f89ab47dc2275f7c2942"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f036484"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a316e7b3ceb04bb7b47e8"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-14T17:47:06.000+0000"), 
+    "time_end" : ISODate("2016-11-14T17:55:06.000+0000"), 
+    "code" : "a=io.read('*number')\r\nb=io.read('*number')\r\nc=io.read('*number')\r\n\r\nif a>b and a>c then\r\n    maior=a\r\nelseif b>a and b>c then\r\n    maior=b\r\nelseif c>a and c>b then\r\n    maior=c\r\nend \r\nprint(maior)    \r\n    \r\n    "
+}
+{ 
+    "_id" : ObjectId("5829f8adb47dc2272e4b8261"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f0364a8"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a2edd7b3ceb04bb7b47e6"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-14T17:47:25.000+0000"), 
+    "time_end" : ISODate("2016-11-14T18:01:25.000+0000"), 
+    "code" : "a = io.read ('*number')\r\nif a >= - 10000 and a <= 10000 then\r\n\treal = ((a^2) - (2 * a) + 3)\r\n\telse\r\n\t\tprint ('erro')\r\nend\r\nprint (real)"
+}
+{ 
+    "_id" : ObjectId("5829f8b9b47dc22785027f43"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f03649c"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a32397b3ceb04bb7b47ea"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-14T17:47:37.000+0000"), 
+    "time_end" : ISODate("2016-11-14T18:01:37.000+0000"), 
+    "code" : "a,b=io.read(\"*number\",\"*number\")\nif a>b then\n    print(\"Time1\")\nelseif a<b then\n    print(\"Time2\")\nelse\n    print(\"Empate\")\n    end"
+}
+{ 
+    "_id" : ObjectId("5829f8ceb47dc277133c4702"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f0364a1"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a2b2a7b3ceb04bb7b47df"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-14T17:47:58.000+0000"), 
+    "time_end" : ISODate("2016-11-14T17:58:58.000+0000"), 
+    "code" : "a, b, c= io.read ('*number', '*number', '*number')\nsoma = (a+b)>c\nprint (soma)"
+}
+{ 
+    "_id" : ObjectId("5829f8f0b47dc2275a558f92"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f03648c"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a2b2a7b3ceb04bb7b47df"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-14T17:48:32.000+0000"), 
+    "time_end" : ISODate("2016-11-14T17:55:32.000+0000"), 
+    "code" : "a, b, c = io.read(\"*number\"), io.read(\"*number\"), io.read(\"*number\")\nif (a + b) > c then\n    print(\"true\")\nelse \n    print(\"false\")\nend"
+}
+{ 
+    "_id" : ObjectId("5829f913b47dc229fb280882"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f0364a2"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a2edd7b3ceb04bb7b47e6"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-14T17:49:07.000+0000"), 
+    "time_end" : ISODate("2016-11-14T18:09:07.000+0000"), 
+    "code" : "a=io.read(\"*number\")\nprint(a^2-2*a+3)"
+}
+{ 
+    "_id" : ObjectId("5829f953b47dc22785027f44"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f03649e"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a2c5e7b3ceb04bb7b47e1"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-14T17:50:11.000+0000"), 
+    "time_end" : ISODate("2016-11-14T18:10:11.000+0000"), 
+    "code" : "n1,n2,n3=io.read(\"*number\",\"*number\",\"*number\")\nmedia=(n1+n2+n3)/3>=7\nprint(media)\n"
+}
+{ 
+    "_id" : ObjectId("5829f96fb47dc227cf7fc203"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f03648c"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a2c5e7b3ceb04bb7b47e1"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-14T17:50:39.000+0000"), 
+    "time_end" : ISODate("2016-11-14T18:03:39.000+0000"), 
+    "code" : "a, b, c = io.read(\"*number\"), io.read(\"*number\"), io.read(\"*number\")\nif ((a+b+c)/3 ) >= 7 then\n    print (\"true\")\nelse\n    print (\"false\")\nend\n"
+}
+{ 
+    "_id" : ObjectId("5829f972b47dc229fa16d201"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f0364a0"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a336f7b3ceb04bb7b47ec"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-14T17:50:42.000+0000"), 
+    "time_end" : ISODate("2016-11-14T18:07:42.000+0000"), 
+    "code" : "a,b,c  = io.read(\"*number\",\"*number\",\"*number\")\n\n\nif a > 0 and a < 51 and b > 0 and b < 51 and c > 0 and c < 51 then\n        if a ~= b and b~=c and a~=c then\n            print(\"escaleno\")\n        elseif a == b and  c ==a and  b==c then\n            print(\"equilatero\")\n        else\n            print(\"isosceles\")\n        end\nelse \n    print(\"erro\")\nend\n    \n    \n\n\n"
+}
+{ 
+    "_id" : ObjectId("5829f991b47dc22b1f455d71"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f0364a2"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a316e7b3ceb04bb7b47e8"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-14T17:51:13.000+0000"), 
+    "time_end" : ISODate("2016-11-14T18:07:13.000+0000"), 
+    "code" : "a,b,c=io.read(\"*number\",\"*number\",\"*number\")\nif a>b and a>c then \n    maior=a\nelseif b>c then\n    maior=b\nelse maior=c\nend\nprint(maior)"
+}
+{ 
+    "_id" : ObjectId("5829f99eb47dc2272e4b8262"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f03649a"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a2b2a7b3ceb04bb7b47df"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-14T17:51:26.000+0000"), 
+    "time_end" : ISODate("2016-11-14T17:58:26.000+0000"), 
+    "code" : "a,b,c = io.read(\"*number\"),io.read(\"*number\"),io.read(\"*number\")\r\nprint ((a + b) > c)\r\n\r\n"
+}
+{ 
+    "_id" : ObjectId("5829f9b9b47dc277133c4703"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f03649c"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a336f7b3ceb04bb7b47ec"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-14T17:51:53.000+0000"), 
+    "time_end" : ISODate("2016-11-14T17:56:53.000+0000"), 
+    "code" : "a,b,c=io.read(\"*number\",\"*number\",\"*number\")\nif (a==b)and (a==c) then\n    print(\"equilatero\")\n\nelseif (a==b) then\n    print(\"escaleno\")\nelse\n    print(\"isosceles\")\nend\n"
+}
+{ 
+    "_id" : ObjectId("5829f9e1b47dc229fb280883"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f0364a2"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a32397b3ceb04bb7b47ea"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-14T17:52:33.000+0000"), 
+    "time_end" : ISODate("2016-11-14T17:59:33.000+0000"), 
+    "code" : "a,b=io.read(\"*number\",\"*number\")\nif a>b then\n    print(\"Time1\")\nelseif a==b then\n    print(\"Empate\")\nelse print(\"Time2\")\nend\n"
+}
+{ 
+    "_id" : ObjectId("5829fa20b47dc22b1f455d72"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f03649a"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a26437b3ceb04bb7b47db"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-14T17:53:36.000+0000"), 
+    "time_end" : ISODate("2016-11-14T18:06:36.000+0000"), 
+    "code" : "a,b = io.read('*number'),io.read('*number')\r\nif a > b then\r\n\tprint (a)\r\nelse\r\n\tprint (b)\r\nend\r\n"
+}
+{ 
+    "_id" : ObjectId("5829fa27b47dc229fb280884"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f03648c"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a2edd7b3ceb04bb7b47e6"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-14T17:53:43.000+0000"), 
+    "time_end" : ISODate("2016-11-14T18:00:43.000+0000"), 
+    "code" : "x = io.read(\"*number\")\nequacao = ((x^2) - (2*x) + 3)\nprint (equacao)"
+}
+{ 
+    "_id" : ObjectId("5829fa36b47dc2275f7c2943"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f0364a1"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a32397b3ceb04bb7b47ea"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-14T17:53:58.000+0000"), 
+    "time_end" : ISODate("2016-11-14T18:08:58.000+0000"), 
+    "code" : "time1, time2 = io.read ('*number', '*number')\nif time1 > time2 then\n    print ('Time1')\n    end\nif time1 == time2 then\n    print ('Empate')\n    end\nif time2> time1 then\n    print ('Time2')\n    end"
+}
+{ 
+    "_id" : ObjectId("5829fa8eb47dc227cf7fc204"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f0364a2"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a336f7b3ceb04bb7b47ec"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-14T17:55:26.000+0000"), 
+    "time_end" : ISODate("2016-11-14T18:04:26.000+0000"), 
+    "code" : "a,b,c=io.read(\"*number\",\"*number\",\"*number\")\nif a==b and b==c then\n    print(\"equilatero\")\nelseif c~=a then\n    print(\"isosceles\")\nelse print(\"escaoleno\")\nend\n"
+}
+{ 
+    "_id" : ObjectId("5829fa95b47dc22e141f4e01"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f0364a1"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a316e7b3ceb04bb7b47e8"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-14T17:55:33.000+0000"), 
+    "time_end" : ISODate("2016-11-14T18:03:33.000+0000"), 
+    "code" : "a, b, c=io.read ('*number', '*number', '*number')\nif a>b and a>c then\n    print (a)\nelseif b>a and b>c then\n    print (b)\nelse print (c)\n    end"
+}
+{ 
+    "_id" : ObjectId("5829faa2b47dc229fb280885"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f03648c"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a316e7b3ceb04bb7b47e8"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-14T17:55:46.000+0000"), 
+    "time_end" : ISODate("2016-11-14T18:14:46.000+0000"), 
+    "code" : "a, b, c = io.read(\"*number\"), io.read(\"*number\"), io.read(\"*number\")\nmaior = a \nif maior < b then\n    maior = b\nelseif maior < c then\n    maior = c\nend\nprint(maior)"
+}
+{ 
+    "_id" : ObjectId("5829fb34b47dc22785027f45"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f03648c"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a32397b3ceb04bb7b47ea"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-14T17:58:12.000+0000"), 
+    "time_end" : ISODate("2016-11-14T18:07:12.000+0000"), 
+    "code" : "a, b = io.read(\"*number\"), io.read(\"*number\")\nif a > b then\nprint (\"Time1\")\nelseif a < b then\nprint (\"Time2\")\nelseif a == b then\nprint (\"Empate\")\nend\n"
+}
+{ 
+    "_id" : ObjectId("5829fb47b47dc227cf7fc205"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f0364a1"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a336f7b3ceb04bb7b47ec"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-14T17:58:31.000+0000"), 
+    "time_end" : ISODate("2016-11-14T18:18:31.000+0000"), 
+    "code" : "a, b, c =io.read ('*number', '*number', '*number')\nif a==b and a==c then\n    print ('equilatero')\nelseif a==b and a~=c and b~=c then\n    print ('isosceles')\nelse print ('escaleno')\n    end"
+}
+{ 
+    "_id" : ObjectId("5829fb4eb47dc22e3e79c621"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f0364a5"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a2edd7b3ceb04bb7b47e6"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-14T17:58:38.000+0000"), 
+    "time_end" : ISODate("2016-11-14T18:06:38.000+0000"), 
+    "code" : "x = io.read(\"*number\")\nk=(x^2-2*x+3)\nprint (k)\n"
+}
+{ 
+    "_id" : ObjectId("5829fb8cb47dc22785027f46"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f0364a1"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a3f4a7b3ceb04bb7b47f7"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-14T17:59:40.000+0000"), 
+    "time_end" : ISODate("2016-11-14T18:13:40.000+0000"), 
+    "code" : "a = io.read('*number')\nif a ==1 then\n    print ('janeiro')\nend\nif a==12 then\n    print ('dezembro')\n    end"
+}
+{ 
+    "_id" : ObjectId("5829fb91b47dc227cf7fc206"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f0364a2"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a3f4a7b3ceb04bb7b47f7"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-14T17:59:45.000+0000"), 
+    "time_end" : ISODate("2016-11-14T18:19:45.000+0000"), 
+    "code" : "a=io.read(\"*number\")\nif a==1 then print(\"janeiro\")\nelseif a==2 then print(\"fevereiro\")\nelseif a==3 then print(\"março\")\nelseif a==4 then print(\"abril\")\nelseif a==5 then print(\"maio\")\nelseif a==6 then print(\"junho\")\nelseif a==7 then print(\"julho\")\nelseif a==8 then print(\"agosto\")\nelseif a==9 then print(\"setembro\")\nelseif a==10 then print(\"outrubro\")\nelseif a==11 then print(\"novembro\")\nelse print(\"dezembro\")\nend\n"
+}
+{ 
+    "_id" : ObjectId("5829fbc8b47dc22b1f455d73"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f03649e"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a316e7b3ceb04bb7b47e8"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-14T18:00:40.000+0000"), 
+    "time_end" : ISODate("2016-11-14T18:20:40.000+0000"), 
+    "code" : "a,b,c=io.read(\"*number\",\"*number\",\"*number\")\nif a>b and a>c then \n print(a) \nelseif b>c and b>a then\nprint(b)\nelse \nprint(c)\nend\n"
+}
+{ 
+    "_id" : ObjectId("5829fc91b47dc22e141f4e02"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f03648c"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a336f7b3ceb04bb7b47ec"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-14T18:04:01.000+0000"), 
+    "time_end" : ISODate("2016-11-14T18:10:01.000+0000"), 
+    "code" : "a, b, c = io.read(\"*number\"), io.read(\"*number\"), io.read(\"*number\")\nif a == b and b == c then\n    print(\"equilatero\")\nelseif a == b and b ~= c and c ~= a then\n    print(\"isosceles\")\nelseif a ~= b and b ~= c and c ~= a then\n    print(\"escaleno\")\nend"
+}
+{ 
+    "_id" : ObjectId("5829fcc6b47dc22e131edc61"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f0364a1"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a2c5e7b3ceb04bb7b47e1"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-14T18:04:54.000+0000"), 
+    "time_end" : ISODate("2016-11-14T18:17:54.000+0000"), 
+    "code" : "a, b, c= io.read ('*number', '*number', '*number')\nif (a+b+c)/3 >= 7 then\n    print (\"true\")\nend\nif (a+b+c)/3 <= 7 then\n    print (\"false\")\n    end"
+}
+{ 
+    "_id" : ObjectId("5829fd54b47dc22785027f47"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f03649a"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a32397b3ceb04bb7b47ea"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-14T18:07:16.000+0000"), 
+    "time_end" : ISODate("2016-11-14T18:24:16.000+0000"), 
+    "code" : "a,b = io.read('*number'),io.read('*number')\r\nif a >= 0 and 10 >= a and b >= 0 and 10 >= 0 then\r\n\tif a > b then\r\n\t\tprint (\"Time1\")\r\n\telseif b > a then\r\n\t\tprint (\"Time2\")\r\n\telseif b == a then\r\n\t\tprint (\"Empate\")\r\n\tend\r\nend\r\n\r\n"
+}
+{ 
+    "_id" : ObjectId("5829fd54b47dc227cf7fc207"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f0364a1"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a2edd7b3ceb04bb7b47e6"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-14T18:07:16.000+0000"), 
+    "time_end" : ISODate("2016-11-14T18:13:16.000+0000"), 
+    "code" : "x =io.read ('*number')\nresultado = (x^2 -2*x +3)\nprint (resultado)"
+}
+{ 
+    "_id" : ObjectId("5829fd71b47dc22e131edc62"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f0364a5"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a336f7b3ceb04bb7b47ec"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-14T18:07:45.000+0000"), 
+    "time_end" : ISODate("2016-11-14T18:18:45.000+0000"), 
+    "code" : "a,b,c = io.read (\"*number\"),io.read (\"*number\"),io.read (\"*number\")\r\n\r\nif a~=b and a~=c and b~=c then\r\n\tprint (\"escaleno\")\r\nelseif\r\n\ta==b and b==c and a==c then\r\n\tprint (\"equilatero\")\r\nelse\r\n\tprint (\"isoceles\")\r\nend\r\n"
+}
+{ 
+    "_id" : ObjectId("5829fd84b47dc22b1f455d74"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f03649e"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a336f7b3ceb04bb7b47ec"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-14T18:08:04.000+0000"), 
+    "time_end" : ISODate("2016-11-14T18:23:04.000+0000"), 
+    "code" : "a,b,c=io.read(\"*number\",\"*number\",\"*number\")\nif a==b and b==c then print(\"equilatero\")\nelseif a==b or a==c or b==c then print(\"isoceles\")\nelse print(\"escaleno\")\nend"
+}
+{ 
+    "_id" : ObjectId("5829fdecb47dc2275f7c2944"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f03648c"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a3f4a7b3ceb04bb7b47f7"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-14T18:09:48.000+0000"), 
+    "time_end" : ISODate("2016-11-14T18:18:48.000+0000"), 
+    "code" : "a = io.read(\"*number\")\nif a == 1 then\n    print(\"janeiro\")\nelseif a == 2 then\n    print(\"fevereiro\")\nelseif a == 3 then\n    print(\"marco\")\nelseif a == 4 then\n    print(\"abril\")\nelseif a == 5 then\n    print(\"maio\")\nelseif a == 6 then\n    print(\"junho\")\nelseif a == 7 then\n    print(\"julho\")\nelseif a == 8 then\n    print(\"agosto\")\nelseif a == 9 then\n    print(\"setembro\")\nelseif a == 10 then\n    print(\"outubro\")\nelseif a == 11 then\n    print(\"novembro\")\nelseif a == 12 then\n    print(\"dezembro\")\nend"
+}
+{ 
+    "_id" : ObjectId("5829fe6cb47dc2275f7c2945"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f0364a8"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a32397b3ceb04bb7b47ea"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-14T18:11:56.000+0000"), 
+    "time_end" : ISODate("2016-11-14T18:16:56.000+0000"), 
+    "code" : "a, b = io.read ('*number', '*number')\r\nif (a >= 0 and a <= 10) and (b >= 0 and b <= 10) then\r\n\tif a > b then\r\n\t\tprint ('Time1')\r\n\telseif b > a then\r\n\t\tprint ('Time2')\r\n\telseif a == b then\r\n\t\tprint ('Empate')\r\n\tend\r\nend\r\n\r\n"
+}
+{ 
+    "_id" : ObjectId("5829ff87b47dc229fa16d202"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f03649a"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a336f7b3ceb04bb7b47ec"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-14T18:16:39.000+0000"), 
+    "time_end" : ISODate("2016-11-14T18:24:39.000+0000"), 
+    "code" : "a,b,c = io.read('*number'),io.read('*number'),io.read('*number')\r\nif a~=b and a~=c and b~=c then\r\n\tprint (\"escaleno\")\r\nelseif a==b and b==c then\r\n\tprint ('equilatero')\r\nelse\r\n\tprint ('isosceles')\r\nend\r\n"
+}
+{ 
+    "_id" : ObjectId("582a006fb47dc236dc64c8e1"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f0364a8"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a2b2a7b3ceb04bb7b47df"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-14T18:20:31.000+0000"), 
+    "time_end" : ISODate("2016-11-14T18:36:31.000+0000"), 
+    "code" : "int1, int2, int3 = io.read ('*number', '*number', '*number')\r\nif (int1 >= - 10000 and int1 <= 10000) and (int2 >= - 10000 and int2 <= 10000) and (int3 >= - 10000 and int3 <= 10000) then\r\n\tprint (int1 + int2 > int3)\r\nend\r\n"
+}
+{ 
+    "_id" : ObjectId("582a01b2b47dc22e3e79c622"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f0364a8"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a316e7b3ceb04bb7b47e8"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-14T18:25:54.000+0000"), 
+    "time_end" : ISODate("2016-11-14T18:32:54.000+0000"), 
+    "code" : "int1, int2, int3 = io.read ('*number', '*number', '*number')\r\nif (int1 >= - 10000 and int1 <= 10000) and (int2 >= - 10000 and int2 <= 10000) and (int3 >= - 10000 and int3 <= 10000) then\r\n\tprint (math.max (int1, int2, int3))\r\nend\r\n"
+}
+{ 
+    "_id" : ObjectId("582a01e8b47dc2391e78a3b1"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f03649a"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a2c5e7b3ceb04bb7b47e1"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-14T18:26:48.000+0000"), 
+    "time_end" : ISODate("2016-11-14T18:33:48.000+0000"), 
+    "code" : "a,b,c = io.read('*number'),io.read('*number'),io.read('*number')\r\nprint (((a+b+c)/3)>= 7)\r\n"
+}
+{ 
+    "_id" : ObjectId("582a0381b47dc2384c003361"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f03649a"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a3f4a7b3ceb04bb7b47f7"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-14T18:33:37.000+0000"), 
+    "time_end" : ISODate("2016-11-14T18:48:37.000+0000"), 
+    "code" : "a = io.read ('*number')\r\nif a == 1 then\r\n\tprint ('janeiro')\r\nelseif a == 2 then\r\n\tprint ('fevereiro')\r\nelseif a == 3 then\r\n\tprint ('marco')\r\nelseif a == 4 then\r\n\tprint ('abril')\r\nelseif a == 5 then\r\n\tprint ('maio')\r\nelseif a == 6 then\r\n\tprint ('junho')\r\nelseif a == 7 then\r\n\tprint ('julho')\r\nelseif a == 8 then\r\n\tprint ('agosto')\r\nelseif a == 9 then\r\n\tprint ('setembro')\r\nelseif a == 10 then\r\n\tprint ('outubro')\r\nelseif a == 11 then\r\n\tprint ('novembro')\r\nelseif a == 12 then\r\n\tprint ('dezembro')\r\nelse\r\n\tprint ('numero invalido')\r\nend\r\n"
+}
+{ 
+    "_id" : ObjectId("582b0e93b47dc2022a53b3e1"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f0364b1"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a2edd7b3ceb04bb7b47e6"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-15T13:33:07.000+0000"), 
+    "time_end" : ISODate("2016-11-15T13:48:07.000+0000"), 
+    "code" : "x=io.read('*number');\nx=(x*x)-(2*x)+3;\nprint(x);"
+}
+{ 
+    "_id" : ObjectId("582b1351b47dc27cf2676111"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f0364b1"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a336f7b3ceb04bb7b47ec"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-15T13:53:21.000+0000"), 
+    "time_end" : ISODate("2016-11-15T14:13:21.000+0000"), 
+    "code" : "a,b,c=io.read('*number', '*number', '*number');\nif a==b and b==c then\n    print('equilatero');\nelse\n    if (a~=b and a~=c and b~=c) then\n        print('escaleno');\n    else\n        print('isosceles');\n    end\nend"
+}
+{ 
+    "_id" : ObjectId("582b1904b47dc20749323011"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f03647d"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("580ff69b5bd49c0ac5809682"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-15T14:17:40.000+0000"), 
+    "time_end" : ISODate("2016-11-15T14:28:40.000+0000"), 
+    "code" : "NumA,NumB=io.read(\"*number\",\"*number\")\nif((( NumA and NumB )<10000) and ((NumA and NumB)>(-10000)) or (NumA or NumB)==10000 or (NumA or NumB)==(-10000))then\nprint(NumA+NumB)\nend\n"
+}
+{ 
+    "_id" : ObjectId("582b1b2fb47dc20749323012"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f03647d"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a2b2a7b3ceb04bb7b47df"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-15T14:26:55.000+0000"), 
+    "time_end" : ISODate("2016-11-15T14:44:55.000+0000"), 
+    "code" : "NumA,NumB,NumC=io.read(\"*number\",\"*number\",\"*number\")\nif((( NumA and NumB and NumC )<10000) and ((NumA and NumB and NumC)>(-10000)) or (NumA or NumB or NumC)==10000 or (NumA or NumB or NumC)==(-10000))then\n    if (NumA+NumB)>NumC then\n     print(true)\n    else\n     print(false)\n    end\nend\n"
+}
+{ 
+    "_id" : ObjectId("582b1c72b47dc20749323013"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f03647d"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a26437b3ceb04bb7b47db"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-15T14:32:18.000+0000"), 
+    "time_end" : ISODate("2016-11-15T14:37:18.000+0000"), 
+    "code" : "NumA,NumB=io.read(\"*number\",\"*number\")\nif((( NumA and NumB )<10000) and ((NumA and NumB)>(-10000)) or (NumA or NumB)==10000 or (NumA or NumB)==(-10000))then\n    if NumA>NumB then \n        print(NumA)\n    else\n        print(NumB)\n    end\nend\n"
+}
+{ 
+    "_id" : ObjectId("582b1deeb47dc20749323014"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f03647d"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a2c5e7b3ceb04bb7b47e1"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-15T14:38:38.000+0000"), 
+    "time_end" : ISODate("2016-11-15T14:52:38.000+0000"), 
+    "code" : "NumA,NumB,NumC=io.read(\"*number\",\"*number\",\"*number\")\nif((( NumA and NumB and NumC )<10000) and ((NumA and NumB and NumC )>(-10000)) or (NumA or NumB or NumC)==10000 or (NumA or NumB or NumC )==(-10000))then\n    if ((NumA+NumB+NumC)/3)>7 or ((NumA+NumB+NumC)/3)==7 then\n        print(true)\n    else\n        print(false)\n    end\nend\n\n"
+}
+{ 
+    "_id" : ObjectId("582b216fb47dc220a2561e11"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f03647d"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a2edd7b3ceb04bb7b47e6"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-15T14:53:35.000+0000"), 
+    "time_end" : ISODate("2016-11-15T15:03:35.000+0000"), 
+    "code" : "NumA=io.read(\"*number\")\nEQua=0\nif((( NumA )<10000) and ((NumA)>(-10000)) or (NumA)==10000 or (NumA)==(-10000))then\n    EQua=((NumA^2)-(2*NumA)+3)\nend\nprint(EQua)"
+}
+{ 
+    "_id" : ObjectId("582b404ab47dc232f1538e41"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f03647d"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a32397b3ceb04bb7b47ea"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-15T17:05:14.000+0000"), 
+    "time_end" : ISODate("2016-11-15T17:12:14.000+0000"), 
+    "code" : "Time1,Time2=io.read(\"*number\",\"*number\")\nif(Time1 and Time2 )<10 and (Time1 and Time2 )>0 or (Time1 or Time2)==10 or (Time1 or Time2)==0\nthen\n  if Time1>Time2 then\n      print(\"Time1\")\n    elseif Time2>Time1 then\n      print(\"Time2\")\n    else\n        print(\"Empate\")\n    end\nend\n"
+}
+{ 
+    "_id" : ObjectId("582b446ab47dc23c670daea1"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f03647d"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a336f7b3ceb04bb7b47ec"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-15T17:22:50.000+0000"), 
+    "time_end" : ISODate("2016-11-15T17:30:50.000+0000"), 
+    "code" : "LadoA,LadoB,LadoC=io.read(\"*number\",\"*number\",\"*number\")\nif (LadoA and LadoB and LadoC)<50 and (LadoA and LadoB and LadoC)>1 or (LadoA and LadoB and LadoC)==50 or (LadoA and LadoB and LadoC)==1 then \n        if LadoA+LadoB>LadoC or LadoA+LadoC>LadoB or LadoB+LadoC>LadoA then\n            if LadoA~=LadoB and LadoA~=LadoC and LadoC~=LadoB then\n                print(\"escaleno\")\n            elseif\n                LadoA==LadoB and LadoA==LadoC and LadoC==LadoB then\n                print(\"equilatero\")\n            else\n                print(\"isoceles\")\n            end\n        end\nend    "
+}
+{ 
+    "_id" : ObjectId("582b5235b47dc2499a7cdf31"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f03647d"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a316e7b3ceb04bb7b47e8"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-15T18:21:41.000+0000"), 
+    "time_end" : ISODate("2016-11-15T18:36:41.000+0000"), 
+    "code" : "NumA,NumB,NumC=io.read(\"*number\",\"*number\",\"*number\")\nmaior=0\nif((( NumA and NumB and NumC )<10000) and ((NumA and NumB and NumC)>(-10000)) or (NumA or NumB or NumC)==10000 or (NumA or NumB or NumC)==(-10000))then\n  if (NumA>NumB or NumB>NumA or NumA==NumB) and  NumC<(NumA and NumB) or (NumB>NumC or NumC>NumB or NumB==NumC) and NumA<(NumB and NumC) or ((NumC>NumA) or (NumA>NumC) or (NumC==NumA)) and NumB<(NumC and NumA) then\n        if NumA>NumB and NumA>NumC then\n          maior=NumA\n        elseif NumB>NumA and NumB>NumC then\n            maior=NumB\n        else\n\n            maior=NumC\n        end\n  end\nend\nprint(maior)\n\n''"
+}
+{ 
+    "_id" : ObjectId("582b577fb47dc24994002a51"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f03647d"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a3f4a7b3ceb04bb7b47f7"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-15T18:44:15.000+0000"), 
+    "time_end" : ISODate("2016-11-15T18:55:15.000+0000"), 
+    "code" : "MEs=io.read(\"*number\")\nif MEs>12 and MEs>1 or MEs==12 or MEs==1 then\n    if MEs==1 then\n        print(\"janeiro\")\n    elseif MEs==2 then\n        print(\"fevereiro\")\n    elseif MEs==3 then\n        print(\"marco\")\n    elseif MEs==4 then\n        print(\"abril\")\n    elseif MEs==5 then\n        print(\"maio\")\n    elseif MEs==6 then\n        print(\"junho\")\n    elseif MEs==7 then\n        print(\"julho\")\n    elseif MEs==8 then\n        print(\"agosto\")\n    elseif MEs==9 then\n        print(\"setembro\")\n    elseif MEs==10 then\n        print(\"outubro\")\n    elseif MEs==11 then\n        print(\"novembro\")\n    elseif MEs==12 then\n        print(\"dezembro\")\n    end\nend"
+}
+{ 
+    "_id" : ObjectId("582ba628b47dc223697664c1"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f0364ae"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("582b6e9a4c585760efc40cbb"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-16T00:19:52.000+0000"), 
+    "time_end" : ISODate("2016-11-16T00:26:52.000+0000"), 
+    "code" : "hora, minutos, segundos = io.read(\"*number\", \"*number\", \"*number\")\nhora_s = hora*3600\nminu_s = minutos*60\nprint(hora_s+minu_s+segundos)\n"
+}
+{ 
+    "_id" : ObjectId("582badbcb47dc23da56fb181"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f0364ae"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("582b72c04c58576aff0634fe"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-16T00:52:12.000+0000"), 
+    "time_end" : ISODate("2016-11-16T01:11:12.000+0000"), 
+    "code" : "a, b, c = io.read(\"*number\", \"*number\", \"*number\")\nif (a>b and a>c) then\n    maior = a\nelseif (b>c) then\n    maior = b\nelse\n    maior = c\nend\nif (a<b and a<c) then\n    menor = a\nelseif (b<c) then\n    menor = b\nelse\n    menor = c\nend\nmeio = (a+b+c)-(maior+menor)\nif (maior==a and meio==b and menor==c) then\n    print(\"decrescente\")\nelseif(maior==c and meio==b and menor==a) then\n    print(\"crescente\")\nelse\n    print(\"desordenado\")\nend"
+}
+{ 
+    "_id" : ObjectId("582bbb10b47dc23da74eb091"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f0364b1"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("582b6e9a4c585760efc40cbb"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-16T01:49:04.000+0000"), 
+    "time_end" : ISODate("2016-11-16T02:00:04.000+0000"), 
+    "code" : "hora,minuto,segundo=io.read('*number', '*number', '*number');\nsegundos_total=((hora*3600)+(minuto*60)+segundo);\nprint(segundos_total);"
+}
+{ 
+    "_id" : ObjectId("582bc029b47dc23da56fb182"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f0364b1"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("582b72954c58576aff0634fd"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-16T02:10:49.000+0000"), 
+    "time_end" : ISODate("2016-11-16T02:21:49.000+0000"), 
+    "code" : "a,b,c,d=io.read('*number', '*number', '*number', '*number');\nquadrilatero=(a+b+c+d);\nif quadrilatero==360 then\n    print('True');\nelse\n    print('False');\nend"
+}
+{ 
+    "_id" : ObjectId("582bc3d2b47dc25c056b1531"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f0364b1"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("582b72c04c58576aff0634fe"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-16T02:26:26.000+0000"), 
+    "time_end" : ISODate("2016-11-16T02:39:26.000+0000"), 
+    "code" : "a,b,c=io.read('*number', '*number', '*number');\nif a>b and b>c then\n    print('decrescente');\nelse\n    if a<b and b<c then\n        print('crescente');\n    else\n        print('desordenado');\n    end\nend"
+}
+{ 
+    "_id" : ObjectId("582bc7fab47dc2689330b9a1"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f0364b1"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("582b72ed4c58576aff0634ff"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-16T02:44:10.000+0000"), 
+    "time_end" : ISODate("2016-11-16T02:54:10.000+0000"), 
+    "code" : "a,b,c,d,e=io.read('*number', '*number', '*number', '*number', '*number');\nmediana=(b+c)/2;\nif mediana<e then\n    print('True');\nelse\n    print('False');\nend"
+}
+{ 
+    "_id" : ObjectId("582bcddcb47dc269b2691431"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f0364b1"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("582b75ba4c58576aff063500"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-16T03:09:16.000+0000"), 
+    "time_end" : ISODate("2016-11-16T03:19:16.000+0000"), 
+    "code" : "a,b=io.read('*number', '*number');\nif b%a==0 then\n    print('True');\nelse\n    print('False');\nend"
+}
+{ 
+    "_id" : ObjectId("582bd012b47dc269be27e8f1"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f0364b1"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("582b76574c58576aff063502"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-16T03:18:42.000+0000"), 
+    "time_end" : ISODate("2016-11-16T03:32:42.000+0000"), 
+    "code" : "a,b,c=io.read('*number', '*number', '*number');\ndelta=(b*b)-4*a*c\nif delta<0 then\n    print('0');\nelse\n    if delta>0 then\n        print('2');\n    else\n        print('1');\n    end\nend"
+}
+{ 
+    "_id" : ObjectId("582bfaeeb47dc269b2691432"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f0364a8"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a336f7b3ceb04bb7b47ec"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-16T06:21:34.000+0000"), 
+    "time_end" : ISODate("2016-11-16T06:40:34.000+0000"), 
+    "code" : "a, b, c = io.read ('*number', '*number', '*number') \nif (a ~= b) and (b ~= c) and (a ~= c) then \n    print ('escaleno')\nelseif (a == b) and (b == c) and (a == c) then \n    print ('equilatero') \nelseif (a ~= b) and (b ~= c) and (a == c) then\n    print ('isoceles') \n    \nend\n\n    "
+}
+{ 
+    "_id" : ObjectId("582c02c0b47dc269b1682a81"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f0364a8"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a3f4a7b3ceb04bb7b47f7"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-16T06:54:56.000+0000"), 
+    "time_end" : ISODate("2016-11-16T07:01:56.000+0000"), 
+    "code" : "ano = io.read ('*number') \nif ano == 1 then \n    print ('janeiro') \nelseif ano == 2 then \n    print ('fevereiro') \nelseif ano == 3 then \n    print ('março')\nelseif ano == 4 then \n    print ('abril')\nelseif ano == 5 then \n    print ('maio') \nelseif ano == 6 then \n    print ('junho') \nelseif ano == 7 then \n    print ('julho') \nelseif ano == 8 then \n    print ('agosto') \nelseif ano == 9 then \n    print ('setembro') \nelseif ano == 10 then \n    print ('outubro') \nelseif ano == 11 then \n    print ('novembro') \nelseif ano == 12 then \n    print ('dezembro') \nend"
+}
+{ 
+    "_id" : ObjectId("582c58fbb47dc21b34454ad1"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f0364aa"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("582b6e9a4c585760efc40cbb"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-16T13:02:51.000+0000"), 
+    "time_end" : ISODate("2016-11-16T13:18:51.000+0000"), 
+    "code" : "n1,n2,n3= io.read (\"*number\",\"*number\",\"*number\")\r\nresu= n1*3600+n2*60+n3\r\nprint(resu)\r\n"
+}
+{ 
+    "_id" : ObjectId("582c61afb47dc225ab4acdd1"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f0364ae"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("582b76574c58576aff063502"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-16T13:39:59.000+0000"), 
+    "time_end" : ISODate("2016-11-16T13:48:59.000+0000"), 
+    "code" : "a, b, c = io.read(\"*number\", \"*number\", \"*number\")\r\ndelta = ((b*b)-(4*a*c))\r\nif (delta>0) then\r\n\tprint(2)\r\nelseif (delta<0) then\r\n\tprint(0)\r\nelse\r\n\tprint(1)\r\nend"
+}
+{ 
+    "_id" : ObjectId("582c632fb47dc21374659cb1"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f0364ae"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("582b76574c58576aff063507"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-16T13:46:23.000+0000"), 
+    "time_end" : ISODate("2016-11-16T14:03:23.000+0000"), 
+    "code" : "renda = io.read(\"*number\")\r\nif (renda>10190) then\r\n\tprint(\"A1\")\r\nelseif (renda>=6210 and renda<=10190) then\r\n\tprint(\"A2\")\r\nelseif (renda>=3822 and renda<=6209) then\r\n\tprint(\"B1\")\r\nelseif (renda>=2150 and renda<=3821) then\r\n\tprint(\"B2\")\r\nelseif (renda>=1036 and renda<=2149) then\r\n\tprint(\"C\")\r\nelseif (renda>=479 and renda<=1035) then\r\n\tprint(\"D\")\r\nelseif (renda>=0 and renda<=478) then\r\n\tprint(\"E\")\r\nelse\r\n\tprint(0)\r\nend"
+}
+{ 
+    "_id" : ObjectId("582c699eb47dc22ae7438c01"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f03648e"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("582b72c04c58576aff0634fe"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-16T14:13:50.000+0000"), 
+    "time_end" : ISODate("2016-11-16T14:18:50.000+0000"), 
+    "code" : "a,b,c=io.read('*number'), io.read('*number'), io.read('*number')\nif a>b and b>c then\n        print('decrescente')\nelseif a<b and b<c then \n    print('crescente')\nelse\n    print('desordenado')\nend"
+}
+{ 
+    "_id" : ObjectId("582c6bc3b47dc22ec222a5f1"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f03648e"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a336f7b3ceb04bb7b47ec"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-16T14:22:59.000+0000"), 
+    "time_end" : ISODate("2016-11-16T14:31:59.000+0000"), 
+    "code" : "a,b,c=io.read('*number'), io.read('*number'), io.read('*number')\nif a==b and b==c then\n    print('equilatero')\nelseif a~= b and b~=c then\n    print('escaleno') \nelse\n    print('isosleces')\nend"
+}
+{ 
+    "_id" : ObjectId("582c6e59b47dc22d557e7ec1"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f03648e"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("582b6e9a4c585760efc40cbb"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-16T14:34:01.000+0000"), 
+    "time_end" : ISODate("2016-11-16T14:39:01.000+0000"), 
+    "code" : "hora, minu, seg=io.read('*number'), io.read('*number'), io.read('*number')\nseg_total=(hora*3600)+(minu*60)+seg\nprint(seg_total)"
+}
+{ 
+    "_id" : ObjectId("582c75b6b47dc23b054d7a01"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f0364a8"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("582b6e9a4c585760efc40cbb"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-16T15:05:26.000+0000"), 
+    "time_end" : ISODate("2016-11-16T15:21:26.000+0000"), 
+    "code" : "h, m, s = io.read ('*number', '*number', '*number')\r\nif h > 0 then\r\nhora = (h * 60)\r\nminuto = (hora * 60)\r\nsegundo = (minuto + s)\r\nprint (segundo)\r\n\telseif h == 0 then\r\n\t\thoraeminuto = (h * 60) + ( m * 60)\r\n\t\tsegundo = (horaeminuto + s)\r\n\t\tprint (segundo)\r\nend\r\n"
+}
+{ 
+    "_id" : ObjectId("582c8b84b47dc2519b7e96f1"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f03649a"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("582b6e9a4c585760efc40cbb"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-16T16:38:28.000+0000"), 
+    "time_end" : ISODate("2016-11-16T16:50:28.000+0000"), 
+    "code" : "a,b,c = io.read('*number'),io.read('*number'),io.read('*number')\nprint ((3600*a) + (60*b) + c)"
+}
+{ 
+    "_id" : ObjectId("582f6f68b47dc268d126b261"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f03649b"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("580ff69b5bd49c0ac5809682"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-18T21:15:20.000+0000"), 
+    "time_end" : ISODate("2016-11-18T21:22:20.000+0000"), 
+    "code" : "n1,n2 = io.read(\"*number\"), io.read(\"*number\")\n\nprint (n1+n2)\n\n"
+}
+{ 
+    "_id" : ObjectId("582f9acbb47dc2086d24be71"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f03649b"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a26437b3ceb04bb7b47db"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-19T00:20:27.000+0000"), 
+    "time_end" : ISODate("2016-11-19T00:30:27.000+0000"), 
+    "code" : "n1,n2 = io.read(\"*number\"),io.read(\"*number\")\n\nif n1>n2 then \n    print (n1)\nelse\n    print (n2)\nend\n"
+}
+{ 
+    "_id" : ObjectId("582f9ca9b47dc2087744efc1"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f03648b"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("582b76574c58576aff063507"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-19T00:28:25.000+0000"), 
+    "time_end" : ISODate("2016-11-19T00:35:25.000+0000"), 
+    "code" : "renda=io.read('*number')\nif (renda<=478) then\n    print('E')\nelseif\n    (renda>=479 and renda<=1035) then\n    print('D')\nelseif\n    (renda>=1036 and renda<=2149) then\n    print('C')\nelseif\n    (renda>= 2150 and renda<=3821) then\n    print('B2')\nelseif\n    (renda>=3822 and renda<=6209) then \n    print('B1')\nelseif \n    (renda>=6210 and renda<=10190) then\n    print('A2')\nelseif\n    (renda>10190) then\n    print('A1')\nelse\n    print('0')\nend"
+}
+{ 
+    "_id" : ObjectId("582f9f03b47dc2087972c0f1"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f036482"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("582b76574c58576aff063507"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-19T00:38:27.000+0000"), 
+    "time_end" : ISODate("2016-11-19T00:44:27.000+0000"), 
+    "code" : "renda=io.read(\"*number\")\nif (renda > 10190) then\n    print(\"A1\")\nelseif (renda>=6210 and renda<=10190) then\n    print(\"A2\")\nelseif (renda>=3822 and renda<=6209) then\n    print(\"B1\")\nelseif (renda>=2150 and renda<=3821) then\n    print(\"B2\")\nelseif (renda>=1036 and renda<=2149) then\n    print(\"C\")\nelseif (renda>=479 and renda<=1035) then\n    print(\"D\")\nelseif (renda<=478) then\n    print(\"E\")\nelse\n    print(\"0\")\nend"
+}
+{ 
+    "_id" : ObjectId("583103d1b47dc238130fb1e1"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f036482"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("582b6e9a4c585760efc40cbb"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-20T02:00:49.000+0000"), 
+    "time_end" : ISODate("2016-11-20T02:17:49.000+0000"), 
+    "code" : "h, m, s = io.read(\"*number\", \"*number\", \"*number\")\n\ntempo_segundos = h*60*60 + m*60 + s\nprint(tempo_segundos)"
+}
+{ 
+    "_id" : ObjectId("58310547b47dc238130fb1e2"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f036482"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("582b72954c58576aff0634fd"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-20T02:07:03.000+0000"), 
+    "time_end" : ISODate("2016-11-20T02:27:03.000+0000"), 
+    "code" : "a, b, c, d = io.read(\"*number\", \"*number\", \"*number\", \"*number\")\nif (a + b + c + d == 360) then\n    print(\"True\")\nelse\n    print(\"False\")\nend"
+}
+{ 
+    "_id" : ObjectId("583105c4b47dc23d0c4678e1"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f036482"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("582b72c04c58576aff0634fe"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-20T02:09:08.000+0000"), 
+    "time_end" : ISODate("2016-11-20T02:16:08.000+0000"), 
+    "code" : "a, b, c = io.read(\"*number\", \"*number\", \"*number\")\nif (a < b and b < c) then\n    print(\"crescente\")\nelseif (a > b and b > c) then\n    print(\"decrescente\")\nelse\n    print(\"desordenado\")\nend"
+}
+{ 
+    "_id" : ObjectId("5831068bb47dc21f254b6931"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f036482"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("582b72ed4c58576aff0634ff"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-20T02:12:27.000+0000"), 
+    "time_end" : ISODate("2016-11-20T02:22:27.000+0000"), 
+    "code" : "a, b, c, d, e = io.read(\"*number\", \"*number\", \"*number\", \"*number\", \"*number\")\nif ((b+c)/2 < e) then\n    print(\"True\")\nelse\n    print(\"False\")\nend"
+}
+{ 
+    "_id" : ObjectId("583106cdb47dc23f101be221"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f036482"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("582b75ba4c58576aff063500"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-20T02:13:33.000+0000"), 
+    "time_end" : ISODate("2016-11-20T02:23:33.000+0000"), 
+    "code" : "a, b = io.read(\"*number\", \"*number\")\nif (a%b==0) then\n    print(\"True\")\nelse\n    print(\"False\")\nend"
+}
+{ 
+    "_id" : ObjectId("583107c3b47dc2380d1cce91"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f036482"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("582b76574c58576aff063502"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-20T02:17:39.000+0000"), 
+    "time_end" : ISODate("2016-11-20T02:26:39.000+0000"), 
+    "code" : "a, b, c = io.read(\"*number\", \"*number\", \"*number\")\ndelta = (b*b) - (4*(a*c))\nif (delta > 0) then\n    print(\"2\")\nelseif (delta == 0) then\n    print(\"1\")\nelse\n    print(\"0\")\nend"
+}
+{ 
+    "_id" : ObjectId("58310999b47dc21f254b6932"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f036482"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("582b76574c58576aff063503"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-20T02:25:29.000+0000"), 
+    "time_end" : ISODate("2016-11-20T02:38:29.000+0000"), 
+    "code" : "x = io.read()\nif (x==1 or x==2 or x==3 or x==4 or x==5 or x==6 or x==7 or x==8 or x==9 or x==0) then\n    print(\"número\")\nelseif((x=='a') or (x=='b') or (x=='c') or (x=='d') (x=='e') or x=='f' or x=='g' \n    or x=='h' or x=='i' or x=='j' or x=='k' or x=='l' or x=='m' or x=='n' \n    or x=='o' or x=='p' or x=='q' or x=='r' or x=='s' or x=='t' or x=='u'\n    or x=='v' or x=='w' or x=='x' or x=='y' or x=='z') then\n    print(\"letra minúscula\")\nelse\n    print(\"letra maiúscula\")\nend"
+}
+{ 
+    "_id" : ObjectId("58332547b47dc26629230cc1"), 
+    "user" : DBRef("User", ObjectId("581687d05bd49c42bba91ac9"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a2b2a7b3ceb04bb7b47df"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-21T16:48:07.000+0000"), 
+    "time_end" : ISODate("2016-11-21T17:08:07.000+0000"), 
+    "code" : "a = io.read(\"*number\")\nb = io.read(\"*number\")\nc = io.read(\"*number\")\n\nprint(a+b>c)"
+}
+{ 
+    "_id" : ObjectId("58332b6bb47dc2184649dc31"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f036496"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("582b6e9a4c585760efc40cbb"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-21T17:14:19.000+0000"), 
+    "time_end" : ISODate("2016-11-21T17:30:19.000+0000"), 
+    "code" : "h,m,s = io.read(\"*number\"), io.read(\"*number\"),io.read(\"*number\")\nhora = 3600*h\nminu = 60*m\nsegn = s\nsegundo =(hora+minu+segn)\nprint(segundo)\n"
+}
+{ 
+    "_id" : ObjectId("58333c4db47dc22dac6dc971"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f03648b"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("582b76574c58576aff063503"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-21T18:26:21.000+0000"), 
+    "time_end" : ISODate("2016-11-21T18:42:21.000+0000"), 
+    "code" : "c=io.read()\nif (c=='a' or c=='b' or c=='c' or c=='d' or c=='e' or c=='f' or c=='g' or c=='h' or c=='i' or c=='j' or c=='k' or c=='l' or c=='m' or c=='n' or c=='o' or c=='p' or c=='q' or c=='r' or c=='s' or c=='t' or c=='u' or c=='v' or c=='w' or c=='x' or c=='y' or c=='z')then\n    print('letra minúscula')\nelseif \n    (c=='0' or c=='1' or c=='2' or c=='3' or c=='4' or c=='5' or c=='6' or c=='7' or c=='8' or c=='9') then\n    print('número')\nelse\n  print ('letra maiscúla')\nend"
+}
+{ 
+    "_id" : ObjectId("58333d08b47dc22fa843bdb1"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f0364a0"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("582b75ba4c58576aff063500"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-21T18:29:28.000+0000"), 
+    "time_end" : ISODate("2016-11-21T18:48:28.000+0000"), 
+    "code" : "\na ,b = io.read(\"*number\",\"*number\")\n\nif a % b == 0  then\n    print(\"True\")\nelse\n    print(\"False\")\nend"
+}
+{ 
+    "_id" : ObjectId("5833d412b47dc25f6e7d4231"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f0364a0"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("582b6e9a4c585760efc40cbb"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-22T05:13:54.000+0000"), 
+    "time_end" : ISODate("2016-11-22T05:19:54.000+0000"), 
+    "code" : "a,b,c = io.read(\"*number\",\"*number\",\"*number\")\n\na = a * 3600\nb = b * 60\n\ntempo = (a+b+c)\n\nprint(tempo)"
+}
+{ 
+    "_id" : ObjectId("5833d55bb47dc23c3d35f3a1"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f0364a0"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("582b76574c58576aff063502"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-22T05:19:23.000+0000"), 
+    "time_end" : ISODate("2016-11-22T05:25:23.000+0000"), 
+    "code" : "a,b,c = io.read(\"*number\",\"*number\",\"*number\")\n\ndelta = (b*b) - (4* a* c)\n\nif delta > 0 then\n    print (\"2\")\nelseif delta ==0 then\n    print(\"1\")\nelse\n    print(\"0\")\nend\n\n"
+}
+{ 
+    "_id" : ObjectId("5833da3cb47dc23c400ba571"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f0364a0"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("582b72ed4c58576aff0634ff"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-22T05:40:12.000+0000"), 
+    "time_end" : ISODate("2016-11-22T05:51:12.000+0000"), 
+    "code" : "a,b,c,d,e = io.read(\"*number\",\"*number\",\"*number\",\"*number\",\"*number\")\n\nmediana = (b + c) / 2\n\n    \nif mediana < e then\n    print(\"True\")\nelse\n    print(\"False\")\nend\n\n\n\n\n\n\n\n"
+}
+{ 
+    "_id" : ObjectId("5833da82b47dc23c3a54c421"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f0364a0"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("582b76574c58576aff063505"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-22T05:41:22.000+0000"), 
+    "time_end" : ISODate("2016-11-22T05:52:22.000+0000"), 
+    "code" : "a,b = io.read(\"*number\",\"*number\")\n\nif a ==b then\n    print(\"True\")\nelse\n    print(\"False\")\nend"
+}
+{ 
+    "_id" : ObjectId("5833dbcab47dc22d7b783b51"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f0364a0"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("582b76574c58576aff063507"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-22T05:46:50.000+0000"), 
+    "time_end" : ISODate("2016-11-22T05:58:50.000+0000"), 
+    "code" : "a = io.read(\"*number\")\n\nif a > 10190 then\n    print(\"A1\")\nelseif a >=6210 and a <10191 then\n    print(\"A2\")\nelseif a >= 3822 and a <6210 then\n    print(\"B1\")\nelseif a >=2150 and a < 3822 then\n    print(\"B2\")\nelseif a >=1036 and a < 2150 then\n    print(\"C\")\nelseif a >= 479 and a < 1036 then\n    print(\"D\")\nelseif a < 478 then\n    print(\"E\")\nelse\n    print(\"0\")\nend"
+}
+{ 
+    "_id" : ObjectId("5833dca2b47dc23c3d35f3a2"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f0364a0"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("582b72954c58576aff0634fd"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-22T05:50:26.000+0000"), 
+    "time_end" : ISODate("2016-11-22T05:55:26.000+0000"), 
+    "code" : "a,b,c,d = io.read(\"*number\",\"*number\",\"*number\",\"*number\")\n\nif a+b+c+d == 360 then\n    print(\"True\")\nelse \n    print(\"False\")\nend"
+}
+{ 
+    "_id" : ObjectId("5833dda7b47dc23c3b2fc5a1"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f0364a0"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("582b72c04c58576aff0634fe"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-22T05:54:47.000+0000"), 
+    "time_end" : ISODate("2016-11-22T06:04:47.000+0000"), 
+    "code" : "a,b,c = io.read(\"*number\",\"*number\",\"*number\")\n\nif a < b and b < c then\n    print(\"crescente\")\nelseif a > b and b > c then\n    print(\"decrescente\")\nelse\n    print(\"desordenado\")\nend"
+}
+{ 
+    "_id" : ObjectId("58349577b47dc231b8003381"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f03649a"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("582b72c04c58576aff0634fe"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-22T18:59:03.000+0000"), 
+    "time_end" : ISODate("2016-11-22T19:13:03.000+0000"), 
+    "code" : "a,b,c = io.read('*number'),io.read('*number'),io.read('*number')\nif a > b and b > c then\n    print ('decrescente')\nelseif a < b and b < c then\n    print ('crescente')\nelse\n    print ('desordenado')\nend\n"
+}
+{ 
+    "_id" : ObjectId("583496feb47dc2372e650c41"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f03649a"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("582b76574c58576aff063507"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-22T19:05:34.000+0000"), 
+    "time_end" : ISODate("2016-11-22T19:21:34.000+0000"), 
+    "code" : "renda = io.read('*number')\nif renda <= 478 then\n    print ('E')\nelseif renda > 479 and renda <= 1035 then\n    print ('D')\nelseif renda > 1036 and renda <= 2149 then\n    print ('C')\nelseif renda > 2150 and renda <= 3821 then\n    print ('B2')\nelseif renda > 3822 and renda <= 6209 then\n    print ('B1')\nelseif renda > 6210 and renda <= 10190 then\n    print ('A2')\nelseif renda > 10190 then\n    print ('A1')\nend\n"
+}
+{ 
+    "_id" : ObjectId("58349eecb47dc25e7f789c01"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f03649c"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("582b75ba4c58576aff063500"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-22T19:39:24.000+0000"), 
+    "time_end" : ISODate("2016-11-22T19:54:24.000+0000"), 
+    "code" : "a,b=io.read(\"*number\",\"*number\")\nif (b%a==0) then\n    print(\"True\")\nelse\n    print(\"False\")\nend\n"
+}
+{ 
+    "_id" : ObjectId("5835a3d5b47dc212611500c1"), 
+    "user" : DBRef("User", ObjectId("581ba56256d080340f036480"), "BD_COSMO"), 
+    "activity" : DBRef("Activities", ObjectId("581a2c5e7b3ceb04bb7b47e1"), "BD_COSMO"), 
+    "time_start" : ISODate("2016-11-23T14:12:37.000+0000"), 
+    "time_end" : ISODate("2016-11-23T14:23:37.000+0000"), 
+    "code" : "a, b, c = io.read(\"*number\", \"*number\", \"*number\" )\nif (a+b+c)/3>=7 then\n    print(\"true\")\nelse\n    print (\"false\")\nend\n"
+}

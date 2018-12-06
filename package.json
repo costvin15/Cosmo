@@ -1,0 +1,32 @@
+{
+  "name": "ppu",
+  "version": "1.0.0",
+  "description": "## Thanks",
+  "main": "index.js",
+  "dependencies": {
+    "gulp": "^3.9.1",
+    "gulp-concat": "^2.6.1",
+    "gulp-javascript-obfuscator": "^1.1.2",
+    "gulp-jshint": "^2.0.4",
+    "gulp-mini-css": "^0.0.3",
+    "gulp-plumber": "^1.1.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-uglify": "^2.0.1",
+    "gulp-watch": "^4.3.11",
+    "jshint": "^2.9.4",
+    "pump": "^1.0.2"
+  },
+  "directories": {
+    "doc": "docs",
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "author": "",
+  "license": "ISC"
+}

@@ -1,0 +1,31 @@
+{ 
+    "_id" : ObjectId("580ff69b5bd49c0ac5809682"), 
+    "created_at" : ISODate("2016-10-25T21:56:27.000+0000"), 
+    "title" : "Somando dois inteiros", 
+    "question" : "Faça um programa que lê dois numeros inteiros e imprime a soma destes dois números.", 
+    "fullquestion" : "Faça um programa que lê dois numeros inteiros e imprime a soma destes dois números.<br>Exemplo de Entrada:<br>“-537 98\",\"1000 -846\",\"-309 951\"<br><br>Exemplo de Saída:<br>”-439\",\"154\",\"642\"", 
+    "activities" : [
+        {
+            "model" : {
+                "in" : "\"-537 98\",\"1000 -846\",\"-309 951\",\"-751 -579\",\"730 -923\"", 
+                "out" : "\"-537 98\",\"1000 -846\",\"-309 951\",\"-751 -579\",\"730 -923\""
+            }, 
+            "plugin" : "App\\PluginActivities\\Problems\\Mapper\\Config"
+        }
+    ]
+}
+{ 
+    "_id" : ObjectId("5810e4475bd49c0c05da4688"), 
+    "created_at" : ISODate("2016-10-25T21:56:27.000+0000"), 
+    "title" : "Assista um video", 
+    "question" : "Sucesso do REO Speedwagon", 
+    "fullquestion" : "Sucesso do REO Speedwagon - Can't fight this felling", 
+    "activities" : [
+        {
+            "model" : {
+                "url" : "http://www.youtube.com/embed/zpOULjyy-n8?rel=0"
+            }, 
+            "plugin" : "App\\PluginActivities\\Video\\Mapper\\Config"
+        }
+    ]
+}

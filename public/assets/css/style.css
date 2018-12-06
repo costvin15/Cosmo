@@ -1,0 +1,45 @@
+
+.box-question {
+    background-color: #3C8DBC;
+
+}
+
+.box-question .user-block {
+    color: #fff;
+}
+
+.box-question button[type="button"].close {
+    font-size: 50px;
+    color: #fff;
+    opacity: 1;
+    line-height: 0.5;
+}
+
+.box-question .user-block span.description {
+    color: #fff;
+    margin-left: 0px;
+    text-align: right;
+
+    font-size:10px;
+}
+
+.box-question .user-block span.username {
+    margin-left: 0px;
+    margin-bottom: 20px;
+    width: 80%;
+
+    font-size: 24px;
+}
+
+.option-question {
+    margin-bottom: 15px;
+}
+
+div.like {
+    float: left;
+    margin-right: 10px;
+}
+
+div.like img, div.dislike img {
+    width: 40px;
+}

@@ -1,0 +1,27 @@
+"group" : DBRef("GroupActivities", ObjectId("581a10bd7b3ceb04bb7b47cd"), "BD_COSMO") - Comandos print, read, atribuição
+"group" : DBRef("GroupActivities", ObjectId("581a1cab7b3ceb04bb7b47d2"), "BD_COSMO") - Comando IF
+"group" : DBRef("GroupActivities", ObjectId("581a237c7b3ceb04bb7b47d7"), "BD_COSMO") - Comando Caso
+
+class='table table-striped'
+
+    "created_at" : ISODate("2016-11-02T14:07:27.000+0000"), 
+    "title" : "Maior de um par de inteiros", 
+    "question" : "Faça um programa que exibe o maior número inteiro entre dois números informados na entrada.", 
+    "fullquestion" : "Faça um programa que exibe o maior número inteiro entre dois números informados na entrada.<br/><br/><strong>Entrada:</strong><br/>Dois inteiros a e b, sendo que os valores de a e b estão no intervalo de -10000 a 10000 (inclusive).<br/><br/><strong>Saída:</strong><br/>Um inteiro, que corresponde ao maior entre os dois inteiros", 
+    "activities" : [
+        {
+            "model" : {
+                "in" : BinData(0, "LTUzNyA5OA0KMTAwMCAtODQ2DQotMzA5IDk1MQ0KLTc1MSAtNTc5DQo3MzAgLTkyMw0KLTM0NyAtODk3DQotNzgwIDQwOA0KMjIyIDUzMA0KNjIzIDQ0OQ0KMzA0IC0zNg0KMjIxIDM1NQ0KNzY2IC05NTANCjM3NCA3NjYNCi04MzAgODI4DQo5MjIgLTI4DQozNDUgLTYxNQ0KLTkzMCAzNDQNCi00NjEgLTIzOQ0KMjk1IC0yMTENCjE4MiAyNQ=="), 
+                "out" : BinData(0, "OTgNCjEwMDANCjk1MQ0KLTU3OQ0KNzMwDQotMzQ3DQo0MDgNCjUzMA0KNjIzDQozMDQNCjM1NQ0KNzY2DQo3NjYNCjgyOA0KOTIyDQozNDUNCjM0NA0KLTIzOQ0KMjk1DQoxODI=")
+            }, 
+            "plugin" : "App\\PluginActivities\\Problems\\Mapper\\Config"
+        }
+    ], 
+    "order" : NumberInt(3), 
+    "group" : DBRef("GroupActivities", ObjectId("581a237c7b3ceb04bb7b47d7"), "BD_COSMO")
+
+
+
+https://almsaeedstudio.com/themes/AdminLTE/pages/forms/editors.html
+https://www.base64encode.org/
+http://www.willpeavy.com/minifier/

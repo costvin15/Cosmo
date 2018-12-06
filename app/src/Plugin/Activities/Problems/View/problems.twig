@@ -1,0 +1,108 @@
+{% extends "View/layoutActivities.twig" %}
+{% block pagetitle %}Resolva o problema{% endblock %}
+{% block title %}Resolva o problema{% endblock %}
+{% block breadcump %}
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-edit"></i> Área de aprendizagem</a></li>
+        <li class="active">Resolver problemas</li>
+    </ol>
+{% endblock %}
+
+{% block scripts %}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.5/ace.js" type="text/javascript" charset="utf-8"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.5/mode-lua.js" type="text/javascript" charset="utf-8"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.5/mode-python.js" type="text/javascript" charset="utf-8"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.5/mode-c_cpp.js" type="text/javascript" charset="utf-8"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.5/theme-xcode.js" type="text/javascript" charset="utf-8"></script>
+    <script src="{{ base_url() }}/node_modules/jquery-bar-rating/dist/jquery.barrating.min.js"></script>
+    <script>
+        var editor = ace.edit("editor-program");
+        editor.setTheme("ace/theme/monokai");
+        editor.getSession().setMode("ace/mode/lua");
+
+        $('#editor-program-language').change(function(e) {
+            var editor = ace.edit("editor-program");
+            switch ($(this).val()) {
+                case "cpp":
+                    editor.getSession().setMode("ace/mode/c_cpp");
+                    break;
+                case "lua":
+                    editor.getSession().setMode("ace/mode/lua");
+                    break;
+                case "python":
+                    editor.getSession().setMode("ace/mode/python");
+                    break;
+                default:
+                    break;
+            }
+        });
+
+
+    </script>
+    <script src="{{ base_url() }}/assets/plugins/problems/js/submit.js" type="text/javascript" charset="utf-8"></script>
+{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" href="{{ base_url() }}/node_modules/jquery-bar-rating/dist/themes/bars-1to10.css">
+    <style>
+        #editor-program {
+            width: 100%;
+            min-height: 400px;
+            height: 100%;
+            margin-bottom: 5px;
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+
+    <div class="row">
+        <div class="col-lg-6">
+            <!-- Box Comment -->
+            <div class="box box-widget">
+                <div class="box-header with-border">
+                    <div class="user-block">
+                        <img class="img-circle" src="{{ base_url() }}/assets/img/user-salles.jpg" alt="User Image">
+                        <span class="username"><a href="#">{{ activity.getTitle|raw }}</a></span>
+                        <span class="description">Publicado por: Carlos Salles - {{ activity.getDateCreate|date("d/m/Y") }}</span>
+                    </div>
+                    <!-- /.user-block -->
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body">
+                    <h4>Enunciado:</h4>
+                    <!-- post text -->
+                    <div>{{ activity.getFullQuestion|raw }}</div>
+                </div>
+            </div>
+            <!-- /.box -->
+        </div>
+        <div class="col-lg-6">
+            <!-- Box Comment -->
+            <div class="box box-widget">
+                <!-- /.box-header -->
+                <div class="box-body">
+                    <h4>Implemente a solução para o problema:</h4>
+                    <div class="form-group">
+                        <label>Linguagem</label>
+                        <select class="form-control" name="editor-program-language" id="editor-program-language">
+                            <option value="lua" selected>Lua</option>
+                        </select>
+                    </div>
+                    <!-- post text -->
+                    <div id="editor-program"></div>
+
+                    <a href="{{ path_for('dashboard.index') }}" class="btn btn-default pull-left"> Voltar</a>
+                    <button type="button" class="btn btn-default pull-right btn-submit-activity"> Enviar</button>
+                </div>
+            </div>
+            <!-- /.box -->
+        </div>
+
+        <input type="hidden" value="{{ activity.getId }}" name="id-activity" />
+        <input type="hidden" value="{{ activity.getId }}" name="start-activity" />
+        <input type="hidden" value="{{ path_for('submitactivity') }}" name="destiny" />
+        <input type="hidden" value="{{ path_for('dashboard.index') }}" name="urlreturnsucess" />
+    </div>
+
+{% endblock %}

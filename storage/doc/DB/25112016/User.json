@@ -1,0 +1,348 @@
+{ 
+    "_id" : ObjectId("5808038d4b28a10c6cbc5c3c"), 
+    "username" : "dilsonjlrjr@gmail.com", 
+    "password" : "e10adc3949ba59abbe56e057f20f883e", 
+    "fullname" : "Dilson José Lins Rabêlo Júnior"
+}
+{ 
+    "_id" : ObjectId("581687d05bd49c42bba91ac9"), 
+    "username" : "csallesneto@gmail.com", 
+    "password" : "e10adc3949ba59abbe56e057f20f883e", 
+    "fullname" : "Carlos Salles"
+}
+{ 
+    "_id" : ObjectId("581b414156d0800c33e16042"), 
+    "username" : "welton457@gmail.com", 
+    "password" : "e10adc3949ba59abbe56e057f20f883e", 
+    "fullname" : "Welton de Souza"
+}
+{ 
+    "_id" : ObjectId("581ba56256d080340f03647b"), 
+    "username" : "infomania.af@gmail.com", 
+    "password" : "e10adc3949ba59abbe56e057f20f883e", 
+    "fullname" : "AMARILDO FERREIRA"
+}
+{ 
+    "_id" : ObjectId("581ba56256d080340f03647c"), 
+    "username" : "antoniomorara@gmail.com", 
+    "password" : "e10adc3949ba59abbe56e057f20f883e", 
+    "fullname" : "ANTONIO MOREIRA PINTO"
+}
+{ 
+    "_id" : ObjectId("581ba56256d080340f03647d"), 
+    "username" : "guztuhoc@gmail.com", 
+    "password" : "e10adc3949ba59abbe56e057f20f883e", 
+    "fullname" : "AUGUSTO JOSE SANTOS NASCIMENTO"
+}
+{ 
+    "_id" : ObjectId("581ba56256d080340f03647e"), 
+    "username" : "lotsfu@gmail.com", 
+    "password" : "e10adc3949ba59abbe56e057f20f883e", 
+    "fullname" : "BRUNNO RAFAELL FERREIRA ROCHA"
+}
+{ 
+    "_id" : ObjectId("581ba56256d080340f03647f"), 
+    "username" : "business.caiohenrique@gmail.com", 
+    "password" : "e10adc3949ba59abbe56e057f20f883e", 
+    "fullname" : "CAIO HENRIQUE SOUSA PEREIRA"
+}
+{ 
+    "_id" : ObjectId("581ba56256d080340f036480"), 
+    "username" : "caiomanfredini.15@gmail.com", 
+    "password" : "e10adc3949ba59abbe56e057f20f883e", 
+    "fullname" : "CAIO MANFREDINI DA SILVA MARTIN"
+}
+{ 
+    "_id" : ObjectId("581ba56256d080340f036481"), 
+    "username" : "caio_1455@hotmail.com", 
+    "password" : "e10adc3949ba59abbe56e057f20f883e", 
+    "fullname" : "CAIO VINICIUS SANTOS LOBATO"
+}
+{ 
+    "_id" : ObjectId("581ba56256d080340f036482"), 
+    "username" : "christyellenn@hotmail.com", 
+    "password" : "e10adc3949ba59abbe56e057f20f883e", 
+    "fullname" : "CHRISTYELLEN DE SOUZA COSTA LIMA"
+}
+{ 
+    "_id" : ObjectId("581ba56256d080340f036483"), 
+    "username" : "dayvissoncosta@hotmail.com", 
+    "password" : "e10adc3949ba59abbe56e057f20f883e", 
+    "fullname" : "DAYVISSON ANTONIO SOUSA COSTA"
+}
+{ 
+    "_id" : ObjectId("581ba56256d080340f036484"), 
+    "username" : "ednara.asp@gmail.com", 
+    "password" : "e10adc3949ba59abbe56e057f20f883e", 
+    "fullname" : "EDNARA APARECIDA DOS SANTOS PEREIRA"
+}
+{ 
+    "_id" : ObjectId("581ba56256d080340f036485"), 
+    "username" : "eloi.camara@hotmail.com", 
+    "password" : "e10adc3949ba59abbe56e057f20f883e", 
+    "fullname" : "ELOI RAPOSO CAMARA JUNIOR"
+}
+{ 
+    "_id" : ObjectId("581ba56256d080340f036486"), 
+    "username" : "sulferine1@gmail.com", 
+    "password" : "e10adc3949ba59abbe56e057f20f883e", 
+    "fullname" : "ESTELA ROSA MENDES"
+}
+{ 
+    "_id" : ObjectId("581ba56256d080340f036487"), 
+    "username" : "juventude_fernandinho@hotmail.com", 
+    "password" : "e10adc3949ba59abbe56e057f20f883e", 
+    "fullname" : "FERNANDO LOPES RODRIGUES"
+}
+{ 
+    "_id" : ObjectId("581ba56256d080340f036488"), 
+    "username" : "fjuniorxd@hotmail.com", 
+    "password" : "e10adc3949ba59abbe56e057f20f883e", 
+    "fullname" : "FRANCISCO CARLOS FERREIRA LIMA JUNIOR"
+}
+{ 
+    "_id" : ObjectId("581ba56256d080340f036489"), 
+    "username" : "franciscold@bol.com.br", 
+    "password" : "e10adc3949ba59abbe56e057f20f883e", 
+    "fullname" : "FRANCISCO LEANDRO DE SOUZA RODRIGUES"
+}
+{ 
+    "_id" : ObjectId("581ba56256d080340f03648a"), 
+    "username" : "gpcfreitas@gmail.com", 
+    "password" : "e10adc3949ba59abbe56e057f20f883e", 
+    "fullname" : "GABRIEL PHELIPE COSTA FREITAS"
+}
+{ 
+    "_id" : ObjectId("581ba56256d080340f03648b"), 
+    "username" : "hannah.nunes@hotmail.com", 
+    "password" : "e10adc3949ba59abbe56e057f20f883e", 
+    "fullname" : "HANNA DE FATIMA ROCHA NUNES"
+}
+{ 
+    "_id" : ObjectId("581ba56256d080340f03648c"), 
+    "username" : "heltonlouis@yahoo.com.br", 
+    "password" : "e10adc3949ba59abbe56e057f20f883e", 
+    "fullname" : "HELTON LUIS DE SOUZA E SILVA"
+}
+{ 
+    "_id" : ObjectId("581ba56256d080340f03648d"), 
+    "username" : "igor.rafael.estrela@hotmail.com", 
+    "password" : "e10adc3949ba59abbe56e057f20f883e", 
+    "fullname" : "IGOR RAFAEL BARBOSA ESTRELA"
+}
+{ 
+    "_id" : ObjectId("581ba56256d080340f03648e"), 
+    "username" : "limaiury99@gmail.com", 
+    "password" : "e10adc3949ba59abbe56e057f20f883e", 
+    "fullname" : "IURY LUIS LIMA RIBEIRO"
+}
+{ 
+    "_id" : ObjectId("581ba56256d080340f03648f"), 
+    "username" : "janieloliveira55@gmail.com", 
+    "password" : "e10adc3949ba59abbe56e057f20f883e", 
+    "fullname" : "JANIEL DE OLIVEIRA MORAES"
+}
+{ 
+    "_id" : ObjectId("581ba56256d080340f036490"), 
+    "username" : "gabriel_kstro@hotmail.com", 
+    "password" : "e10adc3949ba59abbe56e057f20f883e", 
+    "fullname" : "JOAO GABRIEL CASTRO BELEM"
+}
+{ 
+    "_id" : ObjectId("581ba56256d080340f036491"), 
+    "username" : "njvcarvalho@gmail.com", 
+    "password" : "e10adc3949ba59abbe56e057f20f883e", 
+    "fullname" : "JOAO VITOR NUNES CARVALHO"
+}
+{ 
+    "_id" : ObjectId("581ba56256d080340f036492"), 
+    "username" : "jorgeribeiro116@hotmail.com", 
+    "password" : "e10adc3949ba59abbe56e057f20f883e", 
+    "fullname" : "JORGE ANTONIO RIBEIRO MACIEL"
+}
+{ 
+    "_id" : ObjectId("581ba56256d080340f036493"), 
+    "username" : "abreuneto12@hotmail.com", 
+    "password" : "e10adc3949ba59abbe56e057f20f883e", 
+    "fullname" : "JOSE DE ABREU SILVA NETO"
+}
+{ 
+    "_id" : ObjectId("581ba56256d080340f036494"), 
+    "username" : "eduardo.jeso@gmail.com", 
+    "password" : "e10adc3949ba59abbe56e057f20f883e", 
+    "fullname" : "JOSE EDUARDO DE SOUZA OLIVEIRA"
+}
+{ 
+    "_id" : ObjectId("581ba56256d080340f036495"), 
+    "username" : "murilo4zevedo@gmail.com", 
+    "password" : "e10adc3949ba59abbe56e057f20f883e", 
+    "fullname" : "JOSE MURILO DE CASTRO AZEVEDO FILHO"
+}
+{ 
+    "_id" : ObjectId("581ba56256d080340f036496"), 
+    "username" : "jmuniz348@gmail.com", 
+    "password" : "e10adc3949ba59abbe56e057f20f883e", 
+    "fullname" : "JOSE RIBAMAR MUNIZ JUNIOR"
+}
+{ 
+    "_id" : ObjectId("581ba56256d080340f036497"), 
+    "username" : "kleryssonbg@hotmail.com", 
+    "password" : "e10adc3949ba59abbe56e057f20f883e", 
+    "fullname" : "KLERYSSON DE JESUS BOGEA GOIS"
+}
+{ 
+    "_id" : ObjectId("581ba56256d080340f036498"), 
+    "username" : "leeobennets@gmail.com", 
+    "password" : "e10adc3949ba59abbe56e057f20f883e", 
+    "fullname" : "LEONARDO COELHO PEREIRA"
+}
+{ 
+    "_id" : ObjectId("581ba56256d080340f036499"), 
+    "username" : "f_luanny@live.com", 
+    "password" : "e10adc3949ba59abbe56e057f20f883e", 
+    "fullname" : "LUANNY LOPES FERNANDES"
+}
+{ 
+    "_id" : ObjectId("581ba56256d080340f03649a"), 
+    "username" : "lag.cpc@gmail.com", 
+    "password" : "e10adc3949ba59abbe56e057f20f883e", 
+    "fullname" : "LUCAS DE ARRUDA GOMES"
+}
+{ 
+    "_id" : ObjectId("581ba56256d080340f03649b"), 
+    "username" : "lucasmelofranca@outlook.com", 
+    "password" : "e10adc3949ba59abbe56e057f20f883e", 
+    "fullname" : "LUCAS DE MELO COSTA FRANCA"
+}
+{ 
+    "_id" : ObjectId("581ba56256d080340f03649c"), 
+    "username" : "macielmoreis@hotmail.com", 
+    "password" : "e10adc3949ba59abbe56e057f20f883e", 
+    "fullname" : "MACIELMO COSTA REIS"
+}
+{ 
+    "_id" : ObjectId("581ba56256d080340f03649d"), 
+    "username" : "junior33araujo@hotmail.com", 
+    "password" : "e10adc3949ba59abbe56e057f20f883e", 
+    "fullname" : "MARCOS ANTONIO DE ARAUJO FERREIRA JUNIOR"
+}
+{ 
+    "_id" : ObjectId("581ba56256d080340f03649e"), 
+    "username" : "marcosvinicius2005@live.com", 
+    "password" : "e10adc3949ba59abbe56e057f20f883e", 
+    "fullname" : "MARCOS VINICIUS CORREIA LEITE"
+}
+{ 
+    "_id" : ObjectId("581ba56256d080340f03649f"), 
+    "username" : "mn-cage@hotmail.com", 
+    "password" : "e10adc3949ba59abbe56e057f20f883e", 
+    "fullname" : "MARLOS NIXON SERRA LIMA"
+}
+{ 
+    "_id" : ObjectId("581ba56256d080340f0364a0"), 
+    "username" : "mateuscunha.777@gmail.com", 
+    "password" : "e10adc3949ba59abbe56e057f20f883e", 
+    "fullname" : "MATEUS CUNHA DOS SANTOS"
+}
+{ 
+    "_id" : ObjectId("581ba56256d080340f0364a1"), 
+    "username" : "matheus-fel-98@hotmail.com", 
+    "password" : "e10adc3949ba59abbe56e057f20f883e", 
+    "fullname" : "MATHEUS RODRIGUES FELIPE"
+}
+{ 
+    "_id" : ObjectId("581ba56256d080340f0364a2"), 
+    "username" : "mikaelhjfb@gmail.com", 
+    "password" : "e10adc3949ba59abbe56e057f20f883e", 
+    "fullname" : "MIKAEL HERNANDES DE JESUS FILGUEIRAS BARROS"
+}
+{ 
+    "_id" : ObjectId("581ba56256d080340f0364a3"), 
+    "username" : "nick_cyan@hotmail.com", 
+    "password" : "e10adc3949ba59abbe56e057f20f883e", 
+    "fullname" : "NIKKI LÖHNHOFF CASTRO FERREIRA"
+}
+{ 
+    "_id" : ObjectId("581ba56256d080340f0364a4"), 
+    "username" : "pedrocaue94@hotmail.com", 
+    "password" : "e10adc3949ba59abbe56e057f20f883e", 
+    "fullname" : "PEDRO CAUE BEZERRA DE MAGALHAES"
+}
+{ 
+    "_id" : ObjectId("581ba56256d080340f0364a5"), 
+    "username" : "pedro.felipe.silva@hotmail.com", 
+    "password" : "e10adc3949ba59abbe56e057f20f883e", 
+    "fullname" : "PEDRO FELIPE CASTRO SILVA"
+}
+{ 
+    "_id" : ObjectId("581ba56256d080340f0364a6"), 
+    "username" : "pedeziq2@hotmail.com", 
+    "password" : "e10adc3949ba59abbe56e057f20f883e", 
+    "fullname" : "PEDRO HENRIQUE CARVALHO VIEIRA"
+}
+{ 
+    "_id" : ObjectId("581ba56256d080340f0364a7"), 
+    "username" : "rnbcantanhede1@gmail.com", 
+    "password" : "e10adc3949ba59abbe56e057f20f883e", 
+    "fullname" : "RAIMUNDO NONATO BALTAZAR CANTANHEDE"
+}
+{ 
+    "_id" : ObjectId("581ba56256d080340f0364a8"), 
+    "username" : "raylanzeeroo@outlook.com", 
+    "password" : "e10adc3949ba59abbe56e057f20f883e", 
+    "fullname" : "RAYLAN DOS SANTOS CUNHA"
+}
+{ 
+    "_id" : ObjectId("581ba56256d080340f0364a9"), 
+    "username" : "renanxd7x@hotmail.com", 
+    "password" : "e10adc3949ba59abbe56e057f20f883e", 
+    "fullname" : "RENAN DA CONCEICAO MENDES"
+}
+{ 
+    "_id" : ObjectId("581ba56256d080340f0364aa"), 
+    "username" : "rickmiguens@hotmail.com", 
+    "password" : "e10adc3949ba59abbe56e057f20f883e", 
+    "fullname" : "RICARDO AGUIAR MIGUENS"
+}
+{ 
+    "_id" : ObjectId("581ba56256d080340f0364ab"), 
+    "username" : "ricardo.nescap@hotmail.com", 
+    "password" : "e10adc3949ba59abbe56e057f20f883e", 
+    "fullname" : "RICARDO RODRIGUES ROCHA"
+}
+{ 
+    "_id" : ObjectId("581ba56256d080340f0364ac"), 
+    "username" : "saintclair_netto@hotmail.com", 
+    "password" : "e10adc3949ba59abbe56e057f20f883e", 
+    "fullname" : "SAINT CLAIR SOARES SILVA NETO"
+}
+{ 
+    "_id" : ObjectId("581ba56256d080340f0364ad"), 
+    "username" : "costasantos4@gmail.com", 
+    "password" : "e10adc3949ba59abbe56e057f20f883e", 
+    "fullname" : "VICTOR AUGUSTO COSTA SANTOS"
+}
+{ 
+    "_id" : ObjectId("581ba56256d080340f0364ae"), 
+    "username" : "vepifanio1@gmail.com", 
+    "password" : "e10adc3949ba59abbe56e057f20f883e", 
+    "fullname" : "VICTOR EPIFANIO SANTOS PAIVA"
+}
+{ 
+    "_id" : ObjectId("581ba56256d080340f0364af"), 
+    "username" : "wall.melonio@outlook.com", 
+    "password" : "e10adc3949ba59abbe56e057f20f883e", 
+    "fullname" : "WALLACE DAVID MELONIO SOUSA"
+}
+{ 
+    "_id" : ObjectId("581ba56256d080340f0364b0"), 
+    "username" : "wellisonhatake@hotmail.com", 
+    "password" : "e10adc3949ba59abbe56e057f20f883e", 
+    "fullname" : "WELLISON SILVA SANTOS"
+}
+{ 
+    "_id" : ObjectId("581ba56256d080340f0364b1"), 
+    "username" : "yandson.jesus@gmail.com", 
+    "password" : "e10adc3949ba59abbe56e057f20f883e", 
+    "fullname" : "YANDSON DE JESUS SARAIVA COSTA"
+}

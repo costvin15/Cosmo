@@ -1,0 +1,20 @@
+- Login
+    - Criar Usuário
+    - Esqueceu Senha
+
+- Perfil
+    - Manter Perfil
+
+- Administração
+    - Manter Usuários
+    - Manter Turma
+    - Manter Atividade
+
+- Turma
+    - Participar de uma turma
+    - Sair de uma turma
+    - Manter Turma
+    - Criar Atividade
+    - Excluir Atividade
+    - Vincular Atividade
+    - Criar Arvore de Apredizagem da turma

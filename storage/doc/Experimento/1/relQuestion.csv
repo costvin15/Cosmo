@@ -1,0 +1,23 @@
+Questão;Alunos;Tempo Total;Dias
+Faça um programa que lê dois numeros inteiros e imprime a soma destes dois números.;36;443;7;
+Faça um programa que exibe o maior número inteiro entre dois números informados na entrada.;31;338;6;
+Faça um programa que lê três inteiros e imprima true se a soma dos dois primeiros for maior que o terceiro inteiro.;31;373;4;
+Faça um programa que lê três inteiros e exibe true se a média deles for maior ou igual a 7 ou false em caso contrário.;29;383;5;
+Faça um programa que leia um número real &quotx&quot e exiba o resultado da equação de segundo grau f(x^2 - 2x + 3).;27;364;4;
+Faça um programa que exiba o maior inteiro entre 3 (três) variáveis a, b e c.;29;385;7;
+Desenvolva um programa que receba o placar de um jogo de futebol (os gols de cada time) e informa se o resultado foi um "Empate", a vitória do "Time1" ou do "Time2".;30;348;4;
+Faça um programa que lê do usuário a medida dos lados de um triângulo e informa se o mesmo é "equilatero", "isosceles" e "escaleno". Equilátero são triângulos com as três medidas de lados iguais. Isósceles são triângulos com duas medidas de lados iguais. Escaleno são triângulos com as três medidas de lados diferentes.;28;360;6;
+Faça um programa que recebe uma data de nascimento e retorna o signo referente àquela data.;0;0;0;
+Faça um programa que recebe um número de 1 a 12 e retorna o mês correspondente a esse número.;28;365;8;
+<p>Expresse uma certa quantidade de tempo em segundos.</p>;9;106;4;
+<p>Receba quatro &acircngulos e diga se podem formar um quadril&aacutetero.</p>;3;36;3;
+<p>Receba tr&ecircs n&uacutemeros e diga se est&atildeo organizador de maneira crescente, decrescente ou nenhuma das duas.</p>;6;68;3;
+<p>Receba cinco n&uacutemeros e diga se a mediana dos quatro primeiros &eacute maior do que o quinto.</p>;3;31;3;
+<p>Recebe dois n&uacutemeros e diz se o primeiro &eacute divisor do segundo.</p>;5;61;5;
+<p>Recebe os 3 coeficientes de uma equa&ccedil&atildeo do segundo grau e retorna o n&uacutemero de ra&iacutezes reais.</p>;4;38;3;
+<p>Fa&ccedila um programa que recebe um caractere e retorna 'n&uacutemero', 'letra mai&uacutescula' ou 'letra min&uacutescula'.</p>;2;29;2;
+<p>Receba dois n&uacutemeros e um sinal de adi&ccedil&atildeo ou subtra&ccedil&atildeo e realize a opera&ccedil&atildeo de acordo.</p>;0;0;0;
+<p>Fa&ccedila um programa que l&ecirc duas strings e retorna True, se forem iguais, ou False se forem diferentes.</p>;2;22;2;
+<p>Receba duas strings e retorn uma string&nbspque cont&eacutem a concatena&ccedil&atildeo das strings de entrada.</p>;0;0;0;
+<p>Receba um inteiro representando uma renda e retorne uma classifica&ccedil&atildeo de acordo com a tabela.</p>;5;58;3;
+<p>Receba dois n&uacutemeros e um caractere correspondendo &agrave opera&ccedil&atildeo desejada e retorne o resultado.</p>;0;0;0;

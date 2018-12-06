@@ -1,0 +1,396 @@
+{ 
+    "_id" : ObjectId("580ff69b5bd49c0ac5809682"), 
+    "created_at" : ISODate("2016-10-25T21:56:27.000+0000"), 
+    "title" : "Somando dois inteiros", 
+    "question" : "Faça um programa que lê dois numeros inteiros e imprime a soma destes dois números.", 
+    "fullquestion" : "<p>Fa&ccedil;a um programa que l&ecirc; dois n&uacute;meros inteiros e imprima como resultado a soma desses dois inteiros.</p><p><strong>Entrada</strong></p><p>Dois inteiros a e b, sendo que os valores de a e b est&atilde;o no intervalo de -10000 a 10000 (inclusive).</p><p><strong>Sa&iacute;da</strong></p><p>Um inteiro, que corresponde ao resultado da soma a+b.</p><p><strong>Exemplos de Entrada e Sa&iacute;da</strong></p><table class='table table-striped'><tbody><tr><td><p><strong>Entrada</strong></p></td><td><p><strong>Respectiva Sa&iacute;da</strong></p></td></tr><tr><td><p><strong>12 5</strong></p></td><td><p><strong>17</strong></p></td></tr><tr><td><p><strong>-3 -18</strong></p></td><td><p><strong>-21</strong></p></td></tr></tbody></table>", 
+    "activities" : [
+        {
+            "model" : {
+                "in" : BinData(0, "MSAxCg=="), 
+                "out" : BinData(0, "Mgo=")
+            }, 
+            "plugin" : "App\\PluginActivities\\Problems\\Mapper\\Config"
+        }
+    ], 
+    "order" : NumberInt(1), 
+    "group" : DBRef("GroupActivities", ObjectId("581a10bd7b3ceb04bb7b47cd"), "BD_COSMO")
+}
+{ 
+    "_id" : ObjectId("581a26437b3ceb04bb7b47db"), 
+    "created_at" : ISODate("2016-11-02T14:07:27.000+0000"), 
+    "title" : "Maior de um par de inteiros", 
+    "question" : "Faça um programa que exibe o maior número inteiro entre dois números informados na entrada.", 
+    "fullquestion" : "<p>Fa&ccedil;a um programa que exibe o maior n&uacute;mero inteiro entre dois n&uacute;meros informados na entrada.</p><p><strong>Entrada</strong></p><p>Dois inteiros a e b, sendo que os valores de a e b est&atilde;o no intervalo de -10000 a 10000 (inclusive).</p><p><strong>Sa&iacute;da</strong></p><p>Um inteiro, que corresponde ao maior entre os dois inteiros.</p><p>&nbsp;</p><p><strong>Exemplos de Entrada e Sa&iacute;da</strong></p><table class='table table-striped'><tbody><tr><td><strong>Entrada</strong></td><td><strong>Respectiva Sa&iacute;da</strong></td></tr><tr><td><p>50 5</p></td><td><p>50</p></td></tr><tr><td><p>-300 0</p></td><td><p>0</p></td></tr></tbody></table>", 
+    "activities" : [
+        {
+            "model" : {
+                "in" : BinData(0, "LTUzNyA5OA=="), 
+                "out" : BinData(0, "OTg=")
+            }, 
+            "plugin" : "App\\PluginActivities\\Problems\\Mapper\\Config"
+        }
+    ], 
+    "order" : NumberInt(2), 
+    "group" : DBRef("GroupActivities", ObjectId("581a10bd7b3ceb04bb7b47cd"), "BD_COSMO")
+}
+{ 
+    "_id" : ObjectId("581a2b2a7b3ceb04bb7b47df"), 
+    "created_at" : ISODate("2016-11-02T14:07:27.000+0000"), 
+    "title" : "Maior que a soma de dois inteiros", 
+    "question" : "Faça um programa que lê três inteiros e imprima true se a soma dos dois primeiros for maior que o terceiro inteiro.", 
+    "fullquestion" : "<p>Fa&ccedil;a um programa que l&ecirc; tr&ecirc;s inteiros e imprima true se a soma dos dois primeiros for maior que o terceiro inteiro.</p><p><strong>Entrada</strong></p><p>Tr&ecirc;s inteiros a, b e c, sendo que os valores de a, b e c est&atilde;o no intervalo de -10000 a 10000 (inclusive).</p><p><strong>Sa&iacute;da</strong></p><p>Um boolean, true ou false.</p><p><strong>Exemplos de Entrada e Sa&iacute;da</strong></p><table class='table table-striped'><tbody><tr><td><p><strong>Entrada </strong></p></td><td><p><strong>Respectiva Sa&iacute;da</strong></p></td></tr><tr><td><p>100 300 20</p></td><td><p>true</p></td></tr><tr><td><p>10 10 100</p></td><td><p>false</p></td></tr></tbody></table>", 
+    "activities" : [
+        {
+            "model" : {
+                "in" : BinData(0, "LTUzNyA5OCAxMDA="), 
+                "out" : BinData(0, "ZmFsc2U=")
+            }, 
+            "plugin" : "App\\PluginActivities\\Problems\\Mapper\\Config"
+        }
+    ], 
+    "order" : NumberInt(3), 
+    "group" : DBRef("GroupActivities", ObjectId("581a10bd7b3ceb04bb7b47cd"), "BD_COSMO")
+}
+{ 
+    "_id" : ObjectId("581a2c5e7b3ceb04bb7b47e1"), 
+    "created_at" : ISODate("2016-11-02T14:07:27.000+0000"), 
+    "title" : "Média de 3 (três) valores", 
+    "question" : "Faça um programa que lê três inteiros e exibe true se a média deles for maior ou igual a 7 ou false em caso contrário.", 
+    "fullquestion" : "<p>Fa&ccedil;a um programa que l&ecirc; tr&ecirc;s inteiros e exibe true se a m&eacute;dia deles for maior ou igual a 7 ou false em caso contr&aacute;rio.</p><p><strong>Entrada</strong></p><p>Tr&ecirc;s inteiros a, b e c, sendo que os valores de a, b e c est&atilde;o no intervalo de -10000 a 10000 (inclusive).</p><p><strong>Sa&iacute;da</strong></p><p>Um boolean, true ou false.</p><p><strong>Exemplos de Entrada e Sa&iacute;da</strong></p><table class='table table-striped'><tbody><tr><td><p><strong>Entrada</strong></p></td><td><p><strong>Respectiva Sa&iacute;da</strong></p></td></tr><tr><td><p><strong>10 3 5</strong></p></td><td><p><strong>false</strong></p></td></tr><tr><td><p><strong>7 7 7</strong></p></td><td><p><strong>true</strong></p></td></tr></tbody></table>", 
+    "activities" : [
+        {
+            "model" : {
+                "in" : BinData(0, "LTMxMCA3NDMgMTM5"), 
+                "out" : BinData(0, "dHJ1ZQ==")
+            }, 
+            "plugin" : "App\\PluginActivities\\Problems\\Mapper\\Config"
+        }
+    ], 
+    "order" : NumberInt(4), 
+    "group" : DBRef("GroupActivities", ObjectId("581a10bd7b3ceb04bb7b47cd"), "BD_COSMO")
+}
+{ 
+    "_id" : ObjectId("581a2edd7b3ceb04bb7b47e6"), 
+    "created_at" : ISODate("2016-11-02T14:07:27.000+0000"), 
+    "title" : "Equação de segundo grau", 
+    "question" : "Faça um programa que leia um número real &quot;x&quot; e exiba o resultado da equação de segundo grau f(x^2 - 2x + 3).", 
+    "fullquestion" : "<p>Fa&ccedil;a um programa que leia um n&uacute;mero real &quot;x&quot; e exiba o resultado da equa&ccedil;&atilde;o de segundo grau f(x^2 - 2x + 3).</p><p><strong>Entrada</strong></p><p>Um Double ou Float a, sendo que este se encontra no intervalo de -10000 a 10000 (inclusive).</p><p><strong>Sa&iacute;da</strong></p><p>Um inteiro, que corresponde o resultado da fun&ccedil;&atilde;o.</p><p><strong>Exemplos de Entrada e Sa&iacute;da</strong></p><table class='table table-striped'><tbody><tr><td><p><strong>Entrada</strong></p></td><td><p><strong>Respectiva Sa&iacute;da</strong></p></td></tr><tr><td><p>5</p></td><td><p>18</p></td></tr><tr><td><p>1</p></td><td><p>2</p></td></tr></tbody></table>", 
+    "activities" : [
+        {
+            "model" : {
+                "in" : BinData(0, "Nzk="), 
+                "out" : BinData(0, "NjA4Ng==")
+            }, 
+            "plugin" : "App\\PluginActivities\\Problems\\Mapper\\Config"
+        }
+    ], 
+    "order" : NumberInt(5), 
+    "group" : DBRef("GroupActivities", ObjectId("581a10bd7b3ceb04bb7b47cd"), "BD_COSMO")
+}
+{ 
+    "_id" : ObjectId("581a316e7b3ceb04bb7b47e8"), 
+    "created_at" : ISODate("2016-11-02T14:07:27.000+0000"), 
+    "title" : "O maior de 3 (três) números", 
+    "question" : "Faça um programa que exiba o maior inteiro entre 3 (três) variáveis a, b e c.", 
+    "fullquestion" : "<p>Fa&ccedil;a um programa que exiba o maior inteiro entre 3 (tr&ecirc;s) vari&aacute;veis a, b e c.</p><p><strong>Entrada</strong></p><p>Tr&ecirc;s inteiros a, b e c, sendo que os valores de a, b e c est&atilde;o no intervalo de -10000 a 10000 (inclusive).</p><p><strong>Sa&iacute;da</strong></p><p>Um inteiro, que corresponde o maior entre os 3 (tr&ecirc;s) inteiros.</p><p><strong>Exemplos de Entrada e Sa&iacute;da</strong></p><table class='table table-striped'><tbody><tr><td><p><strong>Entrada</strong></p></td><td><p><strong>Respectiva Sa&iacute;da</strong></p></td></tr><tr><td><p><strong>10 15 20</strong></p></td><td><p><strong>20</strong></p></td></tr><tr><td><p><strong>20 20 15</strong></p></td><td><p><strong>20</strong></p></td></tr></tbody></table>", 
+    "activities" : [
+        {
+            "model" : {
+                "in" : BinData(0, "LTgwOCAtMTI2IC0zMDY="), 
+                "out" : BinData(0, "LTEyNg==")
+            }, 
+            "plugin" : "App\\PluginActivities\\Problems\\Mapper\\Config"
+        }
+    ], 
+    "order" : NumberInt(6), 
+    "group" : DBRef("GroupActivities", ObjectId("581a10bd7b3ceb04bb7b47cd"), "BD_COSMO")
+}
+{ 
+    "_id" : ObjectId("581a32397b3ceb04bb7b47ea"), 
+    "created_at" : ISODate("2016-11-02T14:07:27.000+0000"), 
+    "title" : "O Placar de um jogo de futebol", 
+    "question" : "Desenvolva um programa que receba o placar de um jogo de futebol (os gols de cada time) e informa se o resultado foi um \"Empate\", a vitória do \"Time1\" ou do \"Time2\".", 
+    "fullquestion" : "<p>Desenvolva um programa que receba o placar de um jogo de futebol (os gols de cada time) e informa se o resultado foi um &quot;Empate&quot;, a vit&oacute;ria do &quot;Time1&quot; ou do &quot;Time2&quot;.</p><p><strong>Entrada</strong></p><p>Dois inteiros a e b, sendo que os valores de a e b est&atilde;o no intervalo de 0 a 10 (inclusive).</p><p><strong>Sa&iacute;da</strong></p><p>Uma string, que corresponde ao time vencedor ou em caso de empate.</p><p><strong>Exemplos de Entrada e Sa&iacute;da</strong></p><table class='table table-striped'><tbody><tr><td><p><strong>Entrada</strong></p></td><td><p><strong>Respectiva Sa&iacute;da</strong></p></td></tr><tr><td><p><strong>1 7</strong></p></td><td><p><strong>Time2</strong></p></td></tr><tr><td><p><strong>4 1</strong></p></td><td><p><strong>Time1</strong></p></td></tr><tr><td><p><strong>1 1</strong></p></td><td><p><strong>Empate</strong></p></td></tr></tbody></table>", 
+    "activities" : [
+        {
+            "model" : {
+                "in" : BinData(0, "NCA1"), 
+                "out" : BinData(0, "VGltZTI=")
+            }, 
+            "plugin" : "App\\PluginActivities\\Problems\\Mapper\\Config"
+        }
+    ], 
+    "order" : NumberInt(7), 
+    "group" : DBRef("GroupActivities", ObjectId("581a1cab7b3ceb04bb7b47d2"), "BD_COSMO")
+}
+{ 
+    "_id" : ObjectId("581a336f7b3ceb04bb7b47ec"), 
+    "created_at" : ISODate("2016-11-02T14:07:27.000+0000"), 
+    "title" : "Classificando triângulo quanto aos lados", 
+    "question" : "Faça um programa que lê do usuário a medida dos lados de um triângulo e informa se o mesmo é \"equilatero\", \"isosceles\" e \"escaleno\". Equilátero são triângulos com as três medidas de lados iguais. Isósceles são triângulos com duas medidas de lados iguais. Escaleno são triângulos com as três medidas de lados diferentes.", 
+    "fullquestion" : "<p>Fa&ccedil;a um programa que l&ecirc; do usu&aacute;rio a medida dos lados de um tri&acirc;ngulo e informa se o mesmo &eacute; &quot;equilatero&quot;, &quot;isosceles&quot; e &quot;escaleno&quot;. Equil&aacute;tero s&atilde;o tri&acirc;ngulos com as tr&ecirc;s medidas de lados iguais. Is&oacute;sceles s&atilde;o tri&acirc;ngulos com duas medidas de lados iguais. Escaleno s&atilde;o tri&acirc;ngulos com as tr&ecirc;s medidas de lados diferentes.</p><p><strong>Entrada</strong></p><p>Tr&ecirc;s inteiros a, b e c, sendo no intervalo de 1 a 50 (inclusive).</p><p><strong>Sa&iacute;da</strong></p><p>Uma string, que corresponde a classifica&ccedil;&atilde;o do tri&acirc;ngulo.</p><p><strong>Exemplos de Entrada e Sa&iacute;da</strong></p><table class='table table-striped'><tbody><tr><td><p><strong>Entrada</strong></p></td><td><p><strong>Respectiva Sa&iacute;da</strong></p></td></tr><tr><td><p>10 20 30</p></td><td><p>escaleno</p></td></tr><tr><td><p>10 10 10</p></td><td><p>equilatero</p></td></tr><tr><td><p>18 10 18</p></td><td><p>isosceles</p></td></tr></tbody></table>", 
+    "activities" : [
+        {
+            "model" : {
+                "in" : BinData(0, "MTQgMTQgMTQ="), 
+                "out" : BinData(0, "ZXF1aWxhdGVybw==")
+            }, 
+            "plugin" : "App\\PluginActivities\\Problems\\Mapper\\Config"
+        }
+    ], 
+    "order" : NumberInt(8), 
+    "group" : DBRef("GroupActivities", ObjectId("581a1cab7b3ceb04bb7b47d2"), "BD_COSMO")
+}
+{ 
+    "_id" : ObjectId("581a3bd97b3ceb04bb7b47f5"), 
+    "created_at" : ISODate("2016-11-02T14:07:27.000+0000"), 
+    "title" : "Signos com Walter Mercado", 
+    "question" : "Faça um programa que recebe uma data de nascimento e retorna o signo referente àquela data.", 
+    "fullquestion" : "<p>Fa&ccedil;a um programa que recebe uma data de nascimento e retorna o signo referente &agrave;quela data.</p><ul><li>Signo de &Aacute;ries (21/3 - 20/4)</li><li>Signo de Touro (21/4 - 21/5)</li><li>Signo de G&ecirc;meos (22/5 - 21/6)</li><li>Signo de C&acirc;ncer (21/6 - 23/7)</li><li>Signo de Le&atilde;o (24/7 - 23/8)</li><li>Signo de Virgem (24/8 - 23/9)</li><li>Signo de Libra (24/9 - 23/10)</li><li>Signo de Escorpi&atilde;o (24/10 - 22/11)</li><li>Signo de Sagit&aacute;rio (23/11 - 21/12)</li><li>Signo de Capric&oacute;rnio (22/12 - 20/1)</li><li>Signo de Aqu&aacute;rio (21/1 - 19/2)</li><li>Signo de Peixes (20/2 - 20/3)</li></ul><p>Formato dos signos para a sa&iacute;da: aries, touro, gemeos, cancer, leao, virgem, libra, escorpiao, sagitario, capricornio, aquario, peixes</p><div class=\"row\"><div class=\"col-lg-9\"><p><strong>Entrada</strong></p><p>Um data v&aacute;lida.</p><p><strong>Sa&iacute;da</strong></p><p>Uma string, que corresponde signo repassado a data.</p></div><div class=\"col-lg-3\"><img src=\"http://www.grunz.com.br/wp-content/uploads/2013/09/bola.jpg\" class=\"img-responsive\"></div></div><p><strong>Exemplos de Entrada e Sa&iacute;da</strong></p><table class='table table-striped'><tbody><tr><td><p><strong>Entrada</strong></p></td><td><p><strong>Respectiva Sa&iacute;da</strong></p></td></tr><tr><td><p>08/11/2016</p></td><td><p>escorpiao</p></td></tr><tr><td><p>03/06/1985</p></td><td><p>gemeos</p></td></tr></tbody></table>", 
+    "activities" : [
+        {
+            "model" : {
+                "in" : BinData(0, "MDgvMTEvMjAxNg=="), 
+                "out" : BinData(0, "ZXNjb3JwaWFv")
+            }, 
+            "plugin" : "App\\PluginActivities\\Problems\\Mapper\\Config"
+        }
+    ], 
+    "order" : NumberInt(11), 
+    "group" : DBRef("GroupActivities", ObjectId("581a237c7b3ceb04bb7b47d7"), "BD_COSMO")
+}
+{ 
+    "_id" : ObjectId("581a3f4a7b3ceb04bb7b47f7"), 
+    "created_at" : ISODate("2016-11-02T14:07:27.000+0000"), 
+    "title" : "Qual o mês?", 
+    "question" : "Faça um programa que recebe um número de 1 a 12 e retorna o mês correspondente a esse número.", 
+    "fullquestion" : "<p>Fa&ccedil;a um programa que recebe um n&uacute;mero de 1 a 12 e retorna o m&ecirc;s correspondente a esse n&uacute;mero.</p><p>Formato dos signos para a sa&iacute;da: janeiro, fevereiro, marco, abril, maio, junho, julho, agosto, setembro, outubro, novembro, dezembro</p><p><strong>Entrada</strong></p><p>Um inteiro entre 1 e 12, inclusivo.</p><p><strong>Sa&iacute;da</strong></p><p>Uma string, que corresponde ao m&ecirc;s.</p><p><strong>Exemplos de Entrada e Sa&iacute;da</strong></p><table class='table table-striped'><tbody><tr><td><p><strong>Entrada</strong></p></td><td><p><strong>Respectiva Sa&iacute;da</strong></p></td></tr><tr><td><p>1</p></td><td><p>janeiro</p></td></tr><tr><td><p>12</p></td><td><p>dezembro</p></td></tr></tbody></table>", 
+    "activities" : [
+        {
+            "model" : {
+                "in" : BinData(0, "MQ=="), 
+                "out" : BinData(0, "amFuZWlybw==")
+            }, 
+            "plugin" : "App\\PluginActivities\\Problems\\Mapper\\Config"
+        }
+    ], 
+    "order" : NumberInt(10), 
+    "group" : DBRef("GroupActivities", ObjectId("581a237c7b3ceb04bb7b47d7"), "BD_COSMO")
+}
+{ 
+    "_id" : ObjectId("582b6e9a4c585760efc40cbb"), 
+    "created_at" : ISODate("2016-11-02T14:07:27.000+0000"), 
+    "title" : "<p>Tempo em segundos</p>", 
+    "question" : "<p>Expresse uma certa quantidade de tempo em segundos.</p>", 
+    "fullquestion" : "<p>Fa&ccedil;a um programa que tem uma entrada de tr&ecirc;s valores inteiros que expressam um per&iacute;odo de tempo em horas, minutos e segundos (respectivamente nessa ordem) e expresse o mesmo periodo de tempo somente em segundos.</p><p><strong>Entrada</strong></p><p>3 Inteiros correspondente a Hora , Minuto e Segundo</p><p><strong>Sa&iacute;da</strong></p><p>1 Inteiro Correspondente aos Segundos</p><p>&nbsp;</p><p><strong>Exemplos de Entrada e Sa&iacute;da</strong></p><table class='table table-striped'><tbody><tr><td><strong>Entrada</strong></td><td><strong>Respectiva Sa&iacute;da</strong></td></tr><tr><td><p>0 20 30</p></td><td><p>1230</p></td></tr><tr><td><p>1 0 0</p></td><td><p>3600</p></td></tr></tbody></table>", 
+    "activities" : [
+        {
+            "model" : {
+                "in" : BinData(0, "MiAwIDMw"), 
+                "out" : BinData(0, "NzIzMA==")
+            }, 
+            "plugin" : "App\\PluginActivities\\Problems\\Mapper\\Config"
+        }
+    ], 
+    "order" : NumberInt(11), 
+    "group" : DBRef("GroupActivities", ObjectId("581a10bd7b3ceb04bb7b47cd"), "BD_COSMO")
+}
+{ 
+    "_id" : ObjectId("582b72954c58576aff0634fd"), 
+    "created_at" : ISODate("2016-11-02T14:07:27.000+0000"), 
+    "title" : "<p>Testa constru&ccedil;&atilde;o&nbsp;de quadilatero</p>", 
+    "question" : "<p>Receba quatro &acirc;ngulos e diga se podem formar um quadril&aacute;tero.</p>", 
+    "fullquestion" : "<p>Fa&ccedil;a um programa que recebe 4 &acirc;ngulos e retorne true caso seja poss&iacute;vel construir um quadril&aacute;tero a partir desses &acirc;ngulos, ou false caso n&atilde;o seja poss&iacute;vel construir um quadril&aacute;tero.</p><p><strong>Entrada</strong></p><p>4 Inteiros correspondente aos &acirc;ngulos.</p><p><strong>Sa&iacute;da</strong></p><p>True se for poss&iacute;vel criar um quadril&aacute;tero e false se n&atilde;o for.</p><p>&nbsp;</p><p><strong>Exemplos de Entrada e Sa&iacute;da</strong></p><table class='table table-striped'><tbody><tr><td><strong>Entrada</strong></td><td><strong>Respectiva Sa&iacute;da</strong></td></tr><tr><td><p>90 90 90 90</p></td><td><p>True</p></td></tr><tr><td><p>60 120 120 120</p></td><td><p>False</p></td></tr></tbody></table>", 
+    "activities" : [
+        {
+            "model" : {
+                "in" : BinData(0, "MzAgMzAgMzAgMjcw"), 
+                "out" : BinData(0, "VHJ1ZQ==")
+            }, 
+            "plugin" : "App\\PluginActivities\\Problems\\Mapper\\Config"
+        }
+    ], 
+    "order" : NumberInt(12), 
+    "group" : DBRef("GroupActivities", ObjectId("581a10bd7b3ceb04bb7b47cd"), "BD_COSMO")
+}
+{ 
+    "_id" : ObjectId("582b72c04c58576aff0634fe"), 
+    "created_at" : ISODate("2016-11-02T14:07:27.000+0000"), 
+    "title" : "<p>Indicador de organiza&ccedil;&atilde;o</p>", 
+    "question" : "<p>Receba tr&ecirc;s n&uacute;meros e diga se est&atilde;o organizador de maneira crescente, decrescente ou nenhuma das duas.</p>", 
+    "fullquestion" : "<p>Fa&ccedil;a um programa que recebe tr&ecirc;s numeros e retorne se os tr&ecirc;s n&uacute;meros est&atilde;o organizados em ordem crescente, ordem decrescente ou desordenado.</p><p><strong>Entrada</strong></p><p>3 Inteiros.</p><p><strong>Sa&iacute;da</strong></p><p>Crescente, decrescente ou desordenado.</p><p>&nbsp;</p><p><strong>Exemplos de Entrada e Sa&iacute;da</strong></p><table class='table table-striped'><tbody><tr><td><strong>Entrada</strong></td><td><strong>Respectiva Sa&iacute;da</strong></td></tr><tr><td><p>0 20 30</p></td><td><p>crescente</p></td></tr><tr><td><p>3 2 1</p></td><td><p>decrescente</p></td></tr></tbody></table>", 
+    "activities" : [
+        {
+            "model" : {
+                "in" : BinData(0, "MTAgNSAy"), 
+                "out" : BinData(0, "ZGVjcmVzY2VudGU=")
+            }, 
+            "plugin" : "App\\PluginActivities\\Problems\\Mapper\\Config"
+        }
+    ], 
+    "order" : NumberInt(13), 
+    "group" : DBRef("GroupActivities", ObjectId("581a10bd7b3ceb04bb7b47cd"), "BD_COSMO")
+}
+{ 
+    "_id" : ObjectId("582b72ed4c58576aff0634ff"), 
+    "created_at" : ISODate("2016-11-02T14:07:27.000+0000"), 
+    "title" : "<p>Compara n&uacute;mero com mediana</p>", 
+    "question" : "<p>Receba cinco n&uacute;meros e diga se a mediana dos quatro primeiros &eacute; maior do que o quinto.</p>", 
+    "fullquestion" : "<p>Fa&ccedil;a um programa que receba cinco n&uacute;meros e imprima true se a mediana dos quatro primeiros n&uacute;meros for menor que o quinto n&uacute;mero. Os quatro primeiros n&uacute;meros est&atilde;o em ordem crescente.</p><p><strong>Entrada</strong></p><p>5 Inteiros - os quatro primeiros em ordem crescente</p><p><strong>Sa&iacute;da</strong></p><p>True se a mediana for menor e false se for Maior</p><p>&nbsp;</p><p><strong>Exemplos de Entrada e Sa&iacute;da</strong></p><table class='table table-striped'><tbody><tr><td><strong>Entrada</strong></td><td><strong>Respectiva Sa&iacute;da</strong></td></tr><tr><td><p>1 2 3 4 5</p></td><td><p>True</p></td></tr><tr><td><p>2 4 6 8 2</p></td><td><p>False</p></td></tr></tbody></table>", 
+    "activities" : [
+        {
+            "model" : {
+                "in" : BinData(0, "NCA1IDcgOSA1"), 
+                "out" : BinData(0, "RmFsc2U=")
+            }, 
+            "plugin" : "App\\PluginActivities\\Problems\\Mapper\\Config"
+        }
+    ], 
+    "order" : NumberInt(14), 
+    "group" : DBRef("GroupActivities", ObjectId("581a10bd7b3ceb04bb7b47cd"), "BD_COSMO")
+}
+{ 
+    "_id" : ObjectId("582b75ba4c58576aff063500"), 
+    "created_at" : ISODate("2016-11-02T14:07:27.000+0000"), 
+    "title" : "<p>Checa divisibilidade</p>", 
+    "question" : "<p>Recebe dois n&uacute;meros e diz se o primeiro &eacute; divisor do segundo.</p>", 
+    "fullquestion" : "<p>Fa&ccedil;a um programa que recebe dois n&uacute;meros e retorne true caso o primeiro n&uacute;mero seja divisor do segundo, ou false&nbsp;caso n&atilde;o seja.</p><p><strong>Entrada</strong></p><p>2 Inteiros</p><p><strong>Sa&iacute;da</strong></p><p>True&nbsp;se o primeiro for divisor do segundo, False se n&atilde;o for.&nbsp;</p><p><strong>Exemplos de Entrada e Sa&iacute;da</strong></p><table class='table table-striped'><tbody><tr><td><strong>Entrada</strong></td><td><strong>Respectiva Sa&iacute;da</strong></td></tr><tr><td><p>2 8</p></td><td><p>True</p></td></tr><tr><td><p>3 5</p></td><td><p>False</p></td></tr></tbody></table>", 
+    "activities" : [
+        {
+            "model" : {
+                "in" : BinData(0, "MiAz"), 
+                "out" : BinData(0, "RmFsc2U=")
+            }, 
+            "plugin" : "App\\PluginActivities\\Problems\\Mapper\\Config"
+        }
+    ], 
+    "order" : NumberInt(15), 
+    "group" : DBRef("GroupActivities", ObjectId("581a10bd7b3ceb04bb7b47cd"), "BD_COSMO")
+}
+{ 
+    "_id" : ObjectId("582b76574c58576aff063502"), 
+    "created_at" : ISODate("2016-11-02T14:07:27.000+0000"), 
+    "title" : "<p>Descobre n&uacute;mero de ra&iacute;zes</p>", 
+    "question" : "<p>Recebe os 3 coeficientes de uma equa&ccedil;&atilde;o do segundo grau e retorna o n&uacute;mero de ra&iacute;zes reais.</p>", 
+    "fullquestion" : "<p>Fa&ccedil;a um programa que l&ecirc; os coeficientes a, b e c de uma equa&ccedil;&atilde;o de segundo grau e retorna a quantidade ra&iacute;zes reais para tal equa&ccedil;&atilde;o.</p><p><strong>Entrada</strong></p><p>3 inteiros, correspondendo aos coeficientes a,b e c.</p><p><strong>Sa&iacute;da</strong></p><p>Inteiro correspondente &agrave; quantidade de raizes reais da equa&ccedil;&atilde;o.</p><p><strong>Exemplos de Entrada e Sa&iacute;da</strong></p><table class='table table-striped'><tbody><tr><td><strong>Entrada</strong></td><td><strong>Respectiva Sa&iacute;da</strong></td></tr><tr><td><p>3 8 2</p></td><td><p>2</p></td></tr><tr><td><p>4 4 2</p></td><td><p>0</p></td></tr></tbody></table>", 
+    "activities" : [
+        {
+            "model" : {
+                "in" : BinData(0, "MjAgNDAgMw=="), 
+                "out" : BinData(0, "Mg==")
+            }, 
+            "plugin" : "App\\PluginActivities\\Problems\\Mapper\\Config"
+        }
+    ], 
+    "order" : NumberInt(16), 
+    "group" : DBRef("GroupActivities", ObjectId("581a10bd7b3ceb04bb7b47cd"), "BD_COSMO")
+}
+{ 
+    "_id" : ObjectId("582b76574c58576aff063503"), 
+    "created_at" : ISODate("2016-11-02T14:07:27.000+0000"), 
+    "title" : "<p>Checa tipo de caractere</p>", 
+    "question" : "<p>Fa&ccedil;a um programa que recebe um caractere e retorna 'n&uacute;mero', 'letra mai&uacute;scula' ou 'letra min&uacute;scula'.</p>", 
+    "fullquestion" : "<p>Fa&ccedil;a um programa que recebe um caractere e retorna 'n&uacute;mero', 'letra mai&uacute;scula' ou 'letra min&uacute;scula'.</p><p><strong>Entrada</strong></p><p>1 caractere.</p><p><strong>Sa&iacute;da</strong></p><p>&nbsp;Retorna se o caractere &eacute; uma letra mai&uacute;scula, uma letra min&uacute;scula ou um n&uacute;mero.</p><p><strong>Exemplos de Entrada e Sa&iacute;da</strong></p><table class='table table-striped'><tbody><tr><td><strong>Entrada</strong></td><td><strong>Respectiva Sa&iacute;da</strong></td></tr><tr><td><p>A</p></td><td><p>letra mai&uacute;scula</p></td></tr><tr><td><p>4</p></td><td><p>n&uacute;mero</p></td></tr></tbody></table>", 
+    "activities" : [
+        {
+            "model" : {
+                "in" : BinData(0, "Yg=="), 
+                "out" : BinData(0, "bGV0cmEgbWluw7pzY3VsYQ==")
+            }, 
+            "plugin" : "App\\PluginActivities\\Problems\\Mapper\\Config"
+        }
+    ], 
+    "order" : NumberInt(17), 
+    "group" : DBRef("GroupActivities", ObjectId("581a10bd7b3ceb04bb7b47cd"), "BD_COSMO")
+}
+{ 
+    "_id" : ObjectId("582b76574c58576aff063504"), 
+    "created_at" : ISODate("2016-11-02T14:07:27.000+0000"), 
+    "title" : "<p>Calculadora&nbsp;de soma e subtra&ccedil;&atilde;o</p>", 
+    "question" : "<p>Receba dois n&uacute;meros e um sinal de adi&ccedil;&atilde;o ou subtra&ccedil;&atilde;o e realize a opera&ccedil;&atilde;o de acordo.</p>", 
+    "fullquestion" : "<p>Fa&ccedil;a um programa que recebe como entrada um n&uacute;mero qualquer, seguido de um caractere '+' ou '-', e por fim um terceiro n&uacute;mero, e retorne a soma ou subtra&ccedil;&atilde;o desses dois n&uacute;meros de acordo com o caractere de sinal recebido.</p><p><strong>Entrada</strong></p><p>1 inteiro seguido por um caractere seguido de outro inteiro</p><p><strong>Sa&iacute;da</strong></p><p>&nbsp;Retorna se o caractere &eacute; uma letra mai&uacute;scula, uma letra min&uacute;scula ou um n&uacute;mero.</p><p><strong>Exemplos de Entrada e Sa&iacute;da</strong></p><table class='table table-striped'><tbody><tr><td><strong>Entrada</strong></td><td><strong>Respectiva Sa&iacute;da</strong></td></tr><tr><td><p>3 + 2</p></td><td><p>5</p></td></tr><tr><td><p>4 - 2</p></td><td><p>2</p></td></tr></tbody></table>", 
+    "activities" : [
+        {
+            "model" : {
+                "in" : BinData(0, "MjAgLSAz"), 
+                "out" : BinData(0, "MTc=")
+            }, 
+            "plugin" : "App\\PluginActivities\\Problems\\Mapper\\Config"
+        }
+    ], 
+    "order" : NumberInt(18), 
+    "group" : DBRef("GroupActivities", ObjectId("581a10bd7b3ceb04bb7b47cd"), "BD_COSMO")
+}
+{ 
+    "_id" : ObjectId("582b76574c58576aff063505"), 
+    "created_at" : ISODate("2016-11-02T14:07:27.000+0000"), 
+    "title" : "<p>Checa strings iguais</p>", 
+    "question" : "<p>Fa&ccedil;a um programa que l&ecirc; duas strings e retorna True, se forem iguais, ou False se forem diferentes.</p>", 
+    "fullquestion" : "<p>Fa&ccedil;a um programa que l&ecirc; duas strings e retorna True, se forem iguais, ou False se forem diferentes.</p><p><strong>Entrada</strong></p><p>2 Strings</p><p><strong>Sa&iacute;da</strong></p><p>True se as duas strings forem iguais e False caso sejam diferentes</p><p><strong>Exemplos de Entrada e Sa&iacute;da</strong></p><table class='table table-striped'><tbody><tr><td><strong>Entrada</strong></td><td><strong>Respectiva Sa&iacute;da</strong></td></tr><tr><td><p>Abra Abra</p></td><td><p>True</p></td></tr><tr><td><p>Abra Kadabra</p></td><td><p>False</p></td></tr></tbody></table>", 
+    "activities" : [
+        {
+            "model" : {
+                "in" : BinData(0, "TWV3dHdvIE1ld3R3bw=="), 
+                "out" : BinData(0, "VHJ1ZQ==")
+            }, 
+            "plugin" : "App\\PluginActivities\\Problems\\Mapper\\Config"
+        }
+    ], 
+    "order" : NumberInt(19), 
+    "group" : DBRef("GroupActivities", ObjectId("581a10bd7b3ceb04bb7b47cd"), "BD_COSMO")
+}
+{ 
+    "_id" : ObjectId("582b76574c58576aff063506"), 
+    "created_at" : ISODate("2016-11-02T14:07:27.000+0000"), 
+    "title" : "<p>Concatena strings</p>", 
+    "question" : "<p>Receba duas strings e retorn uma string&nbsp;que cont&eacute;m a concatena&ccedil;&atilde;o das strings de entrada.</p>", 
+    "fullquestion" : "<p>Fa&ccedil;a um programa que recebe tr&ecirc;s strings e retorna uma string que cont&eacute;m a concatena&ccedil;&atilde;o das strings de entrada, seguindo a ordem de entrada, sem espa&ccedil;os e sem repeti&ccedil;&otilde;es.</p><p><strong>Entrada</strong></p><p>3 Strings</p><p><strong>Sa&iacute;da</strong></p><p>1 string combina&ccedil;&atilde;o das 3 inseridas</p><p><strong>Exemplos de Entrada e Sa&iacute;da</strong></p><table class='table table-striped'><tbody><tr><td><strong>Entrada</strong></td><td><strong>Respectiva Sa&iacute;da</strong></td></tr><tr><td><p>eu amo batata</p></td><td><p>euamobatata</p></td></tr><tr><td><p>cosmo wanda timmy</p></td><td><p>cosmowandatimmy</p></td></tr></tbody></table>", 
+    "activities" : [
+        {
+            "model" : {
+                "in" : BinData(0, "cGlrYWNodSBwb2tlYmFsbCBqb2FuYQ=="), 
+                "out" : BinData(0, "cGlrYWNodXBva2ViYWxsam9hbmE=")
+            }, 
+            "plugin" : "App\\PluginActivities\\Problems\\Mapper\\Config"
+        }
+    ], 
+    "order" : NumberInt(20), 
+    "group" : DBRef("GroupActivities", ObjectId("581a10bd7b3ceb04bb7b47cd"), "BD_COSMO")
+}
+{ 
+    "_id" : ObjectId("582b76574c58576aff063507"), 
+    "created_at" : ISODate("2016-11-02T14:07:27.000+0000"), 
+    "title" : "<p>Classificador de renda</p>", 
+    "question" : "<p>Receba um inteiro representando uma renda e retorne uma classifica&ccedil;&atilde;o de acordo com a tabela.</p>", 
+    "fullquestion" : "<p><strong>Considerando que segundo o IBGE as fam&iacute;las s&atilde;o classificadas da seguinte forma de acordo com sua renda m&eacute;dia:</strong></p><p><strong>A1 (alta) -- acima de 10.190<br />A2 (media alta)-- de 6.210 a 10.190<br />B1 (Media media) -- de 3.822 a 6.209<br />B2 (media Baixa) -- de 2.150 a 3.821<br />C (Baixa Alta)-- de 1.036 a 2.149<br />D (baixa media)-- de 479 a 1.035<br />E (baixa baixa, pobres) -- at&eacute; 478</strong></p><p><strong>, fa&ccedil;a um programa que recebe a renda m&eacute;dia da fam&iacute;lia e retorna em que classe ela se encaixa. Casos n&atilde;o especificados devem retornar 0.</strong></p><p><strong>Entrada</strong></p><p>1 inteiro</p><p><strong>Sa&iacute;da</strong></p><p>1 string (Classe na qual se encaixa)</p><p><strong>Exemplos de Entrada e Sa&iacute;da</strong></p><table class='table table-striped'><tbody><tr><td><strong>Entrada</strong></td><td><strong>Respectiva Sa&iacute;da</strong></td></tr><tr><td><p>1000</p></td><td><p>D</p></td></tr><tr><td><p>3800</p></td><td><p>B2</p></td></tr></tbody></table>", 
+    "activities" : [
+        {
+            "model" : {
+                "in" : BinData(0, "MjAwNTA="), 
+                "out" : BinData(0, "QTE=")
+            }, 
+            "plugin" : "App\\PluginActivities\\Problems\\Mapper\\Config"
+        }
+    ], 
+    "order" : NumberInt(21), 
+    "group" : DBRef("GroupActivities", ObjectId("581a10bd7b3ceb04bb7b47cd"), "BD_COSMO")
+}
+{ 
+    "_id" : ObjectId("582b76574c58576aff063508"), 
+    "created_at" : ISODate("2016-11-02T14:07:27.000+0000"), 
+    "title" : "<p>Calculadora Simples</p>", 
+    "question" : "<p>Receba dois n&uacute;meros e um caractere correspondendo &agrave; opera&ccedil;&atilde;o desejada e retorne o resultado.</p>", 
+    "fullquestion" : "<p>Fa&ccedil;a um programa que recebe como entrada dois n&uacute;meros, e um caractere representando uma opera&ccedil;&atilde;o, e de acordo com a opera&ccedil;&atilde;o retorna a adi&ccedil;&atilde;o, subtra&ccedil;&atilde;o, multiplica&ccedil;&atilde;o ou divis&atilde;o dos dois n&uacute;meros.</p><p><strong>Entrada</strong></p><p>2 inteiro e um caractere representado a opera&ccedil;&atilde;o.</p><p><strong>Sa&iacute;da</strong></p><p>1 inteiro.</p><p><strong>Exemplos de Entrada e Sa&iacute;da</strong></p><table class='table table-striped'><tbody><tr><td><strong>Entrada</strong></td><td><strong>Respectiva Sa&iacute;da</strong></td></tr><tr><td><p>2 3 +</p></td><td><p>5</p></td></tr><tr><td><p>5 5 *</p></td><td><p>25</p></td></tr></tbody></table>", 
+    "activities" : [
+        {
+            "model" : {
+                "in" : BinData(0, "NSA4ICo="), 
+                "out" : BinData(0, "NDA=")
+            }, 
+            "plugin" : "App\\PluginActivities\\Problems\\Mapper\\Config"
+        }
+    ], 
+    "order" : NumberInt(22), 
+    "group" : DBRef("GroupActivities", ObjectId("581a10bd7b3ceb04bb7b47cd"), "BD_COSMO")
+}

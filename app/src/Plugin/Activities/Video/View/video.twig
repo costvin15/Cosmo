@@ -1,0 +1,64 @@
+{% extends "View/layout.twig" %}
+{% block pagetitle %}Video{% endblock %}
+{% block title %}Video{% endblock %}
+{% block breadcump %}
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-edit"></i> Área de aprendizagem</a></li>
+        <li class="active">Video</li>
+    </ol>
+{% endblock %}
+
+{% block scripts %}
+{% endblock %}
+
+{% block css %}
+{% endblock %}
+
+{% block content %}
+
+    <div class="row">
+        <div class="col-lg-6">
+            <!-- Box Comment -->
+            <div class="box box-widget">
+                <div class="box-header with-border">
+                    <div class="user-block">
+                        <img class="img-circle" src="{{ base_url() }}/assets/img/user-salles.jpg" alt="User Image">
+                        <span class="username"><a href="#">{{ activity.getTitle }}</a></span>
+                        <span class="description">Publicado por: Carlos Salles - {{ activity.getDateCreate|date("d/m/Y") }}</span>
+                    </div>
+                    <!-- /.user-block -->
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body">
+                    <h4>Enunciado:</h4>
+                    <!-- post text -->
+                    <div>{{ activity.getFullQuestion|raw }}</div>
+                </div>
+            </div>
+            <!-- /.box -->
+        </div>
+        <div class="col-lg-6">
+            <!-- Box Comment -->
+            <div class="box box-widget">
+                <!-- /.box-header -->
+                <div class="box-body">
+                    <h4>Clique no play e assista o vídeo:</h4>
+                    <!-- post text -->
+                    <div class="embed-responsive embed-responsive-16by9">
+                        {%
+                            set video = activity.getActivities
+                        %}
+                        <iframe class="embed-responsive-item" src="{{ video.getUrl }}"></iframe>
+                    </div>
+
+                    <a href="{{ path_for('dashboard') }}" class="btn btn-default pull-left"> Voltar</a>
+                </div>
+            </div>
+            <!-- /.box -->
+        </div>
+
+
+
+    </div>
+
+{% endblock %}

@@ -1,0 +1,70 @@
+{% extends "View/layout.twig" %}
+{% block pagetitle %}Administração do Cosmo{% endblock %}
+{% block title %}Administração do Cosmo - Usuários{% endblock %}
+
+{% block scripts %}
+    <script src="{{ base_url() }}/node_modules/datatables/media/js/jquery.dataTables.js"></script>
+
+    <script src="{{ base_url() }}/assets/js/pages/admin-userjs/dist/admin-userjs.min.js"></script>
+{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" href="{{ base_url() }}/node_modules/datatables/media/css/jquery.dataTables.css">
+{% endblock %}
+
+{% block content %}
+    <div class="admin-users">
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <ul class="list-fast-menu">
+                    <li><a class="active" href="{{ path_for("administrator.control.users") }}">Usuários</a></li>
+                    <li><a href="#">Turmas</a></li>
+                    <li><a href="#">Atividades</a></li>
+                </ul>
+            </div>
+        </nav>
+
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="row">
+                    <div class="col-lg-10 col-sm-10 col-xs-8">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-search"></i></span>
+                            <input type="text" class="form-control" placeholder="Nome do usuário" id="frmuser-search">
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-sm-2 col-xs-4">
+                        <a href="{{ path_for('administrator.control.users.new') }}" type="button" class="btn btn-block btn-success">Novo Usuário</a>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="box-body table-responsive no-padding">
+                            <table class="table table-striped table-hover" id="table-users">
+                                <thead>
+                                <tr>
+                                    <th style="width: 90px;">#</th>
+                                    <th>Nome</th>
+                                    <th>Usuário</th>
+                                    <th style="max-width: 100px;">Ação</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                                <tfoot>
+                                <tr>
+                                    <th style="width: 90px;">#</th>
+                                    <th>Nome</th>
+                                    <th>Usuário</th>
+                                    <th style="max-width: 100px;">Ação</th>
+                                </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
