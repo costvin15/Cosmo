@@ -1,10 +1,10 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f0d8cad8e75b83045512d4ca4678dbe8",
+    "content-hash": "ac305afca04487f100b1fbc05802f5bf",
     "packages": [
         {
             "name": "akrabat/rka-slim-session-middleware",
@@ -681,16 +681,16 @@
         },
         {
             "name": "doctrine/mongodb",
-            "version": "1.6.0",
+            "version": "1.6.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/mongodb.git",
-                "reference": "9ad5ca3118282fe40dc869649a1602141efb768b"
+                "reference": "859dad965f50cea9de012b878cf20932f458a311"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/mongodb/zipball/9ad5ca3118282fe40dc869649a1602141efb768b",
-                "reference": "9ad5ca3118282fe40dc869649a1602141efb768b",
+                "url": "https://api.github.com/repos/doctrine/mongodb/zipball/859dad965f50cea9de012b878cf20932f458a311",
+                "reference": "859dad965f50cea9de012b878cf20932f458a311",
                 "shasum": ""
             },
             "require": {
@@ -754,36 +754,36 @@
                 "mongodb",
                 "persistence"
             ],
-            "time": "2017-08-09T13:56:03+00:00"
+            "time": "2018-07-20T05:09:17+00:00"
         },
         {
             "name": "doctrine/mongodb-odm",
-            "version": "1.1.6",
+            "version": "1.2.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/mongodb-odm.git",
-                "reference": "748df0da92f6b860fceac89cde1181fda2c26e78"
+                "reference": "e7c926b8a0cae830c0b7f48005afde83fd3921a2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/mongodb-odm/zipball/748df0da92f6b860fceac89cde1181fda2c26e78",
-                "reference": "748df0da92f6b860fceac89cde1181fda2c26e78",
+                "url": "https://api.github.com/repos/doctrine/mongodb-odm/zipball/e7c926b8a0cae830c0b7f48005afde83fd3921a2",
+                "reference": "e7c926b8a0cae830c0b7f48005afde83fd3921a2",
                 "shasum": ""
             },
             "require": {
-                "doctrine/annotations": "~1.0",
+                "doctrine/annotations": "~1.2",
                 "doctrine/cache": "~1.0",
                 "doctrine/collections": "~1.1",
                 "doctrine/common": "~2.4",
                 "doctrine/inflector": "~1.0",
-                "doctrine/instantiator": "~1.0.1",
-                "doctrine/mongodb": "~1.3",
+                "doctrine/instantiator": "^1.0.1",
+                "doctrine/mongodb": "^1.6.1",
                 "php": "^5.6 || ^7.0",
-                "symfony/console": "~2.3|~3.0"
+                "symfony/console": "~2.3|~3.0|^4.0"
             },
             "require-dev": {
-                "phpunit/phpunit": "~5.4",
-                "symfony/yaml": "~2.3|~3.0"
+                "phpunit/phpunit": "^5.7.21|^6.4",
+                "symfony/yaml": "~2.3|~3.0|^4.0"
             },
             "suggest": {
                 "alcaeus/mongo-php-adapter": "Allows usage of PHP 7",
@@ -792,7 +792,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.1.x-dev"
+                    "dev-master": "1.2.x-dev"
                 }
             },
             "autoload": {
@@ -838,7 +838,7 @@
                 "odm",
                 "persistence"
             ],
-            "time": "2017-08-19T18:49:49+00:00"
+            "time": "2018-07-20T05:40:16+00:00"
         },
         {
             "name": "mongodb/mongodb",

@@ -1,21 +1,4 @@
 {
-    "name": "dilsonjlrjr/slim3-skeleton",
-    "description": "Simple Slim Framework 3 skeleton with Doctrine ODM, Monolog, Slim Session and JWT. Based project Akrabat.",
-    "license": "BSD-3-Clause",
-    "type": "project",
-    "keywords": ["slim-framework", "skeleton", "JWT", "Doctrine"],
-    "authors": [
-        {
-            "name": "Rob Allen",
-            "email": "rob@akrabat.com",
-            "homepage": "http://akrabat.com"
-        },
-        {
-            "name": "Dilson Rabelo",
-            "email": "dilsonjlrjr@gmail.com",
-            "homepage": "http://www.dilsonjunior.eti.br"
-        }
-    ],
     "autoload": {
         "psr-4": {
             "App\\": "app/src",
@@ -36,6 +19,7 @@
         "zendframework/zend-validator": "^2.8",
         "phpmailer/phpmailer": "^6.0",
         "doctrine/instantiator": "^1.0",
-        "doctrine/mongodb-odm": "^1.1"
+        "doctrine/mongodb-odm": "^1.1",
+        "doctrine/mongodb": "^1.6"
     }
 }

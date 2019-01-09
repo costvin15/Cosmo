@@ -67,13 +67,14 @@ class LoginController extends AbstractController
 
             $router = $this->_ci->get('router');
             if ($auth->isValid()) {
+                $attributes = SessionFacilitator::getAttributeSession();
+                if ($attributes["blocked"]["status"])
+                    return $response->withJson([ 'Sua conta está bloqueada, contate o administrador.<br/>Razão do bloqueio: ' . $attributes["blocked"]["reason"] . "." ], 500);
                 return $response->withJson([ 'callback' => $router->pathFor('dashboard.index') ], 200);
-            } else {
+            } else
                 return $response->withJson([ 'Sua conta ou senha está incorreta. Se você não se lembra de sua senha, <a href="' . $router->pathFor('register.password.rescue') . '">redefina-a agora</a>' ], 500);
-            }
-        } else {
+        } else
             return $response->withJson([ 'Requisição mal formatada!' ], 500);
-        }
 
     }
 

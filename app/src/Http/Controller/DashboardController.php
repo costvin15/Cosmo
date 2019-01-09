@@ -187,7 +187,13 @@ class DashboardController extends AbstractController
         }
 
         return $this->view->render($response, 'View/dashboard/history/index.twig', ['attributes' => $attributes, "allGroupActivities" => $historyActivities]);
-
     }
 
+    /**
+     * @Get(name="/profile", middleware={"App\Http\Middleware\SessionMiddleware"}, alias="dashboard.profile")
+     */
+    public function profileAction(Request $request, Response $response){
+        $attributes = SessionFacilitator::getAttributeSession();
+        return $this->view->render($response, "View/dashboard/profile/index.twig", ["attributes" => $attributes]);
+    }
 }

@@ -55,13 +55,7 @@ class UserWithPassword implements AuthAdapterInterface
 
         $arraySettings = $ci->get('settings');
         return new AuthResponse(AuthResponse::AUTHRESPONSE_SUCCESS, 'User auth success',
-            $arraySettings['session']['name'],
-            [
-                'id' => $user->getId(),
-                'username' => $user->getUsername(),
-                'fullname' => $user->getFullname(),
-                'administrator' => $user->getAdministrator()
-            ]);
+            $arraySettings['session']['name'], $user->toArray());
     }
 
 }

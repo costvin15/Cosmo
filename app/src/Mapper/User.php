@@ -30,9 +30,14 @@ class User
     private $fullname;
 
     /**
-     * @ODM\Field(name="administrator", type="integer")
+     * @ODM\Field(name="administrator", type="boolean")
      */
     private $administrator;
+
+    /**
+     * @ODM\Field(name="blocked", type="collection")
+     */
+    private $blocked;
 
     /**
      * @ODM\Field(name="interface", type="string")
@@ -69,11 +74,12 @@ class User
 
     public function toArray() {
         return [
-            '_id' => $this->id,
+            'id' => $this->id,
             'username' => $this->username,
             'password' => $this->password,
             'fullname' => $this->fullname,
-            'administrator' => $this->administrator
+            'administrator' => $this->administrator,
+            'blocked' => $this->blocked,
         ];
     }
 
@@ -204,6 +210,4 @@ class User
     {
         $this->attemptActivities = $attemptActivities;
     }
-
-
 }

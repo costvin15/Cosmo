@@ -28,17 +28,18 @@ class SessionMiddleware
     {
 
         $_ci = ContainerFacilitator::getContainer();
-
         $session = new Session();
         $arraySession = $session->get('cosmo-session');
-        if (count($arraySession) == 0) {
+        $router = $_ci->get('router');
+        
+        if ($arraySession && count($arraySession) == 0) {
             if ($request->isXhr()) {
-                return $response->withStatus(500, utf8_decode('Sessão expirou. Atualize a página!'));
+                return $response->withStatus(500, utf8_decode('Sessão expirada. Atualize a página!'));
             }
 
-            $router = $_ci->get('router');
             return $response->withRedirect($router->pathFor('login.index'));
         }
+
         $response = $next($request, $response);
         return $response;
     }

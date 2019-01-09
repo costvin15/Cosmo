@@ -64,7 +64,6 @@
                 <!-- Navbar Right Menu -->
                 <div class="navbar-custom-menu">
                     <ul class="nav navbar-nav">
-
                         {% if (attributes.administrator) %}
                         <!-- Administrator Control -->
                         <li>
@@ -95,7 +94,7 @@
                                 <!-- Menu Footer-->
                                 <li class="user-footer">
                                     <div class="pull-left">
-                                        <a href="#" class="btn btn-default btn-flat disabled">Perfil</a>
+                                        <a href="{{ path_for("dashboard.profile") }}" class="btn btn-default btn-flat">Perfil</a>
                                     </div>
                                     <div class="pull-right">
                                         <a href="{{ path_for('login.logout') }}" class="btn btn-default btn-flat">Sair</a>

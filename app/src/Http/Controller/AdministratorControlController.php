@@ -15,6 +15,7 @@ use App\Model\Util\Mail;
 use Psr\Container\ContainerInterface;
 use Slim\Http\Request;
 use Slim\Http\Response;
+use App\Mapper\Activities;
 
 /**
  * Class AdministratorControlController
@@ -38,27 +39,33 @@ class AdministratorControlController extends AbstractController
      * @param Request $request
      * @param Response $response
      * @return mixed
-     * @Get(name="/", middleware={"App\Http\Middleware\SessionMiddleware"}, alias="administrator.control.index")
+     * @Get(name="/", middleware={"App\Http\Middleware\AdministratorSessionMiddleware"}, alias="administrator.control.index")
      */
-    public function indexAction(Request $request, Response $response) {
-        return $this->view->render($response, 'View/administratorcontrol/index.twig', $this->getAttributeView());
+    public function indexAction(Request $request, Response $response){
+        $attributes = array(
+            "data" => [
+                "users" => count($this->_dm->getRepository(User::class)->findAll()),
+                "activities" => count($this->_dm->getRepository(Activities::class)->findAll()),
+            ],
+        );
+        return $this->view->render($response, 'View/administratorcontrol/index.twig', array_merge($attributes, $this->getAttributeView()));
     }
 
     /**
      * @param Request $request
      * @param Response $response
      * @return mixed
-     * @Get(name="/user", middleware={"App\Http\Middleware\SessionMiddleware"}, alias="administrator.control.users")
+     * @Get(name="/user", middleware={"App\Http\Middleware\AdministratorSessionMiddleware"}, alias="administrator.control.users")
      */
     public function usersAction(Request $request, Response $response) {
-        return $this->view->render($response, 'View/administratorcontrol/users.twig', $this->getAttributeView());
+        return $this->view->render($response, 'View/administratorcontrol/users/index.twig', $this->getAttributeView());
     }
 
     /**
      * @param Request $request
      * @param Response $response
      * @return mixed
-     * @Get(name="/user/all", middleware={"App\Http\Middleware\SessionMiddleware"}, alias="administrator.control.users.all")
+     * @Get(name="/user/all", middleware={"App\Http\Middleware\AdministratorSessionMiddleware"}, alias="administrator.control.users.all")
      */
     public function findAllUserAction(Request $request, Response $response) {
         if ($request->isXhr()) {
@@ -68,9 +75,6 @@ class AdministratorControlController extends AbstractController
             $arrayUser = [];
             foreach ($userCollection as $user) {
                 $arrayUserTemp = $user->toArray();
-                $arrayUserTemp['avatar'] = $request->getUri()->getScheme() . '://' . $request->getUri()->getHost() .
-                    $router->pathFor('photo.get.user', [ 'id' => $arrayUserTemp['_id']]);
-
                 $arrayUser[] = $arrayUserTemp;
             }
 
@@ -84,12 +88,12 @@ class AdministratorControlController extends AbstractController
      * @param Request $request
      * @param Response $response
      * @return mixed
-     * @Get(name="/user/create", middleware={"App\Http\Middleware\SessionMiddleware"}, alias="administrator.control.users.new")
+     * @Get(name="/user/create", middleware={"App\Http\Middleware\AdministratorSessionMiddleware"}, alias="administrator.control.users.new")
      */
     public function newUserAction(Request $request, Response $response) {
         $this->setAttributeView('show_adm', true);
         $this->setAttributeView('formCreate', true);
-        return $this->view->render($response, 'View/administratorcontrol/form-user.twig', $this->getAttributeView());
+        return $this->view->render($response, 'View/administratorcontrol/users/form.twig', $this->getAttributeView());
     }
 
     /**
@@ -98,7 +102,7 @@ class AdministratorControlController extends AbstractController
      * @param $args
      * @throws \Exception
      * @return mixed
-     * @Get(name="/user/modify/{id}", middleware={"App\Http\Middleware\SessionMiddleware"}, alias="administrator.control.users.new")
+     * @Get(name="/user/modify/{id}", middleware={"App\Http\Middleware\AdministratorSessionMiddleware"}, alias="administrator.control.users.new")
      */
     public function modifyUserAction(Request $request, Response $response, array $args) {
         $this->setAttributeView('show_adm', true);
@@ -125,14 +129,14 @@ class AdministratorControlController extends AbstractController
         $this->setAttributeView('user', $user);
         $this->setAttributeView('avatar', $avatarBase64);
         $this->setAttributeView('id', $id);
-        return $this->view->render($response, 'View/administratorcontrol/form-user.twig', $this->getAttributeView());
+        return $this->view->render($response, 'View/administratorcontrol/users/form.twig', $this->getAttributeView());
     }
 
     /**
      * @param Request $request
      * @param Response $response
      * @return mixed
-     * @Post(name="/user/save", middleware={"App\Http\Middleware\SessionMiddleware"}, alias="administrator.control.users.save")
+     * @Post(name="/user/save", middleware={"App\Http\Middleware\AdministratorSessionMiddleware"}, alias="administrator.control.users.save")
      */
     public function saveUserAction(Request $request, Response $response) {
         if ($request->isXhr()) {
@@ -177,7 +181,7 @@ class AdministratorControlController extends AbstractController
      * @param Request $request
      * @param Response $response
      * @return mixed
-     * @Post(name="/user/update", middleware={"App\Http\Middleware\SessionMiddleware"}, alias="administrator.control.users.update")
+     * @Post(name="/user/update", middleware={"App\Http\Middleware\AdministratorSessionMiddleware"}, alias="administrator.control.users.update")
      */
     public function updateUserAction(Request $request, Response $response) {
         if ($request->isXhr()) {

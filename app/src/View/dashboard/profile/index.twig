@@ -1,0 +1,68 @@
+{% extends "/View/layout.twig" %}
+{% block pagetitle %}Seu Perfil{% endblock %}
+{% block title %}Seu Perfil{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-3">
+            <div class="box box-primary">
+                <div class="box-body box-profile">
+                    {% if attributes.avatar is defined %}
+                        <img class="profile-user-img img-responsive"
+                            id="img-frmuser-avatar"
+                            src="{{ attributes.avatar }}"
+                            alt="Você">
+                    {% else %}
+                        <img class="profile-user-img img-responsive"
+                            id="img-frmuser-avatar"
+                            src="{{ base_url() }}/assets/img/student-avatar.png"
+                            alt="Você">
+                    {% endif %}
+                    
+                    <h3 class="profile-username text-center">{{ attributes.fullname }}</h3>
+                    <button class="btn btn-primary btn-block" id="btn-alter-image"><b>Alterar imagem</b></button>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-9">
+            <div class="nav-tabs-custom">
+                <ul class="nav nav-tabs">
+                    <li class="active">
+                        <a href="#" data-toggle="tab">Seus dados</a>
+                    </li>
+                </ul>
+
+                <div class="tab-content">
+                    <div class="tab-pane active">
+                        <form class="form-horizontal">
+                            <div class="form-group">
+                                <label for="input-frmuser-name" class="col-sm-2 control-label">Nome Completo</label>
+                                <div class="col-sm-10">
+                                    <input id="input-frmuser-name" class="form-control" type="text" value="{{ attributes.fullname }}" />
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="input-frmuser-email" class="col-sm-2 control-label">Email</label>
+                                <div class="col-sm-10">
+                                    <input id="input-frmuser-email" class="form-control" type="email" value="{{ attributes.username }}" />
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <div class="col-sm-offset-2 col-sm-2">
+                                    <button type="submit" class="btn btn-success">Salvar alterações</button>
+                                </div>
+                                
+                                <div class="col-sm-2">
+                                    <a class="btn btn-default">Voltar</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
