@@ -20,6 +20,8 @@ class AdministratorSessionMiddleware {
         }
 
         $attributes = SessionFacilitator::getAttributeSession();
+        if (!$attributes)
+            return $response->withJson(["message" => "Você precisa estar logado primeiro."], 500);
         if (!$attributes["administrator"])
             return $response->withRedirect($router->pathFor("dashboard.index"));
 

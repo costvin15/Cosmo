@@ -2,3 +2,4 @@
 /storage/cache/
 /storage/log/
 php_errors.log
+/public/node_modules

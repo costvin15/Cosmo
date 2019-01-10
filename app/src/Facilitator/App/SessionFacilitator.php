@@ -1,13 +1,6 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: dilsonrabelo
- * Date: 25/10/16
- * Time: 08:54
- */
 
 namespace App\Facilitator\App;
-
 
 use RKA\Session;
 

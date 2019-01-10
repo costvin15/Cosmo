@@ -56,7 +56,6 @@ class AdministratorControlValidate extends AbstractControllerValidate
 
         $is_empty = new NotEmpty();
 
-
         if(!$is_empty->isValid($fullname)){
             $this->error = "O campo Nome Completo é obrigatório.";
             return false;

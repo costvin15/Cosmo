@@ -117,7 +117,7 @@ class AdministratorControlController extends AbstractController
         $image64 = new ImageBase64();
         $pathStorageImage = $this->_ci->get('settings')->get('storage.photo');
 
-        $fileAvatar = '';
+        $fileAvatar = "";
         if (!file_exists($pathStorageImage . DIRECTORY_SEPARATOR . $user->getId())) {
             $fileAvatar = $pathStorageImage . DIRECTORY_SEPARATOR . 'default.png';
         } else {
@@ -195,9 +195,15 @@ class AdministratorControlController extends AbstractController
             $administrator = $request->getParam("admin");
             $avatar = $request->getParam("avatar");
 
+            $block = array(
+                "status" => $request->getParam("block_status") == "1" ? true : false,
+                "reason" => $request->getParam("block_reason")
+            );
+
             $user = $this->_dm->getRepository(User::class)->find($id);
             $user->setFullname($fullname);
             $user->setAdministrator($administrator);
+            $user->setBlocked($block);
 
             $this->_dm->persist($user);
             $this->_dm->flush();
@@ -216,4 +222,27 @@ class AdministratorControlController extends AbstractController
         }
     }
 
+    /**
+     * @param Request $request
+     * @param Response $response
+     * @param array $args
+     * @return mixed
+     * @Get(name="/user/image/{id}", middleware={"App\Http\Middleware\AdministratorSessionMiddleware"}, alias="administrator.controls.users.image")
+     */
+    public function userImageAction(Request $request, Response $response, array $args){
+        if (!$args["id"])
+            return $response->withJson(["message" => "O ID é obrigatório"], 500);
+        
+        $id = $args["id"];
+        $image64 = new ImageBase64();
+        $path_storage = $this->_ci->get("settings")->get("storage.photo");
+        $filename = "";
+
+        if (file_exists($path_storage . DIRECTORY_SEPARATOR . $id))
+            $filename = $path_storage . DIRECTORY_SEPARATOR . $id;
+        else
+            $filename = $path_storage . DIRECTORY_SEPARATOR . "default.png";
+
+        return $image64->castPathFile($filename);
+    }
 }

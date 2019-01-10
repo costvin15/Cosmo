@@ -105,6 +105,23 @@
                                     </div>
                                 </div>
                             </div>
+
+                            <div class="form-group">
+                                <div class="col-sm-offset-2 col-sm-10">
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox" id="input-frmuser-block" {{ user.blocked and user.blocked.status ? "checked" : "" }}> Bloqueado</a>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div id="frmuser-reason-box" class="form-group" style="{{ user.blocked and user.blocked.status ? "display: block;" : "display: none;" }}">
+                                <label for="input-frmuser-reason" class="col-sm-2 control-label">Razão do bloqueio</label>
+                                <div class="col-sm-10">
+                                    <input type="text" value="{{ user.blocked and user.blocked.status ? user.blocked.reason : "" }}" class="form-control" id="input-frmuser-reason" placeholder="Razão do bloqueio">
+                                </div>
+                            </div>
                             {% endif %}
 
                             {% if formCreate is defined %}

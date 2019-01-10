@@ -3,6 +3,8 @@
 namespace App\Mapper;
 
 use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
+use App\Model\Util\ImageBase64;
+use App\Facilitator\App\ContainerFacilitator;
 
 /**
  * @ODM\Document(collection="User", repositoryClass="App\Mapper\Repository\UserRepository")
@@ -35,7 +37,7 @@ class User
     private $administrator;
 
     /**
-     * @ODM\Field(name="blocked", type="collection")
+     * @ODM\Field(name="blocked", type="hash")
      */
     private $blocked;
 
@@ -72,6 +74,19 @@ class User
         $this->historyActivities = [];
     }
 
+    private function getAvatar(){
+        $image_base_64 = new ImageBase64();
+        $path = ContainerFacilitator::getContainer()->get("settings")->get("storage.photo");
+        $filename = "";
+        
+        if (file_exists($path . DIRECTORY_SEPARATOR . $this->id))
+            $filename = $path . DIRECTORY_SEPARATOR . $this->id;
+        else
+            $filename = $path . DIRECTORY_SEPARATOR . "default.png";
+        
+        return $image_base_64->castPathFile($filename);
+    }
+
     public function toArray() {
         return [
             'id' => $this->id,
@@ -80,6 +95,7 @@ class User
             'fullname' => $this->fullname,
             'administrator' => $this->administrator,
             'blocked' => $this->blocked,
+            'avatar' => $this->getAvatar(),
         ];
     }
 
@@ -177,6 +193,20 @@ class User
     public function setAdministrator($administrator)
     {
         $this->administrator = $administrator;
+    }
+    
+    /**
+     * @return mixed
+     */
+    public function getBlocked(){
+        return $this->blocked;
+    }
+
+    /**
+     * @param array $blocked
+     */
+    public function setBlocked($blocked){
+        $this->blocked = $blocked;
     }
 
     /**

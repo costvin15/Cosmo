@@ -17,6 +17,7 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Slim\Http\Request;
 use Slim\Http\Response;
+use App\Model\Util\ImageBase64;
 
 /**
  * Class DashboardController
@@ -89,7 +90,6 @@ class DashboardController extends AbstractController
         }
 
         $this->setAttributeView('allActivities', $allActivities);
-
 
         return $this->view->render($response, 'View/dashboard/index/index.twig', $this->getAttributeView());
     }
