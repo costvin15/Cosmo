@@ -44,7 +44,7 @@ frmUpdateUser.prototype.initialize = function() {
 }, frmUpdateUser.prototype.save = function() {
     var e = this.createObject(),
         a = function(e) {
-            cosmo.dialog.success("Cadastro de usuário!", e.message, function() {
+            cosmo.dialog.success("Atualização de usuário!", e.message, function() {
                 window.location.href = e.callback
             })
         },
