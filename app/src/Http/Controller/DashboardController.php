@@ -190,10 +190,45 @@ class DashboardController extends AbstractController
     }
 
     /**
+     * @param Request $request
+     * @param Response $response
+     * @return mixed
      * @Get(name="/profile", middleware={"App\Http\Middleware\SessionMiddleware"}, alias="dashboard.profile")
      */
     public function profileAction(Request $request, Response $response){
         $attributes = SessionFacilitator::getAttributeSession();
         return $this->view->render($response, "View/dashboard/profile/index.twig", ["attributes" => $attributes]);
+    }
+
+    /**
+     * @param Request $request
+     * @param Response $response
+     * @return mixed
+     * @Post(name="/profile/update", middleware={"App\Http\Middleware\SessionMiddleware"}, alias="dashboard.profile.update")
+     */
+    public function profileUpdateAction(Request $request, Response $response){
+        if ($request->isXhr()){
+            $avatar = $request->getParam("avatar");
+            $fullname = $request->getParam("fullname");
+
+            $attributes = SessionFacilitator::getAttributeSession();
+            
+            $user = $this->_dm->getRepository(User::class)->find($attributes['id']);
+            $user->setFullname($fullname);
+            
+            $this->_dm->persist($user);
+            $this->_dm->flush();
+
+            $path_storage_image = $this->_ci->get("settings")->get("storage.photo");
+            preg_match('/data:([^;]*);base64,(.*)/', $avatar, $matches);
+
+            $filename = $path_storage_image . DIRECTORY_SEPARATOR . $user->getId();
+            file_put_contents($filename, base64_decode($matches[2]));
+
+            $router = $this->_ci->get("router");
+            return $response->withJson(["message" => "Você precisará fazer login novamente.", "callback" => $router->pathFor("login.logout")], 200);
+        } else {
+            return $response->withJson(["Requisição mal formatada"], 500);
+        }
     }
 }

@@ -2,6 +2,10 @@
 {% block pagetitle %}Seu Perfil{% endblock %}
 {% block title %}Seu Perfil{% endblock %}
 
+{% block scripts %}
+    <script src="{{ base_url() }}/assets/js/pages/profilejs/dist/profile-updatejs.min.js"></script>
+{% endblock %}
+
 {% block content %}
     <div class="row">
         <div class="col-md-3">
@@ -19,6 +23,8 @@
                             alt="Você">
                     {% endif %}
                     
+                    <input type="file" class="hidden" id="input-frmuser-fileupload">
+
                     <h3 class="profile-username text-center">{{ attributes.fullname }}</h3>
                     <button class="btn btn-primary btn-block" id="btn-alter-image"><b>Alterar imagem</b></button>
                 </div>
@@ -46,13 +52,14 @@
                             <div class="form-group">
                                 <label for="input-frmuser-email" class="col-sm-2 control-label">Email</label>
                                 <div class="col-sm-10">
-                                    <input id="input-frmuser-email" class="form-control" type="email" value="{{ attributes.username }}" />
+                                    <input id="input-frmuser-email" class="form-control" type="email" value="{{ attributes.username }}" disabled placeholder="Email" />
                                 </div>
                             </div>
                             
+                            <input type="hidden" id="input-hidden-id" value="{{ attributes.id }}">
                             <div class="form-group">
                                 <div class="col-sm-offset-2 col-sm-2">
-                                    <button type="submit" class="btn btn-success">Salvar alterações</button>
+                                    <button id="btn-update-profile" type="submit" class="btn btn-success">Salvar alterações</button>
                                 </div>
                                 
                                 <div class="col-sm-2">

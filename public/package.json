@@ -19,9 +19,9 @@
   "dependencies": {
     "bootstrap": "^3.3.7",
     "bootstrap-slider": "^9.10.0",
-    "bootstrap3-wysihtml5-npm": "^0.3.3-npm.12",
+    "bootstrap3-wysihtml5-npm": "0.3.3-npm.12",
     "chart.js": "^2.3.0",
-    "ckeditor": ">=4.11.1",
+    "ckeditor": "^4.11.2",
     "colorpicker": "^2.0.0",
     "datatables": "^1.10.18",
     "datatables-bootstrap3-plugin": "^0.5.0",

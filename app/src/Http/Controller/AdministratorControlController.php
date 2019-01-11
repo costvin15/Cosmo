@@ -126,9 +126,8 @@ class AdministratorControlController extends AbstractController
 
         $avatarBase64 = $image64->castPathFile($fileAvatar);
 
-        $this->setAttributeView('user', $user);
-        $this->setAttributeView('avatar', $avatarBase64);
         $this->setAttributeView('id', $id);
+        $this->setAttributeView('user', $user->toArray());
         return $this->view->render($response, 'View/administratorcontrol/users/form.twig', $this->getAttributeView());
     }
 

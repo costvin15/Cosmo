@@ -90,7 +90,4 @@ class LoginController extends AbstractController
         $router = $this->_ci->get('router');
         return $response->withRedirect($router->pathFor('login.index'));
     }
-
-
-
 }

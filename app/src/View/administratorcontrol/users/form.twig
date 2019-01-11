@@ -1,5 +1,13 @@
 {% extends "View/layout.twig" %}
-{% block pagetitle %}Administração do Cosmo - Novo usuário{% endblock %}
+
+{% block pagetitle %}
+    {% if formCreate is defined %}
+        Administração do Cosmo - Novo usuário
+    {% elseif formUpdate is defined %}
+        Administração do Cosmo - Atualizar usuário
+    {% endif %}
+{% endblock %}
+
 {% block title %}Administração do Cosmo{% endblock %}
 
 {% block scripts %}
@@ -22,15 +30,15 @@
             <!-- Profile Image -->
             <div class="box box-primary">
                 <div class="box-body box-profile">
-                    {% if avatar is defined %}
+                    {% if user.avatar is defined %}
                     <img class="profile-user-img img-responsive"
                          id="img-frmuser-avatar"
-                         src="{{ avatar }}"
+                         src="{{ user.avatar }}"
                          alt="User profile picture">
                     {% else %}
                     <img class="profile-user-img img-responsive img-circle"
                          id="img-frmuser-avatar"
-                         src="http://localhost/GitHub/cosmo/public/photo/get/user/0"
+                         src="{{ base_url() }}/assets/img/student-avatar.png"
                          alt="User profile picture">
                     {% endif %}
 
