@@ -53,6 +53,10 @@ class LoginController extends AbstractController
      */
     public function authenticateAction(Request $request, Response $response) {
 
+        /**
+         * TODO: Adicionar verificação se o usuário está bloqueado, antes de efetuar o login.
+         */
+
         if ($request->isXhr()) {
             $validate = new LoginControllerValidate();
             if (!$validate->authenticateAction($request))
@@ -69,7 +73,7 @@ class LoginController extends AbstractController
             if ($auth->isValid()) {
                 $attributes = SessionFacilitator::getAttributeSession();
                 if ($attributes["blocked"]["status"])
-                    return $response->withJson([ 'Sua conta está bloqueada, contate o administrador.<br/>Razão do bloqueio: ' . $attributes["blocked"]["reason"] . "." ], 500);
+                    return $response->withJson([ 'Sua conta está bloqueada, contate o administrador.<br/>Razão do bloqueio: ' . $attributes["blocked"]["reason"] . ".", "callback" => $router->pathFor("login.logout") ], 500);
                 return $response->withJson([ 'callback' => $router->pathFor('dashboard.index') ], 200);
             } else
                 return $response->withJson([ 'Sua conta ou senha está incorreta. Se você não se lembra de sua senha, <a href="' . $router->pathFor('register.password.rescue') . '">redefina-a agora</a>' ], 500);

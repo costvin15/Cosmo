@@ -40,11 +40,15 @@ window.cosmo.ajax=window.cosmo.ajax||new AjaxSend;
 
 function Dialog() {}
 
-Dialog.prototype.error=function(t, o) {
-    return swal( {
+Dialog.prototype.error=function(t, o, e = null) {
+    var dialog = swal({
         title: t, html: o, type: "error", timer: 5e3
-    }
-    )
+    });
+    
+    if (e != null)
+        dialog.then(e, e);
+
+    return dialog;
 },
 
 Dialog.prototype.success=function(t, o, e) {

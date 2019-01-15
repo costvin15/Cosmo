@@ -51,7 +51,7 @@
                     <div class="box-header with-border box-question">
                         <div class="user-block">
                             <span class="username">{{ activity.getTitle|raw }}</span>
-                            <span class="description">Publicado por: Carlos Salles - {{ activity.getDateCreate|date("d/m/Y") }}</span>
+                            <span class="description">Publicado por: {{ activity.getUploader.getFullname }} - {{ activity.getDateCreate|date("d/m/Y") }}</span>
                             <div class="label-box">
                                 {% set group = activity.getGroup %}
                                 {% set tags = group.getTags %}

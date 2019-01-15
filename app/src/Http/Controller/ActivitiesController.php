@@ -43,7 +43,7 @@ class ActivitiesController extends AbstractController
      * @param ServerRequestInterface $request
      * @param ResponseInterface $response
      * @return mixed
-     * @Post(name="/", alias="activities", middleware={"App\Http\Middleware\SessionMiddleware"})
+     * @Post(name="/", alias="activities")
      */
     public function activitiesAction(ServerRequestInterface $request, ResponseInterface $response) {
 

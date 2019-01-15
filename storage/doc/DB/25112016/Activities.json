@@ -1,20 +1,26 @@
-{ 
-    "_id" : ObjectId("580ff69b5bd49c0ac5809682"), 
-    "created_at" : ISODate("2016-10-25T21:56:27.000+0000"), 
+{
     "title" : "Somando dois inteiros", 
-    "question" : "Faça um programa que lê dois numeros inteiros e imprime a soma destes dois números.", 
-    "fullquestion" : "<p>Fa&ccedil;a um programa que l&ecirc; dois n&uacute;meros inteiros e imprima como resultado a soma desses dois inteiros.</p><p><strong>Entrada</strong></p><p>Dois inteiros a e b, sendo que os valores de a e b est&atilde;o no intervalo de -10000 a 10000 (inclusive).</p><p><strong>Sa&iacute;da</strong></p><p>Um inteiro, que corresponde ao resultado da soma a+b.</p><p><strong>Exemplos de Entrada e Sa&iacute;da</strong></p><table class='table table-striped'><tbody><tr><td><p><strong>Entrada</strong></p></td><td><p><strong>Respectiva Sa&iacute;da</strong></p></td></tr><tr><td><p><strong>12 5</strong></p></td><td><p><strong>17</strong></p></td></tr><tr><td><p><strong>-3 -18</strong></p></td><td><p><strong>-21</strong></p></td></tr></tbody></table>", 
+    "question" : "Faça um programa que leia dois números inteiros e imprima a soma deles.", 
+    "fullquestion" : "Faça um programa que leia dois números inteiros e imprima a soma desses dois inteiros",
+    "inputdescription": "Dois inteiros a e b.",
+    "outputdescription": "Um inteiro, correspondente a soma entre a e b.",
+    "example": [
+        {
+            "in": BinData(0, "MTIgNQ=="),
+            "out": BinData(0, "MTc="),
+        }
+    ],
     "activities" : [
         {
             "model" : {
                 "in" : BinData(0, "MSAxCg=="), 
                 "out" : BinData(0, "Mgo=")
             }, 
-            "plugin" : "App\\PluginActivities\\Problems\\Mapper\\Config"
+            "plugin" : "App\\Plugin\\Activities\\Problems\\Mapper\\Config"
         }
-    ], 
-    "order" : NumberInt(1), 
-    "group" : DBRef("GroupActivities", ObjectId("581a10bd7b3ceb04bb7b47cd"), "BD_COSMO")
+    ],
+    "group" : DBRef("GroupActivities", ObjectId("5c3adab74d5e6e33aa290cf6"), "BD_COSMO"),
+    "uploader": DBRef("User", ObjectId("5c33fc410cb1331f500024f2"), "BD_COSMO"),
 }
 { 
     "_id" : ObjectId("581a26437b3ceb04bb7b47db"), 

@@ -32,9 +32,24 @@ class Activities
     private $title;
 
     /**
+     * @ODM\Field(name="inputdescription", type="string")
+     */
+    private $input_description;
+
+    /**
+     * @ODM\Field(name="outputdescription", type="string")
+     */
+    private $output_description;
+
+    /**
      * @ODM\Field(name="activities", type="collection")
      */
     private $activities;
+
+    /**
+     * @ODM\Field(name="example", type="hash")
+     */
+    private $activity_example;
 
     /**
      * @ODM\Field(name="created_at", type="date")
@@ -50,6 +65,11 @@ class Activities
      * @ODM\ReferenceOne(targetDocument="GroupActivities", inversedBy="activity")
      */
     private $group;
+
+    /**
+     * @ODM\ReferenceOne(targetDocument="User", inversedBy="activity")
+     */
+    private $uploader;
 
     /**
      * @ODM\ReferenceMany(targetDocument="HistoryActivities", mappedBy="activity")
@@ -82,6 +102,19 @@ class Activities
         $this->order = $params['order'];
         $this->group = $params['group'];
 
+    }
+
+    public function toArray() {
+        return [
+            "id" => $this->id,
+            "title" => $this->title,
+            "question" => $this->question,
+            "fullquestion" => $this->fullquestion,
+            "input_description" => $this->input_description,
+            "output_description" => $this->output_description,
+            "activity_example" => $this->getActivityExample(),
+            "activities" => $this->activities,
+        ];
     }
 
     /**
@@ -134,6 +167,34 @@ class Activities
 
     /**
      * @return mixed
+     */
+    public function getInputDescription(){
+        return $this->input_description;
+    }
+    
+    /**
+     * @param mixed $input_description
+     */
+    public function setInputDescription($input_description){
+        $this->input_description = $input_description;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getOutputDescription(){
+        return $this->output_description;
+    }
+    
+    /**
+     * @param mixed $output_description
+     */
+    public function setOutputDescription($output_description){
+        $this->output_description = $output_description;
+    }
+
+    /**
+     * @return mixed
      * @throws \Exception
      */
     public function getActivities()
@@ -159,6 +220,29 @@ class Activities
     public function setActivities($activities)
     {
         $this->activities = $activities;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getActivityExample(){
+        $result = array();
+        for ($i = 0; $i < count($this->activity_example); $i++){
+            $result[$i] = array();
+            foreach ($this->activity_example[$i] as $key => $value)
+                $result[$i][$key] = $value->bin;
+        }
+
+        error_log(print_r($result, true));
+
+        return $result;
+    }
+
+    /**
+     * @param mixed $activity_example
+     */
+    public function setActivityExample($activity_example){
+        $this->activity_example = $activity_example;
     }
 
     /**
@@ -223,6 +307,19 @@ class Activities
         $this->group = $group;
     }
 
+    /**
+     * @return User
+     */
+    public function getUploader(){
+        return $this->uploader;
+    }
+
+    /**
+     * @param mixed $uploader
+     */
+    public function setUploader($uploader){
+        $this->uploader = $uploader;
+    }
 
     public function getIn(){
         return $this->activities[0]['model']['in']->bin;

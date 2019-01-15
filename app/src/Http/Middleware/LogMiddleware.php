@@ -49,7 +49,8 @@ class LogMiddleware
      */
     function __invoke($request, $response, $next)
     {
-        session_start();
+        if (!isset($_SESSION))
+            session_start();
         $route = $request->getAttribute('route');
 
         if ($route == null) {

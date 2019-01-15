@@ -48,6 +48,7 @@ class ProblemsValidate
         $obj->criaSaidaTeste($problem->getOut());
 
         $arrayReturn = $obj->runCode();
+
         $classReturn = new \stdClass();
         $classReturn->answer = $arrayReturn[0];
         $classReturn->payload = [

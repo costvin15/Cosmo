@@ -1,0 +1,127 @@
+{% extends "View/layout.twig" %}
+
+{% block pagetitle %}
+    {% if formCreate is defined %}
+        Administração do Cosmo - Nova atividade
+    {% elseif formUpdate is defined %}
+        Administração do Cosmo - Atualizar atividade
+    {% endif %}
+{% endblock %}
+
+{% block title %}Administração do Cosmo{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+            <div class="nav-tabs-custom">
+                <ul class="nav nav-tabs">
+                    <li class="active">
+                        <a href="#activity-data" data-toggle="tab">Dados da atividade</a>
+                    </li>
+
+                    <li>
+                        <a href="#input-output-data" data-toggle="tab">Entradas e saídas</a>
+                    </li>
+                </ul>
+                
+                <style>
+                    .tab-pane {
+                        padding: 15px;
+                    }
+                </style>
+
+                <form class="form-horizontal">
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="activity-data">
+                            <div class="form-group">
+                                <label for="input-frmactivity-title" class="col-sm-2 control-label">Título</label>
+                                <div class="col-sm-10">
+                                    {% if formCreate is defined %}
+                                        <input type="text" class="form-control" id="input-frmactivity-title" placeholder="Soma de dois inteiros">
+                                    {% elseif formUpdate is defined %}
+                                        <input value="{{ activity.title }}" type="text" class="form-control" id="input-frmactivity-title" placeholder="Soma de dois inteiros">
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="input-frmactivity-question" class="col-sm-2 control-label">Descrição curta</label>
+                                <div class="col-sm-10">
+                                    {% if formCreate is defined %}
+                                        <input type="text" class="form-control" id="input-frmactivity-question" placeholder="Faça um programa que lê dois números inteiros e imprime a soma destes dois números.">
+                                    {% elseif formUpdate is defined %}
+                                        <input value="{{ activity.question }}" type="text" class="form-control" id="input-frmactivity-question" placeholder="Faça um programa que lê dois números inteiros e imprime a soma destes dois números.">
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="input-frmactivity-fullquestion" class="col-sm-2 control-label">Descrição</label>
+                                <div class="col-sm-10">
+                                    <textarea type="text" class="form-control" rows="5" id="input-frmactivity-fullquestion" placeholder="">{% if formUpdate is defined %}{{ activity.fullquestion }}{% endif %}</textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane" id="input-output-data">
+                            <div class="form-group">
+                                <label for="input-frmactivity-input" class="col-sm-2 control-label">Descrição de entrada</label>
+                                <div class="col-sm-10">
+                                    {% if formCreate is defined %}
+                                        <input type="text" class="form-control" id="input-frmactivity-input" placeholder="Dois inteiros a e b.">
+                                    {% elseif formUpdate is defined %}
+                                        <input value="{{ activity.input_description }}" type="text" class="form-control" id="input-frmactivity-input" placeholder="Dois inteiros a e b.">
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="input-frmactivity-example-input" class="col-sm-2 control-label">Entrada de exemplo</label>
+                                <div class="col-sm-10">
+                                    {% if formCreate is defined %}
+                                        <input type="text" class="form-control" id="input-frmactivity-example-input" placeholder="12 5">
+                                    {% elseif formUpdate is defined %}
+                                        <input value="{{ activity.activity_example[0].in }}" type="text" class="form-control" id="input-frmactivity-example-input" placeholder="12 5">
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="input-frmactivity-output" class="col-sm-2 control-label">Descrição de saída</label>
+                                <div class="col-sm-10">
+                                    {% if formCreate is defined %}
+                                        <input type="text" class="form-control" id="input-frmactivity-output" placeholder="Um inteiro, correspondente a soma de a + b.">
+                                    {% elseif formUpdate is defined %}
+                                        <input value="{{ activity.output_description}}" type="text" class="form-control" id="input-frmactivity-output" placeholder="Um inteiro, correspondente a soma de a + b.">                                    
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="input-frmactivity-example-output" class="col-sm-2 control-label">Saída de exemplo</label>
+                                <div class="col-sm-10">
+                                    <textarea type="text" class="form-control" rows="5" id="input-frmactivity-example-output" placeholder="17">{% if formUpdate is defined %}{{ activity.activity_example[0].out }}{% endif %}</textarea>
+                                </div>
+                            </div>
+                            {% if formCreate is defined %}
+                                <div class="form-group">
+                                    <div class="col-sm-offset-2 col-sm-2">
+                                        <button type="submit" class="btn btn-success" id="btn-create-activity">Criar atividade</button>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <a href="{{ path_for("administrator.control.activities") }}" class="btn btn-default">Voltar</a>
+                                    </div>
+                                </div>
+                            {% elseif formUpdate is defined %}
+                                <input type="hidden" value="{{ activity.id }}">
+                                <div class="form-group">
+                                    <div class="col-sm-offset-2 col-sm-2">
+                                        <button type="submit" class="btn btn-success" id="btn-create-activity">Atualizar atividade</button>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <a href="{{ path_for("administrator.control.activities") }}" class="btn btn-default">Voltar</a>
+                                    </div>
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

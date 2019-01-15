@@ -62,9 +62,9 @@
             <div class="box box-widget">
                 <div class="box-header with-border">
                     <div class="user-block">
-                        <img class="img-circle" src="{{ base_url() }}/assets/img/user-salles.jpg" alt="User Image">
+                        <img class="img-circle" src="{{ activity.getUploader.getAvatar }}" alt="User Image">
                         <span class="username"><a href="#">{{ activity.getTitle|raw }}</a></span>
-                        <span class="description">Publicado por: Carlos Salles - {{ activity.getDateCreate|date("d/m/Y") }}</span>
+                        <span class="description">Publicado por: {{ activity.getUploader.getFullname }} - {{ activity.getDateCreate|date("d/m/Y") }}</span>
                     </div>
                     <!-- /.user-block -->
                 </div>
@@ -72,7 +72,37 @@
                 <div class="box-body">
                     <h4>Enunciado:</h4>
                     <!-- post text -->
-                    <div>{{ activity.getFullQuestion|raw }}</div>
+                    <div>
+                        <p>{{ activity.getFullQuestion }}<p>
+                        <p><strong>Entrada</strong></p>
+                        <p>{{ activity.getInputDescription }}</p>
+                        <p><strong>Saída</strong></p>
+                        <p>{{ activity.getOutputDescription }}</p>
+                        <table class="table table-striped">
+                            <tbody>
+                                <tr>
+                                    <th>
+                                        <p><strong>Entrada</strong></p>
+                                    </th>
+                                    <th>
+                                        <p><strong>Saída</strong></p>
+                                    </th>
+                                </tr>
+                                
+                                {% for example in activity.getActivityExample %}
+                                    <tr>
+                                        <td>
+                                            <p>{{ example.in }}</p>
+                                        </td>
+
+                                        <td>
+                                            <p>{{ example["out"] }}</p>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
             <!-- /.box -->

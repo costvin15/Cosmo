@@ -16,6 +16,7 @@ use Psr\Container\ContainerInterface;
 use Slim\Http\Request;
 use Slim\Http\Response;
 use App\Mapper\Activities;
+use PHPMailer\PHPMailer\Exception;
 
 /**
  * Class AdministratorControlController
@@ -243,5 +244,51 @@ class AdministratorControlController extends AbstractController
             $filename = $path_storage . DIRECTORY_SEPARATOR . "default.png";
 
         return $image64->castPathFile($filename);
+    }
+
+    /**
+     * @param Request $request
+     * @param Response $response
+     * @return mixed
+     * @Get(name="/activity", middleware={"App\Http\Middleware\AdministratorSessionMiddleware"}, alias="administrator.control.activities")
+     */
+    public function activitiesAction(Request $request, Response $response){
+        $activities = $this->_dm->getRepository(Activities::class)->findAll();
+        $this->setAttributeView("activities", $activities);
+
+        return $this->view->render($response, "View/administratorcontrol/activities/index.twig", $this->getAttributeView());
+    }
+
+    /**
+     * @param Request $request
+     * @param Response $response
+     * @return mixed
+     * @Get(name="/activity/create", middleware={"App\Http\Middleware\AdministratorSessionMiddleware"}, alias="administrator.control.activities.new")
+     */
+    public function newActivityAction(Request $request, Response $response){
+        $this->setAttributeView("formCreate", true);
+        return $this->view->render($response, "View/administratorcontrol/activities/form.twig", $this->getAttributeView());
+    }
+
+    /**
+     * @param Request $request
+     * @param Response $response
+     * @param array $args
+     * @return mixed
+     * @Get(name="/activity/modify/{id}", middleware={"App\Http\Middleware\AdministratorSessionMiddleware"}, alias="administrator.control.activities.modify")
+     */
+    public function modifyActivityAction(Request $request, Response $response, array $args){
+        $id = $args["id"];
+
+        if (!$id)
+            throw new \Exception("Atividade não encontrada");
+        
+        $activity = $this->_dm->getRepository(Activities::class)->find($id);
+        if (!$activity)
+            throw new \Exception("Atividade não encontrada");
+        
+        $this->setAttributeView("formUpdate", true);
+        $this->setAttributeView("activity", $activity->toArray());
+        return $this->view->render($response, "View/administratorcontrol/activities/form.twig", $this->getAttributeView());
     }
 }

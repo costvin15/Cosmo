@@ -74,7 +74,7 @@ class User
         $this->historyActivities = [];
     }
 
-    private function getAvatar(){
+    public function getAvatar(){
         $image_base_64 = new ImageBase64();
         $path = ContainerFacilitator::getContainer()->get("settings")->get("storage.photo");
         $filename = "";

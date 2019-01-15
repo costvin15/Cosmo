@@ -37,11 +37,12 @@ class LuaExecute
         $this->modeRun = "temporario";
 
         $this->sandbox = "";
-        if (PHP_OS == 'Darwin') {
+        if (PHP_OS == 'Darwin')
             $this->exec = "/usr/local/bin/lua";
-        } else {
+        elseif (PHP_OS == "WINNT")
+            $this->exec = "lua";
+        else
             $this->exec = "/usr/bin/lua";
-        }
 
         $this->codeEncpt = "base64";
     }
@@ -98,15 +99,15 @@ class LuaExecute
         switch ($type) {
             case 'exec':
                 if($this->modeRun == "temporario")
-                    return $this->sandbox.$this->exec." 2>&1 ".$this->entradaCodigo." < ".$this->inResp;
+                    return $this->sandbox.$this->exec . " " . "\"" . $this->entradaCodigo. "\"" . " < ". "\"" .$this->inResp . "\"";
                 elseif( $this->modeRun == "arquivar")
-                    return $this->sandbox.$this->exec." 2>&1 ".$this->entradaCodigo." < ".$this->inResp." > out.file";
+                    return $this->sandbox.$this->exec . " " . $this->entradaCodigo." < ".$this->inResp." > out.file";
 
             case 'diff':
                 if (PHP_OS == 'Linux' || PHP_OS == 'Darwin')
                     return "diff -bB ".$this->outFile." ".$this->outResp;
                 else
-                    return "FC /b ".$this->outFile." ".$this->outResp;
+                    return "FC /b ". "\"" . $this->outFile. "\"" . " ". "\"" .$this->outResp . "\"";
         }
     }
 
@@ -143,7 +144,7 @@ class LuaExecute
                 || strpos($diff,'no differences encountered') !== false
                 || strpos($diff,'nenhuma') !== false) {
 
-                return array(true, 'Correto', $this->return." ".$diff);
+                return array(true, 'Correto', $this->return." ". mb_convert_encoding($diff, "UTF-8", "ISO-8859-1"));
             }
             else
             {

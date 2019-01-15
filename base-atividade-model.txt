@@ -1,0 +1,22 @@
+<p>Fa&ccedil;a um programa que l&ecirc; dois n&uacute;meros inteiros e imprima como resultado a soma desses dois inteiros.</p>
+<p><strong>Entrada</strong></p>
+<p>Dois inteiros a e b, sendo que os valores de a e b est&atilde;o no intervalo de -10000 a 10000 (inclusive).</p>
+<p><strong>Sa&iacute;da</strong></p>
+<p>Um inteiro, que corresponde ao resultado da soma a+b.</p>
+<p><strong>Exemplos de Entrada e Sa&iacute;da</strong></p>
+<table class='table table-striped'>
+    <tbody>
+        <tr>
+            <td><p><strong>Entrada</strong></p></td>
+            <td><p><strong>Respectiva Sa&iacute;da</strong></p></td>
+        </tr>
+        <tr>
+            <td><p><strong>12 5</strong></p></td>
+            <td><p><strong>17</strong></p></td>
+        </tr>
+        <tr>
+            <td><p><strong>-3 -18</strong></p></td>
+            <td><p><strong>-21</strong></p></td>
+        </tr>
+    </tbody>
+</table>
