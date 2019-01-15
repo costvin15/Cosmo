@@ -1,15 +1,16 @@
-function frmCreateActivity(){}
+function frmUpdateActivity(){}
 
-frmCreateActivity.prototype.initialize = function(){
-    $("#btn-create-activity").on("click", function(){
-        if (cosmo.frmcreateactivity.validate())
-            cosmo.frmcreateactivity.save();
+frmUpdateActivity.prototype.initialize = function(){
+    $("#btn-update-activity").on("click", function(){
+        if (cosmo.frmUpdateActivity.validate())
+            cosmo.frmUpdateActivity.save();
         return false;
     });
 };
 
-frmCreateActivity.prototype.createObject = function(){
+frmUpdateActivity.prototype.createObject = function(){
     var formRegister = {};
+    formRegister.id = $("#input-frmactivity-id").val();
     formRegister.title = $("#input-frmactivity-title").val();
     formRegister.question = $("#input-frmactivity-question").val();
     formRegister.fullquestion = $("#input-frmactivity-fullquestion").val();
@@ -24,7 +25,7 @@ frmCreateActivity.prototype.createObject = function(){
     return formRegister;
 };
 
-frmCreateActivity.prototype.validate = function(){
+frmUpdateActivity.prototype.validate = function(){
     var formRegister = this.createObject();
 
     if (formRegister.input_description === "")
@@ -58,11 +59,11 @@ frmCreateActivity.prototype.validate = function(){
     return true;
 };
 
-frmCreateActivity.prototype.save = function(){
+frmUpdateActivity.prototype.save = function(){
     var formRegister = this.createObject();
 
     var success = function(data){
-        cosmo.dialog.success("Cadastro de Atividade!", data.message, function(){
+        cosmo.dialog.success("Atualização de Atividade!", data.message, function(){
             window.location.href = data.callback;
         });
     };
@@ -85,8 +86,8 @@ frmCreateActivity.prototype.save = function(){
 };
 
 window.cosmo = window.cosmo || {};
-window.cosmo.frmcreateactivity = window.cosmo.frmcreateactivity || new frmCreateActivity();
+window.cosmo.frmUpdateActivity = window.cosmo.frmUpdateActivity || new frmUpdateActivity();
 
 $("document").ready(function(){
-    window.cosmo.frmcreateactivity.initialize();
+    window.cosmo.frmUpdateActivity.initialize();
 });

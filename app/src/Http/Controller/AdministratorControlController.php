@@ -9,7 +9,6 @@
 namespace App\Http\Controller;
 
 use App\Http\Controller\Validate\AdministratorUserControlValidate;
-use App\Http\Controller\Validate\AdministratorActivityControlValidate;
 use App\Mapper\User;
 use App\Model\Util\ImageBase64;
 use App\Model\Util\Mail;
@@ -300,18 +299,35 @@ class AdministratorControlController extends AbstractController
     /**
      * @param Request $request
      * @param Response $response
+     * @param array $args
+     * @return mixed
+     * @Get(name="/activity/remove/{id}", middleware={"App\Http\Middleware\AdministratorSessionMiddleware"}, alias="administrator.control.activities.remove")
+     */
+    public function removeActivityAction(Request $request, Response $response, array $args){
+        $router = $this->_ci->get("router");
+        $id = $args["id"];
+        if (!$id)
+            return $response->withRedirect($router->pathFor("administrator.control.activities"));
+        
+        $activity = $this->_dm->getRepository(Activities::class)->find($id);
+        $this->_dm->remove($activity);
+        $this->_dm->flush();
+
+        return $response->withRedirect($router->pathFor("administrator.control.activities"));
+    }
+
+    /**
+     * @param Request $request
+     * @param Response $response
      * @return mixed
      * @Post(name="/activity/save", middleware={"App\Http\Middleware\AdministratorSessionMiddleware"}, alias="administrator.controls.activities.save")
      */
     public function saveActivityAction(Request $request, Response $response){
         if ($request->isXhr()){
             try {
-                // $validate = new AdministratorActivityControlValidate();
-                // if (!$validate->saveUserAction($request))
-                //     return $response->withJson([$validate->getError()]);
-                
                 $attributes = SessionFacilitator::getAttributeSession();
 
+                $id = $request->getParam("id");
                 $title = $request->getParam("title");
                 $question = $request->getParam("question");
                 $fullquestion = $request->getParam("fullquestion");
@@ -325,7 +341,11 @@ class AdministratorControlController extends AbstractController
                 $dateCreate = date("Y-m-d H:i:s");
                 $uploader = $this->_dm->getRepository(User::class)->find($attributes['id']);
 
-                $activity = new Activities();
+                if ($id)
+                    $activity = $this->_dm->getRepository(Activities::class)->find($id);
+                else
+                    $activity = new Activities();
+                
                 $activity->setTitle($title);
                 $activity->setQuestion($question);
                 $activity->setFullquestion($fullquestion);
@@ -344,13 +364,21 @@ class AdministratorControlController extends AbstractController
                     "plugin" => "App\\Plugin\\Activities\\Problems\\Mapper\\Config",
                 )));
                 $activity->setGroup($group);
-                $activity->setUploader($uploader);
+
+                if (!$id){
+                    $activity->setDateCreate($dateCreate);
+                    $activity->setUploader($uploader);
+                }
 
                 $this->_dm->persist($activity);
                 $this->_dm->flush();
 
                 $router = $this->_ci->get("router");
-                return $response->withJson(["message" => "Atividade cadastrada com sucesso!", "callback" => $router->pathFor("administrator.control.activities")], 200);
+                
+                if ($id)
+                    return $response->withJson(["message" => "Atividade atualizada com sucesso!", "callback" => $router->pathFor("administrator.control.activities")], 200);    
+                else
+                    return $response->withJson(["message" => "Atividade cadastrada com sucesso!", "callback" => $router->pathFor("administrator.control.activities")], 200);
             } catch (\Exception $e){
                 return $response->withJson([$e->getMessage()], 500);
             }

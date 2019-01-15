@@ -14,6 +14,7 @@
     {% if formCreate is defined %}
         <script src="{{ base_url() }}/assets/js/pages/admin-activity-createjs/frmCreateActivity.js"></script>
     {% elseif formUpdate is defined %}
+        <script src="{{ base_url() }}/assets/js/pages/admin-activity-updatejs/frmUpdateActivity.js"></script>
     {% endif %}
 {% endblock %}
 
@@ -89,7 +90,7 @@
                                     {% if formCreate is defined %}
                                         <input type="text" class="form-control" id="input-frmactivity-description-input" placeholder="Dois inteiros a e b.">
                                     {% elseif formUpdate is defined %}
-                                        <input value="{{ activity.input_description }}" type="text" class="form-control" id="input-frmactivity-input" placeholder="Dois inteiros a e b.">
+                                        <input value="{{ activity.input_description }}" type="text" class="form-control" id="input-frmactivity-description-input" placeholder="Dois inteiros a e b.">
                                     {% endif %}
                                 </div>
                             </div>
@@ -109,7 +110,7 @@
                                     {% if formCreate is defined %}
                                         <input type="text" class="form-control" id="input-frmactivity-description-output" placeholder="Um inteiro, correspondente a soma de a + b.">
                                     {% elseif formUpdate is defined %}
-                                        <input value="{{ activity.output_description}}" type="text" class="form-control" id="input-frmactivity-output" placeholder="Um inteiro, correspondente a soma de a + b.">                                    
+                                        <input value="{{ activity.output_description}}" type="text" class="form-control" id="input-frmactivity-description-output" placeholder="Um inteiro, correspondente a soma de a + b.">                                    
                                     {% endif %}
                                 </div>
                             </div>
@@ -122,13 +123,13 @@
                             <div class="form-group">
                                 <label for="input-frmactivity-input" class="col-sm-2 control-label">Entrada</label>
                                 <div class="col-sm-10">
-                                    <textarea type="text" class="form-control" rows="5" id="input-frmactivity-input"></textarea>
+                                    <textarea type="text" class="form-control" rows="5" id="input-frmactivity-input">{% if formUpdate is defined %}{{ activity.activities.in }}{% endif %}</textarea>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="input-frmactivity-output" class="col-sm-2 control-label">Saída</label>
                                 <div class="col-sm-10">
-                                    <textarea type="text" class="form-control" rows="5" id="input-frmactivity-output"></textarea>
+                                    <textarea type="text" class="form-control" rows="5" id="input-frmactivity-output">{% if formUpdate is defined %}{{ activity.activities.out }}{% endif %}</textarea>
                                 </div>
                             </div>
                             {% if formCreate is defined %}
@@ -141,10 +142,10 @@
                                     </div>
                                 </div>
                             {% elseif formUpdate is defined %}
-                                <input type="hidden" value="{{ activity.id }}">
+                                <input type="hidden" value="{{ activity.id }}" id="input-frmactivity-id">
                                 <div class="form-group">
                                     <div class="col-sm-offset-2 col-sm-2">
-                                        <button type="submit" class="btn btn-success" id="btn-create-activity">Atualizar atividade</button>
+                                        <button type="submit" class="btn btn-success" id="btn-update-activity">Atualizar atividade</button>
                                     </div>
                                     <div class="col-sm-2">
                                         <a href="{{ path_for("administrator.control.activities") }}" class="btn btn-default">Voltar</a>

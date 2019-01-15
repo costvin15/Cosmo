@@ -114,7 +114,7 @@ class Activities
             "input_description" => $this->input_description,
             "output_description" => $this->output_description,
             "activity_example" => $this->getActivityExample(),
-            "activities" => $this->activities,
+            "activities" => $this->getActivities(),
             "group" => $this->group,
         ];
     }
