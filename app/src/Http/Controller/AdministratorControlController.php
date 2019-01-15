@@ -8,7 +8,8 @@
 
 namespace App\Http\Controller;
 
-use App\Http\Controller\Validate\AdministratorControlValidate;
+use App\Http\Controller\Validate\AdministratorUserControlValidate;
+use App\Http\Controller\Validate\AdministratorActivityControlValidate;
 use App\Mapper\User;
 use App\Model\Util\ImageBase64;
 use App\Model\Util\Mail;
@@ -17,6 +18,8 @@ use Slim\Http\Request;
 use Slim\Http\Response;
 use App\Mapper\Activities;
 use PHPMailer\PHPMailer\Exception;
+use App\Mapper\GroupActivities;
+use App\Facilitator\App\SessionFacilitator;
 
 /**
  * Class AdministratorControlController
@@ -140,7 +143,7 @@ class AdministratorControlController extends AbstractController
      */
     public function saveUserAction(Request $request, Response $response) {
         if ($request->isXhr()) {
-            $validate = new AdministratorControlValidate();
+            $validate = new AdministratorUserControlValidate();
 
             if (!$validate->saveUserAction($request))
                 return $response->withJson([ $validate->getError() ], 500);
@@ -185,7 +188,7 @@ class AdministratorControlController extends AbstractController
      */
     public function updateUserAction(Request $request, Response $response) {
         if ($request->isXhr()) {
-            $validate = new AdministratorControlValidate();
+            $validate = new AdministratorUserControlValidate();
 
             if (!$validate->updateUserAction($request))
                 return $response->withJson([ $validate->getError() ], 500);
@@ -267,6 +270,7 @@ class AdministratorControlController extends AbstractController
      */
     public function newActivityAction(Request $request, Response $response){
         $this->setAttributeView("formCreate", true);
+        $this->setAttributeView("group_activities", $this->_dm->getRepository(GroupActivities::class)->findAll());
         return $this->view->render($response, "View/administratorcontrol/activities/form.twig", $this->getAttributeView());
     }
 
@@ -289,6 +293,68 @@ class AdministratorControlController extends AbstractController
         
         $this->setAttributeView("formUpdate", true);
         $this->setAttributeView("activity", $activity->toArray());
+        $this->setAttributeView("group_activities", $this->_dm->getRepository(GroupActivities::class)->findAll());
         return $this->view->render($response, "View/administratorcontrol/activities/form.twig", $this->getAttributeView());
+    }
+
+    /**
+     * @param Request $request
+     * @param Response $response
+     * @return mixed
+     * @Post(name="/activity/save", middleware={"App\Http\Middleware\AdministratorSessionMiddleware"}, alias="administrator.controls.activities.save")
+     */
+    public function saveActivityAction(Request $request, Response $response){
+        if ($request->isXhr()){
+            try {
+                // $validate = new AdministratorActivityControlValidate();
+                // if (!$validate->saveUserAction($request))
+                //     return $response->withJson([$validate->getError()]);
+                
+                $attributes = SessionFacilitator::getAttributeSession();
+
+                $title = $request->getParam("title");
+                $question = $request->getParam("question");
+                $fullquestion = $request->getParam("fullquestion");
+                $group = $this->_dm->getRepository(GroupActivities::class)->findBy(["name" => $request->getParam("group")])[0];
+                $input_description = $request->getParam("input_description");
+                $input_example = $request->getParam("input_example");
+                $output_description = $request->getParam("output_description");
+                $output_example = $request->getParam("output_example");
+                $input = $request->getParam("input");
+                $output = $request->getParam("output");
+                $dateCreate = date("Y-m-d H:i:s");
+                $uploader = $this->_dm->getRepository(User::class)->find($attributes['id']);
+
+                $activity = new Activities();
+                $activity->setTitle($title);
+                $activity->setQuestion($question);
+                $activity->setFullquestion($fullquestion);
+                $activity->setGroup($group);
+                $activity->setInputDescription($input_description);
+                $activity->setOutputDescription($output_description);
+                $activity->setActivityExample(array(array(
+                    "in" => new \MongoBinData($input_example, \MongoBinData::GENERIC),
+                    "out" => new \MongoBinData($output_example, \MongoBinData::GENERIC),
+                )));
+                $activity->setActivities(array(array(
+                    "model" => [
+                        "in" => new \MongoBinData($input, \MongoBinData::GENERIC),
+                        "out" => new \MongoBinData($output, \MongoBinData::GENERIC),
+                    ],
+                    "plugin" => "App\\Plugin\\Activities\\Problems\\Mapper\\Config",
+                )));
+                $activity->setGroup($group);
+                $activity->setUploader($uploader);
+
+                $this->_dm->persist($activity);
+                $this->_dm->flush();
+
+                $router = $this->_ci->get("router");
+                return $response->withJson(["message" => "Atividade cadastrada com sucesso!", "callback" => $router->pathFor("administrator.control.activities")], 200);
+            } catch (\Exception $e){
+                return $response->withJson([$e->getMessage()], 500);
+            }
+        } else
+            return $response->withJson(["Requisição mal formatada."], 500);
     }
 }

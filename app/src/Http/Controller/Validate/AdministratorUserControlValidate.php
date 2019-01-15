@@ -7,7 +7,7 @@ use Slim\Http\Request;
 use Zend\Validator\EmailAddress;
 use Zend\Validator\NotEmpty;
 
-class AdministratorControlValidate extends AbstractControllerValidate
+class AdministratorUserControlValidate extends AbstractControllerValidate
 {
 
     public function saveUserAction(Request $request) {

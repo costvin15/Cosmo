@@ -39,7 +39,7 @@ class LoginController extends AbstractController
      * @param Request $request
      * @param Response $response
      * @return mixed
-     * @Get(name="/", alias="login.index")
+     * @Get(name="/", middleware={"App\Http\Middleware\SessionMiddleware"}, alias="login.index")
      */
     public function indexAction(Request $request, Response $response) {
         return $this->view->render($response, 'View/login/login.twig', []);

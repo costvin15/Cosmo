@@ -42,7 +42,7 @@ class Activities
     private $output_description;
 
     /**
-     * @ODM\Field(name="activities", type="collection")
+     * @ODM\Field(name="activities", type="hash")
      */
     private $activities;
 
@@ -92,16 +92,17 @@ class Activities
     private $validate;
 
 
-    public function __construct($params)
+    public function __construct($params = array())
     {
-        $this->question = $params['shortDesc'];
-        $this->fullquestion = $params['questionDesc'];
-        $this->title = $params['questionTitle'];
-        $this->activities =  array(array("model" => array('in'=> new  \MongoBinData($params['testIn'], \MongoBinData::GENERIC), 'out'=> new \MongoBinData($params['testOut'],\MongoBinData::GENERIC)), "plugin" => "App\\PluginActivities\\Problems\\Mapper\\Config"));
-        $this->dateCreate = "2016-11-02T14:07:27.000+0000";
-        $this->order = $params['order'];
-        $this->group = $params['group'];
-
+        if (count($params) > 0){
+            $this->question = $params['shortDesc'];
+            $this->fullquestion = $params['questionDesc'];
+            $this->title = $params['questionTitle'];
+            $this->activities =  array(array("model" => array('in'=> new  \MongoBinData($params['testIn'], \MongoBinData::GENERIC), 'out'=> new \MongoBinData($params['testOut'],\MongoBinData::GENERIC)), "plugin" => "App\\PluginActivities\\Problems\\Mapper\\Config"));
+            $this->dateCreate = "2016-11-02T14:07:27.000+0000";
+            $this->order = $params['order'];
+            $this->group = $params['group'];
+        }
     }
 
     public function toArray() {
@@ -114,6 +115,7 @@ class Activities
             "output_description" => $this->output_description,
             "activity_example" => $this->getActivityExample(),
             "activities" => $this->activities,
+            "group" => $this->group,
         ];
     }
 
@@ -232,8 +234,6 @@ class Activities
             foreach ($this->activity_example[$i] as $key => $value)
                 $result[$i][$key] = $value->bin;
         }
-
-        error_log(print_r($result, true));
 
         return $result;
     }

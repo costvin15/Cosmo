@@ -95,7 +95,8 @@ routes_name.ADMIN_GET_ALL_USER="/admin/user/all",
 routes_name.ADM_REGISTER_USER_SAVE="/admin/user/save",
 routes_name.ADM_REGISTER_USER_MODIFY="/admin/user/modify",
 routes_name.ADM_REGISTER_USER_UPDATE="/admin/user/update",
-routes_name.ADM_GET_PHOTO_USER = "/admin/user/image/";
+routes_name.ADM_GET_PHOTO_USER = "/admin/user/image/",
+routes_name.ADM_REGISTER_ACTIVITY_SAVE = "/admin/activity/save";
 window.cosmo = window.cosmo || {},
 
 window.cosmo.routes_name = window.cosmo.routes_name || routes_name;
