@@ -26,9 +26,9 @@ class GroupActivities
     private $visible;
 
     /**
-     * @ODM\Field(name="tags", type="collection")
+     * @ODM\Field(name="tags", type="hash")
      */
-    private $tags;
+    private $tags = array();
 
     /**
      * @ODM\ReferenceMany(targetDocument="Activities", mappedBy="group")
@@ -43,6 +43,14 @@ class GroupActivities
         $this->activity = [];
     }
 
+    public function toArray(){
+        return [
+            "id" => $this->id,
+            "title" => $this->name,
+            "visible" => $this->visible,
+            "tags" => $this->tags,
+        ];
+    }
 
     /**
      * @return mixed
@@ -61,7 +69,7 @@ class GroupActivities
     }
 
     public function setTags($tags) {
-        $this->$tags = $tags;
+        $this->tags = $tags;
     }
 
     /**

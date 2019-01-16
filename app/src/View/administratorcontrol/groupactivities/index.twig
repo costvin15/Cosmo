@@ -2,18 +2,14 @@
 {% block pagetitle %}Administração do Cosmo{% endblock %}
 {% block title %}Administração do Cosmo - Atividades{% endblock %}
 
-{% block css %}
-    <link rel="stylesheet" href="{{ base_url() }}/node_modules/datatables/media/css/jquery.dataTables.css">
-{% endblock %}
-
 {% block content %}
     <div class="admin-users">
         <nav class="navbar navbar-default">
             <div class="container-fluid">
                 <ul class="list-fast-menu">
                     <li><a href="{{ path_for("administrator.control.users") }}">Usuários</a></li>
-                    <li><a class="active" href="{{ path_for("administrator.control.activities") }}">Atividades</a></li>
-                    <li><a href="{{ path_for("administrator.control.groupactivities") }}">Grupos de Atividades</a></li>
+                    <li><a href="{{ path_for("administrator.control.activities") }}">Atividades</a></li>
+                    <li><a class="active" href="{{ path_for("administrator.control.groupactivities") }}">Grupos de Atividades</a></li>
                 </ul>
             </div>
         </nav>
@@ -23,20 +19,18 @@
                 <div class="row">
                     <div class="col-md-9"></div>
                     <div class="col-md-3">
-                        <a href="{{ path_for("administrator.control.activities.new") }}" type="button" class="btn btn-block btn-success">Nova Atividade</a>
+                        <a href="{{ path_for("administrator.control.groupactivities.create") }}" type="button" class="btn btn-block btn-success">Novo Grupo de Atividade</a>
                     </div>
                 </div>
 
                 <div class="row">
-                    {% for activity in activities %}
+                    {% for group in group_activities %}
                         <div class="col-md-3">
                             <div class="box box-widget">
-                                <div class="box-header width-border box-question">
+                                <div class="box-header widget-border box-question">
                                     <div class="user-block">
-                                        <span class="username">{{ activity.getTitle|raw }}</span>
-                                        <span class="description">Publicado por: {{ activity.getUploader.getFullname }} - {{ activity.getDateCreate|date("d/m/Y") }}</span>
+                                        <span class="username">{{ group.getName|raw }}</span>
                                         <div class="label-box">
-                                            {% set group = activity.getGroup %}
                                             {% set tags = group.getTags %}
                                             {% for tag in tags %}
                                                 <small class="label bg-blue">{{ tag }}</small>
@@ -45,18 +39,13 @@
                                     </div>
                                 </div>
 
-                                <div class="box-body">
-                                    <p>{{ activity.getQuestion|raw }}</p>
-                                </div>
-
                                 <div class="box-footer">
                                     <div class="row option-question">
                                         <div class="col-lg-6 col-xs-6 col-sm-6 col-md-6">
-                                            <a href="{{ path_for("administrator.control.activities.modify", {"id": activity.getId}) }}" type="button" class="btn btn-default btn-block"> Editar</a>
+                                            <a href="{{ path_for("administrator.control.groupactivities.modify", {"id": group.getId}) }}" type="button" class="btn btn-default btn-block"> Editar</a>
                                         </div>
-
                                         <div class="col-lg-6 col-xs-6 col-sm-6 col-md-6">
-                                            <a href="{{ path_for("administrator.control.activities.remove", {"id": activity.getId}) }}" type="button" class="btn btn-primary btn-block"> Apagar</a>
+                                            <a href="{{ path_for("administrator.control.groupactivities.remove", {"id": group.getId}) }}" type="button" class="btn btn-default btn-block"> Apagar</a>
                                         </div>
                                     </div>
                                 </div>

@@ -71,15 +71,13 @@ frmCreateActivity.prototype.save = function(){
         cosmo.dialog.error("Erro", data.responseJSON[0]);
     };
 
-    console.log(formRegister);
-
     var configuration_ajax = cosmo.ajax.getDefaults();
     configuration_ajax.url = cosmo.urlbase + cosmo.routes_name.ADM_REGISTER_ACTIVITY_SAVE;
     configuration_ajax.method = "POST";
     configuration_ajax.data = formRegister;
     configuration_ajax.type=  "json";
     configuration_ajax.sucess = success;
-    configuration_ajax.eror = error;
+    configuration_ajax.error = error;
     cosmo.ajax.send(configuration_ajax);
     return true;
 };

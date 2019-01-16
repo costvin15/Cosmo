@@ -1,14 +1,13 @@
 {% extends "View/layout.twig" %}
 
-{% block pagetitle %}
+{% block pagetitle %}Administração do Cosmo{% endblock %}
+{% block title %}
     {% if formCreate is defined %}
         Administração do Cosmo - Nova atividade
     {% elseif formUpdate is defined %}
         Administração do Cosmo - Atualizar atividade
     {% endif %}
 {% endblock %}
-
-{% block title %}Administração do Cosmo{% endblock %}
 
 {% block scripts %}
     {% if formCreate is defined %}
@@ -25,7 +24,7 @@
             <div class="nav-tabs-custom">
                 <ul class="nav nav-tabs">
                     <li class="active">
-                        <a href="#activity-data" data-toggle="tab">Dados da atividade</a>
+                        <a href="#activity-data" data-toggle="tab">Dados gerais</a>
                     </li>
 
                     <li>

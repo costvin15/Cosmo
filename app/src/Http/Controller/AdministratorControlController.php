@@ -49,6 +49,7 @@ class AdministratorControlController extends AbstractController
             "data" => [
                 "users" => count($this->_dm->getRepository(User::class)->findAll()),
                 "activities" => count($this->_dm->getRepository(Activities::class)->findAll()),
+                "group_activities" => count($this->_dm->getRepository(GroupActivities::class)->findAll()),
             ],
         );
         return $this->view->render($response, 'View/administratorcontrol/index.twig', array_merge($attributes, $this->getAttributeView()));
@@ -320,7 +321,7 @@ class AdministratorControlController extends AbstractController
      * @param Request $request
      * @param Response $response
      * @return mixed
-     * @Post(name="/activity/save", middleware={"App\Http\Middleware\AdministratorSessionMiddleware"}, alias="administrator.controls.activities.save")
+     * @Post(name="/activity/save", middleware={"App\Http\Middleware\AdministratorSessionMiddleware"}, alias="administrator.control.activities.save")
      */
     public function saveActivityAction(Request $request, Response $response){
         if ($request->isXhr()){
@@ -345,6 +346,9 @@ class AdministratorControlController extends AbstractController
                     $activity = $this->_dm->getRepository(Activities::class)->find($id);
                 else
                     $activity = new Activities();
+
+                if (!$activity)
+                    return $response->withJson(["Atividade não encontrada."], 500);
                 
                 $activity->setTitle($title);
                 $activity->setQuestion($question);
@@ -384,5 +388,107 @@ class AdministratorControlController extends AbstractController
             }
         } else
             return $response->withJson(["Requisição mal formatada."], 500);
+    }
+
+    /**
+     * @param Request $request
+     * @param Response $response
+     * @return mixed
+     * @Get(name="/groupactivity", middleware={"App\Http\Middleware\AdministratorSessionMiddleware"}, alias="administrator.control.groupactivities")
+     */
+    public function groupActivitiesAction(Request $request, Response $response){
+        $this->setAttributeView("group_activities", $this->_dm->getRepository(GroupActivities::class)->findAll());
+        return $this->view->render($response, "View/administratorcontrol/groupactivities/index.twig", $this->getAttributeView());
+    }
+
+    /**
+     * @param Request $request
+     * @param Response $response
+     * @return mixed
+     * @Get(name="/groupactivity/create", middleware={"App\Http\Middleware\AdministratorSessionMiddleware"}, alias="administrator.control.groupactivities.create")
+     */
+    public function newGroupActivityAction(Request $request, Response $response){
+        $this->setAttributeView("formCreate", true);
+        return $this->view->render($response, "View/administratorcontrol/groupactivities/form.twig", $this->getAttributeView());
+    }
+
+    /**
+     * @param Request $request
+     * @param Response $response
+     * @param array $args
+     * @return mixed
+     * @Get(name="/groupactivity/modify/{id}", middleware={"App\Http\Middleware\AdministratorSessionMiddleware"}, alias="administrator.control.groupactivities.modify")
+     */
+    public function modifyGroupActivityAction(Request $request, Response $response, array $args){
+        $id = $args["id"];
+
+        if (!$id)
+            throw new \Exception("Grupo de Atividades não encontrado");
+        
+        $group = $this->_dm->getRepository(GroupActivities::class)->find($id);
+        if (!$group)
+            throw new \Exception("Grupo de Atividades não encontrado");
+        
+        $this->setAttributeView("formUpdate", true);
+        $this->setAttributeView("group_activity", $group->toArray());
+        return $this->view->render($response, "View/administratorcontrol/groupactivities/form.twig", $this->getAttributeView());
+    }
+
+    /**
+     * @param Request $request
+     * @param Response $response
+     * @return mixed
+     * @Post(name="/groupactivity/save", alias="administrator.control.groupactivities.save")
+     */
+    public function saveGroupActivityAction(Request $request, Response $response){
+        if ($request->isXhr()){
+            $id = $request->getParam("id");
+            $name = $request->getParam("name");
+            $visible = $request->getParam("visible");
+            $tags = array();
+            $tags[0] = $request->getParam("tags");
+
+            if ($id)
+                $group = $this->_dm->getRepository(GroupActivities::class)->find($id);
+            else
+                $group = new GroupActivities();
+
+            if (!$group)
+                return $response->withJson(["Grupo não encontrado."], 500);
+            
+            $group->setName($name);
+            $group->setVisible($visible);
+            $group->setTags($tags);
+
+            $this->_dm->persist($group);
+            $this->_dm->flush();
+
+            $router = $this->_ci->get("router");
+            if ($id)
+                return $response->withJson(["message" => "Grupo de Atividade atualizado com sucesso!", "callback" => $router->pathFor("administrator.control.groupactivities")], 200);
+            else
+                return $response->withJson(["message" => "Grupo de Atividade cadastrado com sucesso!", "callback" => $router->pathFor("administrator.control.groupactivities")], 200);
+        } else
+            return $response->withJson(["Requisição mal formatada."], 500);
+    }
+
+    /**
+     * @param Request $request
+     * @param Response $response
+     * @param array $args
+     * @return mixed
+     * @Get(name="/groupactivity/remove/{id}", middleware={"App\Http\Middleware\AdministratorSessionMiddleware"}, alias="administrator.control.groupactivities.remove")
+     */
+    public function removeGroupActivityAction(Request $request, Response $response, array $args){
+        $router = $this->_ci->get("router");
+        $id = $args["id"];
+        if (!$id)
+            return $response->withRedirect($router->pathFor("administrator.control.groupactivities"));
+        
+        $group = $this->_dm->getRepository(GroupActivities::class)->find($id);
+        $this->_dm->remove($group);
+        $this->_dm->flush();
+
+        return $response->withRedirect($router->pathFor("administrator.control.groupactivities"));
     }
 }
