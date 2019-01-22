@@ -17,6 +17,8 @@ class PythonExecute
     private $outFileName;
     private $respFileName;
     private $debug;
+    private $timeIn;
+    private $timeOut;
 
     private $return; /* retorno do codigo */
 
@@ -37,11 +39,12 @@ class PythonExecute
         $this->modeRun = "temporario";
 
         $this->sandbox = "";
-        if (PHP_OS == 'Darwin') {
+        if (PHP_OS == 'Darwin')
             $this->exec = "/usr/bin/python";
-        } else {
+        elseif (PHP_OS == "WINNT")
+            $this->exec = "python";
+        else
             $this->exec = "/usr/bin/python";
-        }
 
         $this->codeEncpt = "base64";
     }
@@ -56,6 +59,13 @@ class PythonExecute
      *	$obj->runCode(); @return se esta certo ou errado
      *
      */
+    public function getTimeIn(){
+        return $this->timeIn;
+    }
+    
+    public function getTimeOut(){
+        return $this->timeOut;
+    }
 
     public function criarEntradaCodigo($data)
     {
@@ -98,22 +108,22 @@ class PythonExecute
         switch ($type) {
             case 'exec':
                 if($this->modeRun == "temporario")
-                    return $this->sandbox.$this->exec." ".$this->entradaCodigo." < ".$this->inResp;
+                    return $this->sandbox . $this->exec . " \"" . $this->entradaCodigo . "\" < \"" . $this->inResp . "\"";
                 elseif( $this->modeRun == "arquivar")
-                    return $this->sandbox.$this->exec." ".$this->entradaCodigo." < ".$this->inResp." > out.file";
+                    return $this->sandbox . $this->exec . " \"" . $this->entradaCodigo . "\" < \"" . $this->inResp . "\" > out.file";
 
             case 'diff':
                 if (PHP_OS == 'Linux' || PHP_OS == 'Darwin')
                     return "diff -bB ".$this->outFile." ".$this->outResp;
                 else
-                    return "FC /b ".$this->outFile." ".$this->outResp;
+                    return "FC /b \"" . $this->outFile . "\" \"" . $this->outResp . "\"";
         }
     }
 
-    public function runCode()
-    {
-
+    public function runCode(){
+        $this->timeIn = microtime(true);
         $this->return = shell_exec($this->formataExec());
+        $this->timeOut = microtime(true);
 
         if(is_null($this->return))
             $this->return = 'Sem resposta';
@@ -143,7 +153,7 @@ class PythonExecute
                 || strpos($diff,'no differences encountered') !== false
                 || strpos($diff,'nenhuma') !== false) {
 
-                return array(true, 'Correto', $this->return." ".$diff);
+                return array(true, 'Correto', $this->return . " " . mb_convert_encoding($diff, "UTF-8", "ISO-8859-1"));
             }
             else
             {

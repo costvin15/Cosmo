@@ -43,6 +43,7 @@ class AdministratorControlController extends AbstractController
      * @param Response $response
      * @return mixed
      * @Get(name="/", middleware={"App\Http\Middleware\AdministratorSessionMiddleware"}, alias="administrator.control.index")
+     * @Log(type="INFO", persist={"verb", "attributes", "session"}, message="Acessou a página administrativa inicial.")
      */
     public function indexAction(Request $request, Response $response){
         $attributes = array(
@@ -60,6 +61,7 @@ class AdministratorControlController extends AbstractController
      * @param Response $response
      * @return mixed
      * @Get(name="/user", middleware={"App\Http\Middleware\AdministratorSessionMiddleware"}, alias="administrator.control.users")
+     * @Log(type="INFO", persist={"verb", "attributes", "session"}, message="Acessou a página administrativa de usuários.")
      */
     public function usersAction(Request $request, Response $response) {
         return $this->view->render($response, 'View/administratorcontrol/users/index.twig', $this->getAttributeView());
@@ -93,6 +95,7 @@ class AdministratorControlController extends AbstractController
      * @param Response $response
      * @return mixed
      * @Get(name="/user/create", middleware={"App\Http\Middleware\AdministratorSessionMiddleware"}, alias="administrator.control.users.new")
+     * @Log(type="INFO", persist={"verb", "attributes", "session"}, message="Acessou o página adminstrativa de criação de usuário.")
      */
     public function newUserAction(Request $request, Response $response) {
         $this->setAttributeView('show_adm', true);
@@ -107,6 +110,7 @@ class AdministratorControlController extends AbstractController
      * @throws \Exception
      * @return mixed
      * @Get(name="/user/modify/{id}", middleware={"App\Http\Middleware\AdministratorSessionMiddleware"}, alias="administrator.control.users.new")
+     * @Log(type="INFO", persist={"verb", "attributes", "session"}, message="Acessou a página administrativa de modificação de usuário.")
      */
     public function modifyUserAction(Request $request, Response $response, array $args) {
         $this->setAttributeView('show_adm', true);
@@ -140,6 +144,7 @@ class AdministratorControlController extends AbstractController
      * @param Response $response
      * @return mixed
      * @Post(name="/user/save", middleware={"App\Http\Middleware\AdministratorSessionMiddleware"}, alias="administrator.control.users.save")
+     * @Log(type="INFO", persist={"verb", "attributes", "session"}, message="O administrador criou um novo usuário.")
      */
     public function saveUserAction(Request $request, Response $response) {
         if ($request->isXhr()) {
@@ -185,6 +190,7 @@ class AdministratorControlController extends AbstractController
      * @param Response $response
      * @return mixed
      * @Post(name="/user/update", middleware={"App\Http\Middleware\AdministratorSessionMiddleware"}, alias="administrator.control.users.update")
+     * @Log(type="INFO", persist={"verb", "attributes", "session"}, message="O administrador atualizou um usuário existente.")
      */
     public function updateUserAction(Request $request, Response $response) {
         if ($request->isXhr()) {
@@ -254,6 +260,7 @@ class AdministratorControlController extends AbstractController
      * @param Response $response
      * @return mixed
      * @Get(name="/activity", middleware={"App\Http\Middleware\AdministratorSessionMiddleware"}, alias="administrator.control.activities")
+     * @Log(type="INFO", persist={"verb", "attributes", "session"}, message="Acessou a página administrativa de atividades.")
      */
     public function activitiesAction(Request $request, Response $response){
         $activities = $this->_dm->getRepository(Activities::class)->findAll();
@@ -267,6 +274,7 @@ class AdministratorControlController extends AbstractController
      * @param Response $response
      * @return mixed
      * @Get(name="/activity/create", middleware={"App\Http\Middleware\AdministratorSessionMiddleware"}, alias="administrator.control.activities.new")
+     * @Log(type="INFO", persist={"verb", "attributes", "session"}, message="Acessou o página adminstrativa de criação de atividade.")
      */
     public function newActivityAction(Request $request, Response $response){
         $this->setAttributeView("formCreate", true);
@@ -280,6 +288,7 @@ class AdministratorControlController extends AbstractController
      * @param array $args
      * @return mixed
      * @Get(name="/activity/modify/{id}", middleware={"App\Http\Middleware\AdministratorSessionMiddleware"}, alias="administrator.control.activities.modify")
+     * @Log(type="INFO", persist={"verb", "attributes", "session"}, message="Acessou o página adminstrativa de modificação de atividade.")
      */
     public function modifyActivityAction(Request $request, Response $response, array $args){
         $id = $args["id"];
@@ -303,6 +312,7 @@ class AdministratorControlController extends AbstractController
      * @param array $args
      * @return mixed
      * @Get(name="/activity/remove/{id}", middleware={"App\Http\Middleware\AdministratorSessionMiddleware"}, alias="administrator.control.activities.remove")
+     * @Log(type="INFO", persist={"verb", "attributes", "session"}, message="O administrador removeu uma atividade.")
      */
     public function removeActivityAction(Request $request, Response $response, array $args){
         $router = $this->_ci->get("router");
@@ -322,6 +332,7 @@ class AdministratorControlController extends AbstractController
      * @param Response $response
      * @return mixed
      * @Post(name="/activity/save", middleware={"App\Http\Middleware\AdministratorSessionMiddleware"}, alias="administrator.control.activities.save")
+     * @Log(type="INFO", persist={"verb", "attributes", "session"}, message="O adminstrador salvou uma atividade.")
      */
     public function saveActivityAction(Request $request, Response $response){
         if ($request->isXhr()){
@@ -395,6 +406,7 @@ class AdministratorControlController extends AbstractController
      * @param Response $response
      * @return mixed
      * @Get(name="/groupactivity", middleware={"App\Http\Middleware\AdministratorSessionMiddleware"}, alias="administrator.control.groupactivities")
+     * @Log(type="INFO", persist={"verb", "attributes", "session"}, message="Acessou o página adminstrativa de grupos de atividades.")
      */
     public function groupActivitiesAction(Request $request, Response $response){
         $this->setAttributeView("group_activities", $this->_dm->getRepository(GroupActivities::class)->findAll());
@@ -406,6 +418,7 @@ class AdministratorControlController extends AbstractController
      * @param Response $response
      * @return mixed
      * @Get(name="/groupactivity/create", middleware={"App\Http\Middleware\AdministratorSessionMiddleware"}, alias="administrator.control.groupactivities.create")
+     * @Log(type="INFO", persist={"verb", "attributes", "session"}, message="Acessou o página adminstrativa de criação de grupo de atividade.")
      */
     public function newGroupActivityAction(Request $request, Response $response){
         $this->setAttributeView("formCreate", true);
@@ -418,6 +431,7 @@ class AdministratorControlController extends AbstractController
      * @param array $args
      * @return mixed
      * @Get(name="/groupactivity/modify/{id}", middleware={"App\Http\Middleware\AdministratorSessionMiddleware"}, alias="administrator.control.groupactivities.modify")
+     * @Log(type="INFO", persist={"verb", "attributes", "session"}, message="Acessou o página adminstrativa de modificação de grupo de atividade.")
      */
     public function modifyGroupActivityAction(Request $request, Response $response, array $args){
         $id = $args["id"];
@@ -439,6 +453,7 @@ class AdministratorControlController extends AbstractController
      * @param Response $response
      * @return mixed
      * @Post(name="/groupactivity/save", alias="administrator.control.groupactivities.save")
+     * @Log(type="INFO", persist={"verb", "attributes", "session"}, message="O administrador salvou um grupo de atividade.")
      */
     public function saveGroupActivityAction(Request $request, Response $response){
         if ($request->isXhr()){
@@ -478,6 +493,7 @@ class AdministratorControlController extends AbstractController
      * @param array $args
      * @return mixed
      * @Get(name="/groupactivity/remove/{id}", middleware={"App\Http\Middleware\AdministratorSessionMiddleware"}, alias="administrator.control.groupactivities.remove")
+     * @Log(type="INFO", persist={"verb", "attributes", "session"}, message="O administrador removeu um grupo de atividade.")
      */
     public function removeGroupActivityAction(Request $request, Response $response, array $args){
         $router = $this->_ci->get("router");

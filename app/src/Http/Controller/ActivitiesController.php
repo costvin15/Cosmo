@@ -59,6 +59,24 @@ class ActivitiesController extends AbstractController
     /**
      * @param ServerRequestInterface $request
      * @param ResponseInterface $response
+     * @param array $args
+     * @return mixed
+     * @Get(name="/{id}", alias="activities.view")
+     */
+    public function viewAnswerAction(ServerRequestInterface $request, ResponseInterface $response, array $args){
+        $id = $args["id"];
+        if (!$id)
+            throw new \Exception("Resposta não encontrada");
+        $answer = $this->_dm->getRepository(HistoryActivities::class)->find($id);
+        if (!$answer)
+            throw new \Exception("Resposta não encontrada");
+        $this->activity = $answer->getActivity();
+        return $this->view->render($response, $this->activity->getView(), ["attributes" => SessionFacilitator::getAttributeSession(), "activity" => $this->activity, "answer" => $answer]);
+    }
+
+    /**
+     * @param ServerRequestInterface $request
+     * @param ResponseInterface $response
      * @return mixed
      * @Post(name="/submit", alias="submitactivity", middleware={"App\Http\Middleware\SessionMiddleware"})
      */
@@ -72,6 +90,9 @@ class ActivitiesController extends AbstractController
 
         $validateInstanced = new $validateClass();
         $returnValidate = $validateInstanced($params);
+        
+        $params["dateini"] = $returnValidate->timeIn;
+        $params["datefim"] = $returnValidate->timeOut;
 
         $validateInstanced->saveAttempt($params, $returnValidate);
 

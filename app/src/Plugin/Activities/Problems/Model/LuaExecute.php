@@ -17,6 +17,8 @@ class LuaExecute
     private $outFileName;
     private $respFileName;
     private $debug;
+    private $timeIn;
+    private $timeOut;
 
     private $return; /* retorno do codigo */
 
@@ -57,6 +59,14 @@ class LuaExecute
      *	$obj->runCode(); @return se esta certo ou errado
      *
      */
+
+    public function getTimeIn(){
+        return $this->timeIn;
+    }
+    
+    public function getTimeOut(){
+        return $this->timeOut;
+    }
 
     public function criarEntradaCodigo($data)
     {
@@ -99,10 +109,9 @@ class LuaExecute
         switch ($type) {
             case 'exec':
                 if($this->modeRun == "temporario")
-                    return $this->sandbox.$this->exec . " " . "\"" . $this->entradaCodigo. "\"" . " < ". "\"" .$this->inResp . "\"";
+                    return $this->sandbox. $this->exec . " \"" . $this->entradaCodigo. "\" < \"" .$this->inResp . "\"";
                 elseif( $this->modeRun == "arquivar")
-                    return $this->sandbox.$this->exec . " " . $this->entradaCodigo." < ".$this->inResp." > out.file";
-
+                    return $this->sandbox.$this->exec . " \"" . $this->entradaCodigo."\" < \"".$this->inResp."\" > out.file";
             case 'diff':
                 if (PHP_OS == 'Linux' || PHP_OS == 'Darwin')
                     return "diff -bB ".$this->outFile." ".$this->outResp;
@@ -111,14 +120,13 @@ class LuaExecute
         }
     }
 
-    public function runCode()
-    {
-
+    public function runCode(){
+        $this->timeIn = microtime(true);
         $this->return = shell_exec($this->formataExec());
+        $this->timeOut = microtime(true);
 
 //        if(is_null($this->return))
-//            $this->return = 'Sem resposta';
-
+//            $this->return = 'Sem resposta'
 //        $this->return = trim(preg_replace('/\s+/', ' ', $this->return));
 
         $this->outFile = $this->criaTempFileW($this->return);

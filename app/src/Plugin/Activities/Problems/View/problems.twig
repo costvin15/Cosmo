@@ -18,7 +18,18 @@
     <script>
         var editor = ace.edit("editor-program");
         editor.setTheme("ace/theme/monokai");
-        editor.getSession().setMode("ace/mode/lua");
+
+        {% if answer.language %}
+            {% if answer.language == "cpp" %}
+                editor.getSession().setMode("ace/mode/c_cpp");
+            {% elseif answer.language == "lua" %}
+                editor.getSession().setMode("ace/mode/lua");
+            {% elseif answer.language == "python" %}
+                editor.getSession().setMode("ace/mode/python");
+            {% endif %}
+        {% else %}
+            editor.getSession().setMode("ace/mode/lua");
+        {% endif %}
 
         $('#editor-program-language').change(function(e) {
             var editor = ace.edit("editor-program");
@@ -92,11 +103,11 @@
                                 {% for example in activity.getActivityExample %}
                                     <tr>
                                         <td>
-                                            <p>{{ example.in }}</p>
+                                            <p style="white-space: pre;">{{ example.in }}</p>
                                         </td>
 
                                         <td>
-                                            <p>{{ example.out }}</p>
+                                            <p style="white-space: pre;">{{ example.out }}</p>
                                         </td>
                                     </tr>
                                 {% endfor %}
@@ -116,14 +127,41 @@
                     <div class="form-group">
                         <label>Linguagem</label>
                         <select class="form-control" name="editor-program-language" id="editor-program-language">
-                            <option value="lua" selected>Lua</option>
+                            {% if answer.language %}
+                                {% if answer.language == "cpp" %}
+                                    <option value="cpp" selected>C/C++</option>
+                                {% else %}
+                                    <option value="cpp">C/C++</option>
+                                {% endif %}
+
+                                {% if answer.language == "lua" %}
+                                    <option value="lua" selected>Lua</option>
+                                {% else %}
+                                    <option value="lua">Lua</option>
+                                {% endif %}
+
+                                
+                                {% if answer.language == "python" %}
+                                    <option value="python" selected>Python</option>
+                                {% else %}
+                                    <option value="python">Python</option>
+                                {% endif %}
+                            {% else %}
+                                <option value="cpp">C/C++</option>
+                                <option value="lua" selected>Lua</option>
+                                <option value="python">Python</option>
+                            {% endif %}
                         </select>
                     </div>
                     <!-- post text -->
-                    <div id="editor-program"></div>
+                    <div id="editor-program">{{ answer.getCode }}</div>
 
-                    <a href="{{ path_for('dashboard.index') }}" class="btn btn-default pull-left"> Voltar</a>
-                    <button type="button" class="btn btn-default pull-right btn-submit-activity"> Enviar</button>
+                    {# {% if not answer is defined %} #}
+                        <a href="{{ path_for('dashboard.index') }}" class="btn btn-default pull-left"> Voltar</a>
+                        <button type="button" class="btn btn-default pull-right btn-submit-activity"> Enviar</button>
+                    {# {% else %} #}
+                        {# <a href="{{ path_for('dashboard.history') }}" class="btn btn-default pull-left"> Voltar</a> #}
+                    {# {% endif %} #}
                 </div>
             </div>
             <!-- /.box -->

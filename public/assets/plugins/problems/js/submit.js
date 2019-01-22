@@ -1,7 +1,6 @@
 $(document).ready(function () {
 
-    var dateIni, dateFim;
-    dateIni = new Date().getTime() / 1000;
+    var dateIni, dateFim;;
 
 
     $('.btn-submit-activity').click(function () {
@@ -9,13 +8,14 @@ $(document).ready(function () {
         var urlreturnsucess = $('input[ name="urlreturnsucess" ]').val();
         var submitAction = {};
 
-        dateFim = new Date().getTime() / 1000;
+        // dateIni = new Date().getTime()
 
         submitAction.id_activity = $('input[ name="id-activity" ]').val();
         submitAction.source_coude = editor.getValue();
         submitAction.language = $('#editor-program-language option:selected').val();
-        submitAction.dateini = dateIni;
-        submitAction.datefim = dateFim;
+        // submitAction.dateini = dateIni;
+        // dateFim = new Date().getTime();
+        // submitAction.datefim = dateFim;                    
 
         successFunction = function(retorno) {
             if (retorno.return) {
@@ -91,7 +91,6 @@ $(document).ready(function () {
                         }
                     }).then(function () {
                         window.location.href = urlreturnsucess;
-                        console.log('pudim');
                     });
 
                 return;

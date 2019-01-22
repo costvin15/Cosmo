@@ -58,6 +58,11 @@
                                 <i class="fa fa-bar-chart"></i> <span>Histórico de atividades</span>
                             </a>
                         </li>
+                        <li>
+                            <a href="{{ path_for("dashboard.ranking") }}">
+                                <i class="fa fa-bar-chart"></i> <span>Ranking</span>
+                            </a>
+                        </li>
                     </ul>
                 </div>
 
@@ -85,9 +90,8 @@
                             <ul class="dropdown-menu">
                                 <!-- User image -->
                                 <li class="user-header">
-                                    <img src="{{ base_url() }}/assets/img/student-avatar.png" class="img-circle"
+                                    <img src="{{ attributes.avatar }}" class="img-circle"
                                          alt="User Image">
-
                                     <p>
                                         {{ attributes.fullname }}
                                     </p>
@@ -95,7 +99,7 @@
                                 <!-- Menu Footer-->
                                 <li class="user-footer">
                                     <div class="pull-left">
-                                        <a href="#" class="btn btn-default btn-flat disabled">Perfil</a>
+                                        <a href="{{ path_for("dashboard.profile") }}" class="btn btn-default btn-flat">Perfil</a>
                                     </div>
                                     <div class="pull-right">
                                         <a href="{{ path_for('login.logout') }}" class="btn btn-default btn-flat">Sair</a>

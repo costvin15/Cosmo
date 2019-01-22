@@ -13,6 +13,7 @@ use App\Facilitator\App\ContainerFacilitator;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use RKA\Session;
+use App\Facilitator\App\SessionFacilitator;
 
 class SessionMiddleware
 {
@@ -39,6 +40,10 @@ class SessionMiddleware
 
                 return $response->withRedirect($router->pathFor('login.index'));
             }
+
+            $attributes = SessionFacilitator::getAttributeSession();
+            if (!$attributes)
+                return $response->withRedirect($router->pathFor("login.index"));
 
             $response = $next($request, $response);
             return $response;

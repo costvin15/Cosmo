@@ -58,10 +58,15 @@ class RegisterController extends AbstractController
                 return $response->withJson([ 'Email já cadastrado!' ], 500);
             }
 
+            $user = $this->_dm->getRepository(User::class)->findBy(["nickname" => $request->getParam("nickname")]);
+            if ($user)
+                return $response->withJson([ 'Nome de usuário já cadastrado!' ], 500);
+
             $user = new User();
             $user->setUsername($request->getParam('username'));
             $user->setPassword(md5($request->getParam('password')));
             $user->setFullname($request->getParam('fullname'));
+            $user->setNickname($request->getParam("nickname"));
 
             $this->_dm->persist($user);
             $this->_dm->flush();
@@ -73,7 +78,7 @@ class RegisterController extends AbstractController
                 "Bem vindo ao Cosmo " . $user->getFullname() . ".<br>Sua senha de acesso:" . $request->getParam('password'));
 
             $router = $this->_ci->get('router');
-            return $response->withJson([ 'message' => 'Bem vindo ao Cosmo ' . $user->getFullname() . '.', 'callback' => $router->pathFor('login.index') ], 200);
+            return $response->withJson([ 'message' => 'Bem vindo ao Cosmo, ' . $user->getFullname() . '.', 'callback' => $router->pathFor('login.index') ], 200);
 
         } else {
             return $response->withJson([ 'Requisição mal formatada!' ], 500);

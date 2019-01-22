@@ -17,6 +17,8 @@ class CppExecute
     private $outFileName;
     private $respFileName;
     private $debug;
+    private $timeIn;
+    private $timeOut;
 
     private $return; /* retorno do codigo */
 
@@ -37,12 +39,12 @@ class CppExecute
         $this->modeRun = "temporario";
 
         $this->sandbox = "";
-        if (PHP_OS == 'Darwin') {
+        if (PHP_OS == 'Darwin')
             $this->exec = "/usr/bin/gcc";
-        } else {
+        elseif (PHP_OS == "WINNT")
+            $this->exec = "g++";
+        else 
             $this->exec = "/usr/bin/gcc";
-        }
-
         $this->codeEncpt = "base64";
     }
 
@@ -56,11 +58,18 @@ class CppExecute
      *	$obj->runCode(); @return se esta certo ou errado
      *
      */
+    public function getTimeIn(){
+        return $this->timeIn;
+    }
+
+    public function getTimeOut(){
+        return $this->timeOut;
+    }
 
     public function criarEntradaCodigo($data)
     {
         $this->debug = $data;
-        $this->setEntradaCodigo($this->criaTempFileW($data, ".c"));
+        $this->setEntradaCodigo($this->criaTempFileW($data, ".cc"));
     }
 
     private function criaTempFileW($text = null, $extension = "")
@@ -105,9 +114,8 @@ class CppExecute
             case 'exec':
                 if($this->modeRun == "temporario") {
                     $filename = tempnam($tempDir, 'COSMO');
-
-                    shell_exec($this->sandbox . $this->exec . " " . $this->entradaCodigo . " -o " . $filename);
-                    return $filename . " < " . $this->inResp;
+                    shell_exec($this->sandbox . $this->exec . " \"" . $this->entradaCodigo . "\" -o \"" . $filename . "\"");
+                    return "\"". $filename . "\" < \"" . $this->inResp . "\"";
                 } elseif( $this->modeRun == "arquivar") {
                     return $this->sandbox.$this->exec." ".$this->entradaCodigo." < ".$this->inResp." > out.file";
                 }
@@ -116,14 +124,14 @@ class CppExecute
                 if (PHP_OS == 'Linux' || PHP_OS == 'Darwin')
                     return "diff -bB ".$this->outFile." ".$this->outResp;
                 else
-                    return "FC /b ".$this->outFile." ".$this->outResp;
+                    return "FC /b \"".$this->outFile."\" \"".$this->outResp."\"";
         }
     }
 
-    public function runCode()
-    {
-
+    public function runCode(){
+        $this->timeIn = microtime(true);
         $this->return = shell_exec($this->formataExec());
+        $this->timeOut = microtime(true);
 
         if(is_null($this->return))
             $this->return = 'Sem resposta';
@@ -152,8 +160,7 @@ class CppExecute
             if (strpos($diff,'Keine Unterschiede gefunden') !== false
                 || strpos($diff,'no differences encountered') !== false
                 || strpos($diff,'nenhuma') !== false) {
-
-                return array(true, 'Correto', $this->return." ".$diff);
+                return array(true, 'Correto', $this->return." ". mb_convert_encoding($diff, "UTF-8", "ISO-8859-1"));
             }
             else
             {

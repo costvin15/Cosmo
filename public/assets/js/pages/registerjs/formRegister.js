@@ -76,6 +76,7 @@ formRegister.prototype.createObject = function() {
     varFormRegister.username = $('#frmregister-email').val();
     varFormRegister.fullname = $('#frmregister-fullname').val();
     varFormRegister.password = $('#frmregister-password').val();
+    varFormRegister.nickname = $("#frmregister-nickname").val();
 
     return varFormRegister;
 };
@@ -95,6 +96,11 @@ formRegister.prototype.validate = function() {
 
     if (varFormRegister.fullname.trim() === '') {
         cosmo.dialog.error('Erro', 'O campo Nome Completo é obrigatório!');
+        return false;
+    }
+
+    if (varFormRegister.nickname.trim() === ''){
+        cosmo.dialog.error('Erro', 'O campo Nome de Usuário é obrigatório!');
         return false;
     }
 

@@ -106,14 +106,13 @@ class LogMiddleware
                         break;
                     case "session":
                         $sessionAttribute = SessionFacilitator::getAttributeSession();
-                        $logPersist .= 'SESSIONATTR#' . $this->castArray($sessionAttribute);
+                        $logPersist .= 'SESSIONATTR#' . $this->castArray(array("id" => $sessionAttribute["id"], "username" => $sessionAttribute["username"]));
                         if (($sessionAttribute !== null) && (key_exists('id', $sessionAttribute))) {
                             $log->setIdUser($sessionAttribute['id']);
                         }
                         break;
                 }
             }
-
 
             $log->setLevel($this->arrayLevelMonolog[$type]);
             $log->setMessage($message . ': ' . $logPersist);
@@ -124,6 +123,7 @@ class LogMiddleware
                 $dm->persist($log);
                 $dm->flush();
             } catch(\Exception $ex) {
+                error_Log($ex->getMessage());
                 throw $ex;
             }
         }

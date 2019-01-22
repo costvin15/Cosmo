@@ -82,6 +82,16 @@ Dialog.prototype.question=function(t, o) {
     )
 },
 
+Dialog.prototype.confirm = function(title, content, callback){
+    return swal({
+        title: title,
+        html: content,
+        showCancelButton: true,
+        confirmButtonText: "Sim",
+        cancelButtonText: "Não, cancelar"
+    }).then(callback);
+},
+
 window.cosmo=window.cosmo|| {},
 window.cosmo.dialog=window.cosmo.dialog||new Dialog;
 
@@ -90,6 +100,10 @@ routes_name.AVALIABLE_USERNAME_COSMO="/login/register/search/username",
 routes_name.REGISTER_SAVE="/login/register/save",
 routes_name.REGISTER_RESCUE_PASSWORD="/login/register/password/rescue/send",
 routes_name.USER_UPDATE_PROFILE = "/dashboard/profile/update",
+routes_name.USER_CLOSE_PROFILE = "/dashboard/profile/close",
+routes_name.GET_RANKING = "/dashboard/ranking",
+routes_name.GET_HISTORY = "/dashboard/history",
+routes_name.VIEW_ACTIVITY = "/activities/";
 routes_name.AUTH="/login/auth",
 routes_name.ADMIN_GET_ALL_USER="/admin/user/all",
 routes_name.ADM_REGISTER_USER_SAVE="/admin/user/save",

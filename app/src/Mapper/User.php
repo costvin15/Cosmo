@@ -17,6 +17,11 @@ class User
     private $id;
 
     /**
+     * @ODM\Field(name="nickname", type="string")
+     */
+    private $nickname;
+
+    /**
      * @ODM\Field(name="username", type="string")
      */
     private $username;
@@ -40,6 +45,11 @@ class User
      * @ODM\Field(name="blocked", type="hash")
      */
     private $blocked;
+
+    /**
+     * @ODM\Field(name="answered_activities", type="int")
+     */
+    private $answered_activities = 0;
 
     /**
      * @ODM\Field(name="interface", type="string")
@@ -72,6 +82,7 @@ class User
         $this->fullname = $fullname;
         $this->administrator = $administrator;
         $this->historyActivities = [];
+        $this->answered_activities = 0;
     }
 
     public function getAvatar(){
@@ -90,15 +101,24 @@ class User
     public function toArray() {
         return [
             'id' => $this->id,
+            'nickname' => $this->nickname,
             'username' => $this->username,
             'password' => $this->password,
             'fullname' => $this->fullname,
             'administrator' => $this->administrator,
             'blocked' => $this->blocked,
             'avatar' => $this->getAvatar(),
+            'answered_activities' => $this->answered_activities,
         ];
     }
 
+    public function toRankingArray(){
+        return [
+            "nickname" => $this->nickname ? $this->nickname : $this->username,
+            "points" => $this->answered_activities,
+        ];
+    }
+    
     /**
      * @return mixed
      */
@@ -113,6 +133,20 @@ class User
     public function setId($id)
     {
         $this->id = $id;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getNickname(){
+        return $this->nickname;
+    }
+
+    /**
+     * @param mixed $nickname
+     */
+    public function setNickname($nickname){
+        $this->nickname = $nickname;
     }
 
     /**
@@ -207,6 +241,20 @@ class User
      */
     public function setBlocked($blocked){
         $this->blocked = $blocked;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getAnsweredActivities(){
+        return $this->answered_activities;
+    }
+
+    /**
+     * @param mixed $answered_activities
+     */
+    public function setAnsweredActivities($answered_activities){
+        $this->answered_activities = $answered_activities;
     }
 
     /**

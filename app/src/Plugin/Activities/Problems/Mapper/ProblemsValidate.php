@@ -54,6 +54,8 @@ class ProblemsValidate
         $classReturn->payload = [
             'command' => $arrayReturn[2]
         ];
+        $classReturn->timeIn = $obj->getTimeIn();
+        $classReturn->timeOut = $obj->getTimeOut();
 
         return $classReturn;
     }
@@ -97,18 +99,20 @@ class ProblemsValidate
             ->execute();
         $history = $historyCursor->getNext();
 
-        if ($history == null) {
+        if ($history == null){
             $history = new HistoryActivities();
+
+            $user->setAnsweredActivities($user->getAnsweredActivities() + 1);
+            $this->_dm->persist($user);
+            $this->_dm->flush();
         }
 
         $history->setActivity($activity);
         $history->setUser($user);
         $history->setCode($data['source_coude']);
-
-        if ($history->getId() !== NULL) {
-            $history->setTimeStart($data['dateini']);
-            $history->setTimeEnd($data['datefim']);
-        }
+        $history->setLanguage($data["language"]);
+        $history->setTimeStart($data['dateini']);
+        $history->setTimeEnd($data['datefim']);
 
         if (key_exists('classification', $data)) {
             $history->setClassification($data['classification']);

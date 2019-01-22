@@ -26,12 +26,12 @@ class HistoryActivities
     private $activity;
 
     /**
-     * @ODM\Field(name="time_start", type="string")
+     * @ODM\Field(name="time_start", type="float")
      */
     private $timeStart;
 
     /**
-     * @ODM\Field(name="time_end", type="string")
+     * @ODM\Field(name="time_end", type="float")
      */
     private $timeEnd;
 
@@ -49,6 +49,22 @@ class HistoryActivities
      * @ODM\Field(name="classification", type="string")
      */
     private $classification;
+
+    /**
+     * @ODM\Field(name="language", type="string")
+     */
+    private $language;
+
+    public function toArray(){
+        return array(
+            "id" => $this->id,
+            "user" => $this->user->toArray(),
+            "activity" => $this->activity->toArray(),
+            "time" => $this->timeEnd - $this->timeStart,
+            "code" => $this->code,
+            "language" => $this->language,
+        );
+    }
 
     /**
      * @return mixed
@@ -178,4 +194,17 @@ class HistoryActivities
         $this->classification = $classification;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getLanguage(){
+        return $this->language;
+    }
+
+    /**
+     * @param mixed $language
+     */
+    public function setLanguage($language){
+        $this->language = $language;
+    }
 }
