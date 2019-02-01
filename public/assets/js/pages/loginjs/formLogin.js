@@ -10,7 +10,7 @@ formLogin.prototype.initialize = function() {
     return o.username = $("#frmlogin-email").val(), o.password = $("#frmlogin-password").val(), o
 }, formLogin.prototype.validate = function() {
     var o = this.createObject();
-    return "" === o.username.trim() ? (cosmo.dialog.error("Erro", "O campo Email é obrigatório!"), !1) : this.validateEmail(o.username) ? "" !== o.password.trim() || (cosmo.dialog.error("Erro", "O campo Senha é obrigatório!"), !1) : (cosmo.dialog.error("Erro", "O campo Email informado é inválido!"), !1)
+    return "" === o.username.trim() ? (cosmo.dialog.error("Erro", "O campo Email é obrigatório!"), !1) : "" !== o.password.trim() || (cosmo.dialog.error("Erro", "O campo Senha é obrigatório!"), !1);
 }, formLogin.prototype.auth = function() {
     var o = this.createObject(),
         r = function(o) {

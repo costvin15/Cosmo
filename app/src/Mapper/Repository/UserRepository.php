@@ -2,7 +2,6 @@
 
 namespace App\Mapper\Repository;
 
-
 use App\Mapper\User;
 use Doctrine\ODM\MongoDB\DocumentRepository;
 use Doctrine\ODM\MongoDB\PersistentCollection;
@@ -18,6 +17,10 @@ class UserRepository extends DocumentRepository
      */
     public function getUserWithUsernamePassword(string $username, string $password) {
         return $this->dm->getRepository(User::class)->findBy(['username' => $username, 'password' => $password]);
+    }
+
+    public function getUserWithNicknamePassword(string $nickname, string $password){
+        return $this->dm->getRepository(User::class)->findBy([ "nickname" => $nickname, "password" => $password ]);
     }
 
     public function getUserWithUsername(string $username) {

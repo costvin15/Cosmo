@@ -6,8 +6,7 @@
  * Time: 09:18
  */
 
-namespace App\PluginActivities\Video\Mapper;
-
+namespace App\Plugin\Activities\Video\Mapper;
 
 class VideoHydrator
 {

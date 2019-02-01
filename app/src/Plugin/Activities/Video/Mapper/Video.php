@@ -1,6 +1,6 @@
 <?php
 
-namespace App\PluginActivities\Video\Mapper;
+namespace App\Plugin\Activities\Video\Mapper;
 
 class Video
 {

@@ -1,10 +1,10 @@
 {% extends "View/layout.twig" %}
-{% block pagetitle %}Video{% endblock %}
-{% block title %}Video{% endblock %}
+{% block pagetitle %}Assista o vídeo{% endblock %}
+{% block title %}Assista o vídeo{% endblock %}
 {% block breadcump %}
     <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-edit"></i> Área de aprendizagem</a></li>
-        <li class="active">Video</li>
+        <li class="active">Assista o vídeo</li>
     </ol>
 {% endblock %}
 
@@ -22,9 +22,9 @@
             <div class="box box-widget">
                 <div class="box-header with-border">
                     <div class="user-block">
-                        <img class="img-circle" src="{{ base_url() }}/assets/img/user-salles.jpg" alt="User Image">
-                        <span class="username"><a href="#">{{ activity.getTitle }}</a></span>
-                        <span class="description">Publicado por: Carlos Salles - {{ activity.getDateCreate|date("d/m/Y") }}</span>
+                        <img class="img-circle" src="{{ activity.getUploader.getAvatar }}" alt="User Image">
+                        <span class="username"><a href="#">{{ activity.getTitle|raw }}</a></span>
+                        <span class="description">Publicado por: {{ activity.getUploader.getFullname }} - {{ activity.getDateCreate|date("d/m/Y") }}</span>
                     </div>
                     <!-- /.user-block -->
                 </div>
@@ -51,7 +51,7 @@
                         <iframe class="embed-responsive-item" src="{{ video.getUrl }}"></iframe>
                     </div>
 
-                    <a href="{{ path_for('dashboard') }}" class="btn btn-default pull-left"> Voltar</a>
+                    <a href="{{ path_for('dashboard.index') }}" class="btn btn-default pull-left"> Voltar</a>
                 </div>
             </div>
             <!-- /.box -->

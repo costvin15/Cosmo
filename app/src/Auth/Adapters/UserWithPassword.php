@@ -44,8 +44,10 @@ class UserWithPassword implements AuthAdapterInterface
     {
         $ci = ContainerFacilitator::getContainer();
 
-        $arrayUser = $this->databaseConnection->getRepository(User::class)
-            ->getUserWithUsernamePassword($this->username, $this->password);
+        if (filter_var($this->username, FILTER_VALIDATE_EMAIL))
+            $arrayUser = $this->databaseConnection->getRepository(User::class)->getUserWithUsernamePassword($this->username, $this->password);
+        else
+            $arrayUser = $this->databaseConnection->getRepository(User::class)->getUserWithNicknamePassword($this->username, $this->password);
 
         if (count($arrayUser) == 0) {
             return new AuthResponse(AuthResponse::AUTHRESPONSE_FAILURE, 'User not found');

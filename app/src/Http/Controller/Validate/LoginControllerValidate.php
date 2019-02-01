@@ -26,17 +26,11 @@ class LoginControllerValidate extends AbstractControllerValidate
             return false;
         }
 
-        if(!$is_email->isValid($username)){
-            $this->error = "O campo Email é inválido.";
-            return false;
-        }
-
         if($password == ''){
-            $this->error = "O campo Email é obrigatório.";
+            $this->error = "O campo Senha é obrigatório.";
             return false;
         }
 
         return true;
     }
-
 }

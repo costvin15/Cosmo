@@ -71,6 +71,16 @@ class Activities
      */
     private $uploader;
 
+    /*
+     * @ODM\ReferenceMany(targetDocument="Activities", mappedBy="requirements")
+     */
+    private $next_activities;
+
+    /**
+     * @ODM\ReferenceMany(targetDocument="Activities", mappedBy="next_activities")
+     */
+    private $requirements;
+
     /**
      * @ODM\ReferenceMany(targetDocument="HistoryActivities", mappedBy="activity")
      */
@@ -94,6 +104,9 @@ class Activities
 
     public function __construct($params = array())
     {
+        $next_activities = new \Doctrine\Common\Collections\ArrayCollection();
+        $requirements = new \Doctrine\Common\Collections\ArrayCollection();
+
         if (count($params) > 0){
             $this->question = $params['shortDesc'];
             $this->fullquestion = $params['questionDesc'];
@@ -206,13 +219,13 @@ class Activities
         if (!class_exists($nameSpacePlugin))
             throw new \Exception('Class plugin not found! Classname: ' . $nameSpacePlugin);
 
-
         $configClass = new $nameSpacePlugin;
         $arrayConfig = $configClass();
+        
         $this->view = $arrayConfig['view'];
         $this->validate = $arrayConfig['validate'];
-
         $hydrator = new $arrayConfig['hydrator'];
+
         return $hydrator($this->activities[0]['model']);
     }
 
@@ -319,6 +332,32 @@ class Activities
      */
     public function setUploader($uploader){
         $this->uploader = $uploader;
+    }
+
+    public function getNextActivities(){
+        return $this->next_activities;
+    }
+
+    public function setNextActivities($next_activities){
+        $this->next_activities = $next_activities;
+    }
+    
+    public function addNextActivity($next_activity){
+        $next_activity->requirements[] = $this;
+        $this->next_activities[] = $next_activity;
+    }
+    
+    public function getRequirements(){
+        return $this->next_activities;
+    }
+
+    public function setRequirements($requirements){
+        $this->requirements = $requirements;
+    }
+
+    public function addRequirement($requirement){
+        $requirement->next_activity[] = $this;
+        $this->requirements[] = $requirement;
     }
 
     public function getIn(){
