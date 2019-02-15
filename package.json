@@ -1,32 +1,27 @@
 {
-  "name": "ppu",
-  "version": "1.0.0",
-  "description": "## Thanks",
-  "main": "index.js",
-  "dependencies": {
-    "gulp": "^3.9.1",
-    "gulp-concat": "^2.6.1",
-    "gulp-javascript-obfuscator": "^1.1.2",
-    "gulp-jshint": "^2.0.4",
-    "gulp-mini-css": "^0.0.3",
-    "gulp-plumber": "^1.1.0",
-    "gulp-rename": "^1.2.2",
-    "gulp-uglify": "^2.0.1",
-    "gulp-watch": "^4.3.11",
-    "jshint": "^2.9.4",
-    "pump": "^1.0.2"
-  },
-  "directories": {
-    "doc": "docs",
-    "test": "tests"
+  "displayName": "Cosmo",
+  "name": "Cosmo",
+  "repository": {
+    "type": "GitHub",
+    "url": "https://github.com/TeleMidia-MA/cosmo"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "webpack"
   },
-  "repository": {
-    "type": "git",
-    "url": ""
+  "dependencies": {
+    "admin-lte": "^3.0.0-alpha",
+    "bootstrap": "^4.3.1",
+    "jquery": "^3.3.1",
+    "popper.js": "^1.14.7"
   },
-  "author": "",
-  "license": "ISC"
+  "devDependencies": {
+    "gulp": "^4.0.0",
+    "gulp-cssmin": "^0.2.0",
+    "gulp-rename": "^1.4.0",
+    "gulp-sass": "^4.0.2",
+    "ts-loader": "^5.3.3",
+    "typescript": "^3.3.3",
+    "webpack": "^4.29.4",
+    "webpack-cli": "^3.2.3"
+  }
 }

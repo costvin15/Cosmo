@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "bfd401427b4e255b4a2f5e6c6bcf85af",
+    "content-hash": "d1eee98d24bd1bd915f110a55fc31d3b",
     "packages": [
         {
             "name": "akrabat/rka-slim-session-middleware",

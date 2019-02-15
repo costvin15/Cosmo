@@ -3,3 +3,5 @@
 /storage/log/
 php_errors.log
 /public/node_modules
+/node_modules
+node_modules

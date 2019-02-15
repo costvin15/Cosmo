@@ -52,11 +52,6 @@ class LoginController extends AbstractController
      * @Post(name="/auth", alias="login.auth")
      */
     public function authenticateAction(Request $request, Response $response) {
-
-        /**
-         * TODO: Adicionar verificação se o usuário está bloqueado, antes de efetuar o login.
-         */
-
         if ($request->isXhr()) {
             $validate = new LoginControllerValidate();
             if (!$validate->authenticateAction($request))
