@@ -35,7 +35,7 @@ class Register {
         }
         
         let ajax = window.cosmo.ajax.getDefaults();
-        ajax.url = window.cosmo.routes_name.available_username;
+        ajax.url = window.base_url + window.cosmo.routes_name.available_username;
         ajax.method = "GET";
         ajax.type = "json";
         ajax.success = () => {};
@@ -100,7 +100,7 @@ class Register {
         };
 
         let ajax = window.cosmo.ajax.getDefaults();
-        ajax.url = window.cosmo.routes_name.register_user;
+        ajax.url = window.base_url + window.cosmo.routes_name.register_user;
         ajax.method = "POST";
         ajax.type = "json";
         ajax.data = formObject;

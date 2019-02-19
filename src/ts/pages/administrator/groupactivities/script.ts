@@ -51,7 +51,7 @@ class CreateGroup extends AbstractGroup {
         };
 
         let ajax = window.cosmo.ajax.getDefaults();
-        ajax.url = window.cosmo.routes_name.administrator_save_group_activity;
+        ajax.url =  window.base_url + window.cosmo.routes_name.administrator_save_group_activity;
         ajax.method = "POST";
         ajax.data = formObject;
         ajax.type = "json";
@@ -83,7 +83,7 @@ class UpdateGroup extends AbstractGroup {
         };
 
         let ajax = window.cosmo.ajax.getDefaults();
-        ajax.url = window.cosmo.routes_name.administrator_save_group_activity;
+        ajax.url = window.base_url + window.cosmo.routes_name.administrator_save_group_activity;
         ajax.method = "POST";
         ajax.data = formObject;
         ajax.type = "json";

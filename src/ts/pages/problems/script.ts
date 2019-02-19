@@ -29,9 +29,6 @@ class PluginProblems {
                 case "python":
                     this.editor.getSession().setMode("ace/mode/python");
                     break;
-                case "java":
-                    this.editor.getSession().setMode("ace/mode/java");
-                    break;
             }
         });
 
@@ -66,7 +63,7 @@ class PluginProblems {
         };
 
         let ajax = window.cosmo.ajax.getDefaults();
-        ajax.url = window.cosmo.routes_name.submit_activity;
+        ajax.url = window.base_url + window.cosmo.routes_name.submit_activity;
         ajax.method = "POST";
         ajax.type = "json";
         ajax.success = success;

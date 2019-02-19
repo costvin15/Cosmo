@@ -107,7 +107,7 @@ class CreateUser extends AbstractUser {
         }
 
         let ajax = window.cosmo.ajax.getDefaults();
-        ajax.url = window.cosmo.routes_name.administrator_register_user;
+        ajax.url = window.base_url + window.cosmo.routes_name.administrator_register_user;
         ajax.method = "POST";
         ajax.data = formObject;
         ajax.type = "json";
@@ -201,7 +201,7 @@ class UpdateUser extends AbstractUser {
         }
 
         let ajax = window.cosmo.ajax.getDefaults();
-        ajax.url = window.cosmo.routes_name.administrator_update_user;
+        ajax.url = window.base_url + window.cosmo.routes_name.administrator_update_user;
         ajax.method = "POST";
         ajax.data = formObject;
         ajax.type = "json";
@@ -221,7 +221,7 @@ class UpdateUser extends AbstractUser {
             window.cosmo.dialog.error("Erro", content.responseJSON[0], () => {});
         };
         let ajax = window.cosmo.ajax.getDefaults();
-        ajax.url = window.cosmo.routes_name.administrator_close_user + formObject.id;
+        ajax.url = window.base_url + window.cosmo.routes_name.administrator_close_user + formObject.id;
         ajax.method = "POST";
         ajax.type = "json";
         ajax.success = success;

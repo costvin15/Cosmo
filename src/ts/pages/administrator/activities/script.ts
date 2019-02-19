@@ -89,7 +89,7 @@ class CreateActivity extends AbstractActivity {
         };
 
         let ajax = window.cosmo.ajax.getDefaults();
-        ajax.url = window.cosmo.routes_name.administrator_save_activity;
+        ajax.url = window.base_url + window.cosmo.routes_name.administrator_save_activity;
         ajax.method = "POST";
         ajax.data = formObject;
         ajax.type = "json";
@@ -121,7 +121,7 @@ class UpdateActivity extends AbstractActivity {
         };
 
         let ajax = window.cosmo.ajax.getDefaults();
-        ajax.url = window.cosmo.routes_name.administrator_save_activity;
+        ajax.url = window.base_url + window.cosmo.routes_name.administrator_save_activity;
         ajax.method = "POST";
         ajax.data = formObject;
         ajax.type = "json";

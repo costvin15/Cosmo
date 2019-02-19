@@ -13,21 +13,11 @@ class Login {
         }
     }
 
-    validateEmail(email: string) : boolean {
-        let expression = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-        return expression.test(email);
-    }
-
     validate() : boolean {
         let formObject = this.createObject();
 
         if (formObject.username.trim() === ""){
-            window.cosmo.dialog.error("Oops", "O campo Email não pode ficar vazio.", () => {});
-            return false;
-        }
-
-        if (!this.validateEmail(formObject.username)){
-            window.cosmo.dialog.error("Oops", "O Email informado é inválido.", () => {});
+            window.cosmo.dialog.error("Oops", "O campo Email ou Nome de Usuário não pode ficar vazio.", () => {});
             return false;
         }
 
@@ -58,7 +48,7 @@ class Login {
                 window.cosmo.dialog.error("Oops", content.responseJSON[0], () => {});
         };
         let ajax = window.cosmo.ajax.getDefaults();
-        ajax.url = window.cosmo.routes_name.auth;
+        ajax.url = window.base_url + window.cosmo.routes_name.auth;
         ajax.method = "POST";
         ajax.type = "json";
         ajax.data = formObject;

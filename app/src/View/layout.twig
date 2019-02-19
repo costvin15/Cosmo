@@ -8,7 +8,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-        <link rel="stylesheet" href="/dist/css/main.min.css">
+        <link rel="stylesheet" href="{{ base_url() }}/dist/css/main.min.css">
 
         {% block styles %}{% endblock %}
 
@@ -119,8 +119,11 @@
             </div>
         </div>
     
-        <script type="text/javascript" src="/dist/js/main.js"></script>
-        <script type="text/javascript" src="/dist/js/script.min.js"></script>
+        <script type="text/javascript">
+            window.base_url = "{{ base_url() }}";
+        </script>
+        <script type="text/javascript" src="{{ base_url() }}/dist/js/main.js"></script>
+        <script type="text/javascript" src="{{ base_url() }}/dist/js/script.min.js"></script>
         {% block scripts %}{% endblock %}
     </body>
 </html>

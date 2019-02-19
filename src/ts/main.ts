@@ -118,6 +118,7 @@ declare global {
         $: any;
         jQuery: any;
         cosmo: Cosmo;
+        base_url: string;
     }
 }
 

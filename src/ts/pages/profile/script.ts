@@ -102,7 +102,7 @@ class UpdateUser {
         }
 
         let ajax = window.cosmo.ajax.getDefaults();
-        ajax.url = window.cosmo.routes_name.user_update_profile;
+        ajax.url = window.base_url + window.cosmo.routes_name.user_update_profile;
         ajax.method = "POST";
         ajax.data = formObject;
         ajax.type = "json";
@@ -121,7 +121,7 @@ class UpdateUser {
             window.cosmo.dialog.error("Erro", content.responseJSON[0], () => {});
         };
         let ajax = window.cosmo.ajax.getDefaults();
-        ajax.url = window.cosmo.routes_name.user_close_profile;
+        ajax.url = window.base_url + window.cosmo.routes_name.user_close_profile;
         ajax.method = "POST";
         ajax.type = "json";
         ajax.success = success;
