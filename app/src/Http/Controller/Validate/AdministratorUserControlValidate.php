@@ -15,7 +15,6 @@ class AdministratorUserControlValidate extends AbstractControllerValidate
         $username = $request->getParam("username");
         $password = $request->getParam("password");
         $fullname = $request->getParam("fullname");
-        $avatar = $request->getParam("avatar");
 
         $is_email = new EmailAddress();
         $is_empty = new NotEmpty();
@@ -40,13 +39,7 @@ class AdministratorUserControlValidate extends AbstractControllerValidate
             return false;
         }
 
-        if (!$is_empty->isValid($avatar)) {
-            $this->error = "O campo Imagem é obrigatório.";
-            return false;
-        }
-
         return true;
-
     }
 
     public function updateUserAction(Request $request) {

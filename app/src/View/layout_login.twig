@@ -1,4 +1,56 @@
+{% set appname = "Cosmo" %}
+{% set version = "0.2.1" %}
+
 <!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+        <link rel="stylesheet" href="/dist/css/main.min.css">
+
+        {% block styles %}{% endblock %}
+
+        <title>{{ page_title }} - {{ appname }}</title>
+    </head>
+    
+    <body class="bg-cosmo-color-1">
+        <div class="container my-2 wrapper">
+            {% block content %}{% endblock %}
+        </div>
+
+        <footer class="footer bg-cosmo-color-2 py-3">
+            <div class="container">
+                <div class="row">
+                    <div class="col-6 text-left">
+                        <p class="mb-0 text-white">Copyright &copy; 2019 | <a href="https://github.com/TeleMidia-MA/" class="text-white" target="__blank" alt="Telemídia - MA">Telemídia - MA</a></p>
+                    </div>
+
+                    <div class="col-6 text-right">
+                        <p class="mb-0 text-white">Versão: {{ version }}</p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+        <div id="loader-modal" class="loader d-none">
+            <div class="row d-flex align-items-center">
+                <div class="loader-spinner col-12 text-center">
+                    <div class="spinner-border text-light" role="status">
+                        <span class="sr-only">Carregando...</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        <script type="text/javascript" src="/dist/js/main.js"></script>
+        <script type="text/javascript" src="/dist/js/script.min.js"></script>
+        {% block scripts %}{% endblock %}
+    </body>
+</html>
+
+{# <!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8">
@@ -29,6 +81,7 @@
 </head>
 <body class="hold-transition login-page">
 {% block content %}{% endblock %}
+
 <!-- jQuery 2.2.3 -->
 <script src="{{ base_url() }}/node_modules/jquery/dist/jquery.min.js"></script>
 <!-- Bootstrap 3.3.6 -->
@@ -46,4 +99,4 @@
     window.cosmo.urlbase = "{{ base_url() }}";
 </script>
 </body>
-</html>
+</html> #}

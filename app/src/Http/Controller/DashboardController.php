@@ -164,16 +164,6 @@ class DashboardController extends AbstractController
      * @Log(type="INFO", persist={"verb", "attributes", "session"}, message="Acessou o histórico.")
      */
     public function historyAction(Request $request, Response $response) {
-        return $this->view->render($response, 'View/dashboard/history/index.twig', $this->getAttributeView());
-    }
-
-    /**
-     * @param Request $request
-     * @param Response $response
-     * @return ResponseInterface
-     * @Post(name="/history", middleware={"App\Http\Middleware\SessionMiddleware"}, alias="dashboard.history")
-     */
-    public function getHistoryAction(Request $request, Response $response){
         $attributes = SessionFacilitator::getAttributeSession();
         $current_user = $this->_dm->getRepository(User::class)->find($attributes["id"]);
         $history = $this->_dm->getRepository(HistoryActivities::class)->findBy([ "user" => $current_user ]);
@@ -181,7 +171,9 @@ class DashboardController extends AbstractController
         for ($i = 0; $i < count($history); $i++)
             $history[$i] = $history[$i]->toArray();
 
-        return $response->withJson($history, 200);
+        $this->setAttributeView("history", $history);
+        
+        return $this->view->render($response, 'View/dashboard/history/index.twig', $this->getAttributeView());
     }
 
     /**
@@ -290,4 +282,11 @@ class DashboardController extends AbstractController
 
         return $response->withJson($usuarios, 200);
     }
+
+    /**
+     * @Get(name="/test", alias="home.teste")
+     */
+    public function testeAction(Request $request, Response $response){
+        return $this->view->render($response, "View/__layout.twig");
+    }   
 }

@@ -1,93 +1,61 @@
 {% extends "View/layout.twig" %}
 
-{% block pagetitle %}Administração do Cosmo{% endblock %}
-{% block title %}
-    {% if formCreate is defined %}
-        Administração do Cosmo - Novo Grupo de Atividade
-    {% elseif formUpdate is defined %}
-        Administração do Cosmo - Atualizar Grupo de Atividade
-    {% endif %}
-{% endblock %}
+{% if formCreate is defined %}
+    {% set page_title = "Novo grupo" %}
+{% endif %}
+
+{% if formUpdate is defined %}
+    {% set page_title = "Editando: " ~ group_activity.title %}
+{% endif %}
 
 {% block scripts %}
-    {% if formCreate is defined %}
-        <script src="{{ base_url() }}/assets/js/pages/admin-group-createjs/frmCreateGroup.js"></script>
-    {% elseif formUpdate is defined %}
-        <script src="{{ base_url() }}/assets/js/pages/admin-group-updatejs/frmUpdateGroup.js"></script>
-    {% endif %}
+    <script type="text/javascript" src="/dist/js/administrator_group_activities.js"></script>
 {% endblock %}
 
 {% block content %}
-    <div class="row">
-        <div class="col-md-2"></div>
-        <div class="col-md-8">
-            <div class="nav-tabs-custom">
-                <ul class="nav nav-tabs">
-                    <li class="active">
-                        <a data-toggle="tab">Dados gerais</a>
-                    </li>
-                </ul>
+    <div class="row my-4">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="card-title mb-0">
+                        {% if formUpdate is defined %}
+                            {{ group_activity.title }}
+                        {% endif %}
+                        
+                        {% if formCreate is defined %}
+                            Preencha os campos abaixo
+                        {% endif %}
+                    </h5>
+                </div>
 
-                <div class="tab-content">
-                    <div class="tab-pane active">
-                        <form class="form-horizontal">
-                            <div class="form-group">
-                                <label for="input-frmgroup-title" class="col-sm-2 control-label">Título</label>
-                                <div class="col-sm-10">
-                                    {% if formCreate is defined %}
-                                        <input type="text" class="form-control" id="input-frmgroup-title">
-                                    {% elseif formUpdate is defined %}
-                                        <input value="{{ group_activity.title }}" type="text" class="form-control" id="input-frmgroup-title">
-                                    {% endif %}
-                                </div>
-                            </div>
+                <div class="card-body">
+                    <form>
+                        <div class="form-group">
+                            <label for="input-frmgroup-title">Título</label>
+                            <input id="input-frmgroup-title" type="text" class="form-control" placeholder="Título" {% if formUpdate is defined %} value="{{ group_activity.title }}" {% endif %}></input>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="input-frmgroup-tags">Tag</label>
+                            <input id="input-frmgroup-tags" type="text" class="form-control" placeholder="Tag" {% if formUpdate is defined %} value="{{ group_activity.tags[0] }}" {% endif %}></input>
+                        </div>
+                        
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="input-frmgroup-visible">
+                            <label class="form-check-label" for="input-frmgroup-visible" {% if formUpdate is defined %}{% if group_activity.visible %}checked{% endif %}{% endif %}>Visível</label>
+                        </div>
+                    </form>
+                </div>
 
-                            <div class="form-group">
-                                <label for="input-frmgroup-visible" class="col-sm-2 control-label">Visível</label>
-                                <div class="col-sm-10">
-                                    <input type="checkbox" id="input-frmgroup-visible"
-                                        {% if formUpdate is defined %}
-                                            {% if group_activity.visible %}
-                                                checked
-                                            {% endif %}
-                                        {% endif %}
-                                    >
-                                </div>
-                            </div>
+                <div class="card-footer">
+                    {% if formCreate is defined %}
+                        <button id="btn-create-group" type="button" class="btn btn-cosmo-color-1">Criar grupo</button>
+                    {% endif %}
 
-                            <div class="form-group">
-                                <label for="input-frmgroup-tags" class="col-sm-2 control-label">Tag</label>
-                                <div class="col-sm-10">
-                                    {% if formCreate is defined %}
-                                        <input type="text" class="form-control" id="input-frmgroup-tags">
-                                    {% elseif formUpdate is defined %}
-                                        <input value="{{ group_activity.tags[0] }}" type="text" class="form-control" id="input-frmgroup-tags">
-                                    {% endif %}
-                                </div>
-                            </div>
-
-                            {% if formCreate is defined %}
-                                <div class="form-group">
-                                    <div class="col-sm-offset-2 col-sm-2">
-                                        <a id="btn-create-group" type="button" class="btn btn-success">Criar Grupo</a>
-                                    </div>
-                                    <div class="col-sm-2">
-                                        <a href="{{ path_for("administrator.control.groupactivities") }}" class="btn btn-default">Voltar</a>
-                                    </div>
-                                </div>
-                            {% elseif formUpdate is defined %}
-                                <input type="hidden" id="input-frmactivity-id" value="{{ group_activity.id }}">
-                                <div class="form-group">
-                                    <div class="col-sm-offset-2 col-sm-2">
-                                        <a type="button" class="btn btn-success" id="btn-update-group">Atualizar Grupo</a>
-                                    </div>
-                                    <div class="col-sm-2">
-                                        <a href="{{ path_for("administrator.control.groupactivities") }}" class="btn btn-default">Voltar</a>
-                                    </div>
-                                </div>
-                            {% endif %}
-                        </form>
-                    </div>
+                    {% if formUpdate is defined %}
+                        <input type="hidden" id="input-frmgroup-id" value="{{ group_activity.id }}">
+                        <button id="btn-update-group" type="button" class="btn btn-cosmo-color-1">Atualizar grupo</button>
+                    {% endif %}
                 </div>
             </div>
         </div>

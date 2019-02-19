@@ -1,49 +1,65 @@
 {% extends "View/layout_login.twig" %}
 
-{% block title %}Registro{% endblock %}
+{% set page_title = "Registro" %}
 
-{% block content %}
-    <div class="register-box">
-        <div class="login-logo">
-            <a href="{{ base_url() }}"><b>Cosmo</b>Telemídia</a>
-        </div>
-
-        <div class="register-box-body">
-            <p class="login-box-msg">Registro de novo membro</p>
-
-            <div class="form-group has-feedback">
-                <input type="email" class="form-control" placeholder="Email" id="frmregister-email" name="frmregister-email">
-                <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
-            </div>
-            <div class="form-group has-feedback">
-                <input type="text" class="form-control" placeholder="Nome Completo" id="frmregister-fullname" name="frmregister-fullname">
-                <span class="glyphicon glyphicon-user form-control-feedback"></span>
-            </div>
-            <div class="form-group has-feedback">
-                <input type="text" class="form-control" placeholder="Nome de usuário" id="frmregister-nickname" name="frmregister-nickname">
-                <span class="glyphicon glyphicon-user form-control-feedback"></span>
-            </div>
-            <div class="form-group has-feedback">
-                <input type="password" class="form-control" placeholder="Senha" id="frmregister-password" name="frmregister-password">
-                <span class="glyphicon glyphicon-lock form-control-feedback"></span>
-            </div>
-            <div class="row">
-                <div class="col-xs-8">
-                    &nbsp;
-                </div>
-                <!-- /.col -->
-                <div class="col-xs-4">
-                    <button type="button" class="btn btn-primary btn-block btn-flat" id="btnCreateAcount">Criar conta</button>
-                </div>
-                <!-- /.col -->
-            </div>
-
-            <a href="{{ path_for('login.index') }}" class="text-center">Já sou membro</a>
-        </div>
-        <!-- /.form-box -->
-    </div>
+{% block scripts %}
+    <script type="text/javascript" src="/dist/js/register.js"></script>
 {% endblock %}
 
-{% block javascript %}
-    <script src="{{ base_url() }}/assets/js/pages/registerjs/dist/registerjs.min.js"></script>
+{% block styles %}
+    <link rel="stylesheet" href="/dist/css/register/style.min.css">
+{% endblock %}
+
+{% block content %}
+    <div class="register-container row d-flex justify-content-center align-content-center">
+        <div class="col-md-5">
+            <div class="card text-center">
+                <div class="card-header">
+                    <span class="card-title mb-0"><b>Cosmo</b>Telemídia</span>
+                </div>
+
+                <div class="card-body">
+                    <form>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fas fa-user"></i></span>
+                            </div>
+
+                            <input id="frmregister-fullname" type="text" class="form-control" placeholder="Nome Completo" aria-label="Nome Completo">
+                        </div>
+
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+                            </div>
+
+                            <input id="frmregister-email" type="email" class="form-control" placeholder="Email" aria-label="Email">
+                        </div>
+
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">@</span>
+                            </div>
+
+                            <input id="frmregister-nickname" type="text" class="form-control" placeholder="Nome de Usuário" aria-label="Nome de Usuário">
+                        </div>
+
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fas fa-key"></i></span>
+                            </div>
+
+                            <input id="frmregister-password" type="password" class="form-control" placeholder="Senha" aria-label="Senha">
+                        </div>
+                    </form>
+                </div>
+
+                <div class="card-footer">
+                    <button id="btnCreateAccount" class="btn btn-cosmo-color-1 w-100">Enviar</button>
+                </div>
+            </div>
+
+            <p class="my-2 text-center"><a class="text-white" href="{{ path_for("login.index") }}">Já tenho uma conta</a></p>
+        </div>
+    </div>
 {% endblock %}

@@ -1,2 +1,45 @@
+@import "colors";
+@import "./node_modules/@fortawesome/fontawesome-free/scss/fontawesome";
+@import "./node_modules/@fortawesome/fontawesome-free/scss/solid";
 @import "./node_modules/bootstrap/scss/bootstrap";
-@import "./node_modules/admin-lte/build/scss/AdminLTE";
+
+body { 
+   display: flex;
+   min-height: 100vh;
+   flex-direction: column;
+}
+
+.stop-scrolling {
+   height: 100%;
+   overflow: hidden;
+}
+ 
+.wrapper {
+   flex: 1;
+}
+
+.loader {
+   position: fixed;
+   width: 100%;
+   overflow: hidden;
+   height: 100vh;
+   background-color: rgba(0, 0, 0, 0.8);
+   top: 0;
+   left: 0;
+}
+
+.loader-spinner {
+   position: absolute;
+   left: 50%;
+   top: 50%;
+   transform: translate(-50%, -50%);
+}
+
+.menu-user-dropdown {
+   width: calc(100vw - 2rem);
+   word-break: break-all;
+
+   @media screen and (min-width: 992px) {
+      width: 350px;      
+   }
+}

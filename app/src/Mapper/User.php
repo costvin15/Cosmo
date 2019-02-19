@@ -74,7 +74,7 @@ class User
      * @param $fullname
      * @param $administrator
      */
-    public function __construct($id = null, $username = null, $password = null, $fullname = null, $administrator = null)
+    public function __construct($id = null, $username = null, $password = null, $fullname = null, $administrator = false)
     {
         $this->id = $id;
         $this->username = $username;
@@ -108,6 +108,16 @@ class User
             'administrator' => $this->administrator,
             'blocked' => $this->blocked,
             'avatar' => $this->getAvatar(),
+            'answered_activities' => $this->answered_activities,
+        ];
+    }
+
+    public function toArrayMinified(){
+        return [
+            'id' => $this->id,
+            'nickname' => $this->nickname,
+            'username' => $this->username,
+            'fullname' => $this->fullname,
             'answered_activities' => $this->answered_activities,
         ];
     }

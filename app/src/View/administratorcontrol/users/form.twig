@@ -1,207 +1,106 @@
-{% extends "View/layout.twig" %}
+{% extends "/View/layout.twig" %}
 
-{% block pagetitle %}
-    {% if formCreate is defined %}
-        Administração do Cosmo - Novo usuário
-    {% elseif formUpdate is defined %}
-        Administração do Cosmo - Atualizar usuário
-    {% endif %}
-{% endblock %}
+{% if formCreate is defined %}
+    {% set page_title = "Novo usuário" %}
+{% endif %}
 
-{% block title %}Administração do Cosmo{% endblock %}
+{% if formUpdate is defined %}
+    {% set page_title = "Editando " ~ user.fullname %}
+{% endif %}
 
 {% block scripts %}
-    {% if formCreate is defined %}
-    <script src="{{ base_url() }}/assets/js/pages/admin-user-createjs/dist/admin-user-createjs.min.js"></script>
-    {% endif %}
-
-    {% if formUpdate is defined %}
-    <script src="{{ base_url() }}/assets/js/pages/admin-user-updatejs/dist/admin-user-updatejs.min.js"></script>
-    {% endif %}
+    <script type="text/javascript" src="/dist/js/administrator_users.js"></script>
 {% endblock %}
 
 {% block content %}
-    <div class="row">
-        <div class="col-md-3">
-
-            <!-- Profile Image -->
-            <div class="box box-primary">
-                <div class="box-body box-profile">
-                    {% if user.avatar is defined %}
-                    <img class="profile-user-img img-responsive"
-                         id="img-frmuser-avatar"
-                         src="{{ user.avatar }}"
-                         alt="User profile picture">
-                    {% else %}
-                    <img class="profile-user-img img-responsive img-circle"
-                         id="img-frmuser-avatar"
-                         src="{{ base_url() }}/assets/img/student-avatar.png"
-                         alt="User profile picture">
-                    {% endif %}
-
-                    <input type="file" class="hidden" id="input-frmuser-fileupload">
-
-                    <h3 class="profile-username text-center">{{ user.fullname }}</h3>
-
-                    <button class="btn btn-primary btn-block" id="btn-alter-image"><b>Alterar Imagem</b></button>
+    <div class="row mb-4">
+        <div class="col-md-3 mt-4">
+            <div class="card">
+                <div class="card-header">
+                    <img id="img-frmuser-avatar" class="card-img-top" {% if formUpdate is defined %} src="{{ user.avatar }}" {% endif %}>
                 </div>
-                <!-- /.box-body -->
+
+                {% if formUpdate is defined %}
+                <div class="card-body">
+                    <h5 class="card-title">{{ user.fullname }}</h5>
+                    <h6 class="card-subtitle">{{ user.nickname }}</h6>
+                    <p class="text-muted mb-0"><small>{{ user.username }}</small></p>
+                </div>
+                {% endif %}
+
+                <div class="card-footer">
+                    <input id="input-frmuser-fileupload" type="file" class="d-none">
+                    <button id="btn-alter-image" class="btn btn-cosmo-color-1">Alterar foto de perfil</button>
+                </div>
             </div>
-            <!-- /.box -->
         </div>
-        <!-- /.col -->
-        <div class="col-md-9">
-            <div class="nav-tabs-custom">
-                <ul class="nav nav-tabs">
-                    <li class="active"><a href="#profile" data-toggle="tab">Dados Pessoais</a></li>
-                </ul>
-                <div class="tab-content">
-                    <div class="tab-pane active" id="profile">
-                        <form class="form-horizontal">
-                            <div class="form-group">
-                                {% if formUpdate is defined %}
-                                <label for="input-frmuser-email" class="col-sm-2 control-label">Email</label>
-                                <div class="col-sm-10">
-                                    <input type="email" class="form-control" id="input-frmuser-email" value="{{ user.username }}" disabled placeholder="Email">
-                                </div>
-                                {% endif %}
 
-                                {% if formCreate is defined %}
-                                <label for="input-frmuser-email" class="col-sm-2 control-label">Email</label>
-                                <div class="col-sm-10">
-                                    <input type="email" class="form-control" id="input-frmuser-email" placeholder="Email">
-                                </div>
-                                {% endif %}
-                            </div>
-                            <div class="form-group">
-                                <label for="input-frmuser-name" class="col-sm-2 control-label">Nome completo</label>
-
-                                <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="input-frmuser-name" value="{{ user.fullname }}"
-                                           placeholder="Nome completo">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="input-frmuser-password" class="col-sm-2 control-label">Senha</label>
-
-                                {% if formCreate is defined %}
-                                <div class="col-sm-10">
-                                    <input type="password" class="form-control" id="input-frmuser-password">
-                                </div>
-                                {% endif %}
-
-
-                                {% if formUpdate is defined %}
-                                <div class="col-sm-10">
-                                    <button type="button" class="btn btn-danger" data-toggle="modal"
-                                            data-target="#modal-alter-password"
-                                            id="btn-alter-password">Alterar senha</button>
-                                </div>
-                                {% endif %}
-                            </div>
-
-                            {% if show_adm is defined %}
-                            <div class="form-group">
-                                <div class="col-sm-offset-2 col-sm-10">
-                                    <div class="checkbox">
-                                        <label>
-                                            <input type="checkbox" id="input-frmuser-administrator" {{ user.administrator ? 'checked' : '' }}> Administrador</a>
-                                        </label>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <div class="col-sm-offset-2 col-sm-10">
-                                    <div class="checkbox">
-                                        <label>
-                                            <input type="checkbox" id="input-frmuser-block" {{ user.blocked and user.blocked.status ? "checked" : "" }}> Bloqueado</a>
-                                        </label>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div id="frmuser-reason-box" class="form-group" style="{{ user.blocked and user.blocked.status ? "display: block;" : "display: none;" }}">
-                                <label for="input-frmuser-reason" class="col-sm-2 control-label">Razão do bloqueio</label>
-                                <div class="col-sm-10">
-                                    <input type="text" value="{{ user.blocked and user.blocked.status ? user.blocked.reason : "" }}" class="form-control" id="input-frmuser-reason" placeholder="Razão do bloqueio">
-                                </div>
-                            </div>
-                            {% endif %}
-
-                            {% if formCreate is defined %}
-                            <div class="form-group">
-                                <div class="col-sm-offset-2 col-sm-2">
-                                    <button type="submit" class="btn btn-success" id="btn-create-user">Criar usuário</button>
-                                </div>
-                                <div class="col-sm-2">
-                                    <a href="{{ path_for('administrator.control.users') }}" class="btn btn-default">Voltar</a>
-                                </div>
-                            </div>
-                            {% endif %}
-
-                            {% if formUpdate is defined %}
-                            <input type="hidden" id="input-hidden-id" value="{{ id }}">
-                            <div class="form-group">
-                                <div class="col-sm-offset-2 col-sm-2">
-                                    <button type="submit" class="btn btn-success" id="btn-create-user">Alterar usuário</button>
-                                </div>
-                                <div class="col-sm-2">
-                                    <a href="{{ path_for('administrator.control.users') }}" class="btn btn-default">Voltar</a>
-                                </div>
-                            </div>
-                            {% endif %}
-                        </form>
-                    </div>
-                    <!-- /.tab-pane -->
+        <div class="col-md-9 mt-4">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="card-title mb-0">Dados</h5>
                 </div>
-                <!-- /.tab-content -->
-            </div>
-            <!-- /.nav-tabs-custom -->
-        </div>
-        <!-- /.col -->
-    </div>
-    <!-- /.row -->
 
+                <div class="card-body">
+                    <form>
+                        <div class="form-group">
+                            <label for="input-frmuser-name">Nome</label>
+                            <input id="input-frmuser-name" type="text" class="form-control" placeholder="Nome completo" {% if formUpdate is defined %} value="{{ user.fullname }}" {% endif %}></input>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="input-frmuser-nickname-group">Nome de usuário</label>
+                            <div class="input-group" id="input-frmuser-nickname-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">@</span>
+                                </div>
+                                <input id="input-frmuser-nickname" type="text" class="form-control" placeholder="Nome de usuário" {% if formUpdate is defined %} value="{{ user.nickname }}" {% endif %} aria-label="Nome de Usuário"></input>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="input-frmuser-email">Email</label>
+                            <input id="input-frmuser-email" type="text" class="form-control" placeholder="Email" {% if formUpdate is defined %} value="{{ user.username }}" {% endif %}></input>
+                        </div>
+                        
+                        {% if formCreate is defined %}
+                            <div class="form-group">
+                                <label for="input-frmuser-password">Senha</label>
+                                <input id="input-frmuser-password" type="password" class="form-control" placeholder="Senha"></input>    
+                            </div>
+                        {% endif %}
 
-    <!-- Modal -->
-    <div class="modal fade" id="modal-alter-password">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span></button>
-                    <h4 class="modal-title">Alterar Senha</h4>
-                </div>
-                <div class="modal-body">
-                    <form class="form-horizontal">
-                        <div class="form-group">
-                            <label for="input-frmuser-name" class="col-sm-3 control-label">Senha atual</label>
-                            <div class="col-sm-9">
-                                <input type="password" class="form-control" id="input-frmuser-password-actual" />
-                            </div>
+                        <div class="form-check">
+                            <input id="input-frmuser-administrator" type="checkbox" class="form-check-input" {% if formUpdate is defined and user.administrator %} checked {% endif %}>
+                            <label for="input-frmuser-administrator" class="form-check-label">Administrador</label>
                         </div>
-                        <div class="form-group">
-                            <label for="input-frmuser-name" class="col-sm-3 control-label">Nova senha</label>
-                            <div class="col-sm-9">
-                                <input type="password" class="form-control" id="input-frmuser-new-password" />
+
+                        {% if formUpdate is defined %}
+                            <div class="form-check">
+                                <input id="input-frmuser-block" type="checkbox" class="form-check-input" {% if formUpdate is defined and user.blocked and user.blocked.status %} checked {% endif %}>
+                                <label for="input-frmuser-block" class="form-check-label">Bloqueado</label>
                             </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="input-frmuser-name" class="col-sm-3 control-label">Repita nova senha</label>
-                            <div class="col-sm-9">
-                                <input type="password" class="form-control" id="input-frmuser-repeat-new-password" />
+
+                            <div class="form-group mt-2">
+                                <label for="input-frmuser-reason">Razão do bloqueio</label>
+                                <input id="input-frmuser-reason" type="text" class="form-control" placeholder="Razão do bloqueio" {% if formUpdate is defined and user.blocked %} value="{{ user.blocked.reason }}" {% endif %}></input>
                             </div>
-                        </div>
+                        {% endif %}
                     </form>
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Fechar</button>
-                    <button type="button" class="btn btn-primary">Alterar Senha</button>
+
+                <div class="card-footer">
+                    {% if formCreate is defined %}
+                        <button id="btn-create-profile" type="submit" class="btn btn-cosmo-color-1">Enviar</button>
+                    {% endif %}
+
+                    {% if formUpdate is defined %}
+                        <input id="input-hidden-id" type="hidden" value="{{ user.id }}">
+                        <button id="btn-close-profile" class="btn btn-danger">Encerrar conta</button>
+                        <button id="btn-update-profile" type="submit" class="btn btn-cosmo-color-1">Salvar</button>
+                    {% endif %}
                 </div>
             </div>
-            <!-- /.modal-content -->
         </div>
-        <!-- /.modal-dialog -->
     </div>
 {% endblock %}

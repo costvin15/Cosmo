@@ -1,99 +1,71 @@
 {% extends "View/layout.twig" %}
+
+{% set page_title = "Histórico" %}
+
+{% block styles %}
+    <link rel="stylesheet" href="/dist/css/history/style.min.css">
+{% endblock %}
+
+{% block scripts %}
+    <script type="text/javascript" src="/dist/js/history.js"></script>
+{% endblock %}
+
+{% block content %}
+    <div class="row my-4">
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="card-title mb-0">{{ attributes.fullname }}</h5>
+                </div>
+
+                <div class="card-body">
+                    <p class="text-muted mb-0">Questões respondidas: {{ history|length }}</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-8">
+            <table data-toggle="table"
+                data-modile-reponsive="true"
+                data-page-size="10"
+                data-search="true">
+                
+                <thead>
+                    <tr>
+                        <th>Título</th>
+                        <th>Linguagem</th>
+                        <th>Tempo de execução</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {% for activity in history %}
+                        <tr>
+                            <td>{{ activity.activity.title }}</td>
+                            <td>{{ activity.language == "lua" ? "Lua" : activity.language == "cpp" ? "C/C++" : activity.language == "python" ? "Python" : "Desconhecido" }}</td>
+                            <td>{{ activity.time|number_format(4, '.', ',') }}s</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}
+
+{# {% extends "View/layout.twig" %}
 {% block pagetitle %}Histórico de Atividades{% endblock %}
 {% block title %}Histórico{% endblock %}
 
-{# {% set bg_color =  "#AAA9AA" %} #}
-
 {% block scripts %}
-    {# <script src="{{ base_url() }}/node_modules/jquery-bar-rating/dist/jquery.barrating.min.js"></script> #}
-    {# <script>
-        $('.rating-bar-type-a').barrating({
-            theme: 'bars-1to10'
-        });
-    </script> #}
     <script src="{{ base_url() }}/node_modules/datatables/media/js/jquery.dataTables.js"></script>
     <script src="{{ base_url() }}/assets/js/pages/historyjs/frmHistory.js"></script>
 {% endblock %}
 
 {% block css %}
     <link rel="stylesheet" href="{{ base_url() }}/node_modules/datatables/media/css/jquery.dataTables.css">
-    {# <link rel="stylesheet" href="{{ base_url() }}/node_modules/jquery-bar-rating/dist/themes/bars-1to10.css"> #}
 {% endblock %}
 
 {% block content %}
-    {# {% for group, allActivities in allGroupActivities %}
-        <section>
-            <h2 class="page-header">{{ group }}</h2>
-
-            <div class="row">
-                {% for activity in allActivities %}
-                    {% set history = activity.getHistoryActivities.first %}
-                    <div class="col-md-3">
-                        <!-- Box Comment -->
-                        <div class="box box-widget">
-                            <div class="box-header with-border box-question"
-                                 style="background-color: {{ bg_color }}; border-color: {{ bg_color }}">
-                                <div class="user-block">
-                                    <span class="username">{{ activity.getTitle|raw }}</span>
-                                    <span class="description">Publicado por: {{ activity.getUploader.getFullname }} - {{ activity.getDateCreate|date("d/m/Y") }}</span>
-                                    <div class="label-box">
-                                        {% set group = activity.getGroup %}
-                                        {% set tags = group.getTags %}
-                                        {% for tag in tags %}
-                                            <small class="label bg-blue">{{ tag }}</small>
-                                        {% endfor %}
-                                    </div>
-                                </div>
-                                <!-- /.user-block -->
-                            </div>
-                            <!-- /.box-header -->
-                            <div class="box-body">
-                                <!-- post text -->
-                                <p>{{ activity.getQuestion|raw }}</p>
-                            </div>
-                            <form action="{{ path_for('activities') }}" method="post">
-                                <div class="box-footer">
-                                    <div class="row option-question">
-                                        <div class="col-lg-6 col-xs-6 col-sm-6 col-md-6">
-                                            <a href="{{ path_for("activities.view", {"id": history.getId}) }}" type="button" class="btn btn-primary btn-block" style="background-color: {{ bg_color }}; border-color: {{ bg_color }}"> Ver Resposta</a>
-                                        </div>
-                                        <div class="col-lg-6 col-xs-6 col-sm-6 col-md-6">
-                                            <button type="submit" class="btn btn-primary btn-block" style="background-color: {{ bg_color }}; border-color: {{ bg_color }}"> Refazer</button>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-lg-6 col-xs-6 col-sm-6 col-md-6">
-                                            <small>Dificuldade</small>
-                                            <select class="rating-bar-type-a">
-                                                <option value="1" {% if history.getDifficulty == 1 %} selected {% endif %}>1</option>
-                                                <option value="2" {% if history.getDifficulty == 2 %} selected {% endif %}>2</option>
-                                                <option value="3" {% if history.getDifficulty == 3 %} selected {% endif %}>3</option>
-                                            </select>
-                                        </div>
-                                        <div class="col-lg-6 col-xs-6 col-sm-6 col-md-6">
-                                            {% if history.getClassification == 1 %}
-                                            <div class="like">
-                                                <img src="{{ base_url() }}/assets/img/like.svg" class="img-responsive"/>
-                                            </div>
-                                            {% else %}
-                                            <div class="dislike">
-                                                <img src="{{ base_url() }}/assets/img/dislike-thumb.svg"
-                                                     class="img-responsive"/>
-                                            </div>
-                                            {% endif %}
-                                        </div>
-                                    </div>
-                                </div>
-                                <input name="id-activities" type="hidden" value="{{ activity.getId }}">
-                            </form>
-                        </div>
-                        <!-- /.box -->
-                    </div>
-                {% endfor %}
-            </div>
-        </section>
-    {% endfor %} #}
-
     <div class="row">
         <div class="col-md-3">
             <div class="box box-primary">
@@ -137,4 +109,4 @@
             </div>
         </div>
     </div>
-{% endblock %}
+{% endblock %} #}

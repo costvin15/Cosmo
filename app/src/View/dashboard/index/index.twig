@@ -1,89 +1,31 @@
 {% extends "View/layout.twig" %}
-{% block pagetitle %}Atividades{% endblock %}
-{% block title %}Dashboard{% endblock %}
-
-{% block scripts %}
-    <script>
-        $('.btn-next').click(function () {
-            var returnSuccess = function(data) {
-                $('#' + data.origin).find('.username').html(data.title);
-                $('#' + data.origin).find('.description').text(data.description);
-
-                $('#' + data.origin).find('.box-body').html(data.question);
-
-                $('#' + data.origin).find('.label-box').html('');
-                data.tags.forEach(function(element) {
-                    $('#' + data.origin).find('.label-box').append('<small class="label bg-blue">' + element + '</small>');
-                });
-
-                $('#' + data.origin).find('.btn-next').attr('data-id', data.id);
-
-                $('#' + data.origin).find('input[name=id-activities]').val(data.id);
-            };
-
-            var arrayForm = [];
-            $('input[name=id-activities]').each(function () {
-                arrayForm.push($(this).val());
-            });
-
-            var arrayJson = { "questions" : JSON.stringify(arrayForm), "origin" : $(this).data('id') };
-
-            var configurationAjaxSend = cosmo.ajax.getDefaults();
-            configurationAjaxSend.url = cosmo.urlbase + cosmo.routes_name.GET_ONE_QUESTION;
-            configurationAjaxSend.method = 'POST';
-            configurationAjaxSend.type = 'json';
-            configurationAjaxSend.sucess = returnSuccess;
-            configurationAjaxSend.data = arrayJson;
-
-            cosmo.ajax.send(configurationAjaxSend);
-        });
-    </script>
-{% endblock %}
+{% set page_title = "Atividades" %}
 
 {% block content %}
     <div class="row">
-        {%  set icontador = 0 %}
         {% for activity in allActivities %}
-            {%  set icontador = icontador + 1 %}
-            <div class="col-md-3" id="div-{{ icontador }}">
-                <!-- Box Comment -->
-                <div class="box box-widget">
-                    <div class="box-header with-border box-question">
-                        <div class="user-block">
-                            <span class="username">{{ activity.getTitle|raw }}</span>
-                            <span class="description">Publicado por: {{ activity.getUploader.getFullname }} - {{ activity.getDateCreate|date("d/m/Y") }}</span>
-                            <div class="label-box">
-                                {% set group = activity.getGroup %}
-                                {% set tags = group.getTags %}
-                                {% for tag in tags %}
-                                    <small class="label bg-blue">{{ tag }}</small>
-                                {% endfor %}
-                            </div>
-                        </div>
-                        <!-- /.user-block -->
+            <div class="col-md-4 my-2" id="div-{{ loop.index  }}">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ activity.getTitle }}</h5>
+                        <p class="card-subtitle mb-2 text-muted"><small>Publicado por: {{ activity.getUploader.getFullname }} - {{ activity.getDateCreate|date("d/m/Y")}}</small></p>
+                        <p class="card-subtitle">{{ activity.getQuestion }}</p>
+
+                        <hr />
+
+                        {% set group = activity.getGroup %}
+                        {% for tag in group.getTags %}
+                            <h5 class="mb-0"><span class="badge badge-cosmo-color-4">{{ tag }}</span></h5>
+                        {% endfor %}
                     </div>
-                    <!-- /.box-header -->
-                    <div class="box-body">
-                        <!-- post text -->
-                        <p>{{ activity.getQuestion|raw }}</p>
-                    </div>
-                    <form action="{{ path_for('activities') }}" method="post">
-                        <div class="box-footer">
-                            <div class="row option-question">
-                                <div class="col-lg-6 col-xs-6 col-sm-6 col-md-6">
-                                    <button type="button" class="btn btn-default btn-block btn-next"
-                                            data-id="div-{{ icontador }}"> Pular
-                                    </button>
-                                </div>
-                                <div class="col-lg-6 col-xs-6 col-sm-6 col-md-6">
-                                    <button type="submit" class="btn btn-primary btn-block"> Responder</button>
-                                </div>
-                            </div>
+
+                    <form action="{{ path_for("activities") }}" method="POST">
+                        <div class="card-footer">
+                            <button type="submit" class="btn btn-cosmo-color-2">Responder</button>
                         </div>
                         <input name="id-activities" type="hidden" value="{{ activity.getId }}">
                     </form>
                 </div>
-                <!-- /.box -->
             </div>
         {% endfor %}
     </div>

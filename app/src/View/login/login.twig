@@ -1,43 +1,49 @@
 {% extends "View/layout_login.twig" %}
 
-{% block title %}Login{% endblock %}
+{% set page_title = "Entrar" %}
+
+{% block scripts %}
+    <script type="text/javascript" src="/dist/js/login.js"></script>
+{% endblock %}
+
+{% block styles %}
+    <link rel="stylesheet" href="/dist/css/login/style.min.css">
+{% endblock %}
 
 {% block content %}
-    <div class="login-box">
-        <div class="login-logo">
-            <a href="{{ base_url() }}"><b>Cosmo</b>Telemídia</a>
-        </div>
-        <!-- /.login-logo -->
-        <div class="login-box-body">
-            <p class="login-box-msg">Seja bem vindo a plataforma de Ensino Cosmo</p>
-
-            <div class="form-group has-feedback">
-                <input type="email" name="username" class="form-control" placeholder="Email ou Nome de Usuário" id="frmlogin-email">
-                <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
-            </div>
-            <div class="form-group has-feedback">
-                <input type="password" name="password" class="form-control" placeholder="Senha" id="frmlogin-password">
-                <span class="glyphicon glyphicon-lock form-control-feedback"></span>
-            </div>
-            <div class="row">
-                <div class="col-xs-8">&nbsp;</div>
-                <!-- /.col -->
-                <div class="col-xs-4">
-                    <button type="button" class="btn btn-primary btn-block btn-flat" id="btnLogin">Entrar</button>
+    <div class="login-container row d-flex justify-content-center align-content-center">
+        <div class="col-md-5">
+            <div class="card text-center">
+                <div class="card-header">
+                    <span class="card-title mb-0"><b>Cosmo</b>Telemídia</span>
                 </div>
-                <!-- /.col -->
+
+                <div class="card-body">
+                    <form>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fas fa-user"></i></span>
+                            </div>
+
+                            <input id="frmlogin-email" type="text" class="form-control" placeholder="Email ou Nome de Usuário" aria-label="Email ou Nome de Usuário">
+                        </div>
+
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fas fa-key"></i></span>
+                            </div>
+
+                            <input id="frmlogin-password" type="password" class="form-control" placeholder="Senha" aria-label="Senha">
+                        </div>
+                    </form>
+                </div>
+
+                <div class="card-footer">
+                    <button id="btnLogin" class="btn btn-cosmo-color-1 w-100">Entrar</button>
+                </div>
             </div>
 
-            <a href="{{ path_for('register.index') }}" class="text-center">Não possuo usuário</a><br>
-            <a href="{{ path_for('register.password.rescue') }}">Recuperar senha</a>
+            <p class="my-2 text-center"><a class="text-white" href="{{ path_for("register.index") }}">Não tenho uma conta</a></p>
         </div>
-        <!-- /.login-box-body -->
     </div>
-    <!-- /.login-box -->
 {% endblock %}
-
-{% block javascript %}
-    <script src="{{ base_url() }}/assets/js/pages/loginjs/dist/loginjs.min.js"></script>
-{% endblock %}
-
-

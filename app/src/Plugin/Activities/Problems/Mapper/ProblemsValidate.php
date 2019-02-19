@@ -43,7 +43,7 @@ class ProblemsValidate
                 break;
         }
 
-        $obj->criarEntradaCodigo($data['source_coude']);
+        $obj->criarEntradaCodigo($data['source_code']);
         $obj->setRespostaInFile($problem->getIn());
         $obj->criaSaidaTeste($problem->getOut());
 
@@ -73,7 +73,7 @@ class ProblemsValidate
 
         $attempt->setActivity($activity);
         $attempt->setUser($user);
-        $attempt->setCode($data['source_coude']);
+        $attempt->setCode($data['source_code']);
         $attempt->setAnswer($returnValidate->answer);
         $attempt->setPayload($returnValidate->payload);
 
@@ -109,7 +109,7 @@ class ProblemsValidate
 
         $history->setActivity($activity);
         $history->setUser($user);
-        $history->setCode($data['source_coude']);
+        $history->setCode($data['source_code']);
         $history->setLanguage($data["language"]);
         $history->setTimeStart($data['dateini']);
         $history->setTimeEnd($data['datefim']);

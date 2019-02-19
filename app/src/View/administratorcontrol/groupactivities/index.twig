@@ -1,58 +1,52 @@
 {% extends "View/layout.twig" %}
-{% block pagetitle %}Administração do Cosmo{% endblock %}
-{% block title %}Administração do Cosmo - Atividades{% endblock %}
+{% set page_title = "Grupo de Atividades" %}
 
 {% block content %}
-    <div class="admin-users">
-        <nav class="navbar navbar-default">
-            <div class="container-fluid">
-                <ul class="list-fast-menu">
-                    <li><a href="{{ path_for("administrator.control.users") }}">Usuários</a></li>
-                    <li><a href="{{ path_for("administrator.control.activities") }}">Atividades</a></li>
-                    <li><a class="active" href="{{ path_for("administrator.control.groupactivities") }}">Grupos de Atividades</a></li>
-                </ul>
+    <div class="row">
+        <div class="col-12">
+            <a href="{{ path_for("administrator.control.groupactivities.create") }}" class="btn btn-cosmo-color-1 float-right">Novo</a>
+        </div>
+    </div>
+
+    <div class="row my-4">
+        <div class="col-md-4">
+            <div class="nav flex-column nav-pills mb-4" role="tablist" aria-orientation="vertical">
+                <a class="nav-link" href="{{ path_for("administrator.control.users") }}">Usuários</a>
+                <a class="nav-link" href="{{ path_for("administrator.control.activities") }}">Atividades</a>
+                <a class="nav-link active" href="{{ path_for("administrator.control.groupactivities") }}">Grupo de atividades</a>
             </div>
-        </nav>
+        </div>
 
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="row">
-                    <div class="col-md-9"></div>
-                    <div class="col-md-3">
-                        <a href="{{ path_for("administrator.control.groupactivities.create") }}" type="button" class="btn btn-block btn-success">Novo Grupo de Atividade</a>
-                    </div>
-                </div>
+        <div class="col-md-8">
+            <div class="row">
+                {% for group in group_activities %}
+                    <div class="col-md-6 my-1">
+                        <div class="card">
+                            <div class="card-header">
+                                <h5 class="card-title mb-0">{{ group.getName }}</h5>
+                            </div>
 
-                <div class="row">
-                    {% for group in group_activities %}
-                        <div class="col-md-3">
-                            <div class="box box-widget">
-                                <div class="box-header widget-border box-question">
-                                    <div class="user-block">
-                                        <span class="username">{{ group.getName|raw }}</span>
-                                        <div class="label-box">
-                                            {% set tags = group.getTags %}
-                                            {% for tag in tags %}
-                                                <small class="label bg-blue">{{ tag }}</small>
-                                            {% endfor %}
-                                        </div>
+                            <div class="card-body">
+                                <p class="card-subtitle mb-2 text-muted">Tags:</p>
+                                {% for tag in group.getTags %}
+                                    <h5 class="mb-0"><span class="badge badge-cosmo-color-4">{{ tag }}</span></h5>
+                                {% endfor %}
+                            </div>
+
+                            <div class="card-footer">
+                                <div class="row">
+                                    <div class="col-6">
+                                        <a href="{{ path_for("administrator.control.groupactivities.modify", {"id": group.getId}) }}" class="btn btn-cosmo-color-1 w-100">Editar</a>
                                     </div>
-                                </div>
 
-                                <div class="box-footer">
-                                    <div class="row option-question">
-                                        <div class="col-lg-6 col-xs-6 col-sm-6 col-md-6">
-                                            <a href="{{ path_for("administrator.control.groupactivities.modify", {"id": group.getId}) }}" type="button" class="btn btn-default btn-block"> Editar</a>
-                                        </div>
-                                        <div class="col-lg-6 col-xs-6 col-sm-6 col-md-6">
-                                            <a href="{{ path_for("administrator.control.groupactivities.remove", {"id": group.getId}) }}" type="button" class="btn btn-default btn-block"> Apagar</a>
-                                        </div>
+                                    <div class="col-6">
+                                        <a href="{{ path_for("administrator.control.groupactivities.remove", {"id": group.getId}) }}" class="btn btn-danger w-100">Apagar</a>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    {% endfor %}
-                </div>
+                    </div>
+                {% endfor %}
             </div>
         </div>
     </div>

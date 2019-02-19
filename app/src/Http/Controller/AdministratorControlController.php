@@ -64,6 +64,8 @@ class AdministratorControlController extends AbstractController
      * @Log(type="INFO", persist={"verb", "attributes", "session"}, message="Acessou a página administrativa de usuários.")
      */
     public function usersAction(Request $request, Response $response) {
+        $users = $this->_dm->getRepository(User::class)->findAll();
+        $this->setAttributeView("users", $users);
         return $this->view->render($response, 'View/administratorcontrol/users/index.twig', $this->getAttributeView());
     }
 
@@ -109,7 +111,7 @@ class AdministratorControlController extends AbstractController
      * @param $args
      * @throws \Exception
      * @return mixed
-     * @Get(name="/user/modify/{id}", middleware={"App\Http\Middleware\AdministratorSessionMiddleware"}, alias="administrator.control.users.new")
+     * @Get(name="/user/modify/{id}", middleware={"App\Http\Middleware\AdministratorSessionMiddleware"}, alias="administrator.control.users.modify")
      * @Log(type="INFO", persist={"verb", "attributes", "session"}, message="Acessou a página administrativa de modificação de usuário.")
      */
     public function modifyUserAction(Request $request, Response $response, array $args) {
@@ -153,24 +155,39 @@ class AdministratorControlController extends AbstractController
             if (!$validate->saveUserAction($request))
                 return $response->withJson([ $validate->getError() ], 500);
 
+            $avatar = $request->getParam("avatar");
             $username = $request->getParam("username");
+            $nickname = $request->getParam("nickname");
             $password = $request->getParam("password");
             $fullname = $request->getParam("fullname");
             $administrator = $request->getParam("admin");
-            $avatar = $request->getParam("avatar");
+            
+            $users_with_email_entered = $this->_dm->getRepository(User::class)->findBy([
+                "username" => $username
+            ]);
+            if (count($users_with_email_entered) > 0)
+                return $response->withJson(["Este email já está sendo usado"], 500);
+            unset($users_with_email_entered);
 
-            //Create object User
+            $users_with_nickname_entered = $this->_dm->getRepository(User::class)->findBy([
+                "nickname" => $nickname
+            ]);
+            if (count($users_with_nickname_entered) > 0)
+                return $response->withJson(["Este Nome de Usuário já está sendo usado"], 500);
+            unset($users_with_nickname_entered);
+
             $user = new User(null, $username, md5($password), $fullname, $administrator);
+            $user->setNickname($nickname);
 
             $this->_dm->persist($user);
             $this->_dm->flush();
 
-            $pathStorageImage = $this->_ci->get('settings')->get('storage.photo');
-
-            preg_match('/data:([^;]*);base64,(.*)/', $avatar, $arrayAvatar);
-
-            $filenameAvatar = $pathStorageImage . DIRECTORY_SEPARATOR . $user->getId();
-            file_put_contents($filenameAvatar, base64_decode($arrayAvatar[2]));
+            if (trim($avatar) != ""){
+                $pathStorageImage = $this->_ci->get('settings')->get('storage.photo');
+                preg_match('/data:([^;]*);base64,(.*)/', $avatar, $arrayAvatar);
+                $filenameAvatar = $pathStorageImage . DIRECTORY_SEPARATOR . $user->getId();
+                file_put_contents($filenameAvatar, base64_decode($arrayAvatar[2]));
+            }
 
             Mail::send(
                 [ 'mail' => $user->getUsername(), 'fullname' => $user->getFullname() ],
@@ -200,19 +217,40 @@ class AdministratorControlController extends AbstractController
                 return $response->withJson([ $validate->getError() ], 500);
 
             $id = $request->getParam("id");
+            $avatar = $request->getParam("avatar");
+            $username = $request->getParam("username");
+            $nickname = $request->getParam("nickname");
             $fullname = $request->getParam("fullname");
             $administrator = $request->getParam("admin");
-            $avatar = $request->getParam("avatar");
 
+            $user = $this->_dm->getRepository(User::class)->find($id);
+
+            $users_with_email_entered = $this->_dm->getRepository(User::class)->findBy([
+                "username" => $username
+            ]);
+            if ($username != $user->getUsername() && count($users_with_email_entered) > 0)
+                return $response->withJson(["Este email já está sendo usado"], 500);
+            unset($users_with_email_entered);
+
+            $users_with_nickname_entered = $this->_dm->getRepository(User::class)->findBy([
+                "nickname" => $nickname
+            ]);
+            if ($nickname != $user->getNickname() && count($users_with_nickname_entered) > 0)
+                return $response->withJson(["Este Nome de Usuário já está sendo usado"], 500);
+            unset($users_with_nickname_entered);
+            
             $block = array(
                 "status" => $request->getParam("block_status") == "1" ? true : false,
                 "reason" => $request->getParam("block_reason")
             );
 
-            $user = $this->_dm->getRepository(User::class)->find($id);
-            $user->setFullname($fullname);
-            $user->setAdministrator($administrator);
-            $user->setBlocked($block);
+            if ($user){
+                $user->setFullname($fullname);
+                $user->setUsername($username);
+                $user->setNickname($nickname);
+                $user->setAdministrator($administrator);
+                $user->setBlocked($block);
+            }
 
             $this->_dm->persist($user);
             $this->_dm->flush();
@@ -229,6 +267,22 @@ class AdministratorControlController extends AbstractController
         } else {
             return $response->withJson([ 'Requisição mal formatada!' ], 500);
         }
+    }
+
+    /**
+     * @Post(name="/user/remove/{id}", middleware={"App\Http\Middleware\AdministratorSessionMiddleware"}, alias="administrator.controls.users.remove")
+     */
+    public function removeUserAction(Request $request, Response $response, array $args){
+        $router = $this->_ci->get("router");
+        $id = $args["id"];
+        if (!$id)
+            return $response->withJson(["Usuário não encontrado"], 500);
+        
+        $user = $this->_dm->getRepository(User::class)->find($id);
+        $this->_dm->remove($user);
+        $this->_dm->flush();
+
+        return $response->withJson(["message" => "Usuário removido com sucesso", "callback" => $router->pathFor("administrator.control.users")], 200);
     }
 
     /**

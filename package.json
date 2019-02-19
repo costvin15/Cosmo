@@ -1,6 +1,7 @@
 {
-  "displayName": "Cosmo",
-  "name": "Cosmo",
+  "displayName": "Cosmo - Telemídia",
+  "name": "cosmo",
+  "private": true,
   "repository": {
     "type": "GitHub",
     "url": "https://github.com/TeleMidia-MA/cosmo"
@@ -9,14 +10,22 @@
     "build": "webpack"
   },
   "dependencies": {
-    "admin-lte": "^3.0.0-alpha",
     "bootstrap": "^4.3.1",
+    "bootstrap-table": "^1.13.4",
+    "brace": "^0.11.1",
+    "gulp-uglify": "^3.0.1",
+    "highlight.js": "^9.14.2",
     "jquery": "^3.3.1",
-    "popper.js": "^1.14.7"
+    "popper.js": "^1.14.7",
+    "sweetalert": "^2.1.2"
   },
   "devDependencies": {
+    "@fortawesome/fontawesome-free": "^5.7.2",
+    "@types/ace": "0.0.42",
+    "@types/jquery": "^3.3.29",
     "gulp": "^4.0.0",
-    "gulp-cssmin": "^0.2.0",
+    "gulp-clean-css": "^4.0.0",
+    "gulp-concat": "^2.6.1",
     "gulp-rename": "^1.4.0",
     "gulp-sass": "^4.0.2",
     "ts-loader": "^5.3.3",

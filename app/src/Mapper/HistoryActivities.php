@@ -58,7 +58,7 @@ class HistoryActivities
     public function toArray(){
         return array(
             "id" => $this->id,
-            "user" => $this->user->toArray(),
+            "user" => $this->user->toArrayMinified(),
             "activity" => $this->activity->toArray(),
             "time" => $this->timeEnd - $this->timeStart,
             "code" => $this->code,

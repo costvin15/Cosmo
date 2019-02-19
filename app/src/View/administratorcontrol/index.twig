@@ -1,55 +1,53 @@
 {% extends "View/layout.twig" %}
-{% block pagetitle %}Administração do Cosmo{% endblock %}
-{% block title %}Administração do Cosmo{% endblock %}
-
-{% block scripts %}{% endblock %}
+{% set page_title = "Administração do Cosmo" %}
 
 {% block content %}
-    <div class="row">
-        <div class="col-lg-4 col-xs-6">
-            <!-- small box -->
-            <div class="small-box bg-yellow">
-                <div class="inner">
-                    <h3>{{ data.users }}</h3>
+    <div class="row my-4">
+        <div class="col-md-4 mb-2">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="card-title mb-0">Usuários</h5>
+                </div>
 
-                    <p>Usuários</p>
+                <div class="card-body">
+                    <p class="mb-0">Aqui você pode adicionar, editar ou excluir usuários.</p>
                 </div>
-                <div class="icon">
-                    <i class="fa fa-user"></i>
+
+                <div class="card-footer">
+                    <a class="btn btn-cosmo-color-1" href="{{ path_for("administrator.control.users") }}">Abrir</a>
                 </div>
-                <a href="{{ path_for("administrator.control.users") }}" class="small-box-footer">
-                    Listar
-                </a>
             </div>
         </div>
 
-        <div class="col-lg-4 col-xs-6">
-            <!-- small box -->
-            <div class="small-box bg-green">
-                <div class="inner">
-                    <h3>{{ data.activities }}</h3>
+        <div class="col-md-4 mb-2">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="card-title mb-0">Atividades</h5>
+                </div>
 
-                    <p>Atividades</p>
+                <div class="card-body">
+                    <p class="mb-0">Aqui você pode adicionar, editar ou excluir atividades.</p>
                 </div>
-                <div class="icon">
-                    <i class="fa fa-book"></i>
+
+                <div class="card-footer">
+                    <a class="btn btn-cosmo-color-1" href="{{ path_for("administrator.control.activities") }}">Abrir</a>
                 </div>
-                <a href="{{ path_for("administrator.control.activities") }}" class="small-box-footer">
-                    Listar
-                </a>
             </div>
         </div>
 
-        <div class="col-lg-4 col-xs-6">
-            <div class="small-box bg-blue">
-                <div class="inner">
-                    <h3>{{ data.group_activities }}</h3>
-                    <p>Grupos de atividades</p>
+        <div class="col-md-4 mb-2">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="card-title mb-0">Grupos de Atividades</h5>
                 </div>
-                <div class="icon">
-                    <i class="fa fa-bookmark"></i>
+
+                <div class="card-body">
+                    <p class="mb-0">Aqui você pode adicionar, editar ou excluir grupos de atividades.</p>
                 </div>
-                <a href="{{ path_for("administrator.control.groupactivities") }}" class="small-box-footer">Listar</div>
+
+                <div class="card-footer">
+                    <a class="btn btn-cosmo-color-1" href="{{ path_for("administrator.control.groupactivities") }}">Abrir</a>
+                </div>
             </div>
         </div>
     </div>

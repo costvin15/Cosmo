@@ -78,10 +78,9 @@ class ActivitiesController extends AbstractController
      * @param ServerRequestInterface $request
      * @param ResponseInterface $response
      * @return mixed
-     * @Post(name="/submit", alias="submitactivity", middleware={"App\Http\Middleware\SessionMiddleware"})
+     * @Post(name="/submit", middleware={"App\Http\Middleware\SessionMiddleware"}, alias="submitactivity")
      */
     public function submitActivityAction(ServerRequestInterface $request, ResponseInterface $response) {
-
         $params = $request->getParsedBody();
         $idActivity = $params['id_activity'];
 
