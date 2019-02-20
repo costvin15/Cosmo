@@ -2,15 +2,21 @@
 {% set page_title = "Resolva o problema" %}
 
 {% block scripts %}
-    <script type="text/javascript" src="/dist/js/problems.js"></script>
+    <script type="text/javascript" src="{{ base_url() }}/dist/js/problems.js"></script>
 {% endblock %}
 
 {% block styles %}
-    <link rel="stylesheet" href="/dist/css/problems/style.min.css">
+    <link rel="stylesheet" href="{{ base_url() }}/dist/css/problems/style.min.css">
 {% endblock %}
 
 {% block content %}
+    <ul class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{{ path_for("dashboard.index") }}">Dashboard</a></li>
+        <li class="breadcrumb-item active">{{ activity.getTitle }}</li>
+    </ul>
+
     <div class="row my-4">
+       
         <div class="col-12">
             <div class="row d-flex">
                 <div class="col-lg-6 ml-auto">
@@ -71,5 +77,10 @@
             <input id="id-activity" type="hidden" value="{{ activity.getId }}" />
             <button id="submit-activity" class="float-right btn btn-cosmo-color-1">Enviar</button>
         </div>
+
+        
+            
+            
+        
     </div>
 {% endblock %}
