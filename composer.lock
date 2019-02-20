@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d1eee98d24bd1bd915f110a55fc31d3b",
+    "content-hash": "c90f4258d3c1ca10e9725de59caaf91d",
     "packages": [
         {
             "name": "akrabat/rka-slim-session-middleware",
@@ -758,16 +758,16 @@
         },
         {
             "name": "doctrine/mongodb-odm",
-            "version": "1.2.5",
+            "version": "1.2.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/mongodb-odm.git",
-                "reference": "e7c926b8a0cae830c0b7f48005afde83fd3921a2"
+                "reference": "496ab5368afea176a1e368769a8eb643656cb7fb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/mongodb-odm/zipball/e7c926b8a0cae830c0b7f48005afde83fd3921a2",
-                "reference": "e7c926b8a0cae830c0b7f48005afde83fd3921a2",
+                "url": "https://api.github.com/repos/doctrine/mongodb-odm/zipball/496ab5368afea176a1e368769a8eb643656cb7fb",
+                "reference": "496ab5368afea176a1e368769a8eb643656cb7fb",
                 "shasum": ""
             },
             "require": {
@@ -777,7 +777,7 @@
                 "doctrine/common": "~2.4",
                 "doctrine/inflector": "~1.0",
                 "doctrine/instantiator": "^1.0.1",
-                "doctrine/mongodb": "^1.6.1",
+                "doctrine/mongodb": "^1.6.3",
                 "php": "^5.6 || ^7.0",
                 "symfony/console": "~2.3|~3.0|^4.0"
             },
@@ -838,7 +838,7 @@
                 "odm",
                 "persistence"
             ],
-            "time": "2018-07-20T05:40:16+00:00"
+            "time": "2019-01-15T10:22:40+00:00"
         },
         {
             "name": "mongodb/mongodb",
@@ -1786,6 +1786,7 @@
                 "mock",
                 "xunit"
             ],
+            "abandoned": true,
             "time": "2017-06-30T09:13:00+00:00"
         },
         {

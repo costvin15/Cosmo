@@ -10,6 +10,11 @@
 {% endblock %}
 
 {% block content %}
+     <ul class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{{ path_for("administrator.control.index") }}">Administração</a></li>
+        <li class="breadcrumb-item active">Usuários</li>
+    </ul>
+
     <div class="row">
         <div class="col-12">
             <a href="{{ path_for("administrator.control.users.new") }}" class="btn btn-cosmo-color-1 float-right">Novo</a>
