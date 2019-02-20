@@ -8,22 +8,24 @@
 {% block content %}
     <div class="row mb-4">
         <div class="col-md-3 mt-4">
-            <div class="card">
-                <div class="card-header">
+            <div class="card secondary-card">
+                <div class="card-header rounded">
                     {% if attributes.avatar %}
-                        <img id="img-frmuser-avatar" class="card-img-top" src="{{ attributes.avatar }}">
+                        <img id="img-frmuser-avatar" class="card-img-top mx-auto d-block w-75" src="{{ attributes.avatar }}">
                     {% else %}
                         <img class="card-img-top" src="/assets/img/student-avatar.png">
                     {% endif %}
                 </div>
 
-                <div class="card-body">
+                <div class="card-body text-center rounded">
                     <h5 class="card-title">{{ attributes.fullname }}</h5>
                     <h6 class="card-subtitle">{{ attributes.nickname }}</h6>
                     <p class="text-muted mb-0"><small>{{ attributes.username }}</small></p>
                 </div>
-
-                <div class="card-footer">
+                {# XP Bar #}
+                <div class="progress-bar progress-bar-striped progress-bar-animated bg-info" style="width: 80%">XP</div>
+                {# XP Bar #}
+                <div class="card-footer text-center">
                     <input id="input-frmuser-fileupload" type="file" class="d-none">
                     <button id="btn-alter-image" class="btn btn-cosmo-color-1">Alterar imagem</button>
                 </div>
@@ -47,10 +49,21 @@
                             <label for="input-frmuser-nickname-group">Nome de usuário</label>
                             <div class="input-group" id="input-frmuser-nickname-group">
                                 <div class="input-group-prepend">
-                                    <span class="input-group-text">@</span>
+                                    <span class="input-group-text bg-light">@</span>
                                 </div>
                                 <input id="input-frmuser-nickname" type="text" class="form-control" placeholder="Nome de usuário" value="{{ attributes.nickname }}" aria-label="Nome de Usuário"></input>
                             </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="select-frmuser-title">Título / Apelido</label>
+                            <select class="form-control" id="select-frmuser-title-">
+                                <option>Infanto</option>
+                                <option>Prodígio</option>
+                                <option>Atribuidor Sagaz</option>
+                                <option>Lorde Condicional</option>
+                                <option>Supremo Repetidor</option>
+                            </select>
                         </div>
                         
                         <div class="form-group">
