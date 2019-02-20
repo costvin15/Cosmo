@@ -1,36 +1,56 @@
 import "../../../main";
 
+var casos_count = 1;
+
 interface Activity {
     title: string;
     question: string;
     fullquestion: string;
     group: string;
     input_description: string;
-    input: string;
     output_description: string;
-    output: string;
     input_example: string;
     output_example: string;
+    casos_testes: Array<Object>;
 }
 
 abstract class AbstractActivity {
     createObject() : Activity {
+        let casos_testes = [];
+        let i = 1;
+        while (true){
+            let caso: any = {};
+
+            if ((<HTMLInputElement> document.getElementById("input-frmactivity-input-" + i)))
+                caso.in = (<HTMLInputElement> document.getElementById("input-frmactivity-input-" + i)).value;
+            else
+                break;
+            
+            if ((<HTMLInputElement> document.getElementById("input-frmactivity-output-" + i)))
+                caso.out = (<HTMLInputElement> document.getElementById("input-frmactivity-output-" + i)).value;
+            else
+                break;
+            
+            casos_testes[i - 1] = caso;
+            i++;
+        }
+
         return {
             title: (<HTMLInputElement> document.getElementById("input-frmactivity-title")).value,
             question: (<HTMLInputElement> document.getElementById("input-frmactivity-question")).value,
             fullquestion: (<HTMLTextAreaElement> document.getElementById("input-frmactivity-fullquestion")).value,
             group: (<HTMLSelectElement> document.getElementById("input-frmactivity-group")).options[(<HTMLSelectElement> document.getElementById("input-frmactivity-group")).selectedIndex].text,
             input_description: (<HTMLInputElement> document.getElementById("input-frmactivity-description-input")).value,
-            input: (<HTMLTextAreaElement> document.getElementById("input-frmactivity-input")).value,
             output_description: (<HTMLInputElement> document.getElementById("input-frmactivity-description-output")).value,
-            output: (<HTMLTextAreaElement> document.getElementById("input-frmactivity-output")).value,
             input_example: (<HTMLTextAreaElement> document.getElementById("input-frmactivity-example-input")).value,
-            output_example: (<HTMLTextAreaElement> document.getElementById("input-frmactivity-example-output")).value
+            output_example: (<HTMLTextAreaElement> document.getElementById("input-frmactivity-example-output")).value,
+            casos_testes: casos_testes
         };
     }
 
     validate() : boolean {
         let formObject = this.createObject();
+        console.log(formObject.casos_testes.length);
 
         if (formObject.title.trim() === ""){
             window.cosmo.dialog.error("Oops", "O campo Título não pode ficar vazio", () => {});
@@ -47,20 +67,17 @@ abstract class AbstractActivity {
         } else if (formObject.input_description.trim() === ""){
             window.cosmo.dialog.error("Oops", "O campo Descrição da Entrada não pode ficar vazio", () => {});
             return false;
-        } else if (formObject.input.trim() === ""){
-            window.cosmo.dialog.error("Oops", "O campo Entrada não pode ficar vazio", () => {});
-            return false;
         } else if (formObject.output_description.trim() === ""){
             window.cosmo.dialog.error("Oops", "O campo Descrição da Saída não pode ficar vazio", () => {});
-            return false;
-        } else if (formObject.output.trim() === ""){
-            window.cosmo.dialog.error("Oops", "O campo Saída não pode ficar vazio", () => {});
             return false;
         } else if (formObject.input_example.trim() === ""){
             window.cosmo.dialog.error("Oops", "O campo Exemplo de Entrada não pode ficar vazio", () => {});
             return false;
         } else if (formObject.output_example.trim() === ""){
             window.cosmo.dialog.error("Oops", "O campo Exemplo de Saída não pode ficar vazio", () => {});
+            return false;
+        } else if (formObject.casos_testes.length == 0){
+            window.cosmo.dialog.error("Oops", "Sua atividade precisa ter pelo menos um caso de teste", () => {});
             return false;
         }
 
@@ -70,15 +87,36 @@ abstract class AbstractActivity {
 
 class CreateActivity extends AbstractActivity {
     initialize(){
-        if (<HTMLButtonElement> document.getElementById("btn-create-activity"))
+        if (<HTMLButtonElement> document.getElementById("btn-create-activity")){
             (<HTMLButtonElement> document.getElementById("btn-create-activity")).addEventListener("click", () => {
                 if (this.validate())
                     this.save();
             });
+        
+            if (<HTMLButtonElement> document.getElementById("adicionar-caso-de-teste"))
+                (<HTMLButtonElement> document.getElementById("adicionar-caso-de-teste")).addEventListener("click", () => {
+                    let dom_parser = new DOMParser();
+                    let caso_element = dom_parser.parseFromString(`<div class="caso-de-teste">
+                                            <p class="caso-de-teste-count text-muted">Caso de teste ${casos_count}</p>
+                                            <div class="form-group">
+                                                <label for="input-frmactivity-input-${casos_count}">Entrada</label>
+                                                <textarea id="input-frmactivity-input-${casos_count}" class="form-control" rows="3"></textarea>
+                                            </div>
+                                            
+                                            <div class="form-group">
+                                                <label for="input-frmactivity-output-${casos_count}">Saída</label>
+                                                <textarea id="input-frmactivity-output-${casos_count}" class="form-control" rows="3"></textarea>
+                                            </div>
+                                        </div>`, "text/html");
+                    (<HTMLDivElement> document.getElementById("casos-container")).append(caso_element.body.firstChild);
+                    casos_count++;
+                });
+        }
     }
 
     save(){
         let formObject = this.createObject();
+        
         let success = function(content: any){
             window.cosmo.dialog.success("Atividade", content.message, () => {
                 window.location.href = content.callback;
@@ -101,15 +139,40 @@ class CreateActivity extends AbstractActivity {
 
 class UpdateActivity extends AbstractActivity {
     initialize(){
-        if (<HTMLButtonElement> document.getElementById("btn-update-activity"))
+        if (<HTMLButtonElement> document.getElementById("btn-update-activity")){
             (<HTMLButtonElement> document.getElementById("btn-update-activity")).addEventListener("click", () => {
                 if (this.validate())
                     this.save();
             });
+
+            while ((<HTMLInputElement> document.getElementById("input-frmactivity-input-" + casos_count)))
+                casos_count++;
+
+            if (<HTMLButtonElement> document.getElementById("adicionar-caso-de-teste"))
+                (<HTMLButtonElement> document.getElementById("adicionar-caso-de-teste")).addEventListener("click", () => {
+                    let dom_parser = new DOMParser();
+                    let caso_element = dom_parser.parseFromString(`<div class="caso-de-teste">
+                                            <p class="caso-de-teste-count text-muted">Caso de teste ${casos_count}</p>
+                                            <div class="form-group">
+                                                <label for="input-frmactivity-input-${casos_count}">Entrada</label>
+                                                <textarea id="input-frmactivity-input-${casos_count}" class="form-control" rows="3"></textarea>
+                                            </div>
+                                            
+                                            <div class="form-group">
+                                                <label for="input-frmactivity-output-${casos_count}">Saída</label>
+                                                <textarea id="input-frmactivity-output-${casos_count}" class="form-control" rows="3"></textarea>
+                                            </div>
+                                        </div>`, "text/html");
+                    (<HTMLDivElement> document.getElementById("casos-container")).append(caso_element.body.firstChild);
+                    casos_count++;
+                });
+        }
     }
 
     save(){
         let formObject : any = this.createObject();
+        console.log(formObject);
+
         formObject.id = (<HTMLInputElement> document.getElementById("input-frmactivity-id")).value;
         let success = function(content: any){
             window.cosmo.dialog.success("Atividade", content.message, () => {

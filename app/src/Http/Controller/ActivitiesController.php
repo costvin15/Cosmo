@@ -46,7 +46,6 @@ class ActivitiesController extends AbstractController
      * @Post(name="/", alias="activities")
      */
     public function activitiesAction(ServerRequestInterface $request, ResponseInterface $response) {
-
         $idActivity = $request->getParam("id-activities");
         $this->activity = $this->_dm->getRepository(Activities::class)->find($idActivity);
 
@@ -100,7 +99,7 @@ class ActivitiesController extends AbstractController
             return $response->withJson([ 'return' => true,  'message' => 'A resposta está correta!']);
         }
 
-        return $response->withJson([ 'return' => false,  'message' => 'A resposta está errada!', 'id' => $idActivity ]);
+        return $response->withJson([ 'return' => false,  'message' => 'A resposta está errada! Lembre-se de colocar uma quebra de linha ao imprimir suas respostas.', 'id' => $idActivity ]);
     }
 
 }

@@ -1,7 +1,7 @@
 {% extends "View/layout.twig" %}
 
 {% if formCreate is defined %}
-    {% set page_title = "Novo grupo" %}
+    {% set page_title = "Nova atividade" %}
 {% endif %}
 
 {% if formUpdate is defined %}
@@ -77,16 +77,30 @@
                             <textarea id="input-frmactivity-example-output" class="form-control" rows="3">{% if formUpdate is defined %}{{ activity.activity_example[0].out }}{% endif %}</textarea>
                         </div>
 
-                        <p class="text-muted">Casos de testes</p>
-                        
-                        <div class="form-group">
-                            <label for="input-frmactivity-input">Entrada</label>
-                            <textarea id="input-frmactivity-input" class="form-control" rows="3">{% if formUpdate is defined %}{{ activity.activities.in }}{% endif %}</textarea>
+                        <p class="text-muted">Lembre-se de colocar uma quebra de linha (simplesmente pressionando a tecla ENTER) nas saídas.</p>
+                        <div id="casos-container">
+                            {% if formUpdate is defined %}
+                                {% for caso in activity.tasks %}
+                                    <div class="caso-de-teste">
+                                        <p class="caso-de-teste-count text-muted">Caso de teste {{ loop.index }}</p>
+                                        <div class="form-group">
+                                            <label for="input-frmactivity-input-{{ loop.index }}">Entrada</label>
+                                            <textarea id="input-frmactivity-input-{{ loop.index }}" class="form-control" rows="3">{{ caso.in }}</textarea>
+                                        </div>
+                                        
+                                        <div class="form-group">
+                                            <label for="input-frmactivity-output-{{ loop.index }}">Saída</label>
+                                            <textarea id="input-frmactivity-output-{{ loop.index }}" class="form-control" rows="3">{{ caso.out }}</textarea>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            {% endif %}
                         </div>
-                        
-                        <div class="form-group">
-                            <label for="input-frmactivity-output">Saída</label>
-                            <textarea id="input-frmactivity-output" class="form-control" rows="3">{% if formUpdate is defined %}{{ activity.activities.out }}{% endif %}</textarea>
+
+                        <div class="row">
+                            <div class="col-12">
+                                <button id="adicionar-caso-de-teste" type="button" class="btn btn-cosmo-color-1">Adicionar um teste</button>
+                            </div>
                         </div>
                     </form>
                 </div>

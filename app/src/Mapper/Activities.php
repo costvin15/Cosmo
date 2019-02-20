@@ -128,6 +128,7 @@ class Activities
             "output_description" => $this->output_description,
             "activity_example" => $this->getActivityExample(),
             "activities" => $this->getActivities(),
+            "tasks" => $this->activities["tasks"],
             "group" => $this->group,
         ];
     }
@@ -214,7 +215,7 @@ class Activities
      */
     public function getActivities()
     {
-        $nameSpacePlugin = $this->activities[0]['plugin'];
+        $nameSpacePlugin = $this->activities['plugin'];
 
         if (!class_exists($nameSpacePlugin))
             throw new \Exception('Class plugin not found! Classname: ' . $nameSpacePlugin);
@@ -226,7 +227,9 @@ class Activities
         $this->validate = $arrayConfig['validate'];
         $hydrator = new $arrayConfig['hydrator'];
 
-        return $hydrator($this->activities[0]['model']);
+        $tasks = $this->activities["tasks"];
+        
+        return $hydrator($tasks);
     }
 
     /**

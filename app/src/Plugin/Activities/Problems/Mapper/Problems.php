@@ -10,55 +10,27 @@ class Problems
     /**
      * @var string
      */
-    private $in;
-
-    /**
-     * @var string
-     */
-    private $out;
+    private $tasks;
 
     /**
      * Problems constructor.
-     * @param string $in
-     * @param string $out
+     * @param array $tasks
      */
-    public function __construct($in, $out)
-    {
-        $this->in = $in->bin;
-        $this->out = $out->bin;
+    public function __construct(array $tasks){
+        $this->tasks = $tasks;
     }
 
     /**
      * @return mixed
      */
-    public function getIn()
-    {
-        return $this->in;
+    public function getTasks(){
+        return $this->tasks;
     }
 
     /**
-     * @param mixed $in
+     * @param array $tasks;
      */
-    public function setIn($in)
-    {
-        $this->in = $in;
+    public function setTasks($tasks){
+        $this->tasks = $tasks;
     }
-
-    /**
-     * @return mixed
-     */
-    public function getOut()
-    {
-        return $this->out;
-    }
-
-    /**
-     * @param mixed $out
-     */
-    public function setOut($out)
-    {
-        $this->out = $out;
-    }
-
-
 }

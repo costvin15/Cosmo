@@ -1,171 +1,128 @@
 <?php
 
-
 namespace App\Plugin\Activities\Problems\Model;
 
-class CppExecute
-{
-    private $exec;
-    private $sandbox;
-    public $entradaCodigo;
-    public $inResp;
-    public $outResp;
-    private $modeArq;
-    private $modeRun;
-    public $outFile;
-    public $outDataFromDB;
-    private $outFileName;
-    private $respFileName;
-    private $debug;
-    private $timeIn;
-    private $timeOut;
+class CppExecute {
+    /**
+     * Armazena um vetor de arrays com entrada e saida
+     */
+    private $casos;
+    /**
+     * Armazerna o codigo a ser compilado
+     */
+    private $codigo;
+    /**
+     * Media do tempo de execução do código
+     */
+    private $tempo_de_execucao;
 
-    private $return; /* retorno do codigo */
-
-    public function __construct()
-    {
-        /*
-         * $this->modeArq
-         * -> Como arquivar a resposta da atividade
-         * ('arquivar', 'temporario')
-         */
-        $this->modeArq = "arquivar";
-
-        /*
-         * $this->modeRun
-         * -> Como arquivar a execultavel de teste da atividade
-         * ('arquivar', 'temporario')
-         */
-        $this->modeRun = "temporario";
-
-        $this->sandbox = "";
-        if (PHP_OS == 'Darwin')
-            $this->exec = "/usr/bin/gcc";
-        elseif (PHP_OS == "WINNT")
-            $this->exec = "g++";
-        else 
-            $this->exec = "/usr/bin/gcc";
-        $this->codeEncpt = "base64";
+    /**
+     * Construtor
+     */
+    public function __construct($casos, $codigo){
+        $this->casos = $casos;
+        $this->codigo = $this->criaArquivoTemporario($codigo, ".c");
+        $this->tempo_de_execucao = [];
     }
 
     /**
-     * Como usar ->
-     * $obj = new atvSystem();
-     *
-     *	$obj->criarEntradaCodigo($data); #CODIGO DO ALUNO
-     *	$obj->setRespostaInFile($resposta) #STDIN DA RESPOSTA
-     *  $obj->criaSaidaTeste($data) #TESTE DE SAIDA DA RESPOSTA
-     *	$obj->runCode(); @return se esta certo ou errado
-     *
+     * Retorna o tempo de execução do código
      */
-    public function getTimeIn(){
-        return $this->timeIn;
+    public function getTempoDeExecucao(){
+        return $this->tempo_de_execucao;
     }
 
-    public function getTimeOut(){
-        return $this->timeOut;
+    /**
+     * Retorna o vetor de entradas armazenado no vetor de objetos $casos
+     */
+    protected function getEntradas(){
+        $entradas = [];
+        foreach ($this->casos as $caso)
+            $entradas[] = $caso["in"];
+        return $entradas;
+    }
+    
+    /**
+     * Retorna o vetor de saidas armazenado no vetor de objetos $casos
+     */
+    protected function getSaidas(){
+        $saidas = [];
+        foreach ($this->casos as $caso)
+            $saidas[] = $caso["out"];
+        return $saidas;
     }
 
-    public function criarEntradaCodigo($data)
-    {
-        $this->debug = $data;
-        $this->setEntradaCodigo($this->criaTempFileW($data, ".cc"));
-    }
+    /**
+     * Compila e executa o codigo passado, tendo como entrada $this->getEntradas()
+     */
+    protected function executar(){
+        $saidas = [];
 
-    private function criaTempFileW($text = null, $extension = "")
-    {
-        $filename = tempnam(sys_get_temp_dir(), 'TMP_COSMO_PROBLEMS_');
-        if ($extension !== "") {
-            rename($filename, $filename . $extension);
-            $filename = $filename . $extension;
+        $executavel = $this->criaArquivoTemporario();
+
+        shell_exec("g++ \"" . $this->codigo . "\" -o \"" . $executavel . "\"");
+
+        foreach ($this->getEntradas() as $entrada){
+            $arquivo = $this->criaArquivoTemporario($entrada);
+            $this->tempo_de_execucao["in"] = microtime(true);
+            $saidas[] = shell_exec("\"" . $executavel . "\" < \"" . $arquivo . "\"");
+            $this->tempo_de_execucao["out"] = microtime(true);
         }
-        file_put_contents($filename, $text);
-
-        return $filename;
+        
+        return $saidas;
     }
 
-    public function criaSaidaTeste($data) //Saida Correta
-    {
-        $this->outDataFromDB = $data;
-        $this->outResp = $this->criaTempFileW($data);
+    /**
+     * Recebe o resultado da execução do código, e armazena em um arquivo temporario
+     */
+    protected function criaArquivoSaidasUsuario(){
+        $nome_arquivo_temporario_saida = $this->criaArquivoTemporario();
+        $arquivo_temporario_saida = fopen($nome_arquivo_temporario_saida, "a");
+
+        foreach ($this->executar() as $saida)
+            fwrite($arquivo_temporario_saida, $saida . "\n");
+        fclose($arquivo_temporario_saida);
+
+        return $nome_arquivo_temporario_saida;
     }
 
-    private function setEntradaCodigo($filename)
-    {
-        $this->entradaCodigo = $filename;
-        return ;
+    /**
+     * Recebe as saidas esperadas, e armazena em um arquivo temporario
+     */
+    protected function criaArquivoSaidasEsperadas(){
+        $nome_arquivo_temporario_saida = $this->criaArquivoTemporario();
+        $arquivo_temporario_saida = fopen($nome_arquivo_temporario_saida, "a");
+
+        foreach ($this->getSaidas() as $saida)
+            fwrite($arquivo_temporario_saida, $saida . "\n");
+        fclose($arquivo_temporario_saida);
+
+        return $nome_arquivo_temporario_saida;
     }
 
-    public function setRespostaInFile($data)
-    {
-        $this->inResp = $this->criaTempFileW($data);
-    }
+    /**
+     * Verifica se os dois arquivos sao iguais
+    */
+    public function resultado(){
+        $resposta = $this->criaArquivoSaidasUsuario();
+        $gabarito = $this->criaArquivoSaidasEsperadas();
 
-    public function getReturn()
-    {
-        return $this->return;
-    }
-
-    public function formataExec($type = "exec")
-    {
-        $tempDir = sys_get_temp_dir();
-
-        switch ($type) {
-            case 'exec':
-                if($this->modeRun == "temporario") {
-                    $filename = tempnam($tempDir, 'COSMO');
-                    shell_exec($this->sandbox . $this->exec . " \"" . $this->entradaCodigo . "\" -o \"" . $filename . "\"");
-                    return "\"". $filename . "\" < \"" . $this->inResp . "\"";
-                } elseif( $this->modeRun == "arquivar") {
-                    return $this->sandbox.$this->exec." ".$this->entradaCodigo." < ".$this->inResp." > out.file";
-                }
-
-            case 'diff':
-                if (PHP_OS == 'Linux' || PHP_OS == 'Darwin')
-                    return "diff -bB ".$this->outFile." ".$this->outResp;
-                else
-                    return "FC /b \"".$this->outFile."\" \"".$this->outResp."\"";
-        }
-    }
-
-    public function runCode(){
-        $this->timeIn = microtime(true);
-        $this->return = shell_exec($this->formataExec());
-        $this->timeOut = microtime(true);
-
-        if(is_null($this->return))
-            $this->return = 'Sem resposta';
-
-//        $this->return = trim(preg_replace('/\s+/', ' ', $this->return));
-
-        $this->outFile = $this->criaTempFileW($this->return);
-
-        return $this->difference();
-    }
-
-    private function difference()
-    {
-        $diff = shell_exec($this->formataExec("diff"));
-
-
-        if (PHP_OS == 'Linux' || PHP_OS == 'Darwin')
-        {
-            if(is_null($diff))
-                return array(true, 'Correto', $this->return);
-            else
-                return array(false, 'Errado', $this->return, $this->outDataFromDB);
-        }
+        if (strcmp(file_get_contents($resposta), file_get_contents($gabarito)) == 0)
+            return array(true, "Correto", file_get_contents($resposta));
         else
-        {
-            if (strpos($diff,'Keine Unterschiede gefunden') !== false
-                || strpos($diff,'no differences encountered') !== false
-                || strpos($diff,'nenhuma') !== false) {
-                return array(true, 'Correto', $this->return." ". mb_convert_encoding($diff, "UTF-8", "ISO-8859-1"));
-            }
-            else
-            {
-                return array(false, 'Errado', $this->return,$this->outDataFromDB);
-            }
+            return array(false, "Errado", file_get_contents($gabarito));
+    }
+
+    /**
+     * Cria um arquivo temporario do conteudo passado por parametro
+     */
+    private function criaArquivoTemporario($conteudo = "", $extensao = ""){
+        $arquivo = tempnam(sys_get_temp_dir(), "COSMO_ARQUIVO_TEMPORARIO_");
+        if ($extensao != ""){
+            rename($arquivo, $arquivo . $extensao);
+            $arquivo .= $extensao;
         }
+        file_put_contents($arquivo, $conteudo);
+        return $arquivo;
     }
 }

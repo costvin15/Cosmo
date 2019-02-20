@@ -30,32 +30,28 @@ class ProblemsValidate
 
         switch ($data['language']) {
             case "cpp":
-                $obj = new CppExecute();
+                $obj = new CppExecute($problem->getTasks(), $data["source_code"]);
                 break;
             case "lua":
-                $obj = new LuaExecute();
+                $obj = new LuaExecute($problem->getTasks(), $data["source_code"]);
                 break;
             case "python":
-                $obj = new PythonExecute();
+                $obj = new PythonExecute($problem->getTasks(), $data["source_code"]);
                 break;
             default:
-                $obj = new LuaExecute();
+                $obj = new LuaExecute($problem->getTasks(), $data["source_code"]);
                 break;
         }
 
-        $obj->criarEntradaCodigo($data['source_code']);
-        $obj->setRespostaInFile($problem->getIn());
-        $obj->criaSaidaTeste($problem->getOut());
-
-        $arrayReturn = $obj->runCode();
+        $arrayReturn = $obj->resultado();
 
         $classReturn = new \stdClass();
         $classReturn->answer = $arrayReturn[0];
         $classReturn->payload = [
             'command' => $arrayReturn[2]
         ];
-        $classReturn->timeIn = $obj->getTimeIn();
-        $classReturn->timeOut = $obj->getTimeOut();
+        $classReturn->timeIn = $obj->getTempoDeExecucao()["in"];
+        $classReturn->timeOut = $obj->getTempoDeExecucao()["out"];
 
         return $classReturn;
     }

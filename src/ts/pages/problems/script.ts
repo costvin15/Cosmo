@@ -47,9 +47,7 @@ class PluginProblems {
 
     send(){
         let formObject = this.createObject();
-        console.log(formObject);
         let success = (content: any) => {
-            console.log(content);   
             if (content.return)
                 window.cosmo.dialog.success("Meus Parabéns", "A resposta está correta", () => {
                     window.location.href = window.cosmo.routes_name.dashboard_index
@@ -58,7 +56,6 @@ class PluginProblems {
                 window.cosmo.dialog.error("Tente novamente!", content.message, () => {});
         };
         let fail = (content: any) => {
-            console.log(content);
             window.cosmo.dialog.error("Erro", content.responseJSON[0], () => {});
         };
 

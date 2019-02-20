@@ -2,11 +2,11 @@
 {% set page_title = "Resolva o problema" %}
 
 {% block scripts %}
-    <script type="text/javascript" src="/dist/js/problems.js"></script>
+    <script type="text/javascript" src="{{ base_url() }}/dist/js/problems.js"></script>
 {% endblock %}
 
 {% block styles %}
-    <link rel="stylesheet" href="/dist/css/problems/style.min.css">
+    <link rel="stylesheet" href="{{ base_url() }}/dist/css/problems/style.min.css">
 {% endblock %}
 
 {% block content %}
@@ -19,8 +19,7 @@
                             <select id="language-selector" class="form-control">
                                 <option value="lua" selected>Lua</option>
                                 <option value="cpp">C/C++</option>
-                                <option value="python">Python</option>
-                                <option value="java">Java</option>
+                                {# <option value="python">Python</option> #}
                             </select>
                         </div>
                     </form>

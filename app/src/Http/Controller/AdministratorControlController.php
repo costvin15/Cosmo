@@ -402,8 +402,8 @@ class AdministratorControlController extends AbstractController
                 $input_example = $request->getParam("input_example");
                 $output_description = $request->getParam("output_description");
                 $output_example = $request->getParam("output_example");
-                $input = $request->getParam("input");
-                $output = $request->getParam("output");
+                $casos_de_teste = $request->getParam("casos_testes");
+
                 $dateCreate = date("Y-m-d H:i:s");
                 $uploader = $this->_dm->getRepository(User::class)->find($attributes['id']);
 
@@ -425,13 +425,10 @@ class AdministratorControlController extends AbstractController
                     "in" => new \MongoBinData($input_example, \MongoBinData::GENERIC),
                     "out" => new \MongoBinData($output_example, \MongoBinData::GENERIC),
                 )));
-                $activity->setActivities(array(array(
-                    "model" => [
-                        "in" => new \MongoBinData($input, \MongoBinData::GENERIC),
-                        "out" => new \MongoBinData($output, \MongoBinData::GENERIC),
-                    ],
+                $activity->setActivities(array(
+                    "tasks" => $casos_de_teste,
                     "plugin" => "App\\Plugin\\Activities\\Problems\\Mapper\\Config",
-                )));
+                ));
                 $activity->setGroup($group);
 
                 if (!$id){

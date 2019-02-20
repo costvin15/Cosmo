@@ -11,8 +11,8 @@ namespace App\Plugin\Activities\Problems\Mapper;
 
 class ProblemsHydrator
 {
-    public function __invoke(array $model)
+    public function __invoke(array $tasks)
     {
-        return new Problems($model['in'], $model['out']);
+        return new Problems($tasks);
     }
 }
