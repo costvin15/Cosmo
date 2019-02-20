@@ -14,15 +14,15 @@
     </div>
 
     <div class="row my-4">
-        <div class="col-md-4">
+       {#  <div class="col-md-4">
             <div class="nav flex-column nav-pills mb-4" role="tablist" aria-orientation="vertical">
                 <a class="nav-link" href="{{ path_for("administrator.control.users") }}">Usuários</a>
                 <a class="nav-link active" href="{{ path_for("administrator.control.activities") }}">Atividades</a>
                 <a class="nav-link" href="{{ path_for("administrator.control.groupactivities") }}">Grupo de atividades</a>
             </div>
-        </div>
+        </div> #}
 
-        <div class="col-md-8">
+        <div class="col-md-12">
             <div class="row">
                 {% for activity in activities %}
                     <div class="col-md-6 my-1">
