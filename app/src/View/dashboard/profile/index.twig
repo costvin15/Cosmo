@@ -57,6 +57,13 @@
                             <label for="input-frmuser-email">Email</label>
                             <input id="input-frmuser-email" disabled type="text" class="form-control" placeholder="Email" value="{{ attributes.username }}"></input>
                         </div>
+                        <div class="form-group">
+                            {% if attributes.administrator == false  %}
+                                <label for="input-frmuser-email">Turma</label>
+                                <input id="input-frmuser-email" disabled type="text" class="form-control" placeholder="Turma"></input>
+                            {% endif %}
+                        </div>
+
                     </form>
                 </div>
 
