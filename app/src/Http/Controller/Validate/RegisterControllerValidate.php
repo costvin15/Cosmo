@@ -15,7 +15,8 @@ class RegisterControllerValidate extends AbstractControllerValidate
         $username = $request->getParam("username");
         $password = $request->getParam("password");
         $fullname = $request->getParam("fullname");
-
+        $idTurma = $request->getParam("idTurma");
+       
         $is_email = new EmailAddress();
         $is_empty = new NotEmpty();
 
@@ -38,6 +39,12 @@ class RegisterControllerValidate extends AbstractControllerValidate
             $this->error = "O campo Nome Completo é obrigatório.";
             return false;
         }
+
+        if(!$is_empty->isValid($idTurma)){
+            $this->error = "O campo Código Turma é obrigatório.";
+            return false;
+        }
+    
 
         return true;
 

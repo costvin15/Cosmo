@@ -1,7 +1,7 @@
 {% extends "View/layout.twig" %}
 
 {% if formCreate is defined %}
-    {% set page_title = "Novo grupo" %}
+    {% set page_title = "Nova Atividade" %}
 {% endif %}
 
 {% if formUpdate is defined %}
@@ -13,6 +13,11 @@
 {% endblock %}
 
 {% block content %}
+    <ul class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{{ path_for("administrator.control.index") }}">Administração</a></li>
+        <li class="breadcrumb-item"><a href="{{ path_for("administrator.control.activities") }}">Atividades</a></li>
+        <li class="breadcrumb-item active">Nova Atividade</li>
+    </ul>
     <div class="row my-4">
         <div class="col-md-3">
             <div class="nav flex-columns nav-pills" role="tablist" aria-orientation="vertical">

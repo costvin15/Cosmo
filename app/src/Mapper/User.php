@@ -67,20 +67,27 @@ class User
     private $attemptActivities;
 
     /**
+     * @ODM\Field(name="idTurma", type="string")
+     */
+    private $idTurma;
+
+    /**
      * User constructor.
      * @param $id
      * @param $username
      * @param $password
      * @param $fullname
      * @param $administrator
+     * @param $idTurma
      */
-    public function __construct($id = null, $username = null, $password = null, $fullname = null, $administrator = false)
+    public function __construct($id = null, $username = null, $password = null, $fullname = null, $administrator = false, $idTurma = null)
     {
         $this->id = $id;
         $this->username = $username;
         $this->password = $password;
         $this->fullname = $fullname;
         $this->administrator = $administrator;
+        $this->idTurma = $idTurma;
         $this->historyActivities = [];
         $this->answered_activities = 0;
     }
@@ -106,6 +113,7 @@ class User
             'password' => $this->password,
             'fullname' => $this->fullname,
             'administrator' => $this->administrator,
+            'idTurma' => $this->idTurma,
             'blocked' => $this->blocked,
             'avatar' => $this->getAvatar(),
             'answered_activities' => $this->answered_activities,
@@ -118,6 +126,7 @@ class User
             'nickname' => $this->nickname,
             'username' => $this->username,
             'fullname' => $this->fullname,
+            'idTurma' => $this->idTurma,
             'answered_activities' => $this->answered_activities,
         ];
     }
@@ -297,5 +306,21 @@ class User
     public function setAttemptActivities($attemptActivities)
     {
         $this->attemptActivities = $attemptActivities;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getIdTurma()
+    {
+        return $this->id_turma;
+    }
+
+    /**
+     * @param mixed $idTurma
+     */
+    public function setIdTurma($idTurma)
+    {
+        $this->idTurma = $idTurma;
     }
 }

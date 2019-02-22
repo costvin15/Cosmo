@@ -17,7 +17,8 @@ class Register {
             username: (<HTMLInputElement> document.getElementById("frmregister-email")).value,
             fullname: (<HTMLInputElement> document.getElementById("frmregister-fullname")).value,
             password: (<HTMLInputElement> document.getElementById("frmregister-password")).value,
-            nickname: (<HTMLInputElement> document.getElementById("frmregister-nickname")).value
+            nickname: (<HTMLInputElement> document.getElementById("frmregister-nickname")).value,
+            idTurma: (<HTMLInputElement> document.getElementById("frmregister-idTurma")).value
         };
     }
 
@@ -85,6 +86,10 @@ class Register {
             return false;
         }
 
+        if (formObject.idTurma.trim() === ""){
+            window.cosmo.dialog.error("Oops", "O campo Código Turma não pode ficar vazio.", () => {});
+            return false;
+        }
         return true;
     }
 

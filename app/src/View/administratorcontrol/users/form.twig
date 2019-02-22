@@ -13,6 +13,11 @@
 {% endblock %}
 
 {% block content %}
+    <ul class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{{ path_for("administrator.control.index") }}">Administração</a></li>
+        <li class="breadcrumb-item"><a href="{{ path_for("administrator.control.users") }}">Usuários</a></li>
+        <li class="breadcrumb-item active">Novo Usuário</li>
+    </ul>
     <div class="row mb-4">
         <div class="col-md-3 mt-4">
             <div class="card">
