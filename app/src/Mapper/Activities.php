@@ -100,7 +100,14 @@ class Activities
      * @var mixed
      */
     private $validate;
-
+       /**
+     * @ODM\Field(name="moedas", type="int")
+     */
+    private $moedas;
+       /**
+     * @ODM\Field(name="xp", type="int")
+     */
+    private $xp;
 
     public function __construct($params = array())
     {
@@ -129,8 +136,44 @@ class Activities
             "activity_example" => $this->getActivityExample(),
             "activities" => $this->getActivities(),
             "group" => $this->group,
+            "moedas" => $this->moedas,
+            "xp" => $this->xp
         ];
     }
+
+
+      /**
+     * @return mixed
+     */
+    public function getMoedas()
+    {
+        return $this->moedas;
+    }
+
+     /**
+     * @param mixed $moedas
+     */
+    public function setMoedas($moedas)
+    {
+        $this->moedas = $moedas;
+    }
+
+     /**
+     * @return mixed
+     */
+    public function getXP()
+    {
+        return $this->xp;
+    }
+
+     /**
+     * @param mixed $xp
+     */
+    public function setXP($xp)
+    {
+        $this->xp = $xp;
+    }
+
 
     /**
      * @return mixed

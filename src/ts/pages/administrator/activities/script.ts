@@ -11,6 +11,8 @@ interface Activity {
     output: string;
     input_example: string;
     output_example: string;
+    moedas: string;
+    xp: string;
 }
 
 abstract class AbstractActivity {
@@ -25,13 +27,17 @@ abstract class AbstractActivity {
             output_description: (<HTMLInputElement> document.getElementById("input-frmactivity-description-output")).value,
             output: (<HTMLTextAreaElement> document.getElementById("input-frmactivity-output")).value,
             input_example: (<HTMLTextAreaElement> document.getElementById("input-frmactivity-example-input")).value,
-            output_example: (<HTMLTextAreaElement> document.getElementById("input-frmactivity-example-output")).value
+            output_example: (<HTMLTextAreaElement> document.getElementById("input-frmactivity-example-output")).value,
+            moedas: (<HTMLInputElement> document.getElementById("input-frmactivity-moedas")).value,
+            xp: (<HTMLInputElement> document.getElementById("input-frmactivity-xp")).value
+             
         };
     }
 
     validate() : boolean {
+        
         let formObject = this.createObject();
-
+        
         if (formObject.title.trim() === ""){
             window.cosmo.dialog.error("Oops", "O campo Título não pode ficar vazio", () => {});
             return false;
@@ -42,7 +48,7 @@ abstract class AbstractActivity {
             window.cosmo.dialog.error("Oops", "O campo Descrição Completa não pode ficar vazio", () => {});
             return false;
         } else if (formObject.group.trim() === ""){
-            window.cosmo.dialog.error("Oops", "O campo Grupo é obrigatório", () => {});
+            window.cosmo.dialog.error("Oops", "O campo Habilidade é obrigatório", () => {});
             return false;
         } else if (formObject.input_description.trim() === ""){
             window.cosmo.dialog.error("Oops", "O campo Descrição da Entrada não pode ficar vazio", () => {});
@@ -61,6 +67,12 @@ abstract class AbstractActivity {
             return false;
         } else if (formObject.output_example.trim() === ""){
             window.cosmo.dialog.error("Oops", "O campo Exemplo de Saída não pode ficar vazio", () => {});
+            return false;
+        } else if (formObject.moedas.trim() === ""){
+            window.cosmo.dialog.error("Oops", "O campo Valor em Moedas não pode ficar vazio", () => {});
+            return false;
+        } else if (formObject.xp.trim() === ""){
+            window.cosmo.dialog.error("Oops", "O campo Pontos de Conhecimento não pode ficar vazio", () => {});
             return false;
         }
 

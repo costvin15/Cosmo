@@ -160,6 +160,7 @@ class AdministratorControlController extends AbstractController
             $nickname = $request->getParam("nickname");
             $password = $request->getParam("password");
             $fullname = $request->getParam("fullname");
+            $idTurma = $request->getParam("idTurma");
             $administrator = $request->getParam("admin");
             
             $users_with_email_entered = $this->_dm->getRepository(User::class)->findBy([
@@ -178,6 +179,7 @@ class AdministratorControlController extends AbstractController
 
             $user = new User(null, $username, md5($password), $fullname, $administrator);
             $user->setNickname($nickname);
+            $user->setIdTurma($idTurma);
 
             $this->_dm->persist($user);
             $this->_dm->flush();
@@ -221,6 +223,7 @@ class AdministratorControlController extends AbstractController
             $username = $request->getParam("username");
             $nickname = $request->getParam("nickname");
             $fullname = $request->getParam("fullname");
+            $idTurma = $request->getParam("idTurma");
             $administrator = $request->getParam("admin");
 
             $user = $this->_dm->getRepository(User::class)->find($id);
@@ -249,6 +252,7 @@ class AdministratorControlController extends AbstractController
                 $user->setUsername($username);
                 $user->setNickname($nickname);
                 $user->setAdministrator($administrator);
+                $user->setIdTurma($idTurma);
                 $user->setBlocked($block);
             }
 
@@ -406,6 +410,8 @@ class AdministratorControlController extends AbstractController
                 $output = $request->getParam("output");
                 $dateCreate = date("Y-m-d H:i:s");
                 $uploader = $this->_dm->getRepository(User::class)->find($attributes['id']);
+                $moedas = $request->getParam("moedas");
+                $xp = $request->getParam("xp");
 
                 if ($id)
                     $activity = $this->_dm->getRepository(Activities::class)->find($id);
@@ -433,6 +439,8 @@ class AdministratorControlController extends AbstractController
                     "plugin" => "App\\Plugin\\Activities\\Problems\\Mapper\\Config",
                 )));
                 $activity->setGroup($group);
+                $activity->setMoedas($moedas);
+                $activity->setXP($xp);
 
                 if (!$id){
                     $activity->setDateCreate($dateCreate);
