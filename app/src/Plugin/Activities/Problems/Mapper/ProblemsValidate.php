@@ -103,6 +103,8 @@ class ProblemsValidate
             $history = new HistoryActivities();
 
             $user->setAnsweredActivities($user->getAnsweredActivities() + 1);
+            $user->setMoedas($user->getMoedas() + $activity->getMoedas());
+            $user->setXP($user->getXP() + $activity->getXP());
             $this->_dm->persist($user);
             $this->_dm->flush();
         }

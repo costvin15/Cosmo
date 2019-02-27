@@ -52,7 +52,7 @@ class PluginProblems {
             console.log(content);   
             if (content.return)
                 window.cosmo.dialog.success("Meus Parabéns", "A resposta está correta", () => {
-                    window.location.href = window.cosmo.routes_name.dashboard_index
+                    window.location.href = window.cosmo.routes_name.activities_history
                 });
             else
                 window.cosmo.dialog.error("Tente novamente!", content.message, () => {});

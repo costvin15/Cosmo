@@ -52,6 +52,16 @@ class User
     private $answered_activities = 0;
 
     /**
+     * @ODM\Field(name="moedas", type="int")
+     */
+    private $moedas = 0;
+
+    /**
+     * @ODM\Field(name="xp", type="int")
+     */
+    private $xp = 0;
+
+    /**
      * @ODM\Field(name="interface", type="string")
      */
     private $interface;
@@ -90,6 +100,8 @@ class User
         $this->idTurma = $idTurma;
         $this->historyActivities = [];
         $this->answered_activities = 0;
+        $this->xp = 0;
+        $this->moedas = 0;
     }
 
     public function getAvatar(){
@@ -117,6 +129,8 @@ class User
             'blocked' => $this->blocked,
             'avatar' => $this->getAvatar(),
             'answered_activities' => $this->answered_activities,
+            'moedas' => $this->moedas,
+            'xp' => $this->xp,
         ];
     }
 
@@ -128,6 +142,8 @@ class User
             'fullname' => $this->fullname,
             'idTurma' => $this->idTurma,
             'answered_activities' => $this->answered_activities,
+            'moedas' => $this->moedas,
+            'xp' => $this->xp,
         ];
     }
 
@@ -135,6 +151,8 @@ class User
         return [
             "nickname" => $this->nickname ? $this->nickname : $this->username,
             "points" => $this->answered_activities,
+            'moedas' => $this->moedas,
+            'xp' => $this->xp,
         ];
     }
     
@@ -274,6 +292,34 @@ class User
      */
     public function setAnsweredActivities($answered_activities){
         $this->answered_activities = $answered_activities;
+    }
+
+     /**
+     * @return mixed
+     */
+    public function getMoedas(){
+        return $this->moedas;
+    }
+
+    /**
+     * @param mixed $moedas
+     */
+    public function setMoedas($moedas){
+        $this->moedas = $moedas;
+    }
+
+     /**
+     * @return mixed
+     */
+    public function getXP(){
+        return $this->xp;
+    }
+
+    /**
+     * @param mixed $xp
+     */
+    public function setXP($xp){
+        $this->xp = $xp;
     }
 
     /**

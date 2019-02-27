@@ -95,7 +95,7 @@ class ActivitiesController extends AbstractController
 
         $validateInstanced->saveAttempt($params, $returnValidate);
 
-        if ($returnValidate->answer) {
+        if ($returnValidate->answer) {            
             $validateInstanced->saveHistory($params);
             return $response->withJson([ 'return' => true,  'message' => 'A resposta está correta!']);
         }
