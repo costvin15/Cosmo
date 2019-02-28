@@ -412,7 +412,8 @@ class AdministratorControlController extends AbstractController
                 $uploader = $this->_dm->getRepository(User::class)->find($attributes['id']);
                 $moedas = $request->getParam("moedas");
                 $xp = $request->getParam("xp");
-
+                $cust = $request->getParam("cust");
+                $category = $request->getParam("category");
                 if ($id)
                     $activity = $this->_dm->getRepository(Activities::class)->find($id);
                 else
@@ -441,6 +442,8 @@ class AdministratorControlController extends AbstractController
                 $activity->setGroup($group);
                 $activity->setMoedas($moedas);
                 $activity->setXP($xp);
+                $activity->setCust($cust);
+                $activity->setCategory($category);
 
                 if (!$id){
                     $activity->setDateCreate($dateCreate);

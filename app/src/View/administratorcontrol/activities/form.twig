@@ -60,14 +60,27 @@
                         </div>
                         
                         <div class="form-group">
-                                <label for="input-frmactivity-moedas">Valor em Moedas</label>
-                                <input id="input-frmactivity-moedas" class="form-control" type="text" placeholder="Valor em Moedas" {% if formUpdate is defined %} value="{{ activity.moedas }}" {% endif %}></input>
-                            </div>
+                            <label for="input-frmactivity-moedas" >Valor em Moedas</label>
+                            <input id="input-frmactivity-moedas" title="Valor da recompensa ao resolver a atividade" class="form-control" type="text" placeholder="Valor em Moedas" {% if formUpdate is defined %} value="{{ activity.moedas }}" {% endif %}></input>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="input-frmactivity-cust" >Custo em Moedas</label>
+                            <input id="input-frmactivity-cust" title="Valor que deve ser cobrado para resolver a atividade" class="form-control" type="text" placeholder="Valor em Moedas" {% if formUpdate is defined %} value="{{ activity.cust }}" {% endif %}></input>
+                        </div>
     
-                            <div class="form-group">
-                                <label for="input-frmactivity-xp">Pontos de Conhecimento</label>
-                                <input id="input-frmactivity-xp" class="form-control" type="text" placeholder="Pontos de Conhecimento" {% if formUpdate is defined %} value="{{ activity.xp }}" {% endif %}></input>
-                            </div>
+                        <div class="form-group">
+                            <label for="input-frmactivity-xp">Pontos de Conhecimento</label>
+                            <input id="input-frmactivity-xp" class="form-control" type="text" placeholder="Pontos de Conhecimento" {% if formUpdate is defined %} value="{{ activity.xp }}" {% endif %}></input>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="input-frmactivity-category">Categoria</label>
+                            <select id="input-frmactivity-category" class="form-control">
+                                    <option>Obrigatória</option>
+                                    <option>Extra</option>
+                            </select>
+                        </div>
                     </form>
                 </div>
 

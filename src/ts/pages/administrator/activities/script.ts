@@ -12,7 +12,9 @@ interface Activity {
     input_example: string;
     output_example: string;
     moedas: string;
+    cust: string;
     xp: string;
+    category: string;
 }
 
 abstract class AbstractActivity {
@@ -29,7 +31,9 @@ abstract class AbstractActivity {
             input_example: (<HTMLTextAreaElement> document.getElementById("input-frmactivity-example-input")).value,
             output_example: (<HTMLTextAreaElement> document.getElementById("input-frmactivity-example-output")).value,
             moedas: (<HTMLInputElement> document.getElementById("input-frmactivity-moedas")).value,
-            xp: (<HTMLInputElement> document.getElementById("input-frmactivity-xp")).value
+            cust: (<HTMLInputElement> document.getElementById("input-frmactivity-cust")).value,
+            xp: (<HTMLInputElement> document.getElementById("input-frmactivity-xp")).value,
+            category:  (<HTMLInputElement> document.getElementById("input-frmactivity-category")).value
              
         };
     }
@@ -71,11 +75,16 @@ abstract class AbstractActivity {
         } else if (formObject.moedas.trim() === ""){
             window.cosmo.dialog.error("Oops", "O campo Valor em Moedas não pode ficar vazio", () => {});
             return false;
+        } else if (formObject.cust.trim() === ""){
+            window.cosmo.dialog.error("Oops", "O campo Custo em Moedas não pode ficar vazio", () => {});
+            return false;
         } else if (formObject.xp.trim() === ""){
             window.cosmo.dialog.error("Oops", "O campo Pontos de Conhecimento não pode ficar vazio", () => {});
             return false;
+        } else if (formObject.category.trim() === ""){
+            window.cosmo.dialog.error("Oops", "O campo Categoria não pode ficar vazio", () => {});
+            return false;
         }
-
         return true;
     }
 }
