@@ -10,7 +10,9 @@ module.exports = {
         problems: "./src/ts/pages/problems/script.ts",
         administrator_group_activities: "./src/ts/pages/administrator/groupactivities/script.ts",
         administrator_activities: "./src/ts/pages/administrator/activities/script.ts",
-        administrator_users: "./src/ts/pages/administrator/users/script.ts"
+        administrator_users: "./src/ts/pages/administrator/users/script.ts",
+        administrator_classes: "./src/ts/pages/administrator/classes/script.ts",
+        administrator_classes_view: "./src/ts/pages/administrator/classes/view/script.ts"
     },
     module: {
         rules: [

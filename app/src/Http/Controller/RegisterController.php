@@ -10,6 +10,7 @@ use PHPMailer\PHPMailer\PHPMailer;
 use Psr\Container\ContainerInterface;
 use Slim\Http\Request;
 use Slim\Http\Response;
+use App\Mapper\Classes;
 
 /**
  * Class RegisterController
@@ -53,11 +54,8 @@ class RegisterController extends AbstractController
                 return $response->withJson([ $validate->getError() ], 500);
 
             $user = $this->_dm->getRepository(User::class)->getUserWithUsername($request->getParam('username'));
-
-            if ($user !== null) {
+            if ($user !== null)
                 return $response->withJson([ 'Email já cadastrado!' ], 500);
-            }
-
             $user = $this->_dm->getRepository(User::class)->findBy(["nickname" => $request->getParam("nickname")]);
             if ($user)
                 return $response->withJson([ 'Nome de usuário já cadastrado!' ], 500);
@@ -67,6 +65,13 @@ class RegisterController extends AbstractController
             $user->setPassword(md5($request->getParam('password')));
             $user->setFullname($request->getParam('fullname'));
             $user->setNickname($request->getParam("nickname"));
+            
+            if (trim($request->getParam("code")) != ""){
+                $classes = $this->_dm->getRepository(Classes::class)->findBy(array("code" => $request->getParam("code")));
+                if (count($classes) == 0)
+                    return $response->withJson(["O código de turma inserido não corresponde a nenhuma turma."], 500);
+                $user->setClass($classes[0]);
+            }
 
             $this->_dm->persist($user);
             $this->_dm->flush();

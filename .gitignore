@@ -7,3 +7,4 @@ php_errors.log
 node_modules
 atividade_exemplo.json
 atividade_objetivo.json
+/storage/photo-save/*

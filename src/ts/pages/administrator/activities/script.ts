@@ -50,7 +50,6 @@ abstract class AbstractActivity {
 
     validate() : boolean {
         let formObject = this.createObject();
-        console.log(formObject.casos_testes.length);
 
         if (formObject.title.trim() === ""){
             window.cosmo.dialog.error("Oops", "O campo Título não pode ficar vazio", () => {});

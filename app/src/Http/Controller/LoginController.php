@@ -71,7 +71,7 @@ class LoginController extends AbstractController
                     return $response->withJson([ 'Sua conta está bloqueada, contate o administrador.<br/>Razão do bloqueio: ' . $attributes["blocked"]["reason"] . ".", "callback" => $router->pathFor("login.logout") ], 500);
                 return $response->withJson([ 'callback' => $router->pathFor('dashboard.index') ], 200);
             } else
-                return $response->withJson([ 'Suas credenciais estão incorretas.' ], 500);
+                return $response->withJson([ 'Suas credenciais estão incorretas.', "callback" => "" ], 500);
         } else
             return $response->withJson([ 'Requisição mal formatada!' ], 500);
 

@@ -1,0 +1,63 @@
+{% extends "View/layout.twig" %}
+{% set page_title = "Visualizando: " ~ group.title %}
+
+{% block content %}
+    <div class="row my-4">
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="card-title mb-0">{{ group.title }}</h5>
+                </div>
+
+                <div class="card-body">
+                    <span class="text-muted">Atividades cadastradas: {{ group.activities|length }}</span>
+
+                    {% for tag in group.tags %}
+                        <h5 class="mb-0 mt-2"><span class="badge badge-cosmo-color-4">{{ tag }}</span></h5>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="card-title mb-0">Atividades</h5>
+                </div>
+
+                <div class="card-body">
+                    <div class="row">
+                        {% for activity in group.activities %}
+                            <div class="col-6">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h5 class="card-title mb-0">{{ activity.getTitle }}</h5>
+                                    </div>
+
+                                    <div class="card-body">
+                                        <p class="card-subtitle mb-2 text-muted">{{ activity.getQuestion }}</p>
+
+                                        {% for tag in activity.getGroup.getTags %}
+                                            <h5 class="mb-0"><span class="badge badge-cosmo-color-4">{{ tag }}</span></h5>
+                                        {% endfor %}
+                                    </div>
+
+                                    <div class="card-header">
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <a href="{{ path_for("administrator.control.activities.modify", {id: activity.getId}) }}" class="btn btn-cosmo-color-1 w-100">Editar</a>
+                                            </div>
+                                            <div class="col-6">
+                                                <a href="{{ path_for("administrator.control.activities.remove", {id: activity.getId}) }}" class="btn btn-danger w-100">Remover</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

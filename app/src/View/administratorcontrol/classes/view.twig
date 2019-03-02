@@ -1,0 +1,130 @@
+{% extends "View/layout.twig" %}
+{% set page_title = class.title %}
+
+{% block scripts %}
+    <script type="text/javascript" src="{{ base_url() }}/dist/js/administrator_classes_view.js"></script>
+{% endblock %}
+
+{% block content %}
+    <div class="row my-4">
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="card-title mb-0">Alunos</h5>
+                </div>
+
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-12">
+                            <button id="btn-adicionar-alunos" type="buttonn" class="btn btn-cosmo-color-1 w-100">Adicionar</button>
+                        </div>
+                        {% for student in class.students %}
+                            <div class="col-12 mt-3">
+                                <div class="row">
+                                    <div class="col-3">
+                                        <img class="img-fluid" style="" src="{{ student.getAvatar }}"></img>
+                                    </div>
+                                    <div class="col-8">
+                                        <h5>{{ student.getFullname }}</h5>
+                                        <p class="text-muted mb-0">{{ student.getUsername }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="card-title mb-0">Grupos de atividades</h5>
+                </div>
+
+                <div class="card-body">
+                    <div class="row">
+                        {% for group in class.groups %}
+                            <div class="col-md-6">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h5 class="card-title mb-0">{{ group.getName }}</h5>
+                                    </div>
+
+                                    <div class="card-body">
+                                        <p class="text-muted mb-0">{{ group.getActivity|length }} atividades cadastradas</p>
+                                    </div>
+
+                                    <div class="card-footer">
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <a href="{{ path_for("administrator.control.groupactivities.view", {id: group.getId}) }}" class="btn btn-cosmo-color-1 w-100">Ver</a>
+                                            </div>
+                                            <div class="col-6">
+                                                <a href="#" class="btn btn-danger w-100">Remover</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+
+                <div class="card-footer">
+                    <button id="btn-adicionar-habilidade" type="button" class="btn btn-cosmo-color-1 float-right">Adicionar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <input id="inputclass-id" type="hidden" value="{{ class.id }}">
+    <div class="d-none">
+        <div id="alunos-lista-modal" class="row">
+            <div class="col-12">
+                <table id="alunos-lista-table" class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>Nome</th>
+                            <th>Email</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        {% for user in users %}
+                            <tr>
+                                <td><input type="checkbox"></td>
+                                <td>{{ user.getFullname }}</td>
+                                <td>{{ user.getUsername }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div id="adicionar-habilidade-modal">
+            <div class="row">
+                <table id="adicionar-habilidade-table" class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th class="text-left">Título</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        {% for group in groups %}
+                            <tr>
+                                <td style="width: 10px;"><input type="checkbox"></td>
+                                <td class="text-left">{{ group.getName }}</td>
+                                <td class="d-none">{{ group.getId }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}

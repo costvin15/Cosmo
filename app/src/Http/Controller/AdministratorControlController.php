@@ -19,6 +19,7 @@ use App\Mapper\Activities;
 use PHPMailer\PHPMailer\Exception;
 use App\Mapper\GroupActivities;
 use App\Facilitator\App\SessionFacilitator;
+use App\Mapper\Classes;
 
 /**
  * Class AdministratorControlController
@@ -557,5 +558,157 @@ class AdministratorControlController extends AbstractController
         $this->_dm->flush();
 
         return $response->withRedirect($router->pathFor("administrator.control.groupactivities"));
+    }
+
+    /**
+     * @param Request $request
+     * @param Response $response
+     * @Get(name="/groupactivity/{id}", middleware={"App\Http\Middleware\AdministratorSessionMiddleware"}, alias="administrator.control.groupactivities.view")
+     * @Log(type="INFO", persist={"verb", "attributes", "session"}, message="O administrador removeu um grupo de atividade.")
+     */
+    public function viewGroupActivityAction(Request $request, Response $response, array $args){
+        $group = $this->_dm->getRepository(GroupActivities::class)->find($args["id"]);
+        if (!$group)
+            return $response->withJson(["Grupo não encontrado."], 500);
+        $this->setAttributeView("group", $group->toArray());
+        return $this->view->render($response, "View/administratorcontrol/groupactivities/view.twig", $this->getAttributeView());
+    }
+
+    /**
+     * @param Request $request
+     * @param Response $response
+     * @return mixed
+     * @Get(name="/classes", middleware={"App\Http\Middleware\AdministratorSessionMiddleware"}, alias="administrator.control.classes")
+     * @Log(type="INFO", persist={"verb", "attributes", "session"}, message="O administrador acessou o painel de turmas.")
+     */
+    public function classesAction(Request $request, Response $response){
+        $this->setAttributeView("classes", $this->_dm->getRepository(Classes::class)->findAll());
+        return $this->view->render($response, "View/administratorcontrol/classes/index.twig", $this->getAttributeView());
+    }
+
+    /**
+     * @param Request $request
+     * @param Response $response
+     * @return mixed
+     * @Get(name="/classes/new", middleware={"App\Http\Middleware\AdministratorSessionMiddleware"}, alias="administrator.control.classes.new")
+     * @Log(type="INFO", persist={"verb", "attributes", "session"}, message="O administrador acessou o painel de criação de turmas.")
+     */
+    public function newClassesAction(Request $request, Response $response){
+        $this->setAttributeView("formCreate", true);
+        return $this->view->render($response, "View/administratorcontrol/classes/form.twig", $this->getAttributeView());
+    }
+
+    /**
+     * @param Request $request
+     * @param Response $response
+     * @param array $args
+     * @return mixed
+     * @Get(name="/classes/{id}", middleware={"App\Http\Middleware\AdministratorSessionMiddleware"}, alias="administrator.control.classes.view")
+     * @Log(type="INFO", persist={"verb", "attributes", "session"}, message="O administrador acessou uma turma.")
+     */
+    public function viewClassesAction(Request $request, Response $response, array $args){
+        $id = $args["id"];
+        $class = $this->_dm->getRepository(Classes::class)->find($id);
+        if (!$class)
+            return $response->withJson(["Turma não encontrada!"], 500);
+        if ($class->getAdministrator()->getId() !== SessionFacilitator::getAttributeSession()["id"])
+            return $response->withJson(["Desculpe-nos, mas você não possui os privilégios necessários para isto."], 500);
+        $this->setAttributeView("class", $class->toArray());
+        $this->setAttributeView("users", $this->_dm->getRepository(User::class)->findAll());
+        $this->setAttributeView("groups", $this->_dm->getRepository(GroupActivities::class)->findAll());
+        return $this->view->render($response, "View/administratorcontrol/classes/view.twig", $this->getAttributeView());
+    }
+
+    /**
+     * @param Request $request
+     * @param Response $response
+     * @return mixed
+     * @Post(name="/classes/save", middleware={"App\Http\Middleware\AdministratorSessionMiddleware"}, alias="administrator.control.classes.save")
+     */
+    public function saveClassAction(Request $request, Response $response){
+        if ($request->isXhr()){
+            $id = $request->getParam("id");
+            $title = $request->getParam("title");
+            $code = $request->getParam("code");
+
+            if ($id)
+                $class = $this->_dm->getRepository(Classes::class)->find($id);
+            else
+                $class = new Classes();
+            
+            $attributes = SessionFacilitator::getAttributeSession();
+            if (!$attributes)
+                return $response->withJson(["Você precisa estar logado para isto."], 500);
+
+            $class->setTitle($title);
+            $class->setCode($code);
+            $class->setAdministrator($this->_dm->getRepository(User::class)->find($attributes["id"]));
+
+            $this->_dm->persist($class);
+            $this->_dm->flush();
+
+            $router = $this->_ci->get("router");
+            return $response->withJson(["message" => "Turma cadastrada com sucesso!", "callback" => $router->pathFor("administrator.control.classes")]);
+        } else
+            return $response->withJson(["Requisição mal formatada"], 500);
+    }
+
+    /**
+     * @param Request $request
+     * @param Response $response
+     * @return mixed
+     * @Post(name="/classes/insert_students", middleware={"App\Http\Middleware\AdministratorSessionMiddleware"}, alias="administrator.control.classes.insert_students")
+     */
+    public function insertStudentsClassAction(Request $request, Response $response){
+        $id = $request->getParam("id");
+        $students = $request->getParam("students");
+        $count = 0;
+        $class = $this->_dm->getRepository(Classes::class)->find($id);
+
+        if (!$class)
+            return $response->withJson(["Turma não encontrada"], 500);
+        if ($students)
+            for ($i = 0; $i < count($students); $i++){
+                $current = $this->_dm->getRepository(User::class)->findBy(array("username" => $students[$i]));
+                if ($current[0])
+                    if ($current[0]->getClass() !== $class){
+                        $current[0]->setClass($class);
+                        $this->_dm->persist($current[0]);
+                        $count++;
+                    }
+            }
+
+        $this->_dm->flush();
+        $router = $this->_ci->get("router");
+        return $response->withJson(["message" => "Novos {$count} alunos foram adicionados à turma atual.", "callback" => $router->pathFor("administrator.control.classes.view", array("id" => $id))], 200);
+    }
+
+    /**
+     * @param Request $request
+     * @param Response $response
+     * @return mixed
+     * @Post(name="/class/insert_skills", middleware={"App\Http\Middleware\AdministratorSessionMiddleware"}, alias="administrator.control.classes.insert_skills")
+     */
+    public function insertSkillClassAction(Request $request, Response $response){
+        $id = $request->getParam("id");
+        $skills = $request->getParam("skills");
+        $class = $this->_dm->getRepository(Classes::class)->find($id);
+        $count = 0;
+
+        if (!$class)
+            return $response->withJson(["Turma não encontrada"], 500);
+        for ($i = 0; $i < count($skills); $i++){
+            $current = $this->_dm->getRepository(GroupActivities::class)->find($skills[$i]);
+            if ($current)
+                if ($current->getClass() !== $class){
+                    $current->setClass($class);
+                    $this->_dm->persist($current);
+                    $count++;
+                }
+        }
+
+        $this->_dm->flush();
+        $router = $this->_ci->get("router");
+        return $response->withJson(["message" => "Foram adicionadas {$count} novas habilidades à turma atual.", "callback" => $router->pathFor("administrator.control.classes.view", array("id" => $id))], 200);
     }
 }

@@ -7,9 +7,7 @@ use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
 /**
  * @ODM\Document(collection="GroupActivities", repositoryClass="App\Mapper\Repository\GroupActivitiesRepository")
  */
-class GroupActivities
-{
-
+class GroupActivities {
     /**
      * @ODM\Id(strategy="AUTO")
      */
@@ -36,6 +34,11 @@ class GroupActivities
     private $activity;
 
     /**
+     * @ODM\ReferenceOne(targetDocument="Classes", inversedBy="groups")
+     */
+    private $class;
+
+    /**
      * GroupActivities constructor.
      */
     public function __construct()
@@ -49,6 +52,8 @@ class GroupActivities
             "title" => $this->name,
             "visible" => $this->visible,
             "tags" => $this->tags,
+            "activities" => $this->activity,
+            "class" => $this->class
         ];
     }
 
@@ -127,5 +132,18 @@ class GroupActivities
     {
         $this->visible = $visible;
     }
+    
+    /**
+     * @return mixed
+     */
+    public function getClass(){
+        return $this->class;
+    }
 
+    /**
+     * @param mixed $class
+     */
+    public function setClass($class){
+        $this->class = $class;
+    }
 }

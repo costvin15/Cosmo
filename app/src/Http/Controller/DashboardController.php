@@ -18,6 +18,7 @@ use Psr\Http\Message\ServerRequestInterface;
 use Slim\Http\Request;
 use Slim\Http\Response;
 use App\Model\Util\ImageBase64;
+use App\Mapper\Classes;
 
 /**
  * Class DashboardController
@@ -44,53 +45,61 @@ class DashboardController extends AbstractController
      * @Get(name="/", middleware={"App\Http\Middleware\SessionMiddleware"}, alias="dashboard.index")
      * @Log(type="INFO", persist={"verb", "attributes", "session"}, message="Acessou a página inicial.")
      */
-    public function indexAction(ServerRequestInterface $request, ResponseInterface $response) {
+    public function indexAction(ServerRequestInterface $request, ResponseInterface $response){
         $attributes = SessionFacilitator::getAttributeSession();
-        
-        $questionNumber = 4;
+        $user = $this->_dm->getRepository(User::class)->find($attributes["id"]);
 
-        $user = $this->_dm->getRepository(User::class)->find($attributes['id']);
-        $queryBuilderHistory = $this->_dm->createQueryBuilder(HistoryActivities::class)
-            ->field('user')->references($user)
-            ->getQuery()->execute();
-
-        $idActivitiesUser = [];
-        foreach($queryBuilderHistory as $activies) {
-            $idActivitiesUser[] = $activies->getActivity()->getId();
+        if ($user->getClass()){
+            $groups = $this->_dm->getRepository(GroupActivities::class)->findBy(array("class" => $user->getClass()));
+            $this->setAttributeView("groups", $groups);
+        } else {
+            $this->setAttributeView("hasNoClass", true);
         }
+        
+        // $questionNumber = 4;
+
+        // $user = $this->_dm->getRepository(User::class)->find($attributes['id']);
+        // $queryBuilderHistory = $this->_dm->createQueryBuilder(HistoryActivities::class)
+            // ->field('user')->references($user)
+            // ->getQuery()->execute();
+
+        // $idActivitiesUser = [];
+        // foreach($queryBuilderHistory as $activies) {
+            // $idActivitiesUser[] = $activies->getActivity()->getId();
+        // }
 
 //        $groupActivities = $this->_dm->getRepository(GroupActivities::class)->find("581a10bd7b3ceb04bb7b47cd");
 
-        $allActivities = [];
-        for($i = 0; $i <= $questionNumber - 1; $i++) {
-            $qb = $this->_dm->createQueryBuilder(Activities::class)
-                ->field('id')
-                ->notIn($idActivitiesUser);
+        // $allActivities = [];
+        // for($i = 0; $i <= $questionNumber - 1; $i++) {
+            // $qb = $this->_dm->createQueryBuilder(Activities::class)
+                // ->field('id')
+                // ->notIn($idActivitiesUser);
 //                ->in(['580ff69b5bd49c0ac5809682'])
 //                ->field('group');
 //                ->references($groupActivities);
 
-            $count =  $qb->getQuery()->count();
+            // $count =  $qb->getQuery()->count();
 
-            $random_position = rand(0, $count - 1);
+            // $random_position = rand(0, $count - 1);
 
-            $activeRandom = $qb
-                ->skip($random_position)
-                ->limit(1)
-                ->sort('order', 'asc')
-                ->getQuery()
-                ->execute();
+            // $activeRandom = $qb
+                // ->skip($random_position)
+                // ->limit(1)
+                // ->sort('order', 'asc')
+                // ->getQuery()
+                // ->execute();
 
-            if ($activeRandom->count() == 0) {
-                break 1;
-            }
+            // if ($activeRandom->count() == 0) {
+                // break 1;
+            // }
 
-            $activies = $activeRandom->getNext();
-            $allActivities[] = $activies;
-            $idActivitiesUser[] = $activies->getId();
-        }
+            // $activies = $activeRandom->getNext();
+            // $allActivities[] = $activies;
+            // $idActivitiesUser[] = $activies->getId();
+        // }
 
-        $this->setAttributeView('allActivities', $allActivities);
+        // $this->setAttributeView('allActivities', $allActivities);
 
         return $this->view->render($response, 'View/dashboard/index/index.twig', $this->getAttributeView());
     }
@@ -200,12 +209,20 @@ class DashboardController extends AbstractController
             $avatar = $request->getParam("avatar");
             $fullname = $request->getParam("fullname");
             $nickname = $request->getParam("nickname");
+            $code = $request->getParam("code");
 
             $attributes = SessionFacilitator::getAttributeSession();
             
             $user = $this->_dm->getRepository(User::class)->find($attributes['id']);
             $user->setFullname($fullname);
             $user->setNickname($nickname);
+
+            if (trim($code) != ""){
+                $classes = $this->_dm->getRepository(Classes::class)->findBy(array("code" => $code));
+                if (count($classes) == 0)
+                    return $response->withJson(["message" => "O código inserido não corresponde a nenhuma turma."], 500);
+                $user->setClass($classes[0]);
+            }
             
             $this->_dm->persist($user);
             $this->_dm->flush();
@@ -219,7 +236,7 @@ class DashboardController extends AbstractController
             $router = $this->_ci->get("router");
             return $response->withJson(["message" => "Você precisará fazer login novamente.", "callback" => $router->pathFor("login.logout")], 200);
         } else
-            return $response->withJson(["Requisição mal formatada"], 500);
+            return $response->withJson(["message" => "Requisição mal formatada"], 500);
     }
 
     /**

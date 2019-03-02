@@ -2,8 +2,52 @@
 {% set page_title = "Atividades" %}
 
 {% block content %}
-    <div class="row">
-        {% for activity in allActivities %}
+    <div class="row my-4">
+        {% if hasNoClass is defined %}
+            <p>Sem turma</p>
+        {% else %}
+            {% for group in groups %}
+                <div class="col-12 mb-2">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5 class="card- mb-0">{{ group.getName }}</h5>
+                        </div>
+
+                        <div class="card-body">
+                            <div class="row">
+                                {% for activity in group.getActivity %}
+                                    <div class="col-md-4 my-2">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <h5 class="card-title">{{ activity.getTitle }}</h5>
+                                                <p class="card-subtitle mb-2 text-muted"><small>Publicado por: {{ activity.getUploader.getFullname }} - {{ activity.getDateCreate|date("d/m/Y")}}</small></p>
+                                                <p class="card-subtitle">{{ activity.getQuestion }}</p>
+
+                                                <hr />
+
+                                                {% set group = activity.getGroup %}
+                                                {% for tag in group.getTags %}
+                                                    <h5 class="mb-0"><span class="badge badge-cosmo-color-4">{{ tag }}</span></h5>
+                                                {% endfor %}
+                                            </div>
+
+                                            <form action="{{ path_for("activities") }}" method="POST">
+                                                <div class="card-footer">
+                                                    <button type="submit" class="btn btn-cosmo-color-2">Responder</button>
+                                                </div>
+                                                <input name="id-activities" type="hidden" value="{{ activity.getId }}">
+                                            </form>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        {% endif %}
+
+        {# {% for activity in allActivities %}
             <div class="col-md-4 my-2" id="div-{{ loop.index  }}">
                 <div class="card">
                     <div class="card-body">
@@ -27,6 +71,6 @@
                     </form>
                 </div>
             </div>
-        {% endfor %}
+        {% endfor %} #}
     </div>
 {% endblock %}

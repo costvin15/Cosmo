@@ -67,6 +67,16 @@ class User
     private $attemptActivities;
 
     /**
+     * @ODM\ReferenceMany(targetDocument="Classes", mappedBy="administrator")
+     */
+    private $administrator_class;
+
+    /**
+     * @ODM\ReferenceOne(targetDocument="Classes", inversedBy="students")
+     */
+    private $class;
+
+    /**
      * User constructor.
      * @param $id
      * @param $username
@@ -109,6 +119,7 @@ class User
             'blocked' => $this->blocked,
             'avatar' => $this->getAvatar(),
             'answered_activities' => $this->answered_activities,
+            "class" => $this->class ? $this->class->toArray() : null
         ];
     }
 
@@ -297,5 +308,19 @@ class User
     public function setAttemptActivities($attemptActivities)
     {
         $this->attemptActivities = $attemptActivities;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getClass(){
+        return $this->class;
+    }
+
+    /**
+     * @param mixed $class
+     */
+    public function setClass($class){
+        $this->class = $class;
     }
 }

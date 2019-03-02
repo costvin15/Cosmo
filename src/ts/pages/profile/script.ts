@@ -91,15 +91,17 @@ class UpdateUser {
     }
 
     save(){
-        let formObject = this.createObject();
+        let formObject : any = this.createObject();
+        if (!(<HTMLInputElement> document.getElementById("input-frmuser-class")).disabled)
+            formObject.code = (<HTMLInputElement> document.getElementById("input-frmuser-class")).value;
         let success = function(content: any){
             window.cosmo.dialog.success("Atualização do usuário", content.message, () => {
                 window.location.href = content.callback;
             });
-        }
+        };
         let fail = function(content: any){
-            window.cosmo.dialog.error("Oops", content.responseJSON[0], () => {});
-        }
+            window.cosmo.dialog.error("Oops", content.message, () => {});
+        };
 
         let ajax = window.cosmo.ajax.getDefaults();
         ajax.url = window.base_url + window.cosmo.routes_name.user_update_profile;

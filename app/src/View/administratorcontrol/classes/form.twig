@@ -1,0 +1,58 @@
+{% extends "View/layout.twig" %}
+
+{% if formCreate is defined %}
+    {% set page_title = "Nova turma" %}
+{% endif %}
+
+{% if formUpdate is defined %}
+    {% set page_title = "Atualizar turma" %}
+{% endif %}
+
+{% block scripts %}
+    <script type="text/javascript" src="{{ base_url() }}/dist/js/administrator_classes.js"></script>
+{% endblock %}
+
+{% block content %}
+    <div class="row my-4">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="card-title mb-0">
+                        {% if formCreate is defined %}
+                            Nova turma
+                        {% endif %}
+
+                        {% if formUpdate is defined %}
+                            Atualizar turma
+                        {% endif %}
+                    </h5>
+                </div>
+
+                <div class="card-body">
+                    <form>
+                        <div class="form-group">
+                            <label for="frmclass-title"></label>
+                            <input id="frmclass-title" type="text" class="form-control" placeholder="Título da turma" {% if formUpdate is defined %} value="{{ class.title }}" {% endif %}></input>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="frmclass-code"></label>
+                            <input id="frmclass-code" type="text" class="form-control" placeholder="Código da turma" {% if formUpdate is defined %} value="{{ class.code }}" {% endif %}></input>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="card-footer">
+                    {% if formCreate is defined %}
+                        <button id="frmclass-btn-create" type="button" class="btn btn-cosmo-color-1">Criar</button>
+                    {% endif %}
+
+                    {% if formUpdate is defined %}
+                        <input id="frmclass-id" type="hidden" value="{{ class.id }}"></input>
+                        <button id="frmclass-btn-update" type="button" class="btn btn-cosmo-color-1">Enviar</button>
+                    {% endif %}
+                </div>
+            </div>    
+        </div>
+    </div>
+{% endblock %}

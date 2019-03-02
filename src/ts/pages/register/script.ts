@@ -17,7 +17,8 @@ class Register {
             username: (<HTMLInputElement> document.getElementById("frmregister-email")).value,
             fullname: (<HTMLInputElement> document.getElementById("frmregister-fullname")).value,
             password: (<HTMLInputElement> document.getElementById("frmregister-password")).value,
-            nickname: (<HTMLInputElement> document.getElementById("frmregister-nickname")).value
+            nickname: (<HTMLInputElement> document.getElementById("frmregister-nickname")).value,
+            code: (<HTMLInputElement> document.getElementById("frmregister-class")).value
         };
     }
 
