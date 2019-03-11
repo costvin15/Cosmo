@@ -12,6 +12,8 @@ use App\Plugin\Activities\Problems\Model\CppExecute;
 use App\Plugin\Activities\Problems\Model\LuaExecute;
 use App\Plugin\Activities\Problems\Model\PythonExecute;
 use Doctrine\ODM\MongoDB\DocumentManager;
+use App\Mapper\ChallengeHistory;
+use App\Mapper\Challenge;
 
 class ProblemsValidate
 {
@@ -86,42 +88,71 @@ class ProblemsValidate
         $attributeSession = SessionFacilitator::getAttributeSession();
         $user = $this->_dm->getRepository(User::class)->find($attributeSession['id']);
 
-        $historyCursor = $this->_dm->createQueryBuilder(HistoryActivities::class)
-            ->field('activity')
-            ->references($activity)
-            ->field('user')
-            ->references($user)
-            ->getQuery()
-            ->execute();
-        $history = $historyCursor->getNext();
+        if (isset($data["type"])){
+            $challenge = $this->_dm->getRepository(Challenge::class)->find($data["challenge_id"]);
+            try {
+                $cursor = $this->_dm->createQueryBuilder(ChallengeHistory::class)
+                    ->field("challenge")->references($challenge)
+                    ->field("user")->references($user)
+                    ->getQuery()->execute();
+            } catch (\Exception $e){
+                error_log($e->getMessage());
+            }
+            $history = $cursor->getNext();
+            if (!$history){
+                $history = new ChallengeHistory();
+                $user->setAnsweredActivities($user->getAnsweredActivities() + 1);
+                $this->_dm->persist($user);
+                $this->_dm->flush();
+            }
 
-        if ($history == null){
-            $history = new HistoryActivities();
-
-            $user->setAnsweredActivities($user->getAnsweredActivities() + 1);
-            $this->_dm->persist($user);
-            $this->_dm->flush();
-        }
-
-        $history->setActivity($activity);
-        $history->setUser($user);
-        $history->setCode($data['source_code']);
-        $history->setLanguage($data["language"]);
-        $history->setTimeStart($data['dateini']);
-        $history->setTimeEnd($data['datefim']);
-
-        if (key_exists('classification', $data)) {
-            $history->setClassification($data['classification']);
+            $history->setUser($user);
+            $history->setChallenge($challenge);
+            $history->setExecutionTimeStart($data["dateini"]);
+            $history->setExecutionTimeEnd($data["datefim"]);
+            $history->setDateTime(time());
+            $history->setCode($data["source_code"]);
+            $history->setLanguage($data["language"]);
+            $history->setLevel($data["level"]);
+            $history->setType($data["type"]);
         } else {
-            if ($history->getClassification() == null)
-                $history->setClassification("0");
-        }
+            $historyCursor = $this->_dm->createQueryBuilder(HistoryActivities::class)
+                ->field('activity')
+                ->references($activity)
+                ->field('user')
+                ->references($user)
+                ->getQuery()
+                ->execute();
+            $history = $historyCursor->getNext();
 
-        if (key_exists('difficulty', $data)) {
-            $history->setDifficulty($data['difficulty']);
-        } else {
-            if ($history->getDifficulty() == null)
-                $history->setDifficulty("0");
+            if ($history == null){
+                $history = new HistoryActivities();
+
+                $user->setAnsweredActivities($user->getAnsweredActivities() + 1);
+                $this->_dm->persist($user);
+                $this->_dm->flush();
+            }
+
+            $history->setActivity($activity);
+            $history->setUser($user);
+            $history->setCode($data['source_code']);
+            $history->setLanguage($data["language"]);
+            $history->setTimeStart($data['dateini']);
+            $history->setTimeEnd($data['datefim']);
+
+            if (key_exists('classification', $data)) {
+                $history->setClassification($data['classification']);
+            } else {
+                if ($history->getClassification() == null)
+                    $history->setClassification("0");
+            }
+
+            if (key_exists('difficulty', $data)) {
+                $history->setDifficulty($data['difficulty']);
+            } else {
+                if ($history->getDifficulty() == null)
+                    $history->setDifficulty("0");
+            }
         }
 
         $this->_dm->persist($history);

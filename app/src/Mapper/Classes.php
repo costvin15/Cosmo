@@ -9,8 +9,7 @@ use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
 /**
  * @ODM\Document(collection="Classes")
  */
-class Classes
-{
+class Classes {
     /**
      * @ODM\Id(strategy="AUTO")
      */
@@ -41,6 +40,11 @@ class Classes
      */
     private $groups;
 
+    /**
+     * @ODM\ReferenceMany(targetDocument="Challenge", mappedBy="class")
+     */
+    private $challenges;
+
     public function toArray(){
         return array(
             "id" => $this->id,
@@ -48,7 +52,8 @@ class Classes
             "code" => $this->code,
             "administrator" => $this->administrator->toArrayMinified(),
             "students" => $this->students,
-            "groups" => $this->groups
+            "groups" => $this->groups,
+            "challenges" => $this->challenges
         );
     }
 
@@ -86,5 +91,9 @@ class Classes
 
     public function getGroups(){
         return $this->groups;
+    }
+
+    public function getChallenges(){
+        return $this->challenges;
     }
 }

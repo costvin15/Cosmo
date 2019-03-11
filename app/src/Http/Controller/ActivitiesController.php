@@ -46,13 +46,15 @@ class ActivitiesController extends AbstractController
      * @Post(name="/", alias="activities")
      */
     public function activitiesAction(ServerRequestInterface $request, ResponseInterface $response) {
-        $idActivity = $request->getParam("id-activities");
+        $idActivity = $request->getParam("id-activity");
         $this->activity = $this->_dm->getRepository(Activities::class)->find($idActivity);
-
-        $this->activity->getActivities();
-
-        $attributes = SessionFacilitator::getAttributeSession();
-        return $this->view->render($response, $this->activity->getView(), [ 'attributes' => $attributes, 'activity' => $this->activity ]);
+        $this->setAttributeView("activity", $this->activity);
+        if ($request->getParam("challenge-type")){
+            $this->setAttributeView("type", $request->getParam("challenge-type"));
+            $this->setAttributeView("challenge_id", $request->getParam("challenge-id"));
+            $this->setAttributeView("level", $request->getParam("challenge-level"));
+        }
+        return $this->view->render($response, $this->activity->getView(), $this->getAttributeView());
     }
 
     /**

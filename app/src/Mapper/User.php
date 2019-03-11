@@ -62,6 +62,11 @@ class User
     private $historyActivities;
 
     /**
+     * @ODM\ReferenceMany(targetDocument="ChallengeHistory", mappedBy="user")
+     */
+    private $challengeActivities;
+
+    /**
      * @ODM\ReferenceMany(targetDocument="AttemptActivities", mappedBy="user")
      */
     private $attemptActivities;

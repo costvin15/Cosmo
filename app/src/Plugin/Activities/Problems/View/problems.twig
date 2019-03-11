@@ -66,9 +66,18 @@
             <div id="editor"></div>
         </div>
 
-        <div class="col-12 mt-2">
+        <div class="col-12 mt-2">            
             <input id="id-activity" type="hidden" value="{{ activity.getId }}" />
-            <button id="submit-activity" class="float-right btn btn-cosmo-color-1">Enviar</button>
+
+            {% if type is defined %}
+                <input type="hidden" value="{{ type }}" id="input-frmactivity-type">
+                <input type="hidden" value="{{ challenge_id }}" id="input-frmactivity-challenge-id">
+                <input type="hidden" value="{{ level }}" id="input-frmactivity-level">
+
+                <button id="submit-challenge" class="float-right btn btn-cosmo-color-1">Enviar</button>
+            {% else %}
+                <button id="submit-activity" class="float-right btn btn-cosmo-color-1">Enviar</button>
+            {% endif %}
         </div>
     </div>
 {% endblock %}

@@ -31,12 +31,12 @@
                 <div class="card-body">
                     <form>
                         <div class="form-group">
-                            <label for="frmclass-title"></label>
+                            <label for="frmclass-title">Tìtulo</label>
                             <input id="frmclass-title" type="text" class="form-control" placeholder="Título da turma" {% if formUpdate is defined %} value="{{ class.title }}" {% endif %}></input>
                         </div>
                         
                         <div class="form-group">
-                            <label for="frmclass-code"></label>
+                            <label for="frmclass-code">Código</label>
                             <input id="frmclass-code" type="text" class="form-control" placeholder="Código da turma" {% if formUpdate is defined %} value="{{ class.code }}" {% endif %}></input>
                         </div>
                     </form>

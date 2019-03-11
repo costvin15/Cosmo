@@ -12,7 +12,8 @@ module.exports = {
         administrator_activities: "./src/ts/pages/administrator/activities/script.ts",
         administrator_users: "./src/ts/pages/administrator/users/script.ts",
         administrator_classes: "./src/ts/pages/administrator/classes/script.ts",
-        administrator_classes_view: "./src/ts/pages/administrator/classes/view/script.ts"
+        administrator_classes_view: "./src/ts/pages/administrator/classes/view/script.ts",
+        administrator_classes_challenges: "./src/ts/pages/administrator/classes/challenges/script.ts"
     },
     module: {
         rules: [

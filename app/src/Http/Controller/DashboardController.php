@@ -19,6 +19,7 @@ use Slim\Http\Request;
 use Slim\Http\Response;
 use App\Model\Util\ImageBase64;
 use App\Mapper\Classes;
+use App\Mapper\ChallengeHistory;
 
 /**
  * Class DashboardController
@@ -50,8 +51,38 @@ class DashboardController extends AbstractController
         $user = $this->_dm->getRepository(User::class)->find($attributes["id"]);
 
         if ($user->getClass()){
+            $user_history = $this->_dm->createQueryBuilder(HistoryActivities::class)
+                ->field("user")->references($user)->getQuery()->execute();
+            $user_history_ids = array();
+            foreach ($user_history as $activity)
+                $user_history_ids[] = $activity->getActivity()->getId();
+
             $groups = $this->_dm->getRepository(GroupActivities::class)->findBy(array("class" => $user->getClass()));
+            for ($i = 0; $i < count($groups); $i++){
+                $group = $groups[$i]->toArray();
+                $group["activities"] = $this->_dm->createQueryBuilder(Activities::class)
+                    ->field("group")->references($groups[$i])
+                    ->field("id")->notIn($user_history_ids)->getQuery()->execute();
+                $groups[$i] = $group;
+            }
             $this->setAttributeView("groups", $groups);
+
+            $db_challenges = $user->getClass()->getChallenges();
+            $challenges = array();
+            for ($i = 0, $k = 0; $i < count($db_challenges); $i++){
+                $search = $this->_dm->getRepository(ChallengeHistory::class)->findBy(array(
+                    "user" => $user,
+                    "challenge" => $db_challenges[$i]
+                ));
+                if (count($search) == 0){
+                    $challenges[$k] = $db_challenges[$i]->toArray();
+                    for ($j = 0; $j < count($challenges[$k]["questions"]); $j++){
+                        $challenges[$k]["questions"][$j]["id"] = $this->_dm->getRepository(Activities::class)->find($challenges[$k]["questions"][$j]["id"]);
+                    }
+                    $k++;
+                }
+            }
+            $this->setAttributeView("challenges", $challenges);
         } else {
             $this->setAttributeView("hasNoClass", true);
         }
@@ -299,11 +330,4 @@ class DashboardController extends AbstractController
 
         return $response->withJson($usuarios, 200);
     }
-
-    /**
-     * @Get(name="/test", alias="home.teste")
-     */
-    public function testeAction(Request $request, Response $response){
-        return $this->view->render($response, "View/__layout.twig");
-    }   
 }

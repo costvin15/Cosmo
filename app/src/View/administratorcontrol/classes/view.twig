@@ -37,48 +37,103 @@
         </div>
 
         <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">
-                    <h5 class="card-title mb-0">Grupos de atividades</h5>
-                </div>
+            <div class="row">
+                <div class="col-12 mb-2">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5 class="card-title mb-0">Grupos de atividades</h5>
+                        </div>
 
-                <div class="card-body">
-                    <div class="row">
-                        {% for group in class.groups %}
-                            <div class="col-md-6">
-                                <div class="card">
-                                    <div class="card-header">
-                                        <h5 class="card-title mb-0">{{ group.getName }}</h5>
-                                    </div>
-
-                                    <div class="card-body">
-                                        <p class="text-muted mb-0">{{ group.getActivity|length }} atividades cadastradas</p>
-                                    </div>
-
-                                    <div class="card-footer">
-                                        <div class="row">
-                                            <div class="col-6">
-                                                <a href="{{ path_for("administrator.control.groupactivities.view", {id: group.getId}) }}" class="btn btn-cosmo-color-1 w-100">Ver</a>
+                        <div class="card-body">
+                            <div class="row">
+                                {% for group in class.groups %}
+                                    <div class="col-md-6">
+                                        <div class="card">
+                                            <div class="card-header">
+                                                <h5 class="card-title mb-0">{{ group.getName }}</h5>
                                             </div>
-                                            <div class="col-6">
-                                                <a href="#" class="btn btn-danger w-100">Remover</a>
+
+                                            <div class="card-body">
+                                                <p class="text-muted mb-0">{{ group.getActivity|length }} atividades cadastradas</p>
+                                            </div>
+
+                                            <div class="card-footer">
+                                                <div class="row">
+                                                    <div class="col-6">
+                                                        <a href="{{ path_for("administrator.control.groupactivities.view", {id: group.getId}) }}" class="btn btn-cosmo-color-1 w-100">Ver</a>
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <a href="#" class="btn btn-danger w-100">Remover</a>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                {% endfor %}
                             </div>
-                        {% endfor %}
+                        </div>
+
+                        <div class="card-footer">
+                            <button id="btn-adicionar-habilidade" type="button" class="btn btn-cosmo-color-1 float-right">Adicionar</button>
+                        </div>
                     </div>
                 </div>
 
-                <div class="card-footer">
-                    <button id="btn-adicionar-habilidade" type="button" class="btn btn-cosmo-color-1 float-right">Adicionar</button>
+                <div class="col-12 mb-2">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5 class="card-title mb-0">Desafios</h5>
+                        </div>
+
+                        <div class="card-body">
+                            <div class="row">
+                                {% for challenge in challenges %}
+                                    <div class="col-md-6">
+                                        <div class="card">
+                                            <div class="card-header">
+                                                <h5 class="card-title mb-0">{{ challenge.title }}</h5>
+                                                <h5 class="mb-0"><span class="badge badge-cosmo-color-4">{% if challenge.type == "common" %}Desafio comum{% elseif challenge.type == "clock" %}Desafio contra-o-relógio{% endif %}</span></h5>
+                                            </div>
+
+                                            <div class="card-body">
+                                                {% for question in challenge.questions %}
+                                                    <div class="card my-1">
+                                                        <div class="card-body">
+                                                            <p class="text-muted mb-0">Questão: {{ question.id.title }}</p>
+                                                            <p class="text-muted mb-0">Descrição: {{ question.id.question }}</p>
+                                                            <p class="mb-0">Nível: {% if question.level == "0" %}Fácil{% elseif question.level == "1" %}Médio{% elseif question.level == "2" %}Difícil{% endif %}</p>
+                                                        </div>
+                                                    </div>
+                                                {% endfor %}
+                                            </div>
+
+                                            <div class="card-footer">
+                                                <div class="row">
+                                                    <div class="col-6">
+                                                        <a href="{{ path_for("administrator.control.classes.challenges.edit", {id: challenge.id}) }}" class="btn btn-cosmo-color-1 w-100">Editar</a>
+                                                    </div>
+
+                                                    <div class="col-6">
+                                                        <a href="{{ path_for("administrator.control.classes.challenges.remove", {id: challenge.id}) }}" class="btn btn-danger w-100">Remover</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+
+                        <div class="card-footer">
+                            <a href="{{ path_for("administrator.control.classes.challenges.new", {id: class.id}) }}" class="btn btn-cosmo-color-1 float-right">Adicionar</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <input id="inputclass-id" type="hidden" value="{{ class.id }}">
+    <input id="inputclass-id" type="hidden" value="{{ class.id }}"></input>
     <div class="d-none">
         <div id="alunos-lista-modal" class="row">
             <div class="col-12">

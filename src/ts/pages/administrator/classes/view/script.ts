@@ -36,7 +36,7 @@ class AdicionarAlunos {
             window.cosmo.dialog.error("Oops", content.responseJSON[0], () => {});
         };
         let ajax = window.cosmo.ajax.getDefaults();
-        ajax.url = window.cosmo.routes_name.administrator_insert_students;
+        ajax.url = window.base_url + window.cosmo.routes_name.administrator_insert_students;
         ajax.method = "POST";
         ajax.data = formObject;
         ajax.type = "json";
@@ -82,7 +82,7 @@ class AdicionarHabilidades {
             window.cosmo.dialog.error("Oops", content.responseJSON[0], () => {});
         };
         let ajax = window.cosmo.ajax.getDefaults();
-        ajax.url = window.cosmo.routes_name.administrator_insert_skills;
+        ajax.url = window.base_url + window.cosmo.routes_name.administrator_insert_skills;
         ajax.method = "POST";
         ajax.data = formObject;
         ajax.type = "json";

@@ -1,0 +1,122 @@
+{% extends "View/layout.twig" %}
+
+{% if formCreate is defined %}
+    {% set page_title = "Criando desafio" %}
+{% endif %}
+
+{% if formUpdate is defined %}
+    {% set page_title = "Atualizando desafio" %}
+{% endif %}
+
+{% block scripts %}
+    <script type="text/javascript" src="{{ base_url() }}/dist/js/administrator_classes_challenges.js"></script>
+{% endblock %}
+
+{% block content %}
+    <div class="row my-4">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <form>
+                        <div class="form-group">
+                            <label for="frm-challenge-title">Título</label>
+                            <input id="frm-challenge-title" type="text" class="form-control" placeholder="Título" {% if formUpdate is defined %} value="{{ challenge.title }}" {% endif %}>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="frm-challenge-opening">Horário de disponibilização</label>
+                            <input id="frm-challenge-opening" type="datetime-local" class="form-control" {% if formUpdate is defined %} value="{{ challenge.opening|date('Y-m-d') }}T{{ challenge.opening|date('H:i:s') }}" {% endif %}>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="frm-challenge-validity">Horário de validade</label>
+                            <input id="frm-challenge-validity" type="datetime-local" class="form-control" {% if formUpdate is defined %} value="{{ challenge.validity|date('Y-m-d') }}T{{ challenge.validity|date('H:i:s') }}" {% endif %}>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="frm-challenge-type">Tipo de desafio</label>
+                            <select id="frm-challenge-type" class="form-control">
+                                <option value="common">Desafio comum</option>
+                                <option value="clock">Desafio contra o relógio</option>
+                            </select>
+                        </div>
+
+                        <div class="questoes-container">
+                            <hr></hr>
+                            <div class="row">
+                                <div class="col-12">
+                                    <span class="display-4">Questões</span>
+                                </div>
+
+                                <div class="col-12">
+                                    <div id="questions-container" class="row">
+                                        {% for question in challenge.questions %}
+                                            <div id="question-{{ loop.index }}" class="col-md-4">
+                                                <div class="card">
+                                                    <input id="question-{{ loop.index }}-id" type="hidden" value="${question.question.id}"></input>
+                                                    <input id="question-{{ loop.index }}-level" type="hidden" value="${question.level.number}"></input>
+
+                                                    <div class="card-header">
+                                                        <h5 class="card-title mb-0">{{ question.id.getTitle }}</h5>
+                                                    </div>
+                                                    <div class="card-body">
+                                                        <p class="text-muted mb-0">Nível: {% if question.level == "0" %}Fácil{% elseif question.level == "1" %}Médio{% elseif question.level == "2" %}Difícil{% endif %}</p>
+                                                    </div>
+                                                    <div class="card-footer">
+                                                        <div class="row">
+                                                            <div class="col-12">
+                                                                <button id="{{ loop.index }}" type="button" class="btn-question-remove btn btn-danger w-100">Remover</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+
+                                <div class="col-12 mt-2">
+                                    <button id="adicionar-questao-btn" type="button" class="btn btn-cosmo-color-1">Adicionar questão</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="card-footer">
+                    <input id="frm-class-id" type="hidden" value="{{ class_id }}"></input>
+                    {% if formCreate is defined %}
+                        <button id="create-challenge-btn" type="button" class="btn btn-cosmo-color-1">Criar desafio</button>
+                    {% endif %}
+                    {% if formUpdate is defined %}
+                        <button id="update-challenge-btn" type="button" class="btn btn-cosmo-color-1">Atualizar desafio</button>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="d-none">
+        <div id="adicionar-questao-modal">
+            <form>
+                <div class="form-group">
+                    <label for="frm-challenge-level">Nível de dificuldade</label>
+                    <select id="frm-challenge-level" class="form-control">
+                        <option value="0">Fácil</option>
+                        <option value="1">Médio</option>
+                        <option value="2">Difícil</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="frm-challenge-question">Questão</label>
+                    <select id="frm-challenge-question" class="form-control">
+                        {% for question in questions %}
+                            <option value="{{ question.getId }}">{{ question.getTitle }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}

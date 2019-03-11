@@ -115,7 +115,6 @@ class CreateActivity extends AbstractActivity {
 
     save(){
         let formObject = this.createObject();
-        
         let success = function(content: any){
             window.cosmo.dialog.success("Atividade", content.message, () => {
                 window.location.href = content.callback;
@@ -124,7 +123,6 @@ class CreateActivity extends AbstractActivity {
         let fail = function(content: any){
             window.cosmo.dialog.error("Erro", content.responseJSON[0], () => {});
         };
-
         let ajax = window.cosmo.ajax.getDefaults();
         ajax.url = window.base_url + window.cosmo.routes_name.administrator_save_activity;
         ajax.method = "POST";

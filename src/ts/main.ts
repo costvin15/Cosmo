@@ -143,6 +143,7 @@ window.cosmo = {
         administrator_close_user: "/admin/user/remove/",
         administrator_save_class: "/admin/classes/save",
         administrator_insert_students: "/admin/classes/insert_students",
-        administrator_insert_skills: "/admin/class/insert_skills"
+        administrator_insert_skills: "/admin/class/insert_skills",
+        administrator_save_challenge_class: "/admin/class/challenges/save"
     }
 };

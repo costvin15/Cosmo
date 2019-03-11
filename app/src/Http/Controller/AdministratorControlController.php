@@ -20,6 +20,7 @@ use PHPMailer\PHPMailer\Exception;
 use App\Mapper\GroupActivities;
 use App\Facilitator\App\SessionFacilitator;
 use App\Mapper\Classes;
+use App\Mapper\Challenge;
 
 /**
  * Class AdministratorControlController
@@ -578,7 +579,7 @@ class AdministratorControlController extends AbstractController
      * @param Request $request
      * @param Response $response
      * @return mixed
-     * @Get(name="/classes", middleware={"App\Http\Middleware\AdministratorSessionMiddleware"}, alias="administrator.control.classes")
+     * @Get(name="/classes/", middleware={"App\Http\Middleware\AdministratorSessionMiddleware"}, alias="administrator.control.classes")
      * @Log(type="INFO", persist={"verb", "attributes", "session"}, message="O administrador acessou o painel de turmas.")
      */
     public function classesAction(Request $request, Response $response){
@@ -614,8 +615,17 @@ class AdministratorControlController extends AbstractController
         if ($class->getAdministrator()->getId() !== SessionFacilitator::getAttributeSession()["id"])
             return $response->withJson(["Desculpe-nos, mas você não possui os privilégios necessários para isto."], 500);
         $this->setAttributeView("class", $class->toArray());
-        $this->setAttributeView("users", $this->_dm->getRepository(User::class)->findAll());
-        $this->setAttributeView("groups", $this->_dm->getRepository(GroupActivities::class)->findAll());
+        $this->setAttributeView("users", $class->getStudents());
+        $this->setAttributeView("groups", $class->getGroups());
+        $db_challenges = $class->getChallenges();
+        $challenges = array();
+        for ($i = 0; $i < count($db_challenges); $i++){
+            $challenges[$i] = $db_challenges[$i]->toArray();
+            for ($j = 0; $j < count($challenges[$i]["questions"]); $j++){
+                $challenges[$i]["questions"][$j]["id"] = $this->_dm->getRepository(Activities::class)->find($challenges[$i]["questions"][$j]["id"]);
+            }
+        }
+        $this->setAttributeView("challenges", $challenges);
         return $this->view->render($response, "View/administratorcontrol/classes/view.twig", $this->getAttributeView());
     }
 
@@ -710,5 +720,100 @@ class AdministratorControlController extends AbstractController
         $this->_dm->flush();
         $router = $this->_ci->get("router");
         return $response->withJson(["message" => "Foram adicionadas {$count} novas habilidades à turma atual.", "callback" => $router->pathFor("administrator.control.classes.view", array("id" => $id))], 200);
+    }
+
+    /**
+     * @param Request $request
+     * @param Response $response
+     * @param array $args
+     * @return mixed
+     * @Get(name="/class/challenges/new/{id}", middleware={"App\Http\Middleware\AdministratorSessionMiddleware"}, alias="administrator.control.classes.challenges.new")
+     */
+    public function newChallengeClassAction(Request $request, Response $response, array $args){
+        $this->setAttributeView("formCreate", true);
+        $this->setAttributeView("class_id", $args["id"]);
+        $this->setAttributeView("questions", $this->_dm->getRepository(Activities::class)->findAll());
+        return $this->view->render($response, "View/administratorcontrol/classes/challenges/form.twig", $this->getAttributeView());
+    }
+
+    /**
+     * @param Request $request
+     * @param Response $response
+     * @return mixed
+     * @Post(name="/class/challenges/save", middleware={"App\Http\Middleware\AdministratorSessionMiddleware"}, alias="administrator.control.classes.challenges.save")
+     */
+    public function saveChallengeClassAction(Request $request, Response $response){
+        $class = $this->_dm->getRepository(Classes::class)->find($request->getParam("class"));
+        $router = $this->_ci->get("router");
+        if (!$class)
+            return $response->withRedirect($router->pathFor("administrator.control.classes"));
+        $title = $request->getParam("title");
+        $opening = date("Y-m-d H:i:s", strtotime($request->getParam("opening")));
+        $validity = date("Y-m-d H:i:s", strtotime($request->getParam("validity")));
+        $type = $request->getParam("type");
+        $questions = $request->getParam("questions");
+
+        if (!$class)
+            return $response->withJson(["message" => "Você precisa estar em uma turma!"], 500);
+
+        $challenge = new Challenge();
+        $challenge->setClass($class);
+        $challenge->setTitle($title);
+        $challenge->setOpening($opening);
+        $challenge->setValidity($validity);
+        $challenge->setType($type);
+        $challenge->setQuestions($questions);
+
+        $this->_dm->persist($challenge);
+        $this->_dm->flush();
+
+        return $response->withJson(["message" => "Desafio adicionado com sucesso!", "callback" => $router->pathFor("administrator.control.classes.view", ["id" => $request->getParam("class")])], 200);
+    }
+
+    /**
+     * @param Request $request
+     * @param Response $response
+     * @param array $args
+     * @return mixed
+     * @Get(name="/class/challenges/remove/{id}", middleware={"App\Http\Middleware\AdministratorSessionMiddleware"}, alias="administrator.control.classes.challenges.remove")
+     */
+    public function removeChallengeClassAction(Request $request, Response $response, array $args){
+        $id = $args["id"];
+        if (!$id)
+            return $response->withRedirect($router->pathFor("administrator.control.classes"));
+        $challenge = $this->_dm->getRepository(Challenge::class)->find($id);
+        $class = $challenge->getClass();
+        if (!$challenge)
+            return $response->withRedirect($router->pathFor("administrator.control.classes.view", ["id" => $class->getId()]));
+        $this->_dm->remove($challenge);
+        $this->_dm->flush();
+        $router = $this->_ci->get("router");
+        return $response->withRedirect($router->pathFor("administrator.control.classes.view", ["id" => $class->getId()]));
+    }
+
+    /**
+     * @param Request $request
+     * @param Response $response
+     * @param array $args
+     * @return mixed
+     * @Get(name="/class/challenges/edit/{id}", middleware={"App\Http\Middleware\AdministratorSessionMiddleware"}, alias="administrator.control.classes.challenges.edit")
+     */
+    public function editChallengeClassAction(Request $request, Response $response, array $args){
+        $id = $args["id"];
+        if (!$id)
+            return $response->withRedirect($router->pathFor("administrator.control.classes"));
+        $db_challenge = $this->_dm->getRepository(Challenge::class)->find($id);
+        $class = $db_challenge->getClass();
+        if (!$db_challenge)
+            return $response->withRedirect($router->pathFor("administrator.control.classes.view", ["id" => $class->getId()]));
+        $challenge = $db_challenge->toArray();
+        for ($j = 0; $j < count($challenge["questions"]); $j++){
+            $challenge["questions"][$j]["id"] = $this->_dm->getRepository(Activities::class)->find($challenge["questions"][$j]["id"]);
+        }
+        $this->setAttributeView("challenge", $challenge);
+        $this->setAttributeView("formUpdate", true);
+        $this->setAttributeView("class_id", $args["id"]);
+        $this->setAttributeView("questions", $this->_dm->getRepository(Activities::class)->findAll());
+        return $this->view->render($response, "View/administratorcontrol/classes/challenges/form.twig", $this->getAttributeView());
     }
 }
