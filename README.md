@@ -10,4 +10,4 @@
 ### Como compilar o typescript e sass respectivamente
 
 	$ npm run build
-	$ gulp
+	$ gulp(Será compilado cada vez que se apertar ctrl-s com o arquivo scss aberto)
