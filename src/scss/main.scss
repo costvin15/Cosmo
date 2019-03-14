@@ -43,3 +43,21 @@ body {
       width: 350px;      
    }
 }
+
+#dropdown-menu-right {
+   color: #C2CDD6;
+}
+
+.dropdown-menu {
+min-width: 70px !important;
+transition: color 1s;
+}
+
+.dropdown-menu a:hover {
+   color: #6DBCF5;
+}
+
+.dropdown-menu #exit:hover {
+   color: #b4131d;
+}
+

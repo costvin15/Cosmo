@@ -5,8 +5,8 @@ interface User {
     avatar: string;
     fullname: string;
     nickname: string;
+    fulltitle: string;
 }
-
 class UpdateUser {
     initialize(){
         (<HTMLButtonElement> document.getElementById("btn-update-profile")).addEventListener("click", () => {
@@ -35,7 +35,8 @@ class UpdateUser {
             id: (<HTMLInputElement> document.getElementById("input-hidden-id")).value,
             avatar: (<HTMLInputElement> document.getElementById("img-frmuser-avatar")).getAttribute("src"),
             fullname: (<HTMLInputElement> document.getElementById("input-frmuser-name")).value,
-            nickname: (<HTMLInputElement> document.getElementById("input-frmuser-nickname")).value
+            nickname: (<HTMLInputElement> document.getElementById("input-frmuser-nickname")).value,
+            fulltitle: (<HTMLInputElement> document.getElementById("input-frmuser-fulltitle")).value
         }
     }
 
@@ -48,6 +49,7 @@ class UpdateUser {
         } else if (formObject.nickname.trim() === ""){
             window.cosmo.dialog.error("Oops", "O campo Nome de Usuário não pode ficar vazio", () => {});
             return false;
+        
         } else if (!this.validateDataUrl(formObject.avatar)){
             window.cosmo.dialog.error("Oops", "O campo Imagem é obrigatório", () => {});
             return false;

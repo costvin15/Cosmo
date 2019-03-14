@@ -67,6 +67,7 @@ class RegisterController extends AbstractController
             $user->setPassword(md5($request->getParam('password')));
             $user->setFullname($request->getParam('fullname'));
             $user->setNickname($request->getParam("nickname"));
+            $user->setFulltitle($request->getParam('fulltitle'));
 
             $this->_dm->persist($user);
             $this->_dm->flush();

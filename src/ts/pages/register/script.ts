@@ -17,7 +17,8 @@ class Register {
             username: (<HTMLInputElement> document.getElementById("frmregister-email")).value,
             fullname: (<HTMLInputElement> document.getElementById("frmregister-fullname")).value,
             password: (<HTMLInputElement> document.getElementById("frmregister-password")).value,
-            nickname: (<HTMLInputElement> document.getElementById("frmregister-nickname")).value
+            nickname: (<HTMLInputElement> document.getElementById("frmregister-nickname")).value,
+            fulltitle: (<HTMLInputElement> document.getElementById("frmregister-fulltitle")).value,
         };
     }
 
@@ -77,6 +78,11 @@ class Register {
 
         if (formObject.password.trim() === ""){
             window.cosmo.dialog.error("Oops", "O campo Senha não pode ficar vazio.", () => {});
+            return false;
+        }
+
+        if (formObject.fulltitle.trim() === ""){
+            window.cosmo.dialog.error("Oops", "O campo de título não pode ficar vazio.", () => {});
             return false;
         }
 

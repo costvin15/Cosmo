@@ -200,12 +200,15 @@ class DashboardController extends AbstractController
             $avatar = $request->getParam("avatar");
             $fullname = $request->getParam("fullname");
             $nickname = $request->getParam("nickname");
+            $fulltitle = $request->getParam("fulltitle");
 
             $attributes = SessionFacilitator::getAttributeSession();
             
             $user = $this->_dm->getRepository(User::class)->find($attributes['id']);
+            
             $user->setFullname($fullname);
             $user->setNickname($nickname);
+            $user->setFulltitle($fulltitle);
             
             $this->_dm->persist($user);
             $this->_dm->flush();

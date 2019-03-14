@@ -1,0 +1,19 @@
+.btn-xl:hover {
+  color: #5ba4fd;
+  background-color: #EBEBEB; }
+
+.my-card {
+  position: absolute;
+  left: 40%;
+  top: -20px;
+  border-radius: 50%;
+  transition: collapse 1s; }
+
+#btn-see-profile, #btn-close-profile, #btn-update-profile {
+  margin-bottom: 5px; }
+
+.myTitle, .myNick, .myEmail, .myName, .myAnswer, .myTime {
+  color: #13315C; }
+
+.card-body .avatar-bg {
+  background-color: gold; }

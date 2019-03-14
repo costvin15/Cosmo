@@ -26,6 +26,7 @@ class User
      */
     private $username;
 
+
     /**
      * @ODM\Field(name="password", type="string")
      */
@@ -45,7 +46,12 @@ class User
      * @ODM\Field(name="blocked", type="hash")
      */
     private $blocked;
-
+    
+    /**
+     * @ODM\Field(name="fulltitle", type="string")
+     */
+    private $fulltitle;
+        
     /**
      * @ODM\Field(name="answered_activities", type="int")
      */
@@ -72,14 +78,16 @@ class User
      * @param $username
      * @param $password
      * @param $fullname
+     * @param $fulltitle
      * @param $administrator
      */
-    public function __construct($id = null, $username = null, $password = null, $fullname = null, $administrator = false)
+    public function __construct($id = null, $username = null, $password = null, $fullname = null, $administrator = false, $fulltitle = null)
     {
         $this->id = $id;
         $this->username = $username;
         $this->password = $password;
         $this->fullname = $fullname;
+        $this->fulltitle = $fulltitle;
         $this->administrator = $administrator;
         $this->historyActivities = [];
         $this->answered_activities = 0;
@@ -105,6 +113,7 @@ class User
             'username' => $this->username,
             'password' => $this->password,
             'fullname' => $this->fullname,
+            'fulltitle' => $this->fulltitle,
             'administrator' => $this->administrator,
             'blocked' => $this->blocked,
             'avatar' => $this->getAvatar(),
@@ -118,6 +127,7 @@ class User
             'nickname' => $this->nickname,
             'username' => $this->username,
             'fullname' => $this->fullname,
+            'fulltitle' => $this->fulltitle,
             'answered_activities' => $this->answered_activities,
         ];
     }
@@ -174,6 +184,24 @@ class User
     {
         $this->username = $username;
     }
+
+
+    /**
+     * @return mixed
+     */
+    public function getFulltitle()
+    {
+        return $this->fulltitle;
+    }
+
+    /**
+     * @param mixed $fulltitle
+     */
+    public function setFulltitle($fulltitle)
+    {
+        $this->fulltitle = $fulltitle;
+    }
+
 
     /**
      * @return mixed

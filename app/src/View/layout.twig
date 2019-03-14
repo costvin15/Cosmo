@@ -16,7 +16,7 @@
     </head>
     
     <body>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-cosmo-color-1">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-cosmo-color-2">
             <a href="{{ path_for("dashboard.index") }}" class="navbar-brand"><b>{{ appname }}</b>Telemídia</a>
 
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-content-collapse" aria-controls="navbar-content-collapse" aria-expanded="false" aria-toggle="Alternar navegação">
@@ -26,22 +26,41 @@
             <div id="navbar-content-collapse" class="collapse navbar-collapse">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
-                        <a href="{{ path_for("dashboard.index") }}" class="nav-link">
+                        <a href="{{ path_for("dashboard.index") }}" class="nav-link text-white">
                             <i class="fas fa-tachometer-alt"></i> Dashboard
                         </a>
                     </li>
 
                     <li class="nav-item">
-                        <a href="{{ path_for("dashboard.history") }}" class="nav-link">
+                        <a href="{{ path_for("dashboard.history") }}" class="nav-link text-white">
                             <i class="fas fa-history"></i> Histórico
                         </a>
                     </li>
-                    
+
                     {# <li class="nav-item">
                         <a href="{{ path_for("dashboard.ranking") }}" class="nav-link">
                             <i class="fas fa-chart-bar"></i> Ranking
                         </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <i class="fas fa-book"></i> Habilidades
+                        </a>
+                    </li>
+                    
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <i class="fas fa-shopping-cart"></i> Loja
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <i class="fa fa-skull"></i> Desafios
+                        </a>
                     </li> #}
+
                 </ul>
 
                  <ul class="navbar-nav ml-auto">
@@ -52,34 +71,43 @@
                             </a>
                         </li>
                     {% endif %}
-
                     <li class="nav-item dropdown">
                         <a id="user-dropdown" href="#" class="nav-link dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <i class="fas fa-user"></i> {{ attributes.nickname }}
+                            <img class="rounded-circle" src="{{ attributes.avatar }}" style = "width: 32px;height: 32px;" > {{ attributes.nickname }}
                         </a>
 
-                        <div class="menu-user-dropdown dropdown-menu dropdown-menu-right px-2 py-2" aria-labelledby="user-dropdown">
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <img class="img-fluid" src="{{ attributes.avatar }}">
-                                </div>
-
-                                <div class="col-md-8 my-2">
-                                    <h5 class="mb-0">{{ attributes.fullname }}</h5>
-                                    <p class="mb-0"><small>{{ attributes.username }}</small></p>
-                                </div>
-                                
-                                <div class="col-md-6 mt-2">
-                                    <a href="{{ path_for("dashboard.profile") }}" class="btn btn-cosmo-color-1 w-100">Configurações</a>
-                                </div>
-
-                                <div class="col-md-6 mt-2">
-                                    <a href="{{ path_for('login.logout') }}" class="btn btn-danger w-100">Sair</a>
-                                </div>
-                            </div>
+                        <div class= "dropdown-menu dropdown-menu-right mt-2" aria-labelledby="user-dropdown">
+                            <a class = "dropdown-item" href = "{{path_for("dashboard.profile")}}"><i class = "fas fa-user"></i> Editar perfil</a>
+                            <a class = "dropdown-item" href = "#"><i class="fas fa-exclamation-triangle"></i> Avisos</a>
+                            <a class = "dropdown-item" href="{{ path_for("dashboard.index") }}"><i class="fas fa-book"></i> Tarefas</a>
+                            <div class="dropdown-divider"></div>
+                            <a id = "exit" class = "dropdown-item" href = "{{path_for('login.logout')}}"><i class="fas fa-power-off"></i> Sair</a>
                         </div>
                     </li>
                 </ul>
+
+                {# <div class = "myCoins"> 
+                    <ul class = "navbar-nav ml-2">
+                        <li class = "nav-item"> 1250 <i class = "fas fa-coins red" aria-hidden="true"></i></li>
+                    </ul>
+                </div>
+
+                <div class = "myXp"> 
+                    <ul class = "navbar-nav ml-2">
+                        <li class = "nav-item dropdown">
+                            <div class="progress text-right" style="height:30px">
+                                <div class="progress-bar" style="width:100%"><i class = "fas fa-brain"></i></div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class = "myRank">
+                    <ul class = "navbar-nav ml-2">
+                        <li class = "nav-item">Sua posição: 5º <i class = "fas fa-award"></i></li>
+                    </ul>
+                </div> #}
+
             </div>
         </nav>
 
@@ -95,7 +123,7 @@
             {% block content %}{% endblock %}
         </div>
 
-        <footer class="footer bg-cosmo-color-2 py-3">
+        <footer class="footer bg-cosmo-color-2 py-2">
             <div class="container">
                 <div class="row">
                     <div class="col-6 text-left">
