@@ -60,7 +60,7 @@ class User
     /**
      * @ODM\Field(name="interface", type="string")
      */
-    private $interface;
+    private $interface; 
 
     /**
      * @ODM\ReferenceMany(targetDocument="HistoryActivities", mappedBy="user")

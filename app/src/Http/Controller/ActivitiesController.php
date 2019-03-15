@@ -99,7 +99,6 @@ class ActivitiesController extends AbstractController
             $validateInstanced->saveHistory($params);
             return $response->withJson([ 'return' => true,  'message' => 'A resposta está correta!']);
         }
-
         return $response->withJson([ 'return' => false,  'message' => 'A resposta está errada!', 'id' => $idActivity ]);
     }
 

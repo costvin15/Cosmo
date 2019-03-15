@@ -1,6 +1,10 @@
 {% extends "/View/layout.twig" %}
 {% set page_title = "Seu Perfil" %}
 
+{% block links %}
+    <link href="https://fonts.googleapis.com/css?family=Lilita+One" rel="stylesheet">
+{% endblock %}
+
 {% block scripts %}
     <script src="{{ base_url() }}/dist/js/profile.js"></script>
 {% endblock %}
@@ -10,7 +14,7 @@
 {% endblock %}
 
 {% block content %}   
-    <div class="row mb-4">
+    <div class="row mb-5">
         <div class="col-md-3 mt-4">
             <div class="card primary-card">
                 <div class="card-header rounded">
@@ -18,9 +22,21 @@
                         Sua foto e dados <i class = "fas fa-file-image"></i>
                     </h5>
                     {% if attributes.avatar %}
-                        <img id="img-frmuser-avatar" class="card-img-top img-fluid d-block rounded-circle mt-2" src="{{ attributes.avatar }}">
+                        <div class = "myImage">
+                            <input id="input-frmuser-fileupload" type="file" class="d-none">
+                            <a id="btn-alter-image" class = "text-center" style = "border: none;">
+                                <img id="img-frmuser-avatar" class="card-img-top img-fluid rounded-circle mt-2 text-center" src="{{ attributes.avatar }}">
+                                <h2 class = "overlay" style = "vertical-align">Trocar Foto</h2>
+                            </a>
+                        </div>
                     {% else %}
-                        <img class="card-img-top mt-2" src="{{base_url()}}/storage/photo-save/default.png">
+                        <div class = "myImage">
+                            <input id="input-frmuser-fileupload" type="file" class="d-none">
+                            <a id="btn-alter-image" class = "text-center" style = "border: none;">
+                                <img id="img-frmuser-avatar" class="card-img-top img-fluid rounded-circle mt-2 text-center" src="{{base_url()}}/storage/photo-save/default.png">
+                                <p class = "overlay">Trocar Foto</p>
+                            </a>
+                        </div>
                     {% endif %}
                 </div>
                 <div class = "card-body text-center">
@@ -67,7 +83,16 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text bg-light"><i class="fas fa-book myAnswer"></i></span>
                                 </div>
-                                <input  id = "frmuser-answered_activities" disabled type="text" class="form-control" value="{{attributes.answered_activities}}"></input>
+                                <input  disabled type="text" class="form-control" value="27 Questões"></input>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text bg-light"><i class="fas fa-coins myAnswer"></i></span>
+                                </div>
+                                <input disabled type="text" class="form-control" value="200 moedas"></input>
                             </div>
                         </div>
 
@@ -76,22 +101,16 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text bg-light"><i class="fas fa-clock myTime"></i></span>
                                 </div>
-                                <input  id = "frmuser-time-spent" disabled type="text" class="form-control" value="20h"></input>
+                                <input  id = "frmuser-time-spent" disabled type="text" class="form-control" value="20 horas"></input>
                             </div>
                         </div>
 
                     </form>
                 </div>
-                <div class="card-footer text-center">
-                    <input id="input-frmuser-fileupload" type="file" class="d-none">
-                    <button id="btn-alter-image" class="btn btn-cosmo-color-2">
-                        <i class = "fas fa-images"></i> Alterar imagem
-                    </button>
-                </div>
             </div>
         </div>
 
-        <div id = "user-form" class="col-md-6 mt-4">
+        <div id = "user-form" class="col-md-5 mt-4">
             <div class="card">
                 <div class="card-header">
                     <h5 class="card-title mb-0 text-center">
@@ -132,6 +151,7 @@
                                     <option value = "Infante">Infante</option>
                                     <option value = "Prodígio">Prodígio</option>
                                     <option value = "Duro na queda">Duro na queda</option>
+                                    <option value = "Paladino Atribuidor">Paladino Atribuidor</option>
                                 </select>
                             </div>
                         </div>
@@ -160,75 +180,47 @@
 
                 <div class="card-footer text-center">
                     <input id="input-hidden-id" type="hidden" value="{{ attributes.id }}">
-                    {# <button id="btn-see-profile" class = "btn btn-cosmo-color-3 mr-1"><i class="fas fa-vr-cardboard"></i> Ver como visitante</button> #}
-                    <button id="btn-close-profile" class="btn btn-cosmo-color-6 mr-1"><i class="fas fa-exclamation"></i> Encerrar conta</button>
+                    <a href = "profile/visit" style = "text-decoration: none"><button id="btn-see-profile" href = "/../profile-visit/index.twig" class = "btn btn-cosmo-color-2 mr-1"><i class="fas fa-vr-cardboard"></i> Ver como visitante</button></a>
+                    {# <button id="btn-close-profile" class="btn btn-cosmo-color-6 mr-1"><i class="fas fa-exclamation"></i> Encerrar conta</button> #}
                     <button id="btn-update-profile" type="submit" class="btn btn-cosmo-color-2"><i class="fas fa-save"></i> Salvar</button>
+                    
                 </div>
             </div>
         </div>
+
         <div class = "col-md-3 mt-4">
-            <div class="card">
+            <div class="card myCard">
                 <div class="card-header">
                     <h5 class="card-title mb-0 text-center">
-                        Seus feitos <i class = "fas fa-atom"></i>
+                        Seus feitos <i class = "fas fa-bolt"></i>
                     </h5>
                 </div>
             
                 <div class = "btn-group mt-0">
-                    <button type="button" class="btn btn-xl" data-toggle="collapse" data-target="#cd-1" ><i class="fas fa-bolt"></i></button>
                     <button type="button" class="btn btn-xl" data-toggle="collapse" data-target="#cd-2" ><i class="fas fa-trophy"></i></button>
                     <button type="button" class="btn btn-xl" data-toggle="collapse" data-target="#cd-3" ><i class="fas fa-crown"></i></button>
-                    <button type="button" class="btn btn-xl" data-toggle="collapse" data-target="#cd-4" ><i class="fas fa-star"></i></button>
-                    <button type="button" class="btn btn-xl" data-toggle="collapse" data-target="#cd-5" ><i class="fas fa-medal"></i></button>
-                </div>
-
-                <div id = "cd-1" class = "collapse">
-                    <div class="card border-cosmo-color-3 mx-sm-1 p-3 mt-4">
-                            <div class="card border-cosmo-color-3 shadow text-cosmo-color-3 p-3 my-card" ><span class="fas fa-bolt" aria-hidden="true"></span></div>
-                            <div class="text-cosmo-color-3 text-center mt-3"><h4>Marcos</h4></div>
-                            <div class="text-cosmo-color-3 text-center mt-2"><h6></h6></div>
-                            <div class="text-cosmo-color-3 text-center mt-2"><h6></h6></div>
-                            <div class="text-cosmo-color-3 text-center mt-2"><h6></h6></div>
-                    </div>
                 </div>
 
                 <div id = "cd-2" class = "collapse">
-                    <div class="card border-cosmo-color-3 mx-sm-1 p-3 mt-4">
-                        <div class="card border-cosmo-color-3 shadow text-cosmo-color-3 p-3 my-card"><span class="fas fa-trophy" aria-hidden="true"></span></div>
-                        <div class="text-cosmo-color-3 text-center mt-3"><h4>Troféus</h4></div>
-                        <div class="text-cosmo-color-3 text-center mt-2"><h6>*IF's Ouro*</h6></div>
-                        <div class="text-cosmo-color-3 text-center mt-2"><h6>*While's Bronze*</h6></div>
-                        <div class="text-cosmo-color-3 text-center mt-2"><h6>***</h6></div>
+                    <div class="card border-cosmo-color-1 mx-sm-1 p-3 mt-4">
+                        <div class="card border-cosmo-color-1 shadow text-cosmo-color-1 p-3 my-card"><span class="fas fa-trophy" aria-hidden="true"></span></div>
+                        <div class="text-cosmo-color-1 text-center mt-3"><h4>Troféus</h4></div>
+                        <div class="text-cosmo-color-1 text-center mt-2"><h6>*IF's Ouro*</h6></div>
+                        <div class="text-cosmo-color-1 text-center mt-2"><h6>*While's Bronze*</h6></div>
+                        <div class="text-cosmo-color-1 text-center mt-2"><h6>***</h6></div>
                     </div>
                 </div>
 
                 <div id = "cd-3" class = "collapse">
-                    <div class="card border-cosmo-color-3 mx-sm-1 p-3 mt-4">
-                        <div class="card border-cosmo-color-3 shadow text-cosmo-color-3 p-3 my-card"><span class="fas fa-crown" aria-hidden="true"></span></div>
-                        <div class="text-cosmo-color-3 text-center mt-3"><h4>Títulos</h4></div>
-                        <div class="text-cosmo-color-3 text-center mt-2"><h6>*Supremo Atribuidor*</h6></div>
-                        <div class="text-cosmo-color-3 text-center mt-2"><h6>*Repetidor Sagaz*</h6></div>
-                        <div class="text-cosmo-color-3 text-center mt-2"><h6>***</h6></div>
+                    <div class="card border-cosmo-color-1 mx-sm-1 p-3 mt-4">
+                        <div class="card border-cosmo-color-1 shadow text-cosmo-color-1 p-3 my-card"><span class="fas fa-crown" aria-hidden="true"></span></div>
+                        <div class="text-cosmo-color-1 text-center mt-3"><h4>Títulos</h4></div>
+                        <div class="text-cosmo-color-1 text-center mt-2"><h6>*Supremo Atribuidor*</h6></div>
+                        <div class="text-cosmo-color-1 text-center mt-2"><h6>*Repetidor Sagaz*</h6></div>
+                        <div class="text-cosmo-color-1 text-center mt-2"><h6>***</h6></div>
                     </div>
                 </div>
 
-                <div id = "cd-4" class = "collapse">
-                    <div class="card border-cosmo-color-3 mx-sm-1 p-3 mt-4">
-                        <div class="card border-cosmo-color-3 shadow text-cosmo-color-3 p-3 my-card"><span class="fas fa-star" aria-hidden="true"></span></div>
-                        <div class="text-cosmo-color-3 text-center mt-3"><h4>*Alguma coisa*</h4></div>
-                        <div class="text-cosmo-color-3 text-center mt-2"><h6>*IF's Ouro*</h6></div>
-                        <div class="text-cosmo-color-3 text-center mt-2"><h6>*While's Bronze*</h6></div>
-                        <div class="text-cosmo-color-3 text-center mt-2"><h6>***</h6></div>
-                    </div>
-                </div>
-
-                <div id = "cd-5" class = "collapse">
-                    <div class="card border-cosmo-color-3 mx-sm-1 p-3 mt-4">
-                        <div class="card border-cosmo-color-3 shadow text-cosmo-color-3 p-3 my-card"><span class="fas fa-medal" aria-hidden="true"></span></div>
-                        <div class="text-cosmo-color-3 text-center mt-3"><h4>Medalhas</h4></div>
-                        <div class="text-cosmo-color-3 text-center mt-2"><h6>*SEM REGISTRO*</h6></div>
-                    </div>
-                </div>
             </div>
         </div>
         

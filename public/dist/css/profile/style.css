@@ -1,5 +1,5 @@
 .btn-xl:hover {
-  color: #5ba4fd;
+  color: #1880ff;
   background-color: #EBEBEB; }
 
 .my-card {
@@ -13,7 +13,31 @@
   margin-bottom: 5px; }
 
 .myTitle, .myNick, .myEmail, .myName, .myAnswer, .myTime {
-  color: #13315C; }
+  color: #8b1717; }
 
 .card-body .avatar-bg {
   background-color: gold; }
+
+.overlay {
+  opacity: 0;
+  top: -220px;
+  font-size: 20pt;
+  color: white;
+  margin-bottom: -20px; }
+
+.myImage p {
+  font-family: 'Lilita One', cursive;
+  font-weight: bold; }
+
+.myImage img {
+  width: 250px;
+  height: 250px; }
+
+.myImage a:hover {
+  background-color: rgba(0, 0, 0, 0.2); }
+  .myImage a:hover .overlay {
+    position: relative;
+    opacity: 1; }
+  .myImage a:hover img {
+    -webkit-filter: blur(2px);
+    filter: blur(2px); }
