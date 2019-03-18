@@ -60,7 +60,6 @@ class CreateUser extends AbstractUser {
             nickname: (<HTMLInputElement> document.getElementById("input-frmuser-nickname")).value,
             username: (<HTMLInputElement> document.getElementById("input-frmuser-email")).value,
             password: (<HTMLInputElement> document.getElementById("input-frmuser-password")).value,
-            idTurma: (<HTMLInputElement> document.getElementById("input-frmuser-idTurma")).value,
             admin: (<HTMLInputElement> document.getElementById("input-frmuser-administrator")).checked ? 1 : 0
         };
     }
@@ -87,11 +86,6 @@ class CreateUser extends AbstractUser {
             window.cosmo.dialog.error("Oops", "O campo Senha não pode ficar vazio.", () => {});
             return false;
         }
-        if (formObject.idTurma.trim() === "" && !formObject.admin){
-            window.cosmo.dialog.error("Oops", "O campo Código Turma não pode ficar vazio.", () => {});
-            return false;
-        }    
-
         return true;
     }
 
@@ -158,7 +152,6 @@ class UpdateUser extends AbstractUser {
             fullname: (<HTMLInputElement> document.getElementById("input-frmuser-name")).value,
             nickname: (<HTMLInputElement> document.getElementById("input-frmuser-nickname")).value,
             username: (<HTMLInputElement> document.getElementById("input-frmuser-email")).value,
-            idTurma: (<HTMLInputElement> document.getElementById("input-frmuser-idTurma")).value,
             admin: (<HTMLInputElement> document.getElementById("input-frmuser-administrator")).checked ? 1 : 0,
             block_status: (<HTMLInputElement> document.getElementById("input-frmuser-block")).checked ? 1 : 0,
             block_reason: (<HTMLInputElement> document.getElementById("input-frmuser-reason")).value
@@ -188,10 +181,6 @@ class UpdateUser extends AbstractUser {
                 window.cosmo.dialog.error("Oops", "Você está bloqueando este usuário, por isso é necessário preencher o campo Razão do Bloqueio", () => {});
                 return false;
             }
-        if (formObject.idTurma.trim() === "" && !formObject.admin){
-            window.cosmo.dialog.error("Oops", "O campo Código Turma não pode ficar vazio.", () => {});
-            return false;
-        }    
         return true;
     }
 

@@ -5,7 +5,6 @@ interface User {
     avatar: string;
     fullname: string;
     nickname: string;
-    idTurma: string;
 }
 
 class UpdateUser {
@@ -37,7 +36,6 @@ class UpdateUser {
             avatar: (<HTMLInputElement> document.getElementById("img-frmuser-avatar")).getAttribute("src"),
             fullname: (<HTMLInputElement> document.getElementById("input-frmuser-name")).value,
             nickname: (<HTMLInputElement> document.getElementById("input-frmuser-nickname")).value,
-            idTurma: (<HTMLInputElement> document.getElementById("input-frmuser-idTurma")).value
         }
     }
 
@@ -52,10 +50,6 @@ class UpdateUser {
             return false;
         } else if (!this.validateDataUrl(formObject.avatar)){
             window.cosmo.dialog.error("Oops", "O campo Imagem é obrigatório", () => {});
-            return false;
-        }
-        if (formObject.idTurma.trim() === ""){
-            window.cosmo.dialog.error("Oops", "O campo Código Turma não pode ficar vazio.", () => {});
             return false;
         }
 

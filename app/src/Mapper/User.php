@@ -98,16 +98,14 @@ class User
      * @param $password
      * @param $fullname
      * @param $administrator
-     * @param $idTurma
      */
-    public function __construct($id = null, $username = null, $password = null, $fullname = null, $administrator = false, $idTurma = null)
+    public function __construct($id = null, $username = null, $password = null, $fullname = null, $administrator = false)
     {
         $this->id = $id;
         $this->username = $username;
         $this->password = $password;
         $this->fullname = $fullname;
         $this->administrator = $administrator;
-        $this->idTurma = $idTurma;
         $this->historyActivities = [];
         $this->answered_activities = 0;
         $this->xp = 0;
@@ -135,7 +133,6 @@ class User
             'password' => $this->password,
             'fullname' => $this->fullname,
             'administrator' => $this->administrator,
-            'idTurma' => $this->idTurma,
             'blocked' => $this->blocked,
             'avatar' => $this->getAvatar(),
             'answered_activities' => $this->answered_activities,
@@ -149,7 +146,6 @@ class User
             'nickname' => $this->nickname,
             'username' => $this->username,
             'fullname' => $this->fullname,
-            'idTurma' => $this->idTurma,
             'answered_activities' => $this->answered_activities,
             'moedas' => $this->moedas,
             'xp' => $this->xp,

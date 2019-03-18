@@ -48,8 +48,7 @@ abstract class AbstractActivity {
             output_description: (<HTMLInputElement> document.getElementById("input-frmactivity-description-output")).value,
             input_example: (<HTMLTextAreaElement> document.getElementById("input-frmactivity-example-input")).value,
             output_example: (<HTMLTextAreaElement> document.getElementById("input-frmactivity-example-output")).value,
-            casos_testes: casos_testes
-            output_example: (<HTMLTextAreaElement> document.getElementById("input-frmactivity-example-output")).value,
+            casos_testes: casos_testes,
             moedas: (<HTMLInputElement> document.getElementById("input-frmactivity-moedas")).value,
             cust: (<HTMLInputElement> document.getElementById("input-frmactivity-cust")).value,
             xp: (<HTMLInputElement> document.getElementById("input-frmactivity-xp")).value,
