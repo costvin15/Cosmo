@@ -40,11 +40,6 @@ class Classes {
      */
     private $groups;
 
-    /**
-     * @ODM\ReferenceMany(targetDocument="Challenge", mappedBy="class")
-     */
-    private $challenges;
-
     public function toArray(){
         return array(
             "id" => $this->id,
@@ -52,8 +47,7 @@ class Classes {
             "code" => $this->code,
             "administrator" => $this->administrator->toArrayMinified(),
             "students" => $this->students,
-            "groups" => $this->groups,
-            "challenges" => $this->challenges
+            "groups" => $this->groups
         );
     }
 
@@ -91,9 +85,5 @@ class Classes {
 
     public function getGroups(){
         return $this->groups;
-    }
-
-    public function getChallenges(){
-        return $this->challenges;
     }
 }

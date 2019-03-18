@@ -39,6 +39,11 @@ class GroupActivities {
     private $class;
 
     /**
+     * @ODM\ReferenceMany(targetDocument="Challenge", mappedBy="skill")
+     */
+    private $challenges;
+
+    /**
      * GroupActivities constructor.
      */
     public function __construct()
@@ -145,5 +150,9 @@ class GroupActivities {
      */
     public function setClass($class){
         $this->class = $class;
+    }
+
+    public function getChallenges(){
+        return $this->challenges;
     }
 }

@@ -458,7 +458,7 @@ class AdministratorControlController extends AbstractController
      * @param Request $request
      * @param Response $response
      * @return mixed
-     * @Get(name="/groupactivity", middleware={"App\Http\Middleware\AdministratorSessionMiddleware"}, alias="administrator.control.groupactivities")
+     * @Get(name="/skills", middleware={"App\Http\Middleware\AdministratorSessionMiddleware"}, alias="administrator.control.groupactivities")
      * @Log(type="INFO", persist={"verb", "attributes", "session"}, message="Acessou o página adminstrativa de grupos de atividades.")
      */
     public function groupActivitiesAction(Request $request, Response $response){
@@ -470,7 +470,7 @@ class AdministratorControlController extends AbstractController
      * @param Request $request
      * @param Response $response
      * @return mixed
-     * @Get(name="/groupactivity/create", middleware={"App\Http\Middleware\AdministratorSessionMiddleware"}, alias="administrator.control.groupactivities.create")
+     * @Get(name="/skills/create", middleware={"App\Http\Middleware\AdministratorSessionMiddleware"}, alias="administrator.control.groupactivities.create")
      * @Log(type="INFO", persist={"verb", "attributes", "session"}, message="Acessou o página adminstrativa de criação de grupo de atividade.")
      */
     public function newGroupActivityAction(Request $request, Response $response){
@@ -483,7 +483,7 @@ class AdministratorControlController extends AbstractController
      * @param Response $response
      * @param array $args
      * @return mixed
-     * @Get(name="/groupactivity/modify/{id}", middleware={"App\Http\Middleware\AdministratorSessionMiddleware"}, alias="administrator.control.groupactivities.modify")
+     * @Get(name="/skills/modify/{id}", middleware={"App\Http\Middleware\AdministratorSessionMiddleware"}, alias="administrator.control.groupactivities.modify")
      * @Log(type="INFO", persist={"verb", "attributes", "session"}, message="Acessou o página adminstrativa de modificação de grupo de atividade.")
      */
     public function modifyGroupActivityAction(Request $request, Response $response, array $args){
@@ -505,7 +505,7 @@ class AdministratorControlController extends AbstractController
      * @param Request $request
      * @param Response $response
      * @return mixed
-     * @Post(name="/groupactivity/save", alias="administrator.control.groupactivities.save")
+     * @Post(name="/skills/save", alias="administrator.control.groupactivities.save")
      * @Log(type="INFO", persist={"verb", "attributes", "session"}, message="O administrador salvou um grupo de atividade.")
      */
     public function saveGroupActivityAction(Request $request, Response $response){
@@ -545,7 +545,7 @@ class AdministratorControlController extends AbstractController
      * @param Response $response
      * @param array $args
      * @return mixed
-     * @Get(name="/groupactivity/remove/{id}", middleware={"App\Http\Middleware\AdministratorSessionMiddleware"}, alias="administrator.control.groupactivities.remove")
+     * @Get(name="/skills/remove/{id}", middleware={"App\Http\Middleware\AdministratorSessionMiddleware"}, alias="administrator.control.groupactivities.remove")
      * @Log(type="INFO", persist={"verb", "attributes", "session"}, message="O administrador removeu um grupo de atividade.")
      */
     public function removeGroupActivityAction(Request $request, Response $response, array $args){
@@ -564,7 +564,7 @@ class AdministratorControlController extends AbstractController
     /**
      * @param Request $request
      * @param Response $response
-     * @Get(name="/groupactivity/{id}", middleware={"App\Http\Middleware\AdministratorSessionMiddleware"}, alias="administrator.control.groupactivities.view")
+     * @Get(name="/skills/{id}", middleware={"App\Http\Middleware\AdministratorSessionMiddleware"}, alias="administrator.control.groupactivities.view")
      * @Log(type="INFO", persist={"verb", "attributes", "session"}, message="O administrador removeu um grupo de atividade.")
      */
     public function viewGroupActivityAction(Request $request, Response $response, array $args){
@@ -573,6 +573,20 @@ class AdministratorControlController extends AbstractController
             return $response->withJson(["Grupo não encontrado."], 500);
         $this->setAttributeView("group", $group->toArray());
         return $this->view->render($response, "View/administratorcontrol/groupactivities/view.twig", $this->getAttributeView());
+    }
+
+    /**
+     * @param Request $request
+     * @param Response $response
+     * @param array $args
+     * @return mixed
+     * @Get(name="/skills/challenges/new/{id}", middleware={"App\Http\Middleware\AdministratorSessionMiddleware"}, alias="administrator.control.skills.challenges.new")
+     */
+    public function newChallengeSkillAction(Request $request, Response $response, array $args){
+        $this->setAttributeView("formCreate", true);
+        $this->setAttributeView("skill_id", $args["id"]);
+        $this->setAttributeView("questions", $this->_dm->getRepository(Activities::class)->findAll());
+        return $this->view->render($response, "View/administratorcontrol/groupactivities/challenges/form.twig", $this->getAttributeView());
     }
 
     /**
@@ -616,16 +630,16 @@ class AdministratorControlController extends AbstractController
             return $response->withJson(["Desculpe-nos, mas você não possui os privilégios necessários para isto."], 500);
         $this->setAttributeView("class", $class->toArray());
         $this->setAttributeView("users", $class->getStudents());
-        $this->setAttributeView("groups", $class->getGroups());
-        $db_challenges = $class->getChallenges();
-        $challenges = array();
-        for ($i = 0; $i < count($db_challenges); $i++){
-            $challenges[$i] = $db_challenges[$i]->toArray();
-            for ($j = 0; $j < count($challenges[$i]["questions"]); $j++){
-                $challenges[$i]["questions"][$j]["id"] = $this->_dm->getRepository(Activities::class)->find($challenges[$i]["questions"][$j]["id"]);
-            }
-        }
-        $this->setAttributeView("challenges", $challenges);
+        $this->setAttributeView("groups", $this->_dm->getRepository(GroupActivities::class)->findAll());
+        // $db_challenges = $class->getChallenges();
+        // $challenges = array();
+        // for ($i = 0; $i < count($db_challenges); $i++){
+        //     $challenges[$i] = $db_challenges[$i]->toArray();
+        //     for ($j = 0; $j < count($challenges[$i]["questions"]); $j++){
+        //         $challenges[$i]["questions"][$j]["id"] = $this->_dm->getRepository(Activities::class)->find($challenges[$i]["questions"][$j]["id"]);
+        //     }
+        // }
+        // $this->setAttributeView("challenges", $challenges);
         return $this->view->render($response, "View/administratorcontrol/classes/view.twig", $this->getAttributeView());
     }
 
@@ -720,20 +734,6 @@ class AdministratorControlController extends AbstractController
         $this->_dm->flush();
         $router = $this->_ci->get("router");
         return $response->withJson(["message" => "Foram adicionadas {$count} novas habilidades à turma atual.", "callback" => $router->pathFor("administrator.control.classes.view", array("id" => $id))], 200);
-    }
-
-    /**
-     * @param Request $request
-     * @param Response $response
-     * @param array $args
-     * @return mixed
-     * @Get(name="/class/challenges/new/{id}", middleware={"App\Http\Middleware\AdministratorSessionMiddleware"}, alias="administrator.control.classes.challenges.new")
-     */
-    public function newChallengeClassAction(Request $request, Response $response, array $args){
-        $this->setAttributeView("formCreate", true);
-        $this->setAttributeView("class_id", $args["id"]);
-        $this->setAttributeView("questions", $this->_dm->getRepository(Activities::class)->findAll());
-        return $this->view->render($response, "View/administratorcontrol/classes/challenges/form.twig", $this->getAttributeView());
     }
 
     /**

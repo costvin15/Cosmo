@@ -14,11 +14,6 @@ class Challenge {
     private $id;
 
     /**
-     * @ODM\ReferenceOne(targetDocument="Classes", inversedBy="challenges")
-     */
-    private $class;
-
-    /**
      * @ODM\Field(name="title", type="string")
      */
     private $title;
@@ -48,6 +43,11 @@ class Challenge {
      */
     private $challengeHistory;
 
+    /**
+     * @ODM\ReferenceOne(targetDocument="GroupActivities", inversedBy="challenges")
+     */
+    private $skill;
+
     public function toArray(){
         return array(
             "id" => $this->id,
@@ -55,7 +55,8 @@ class Challenge {
             "opening" => $this->opening,
             "validity" => $this->validity,
             "type" => $this->type,
-            "questions" => $this->questions
+            "questions" => $this->questions,
+            "skill" => $this->skill
         );
     }
 
@@ -95,19 +96,19 @@ class Challenge {
         $this->questions = $questions;
     }
 
-    public function getClass(){
-        return $this->class;
-    }
-
-    public function setClass($class){
-        $this->class = $class;
-    }
-
     public function getType(){
         return $this->type;
     }
 
     public function setType($type){
         $this->type = $type;
+    }
+
+    public function getSkill(){
+        return $this->skill;
+    }
+
+    public function setSkill($skill){
+        $this->skill = $skill;
     }
 }

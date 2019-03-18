@@ -67,24 +67,23 @@ class DashboardController extends AbstractController
             }
             $this->setAttributeView("groups", $groups);
 
-            $db_challenges = $user->getClass()->getChallenges();
-            $challenges = array();
-            for ($i = 0, $k = 0; $i < count($db_challenges); $i++){
-                $search = $this->_dm->getRepository(ChallengeHistory::class)->findBy(array(
-                    "user" => $user,
-                    "challenge" => $db_challenges[$i]
-                ));
-                if (count($search) == 0){
-                    $challenges[$k] = $db_challenges[$i]->toArray();
-                    for ($j = 0; $j < count($challenges[$k]["questions"]); $j++){
-                        $challenges[$k]["questions"][$j]["id"] = $this->_dm->getRepository(Activities::class)->find($challenges[$k]["questions"][$j]["id"]);
-                    }
-                    $k++;
-                }
-            }
-            $this->setAttributeView("challenges", $challenges);
-        } else {
-            $this->setAttributeView("hasNoClass", true);
+            // $db_challenges = $user->getClass()->getChallenges();
+            // $challenges = array();
+            // for ($i = 0, $k = 0; $i < count($db_challenges); $i++){
+            //     $search = $this->_dm->getRepository(ChallengeHistory::class)->findBy(array(
+            //         "user" => $user,
+            //         "challenge" => $db_challenges[$i]
+            //     ));
+            //     if (count($search) == 0){
+            //         $challenges[$k] = $db_challenges[$i]->toArray();
+            //         for ($j = 0; $j < count($challenges[$k]["questions"]); $j++){
+            //             $challenges[$k]["questions"][$j]["id"] = $this->_dm->getRepository(Activities::class)->find($challenges[$k]["questions"][$j]["id"]);
+            //         }
+            //         $k++;
+            //     }
+            // }
+            // $this->setAttributeView("challenges", $challenges);
+            $this->setAttributeView("class", $user->getClass());
         }
         
         // $questionNumber = 4;
@@ -329,5 +328,17 @@ class DashboardController extends AbstractController
             $usuarios[$i] = $usuarios[$i] ->toRankingArray();
 
         return $response->withJson($usuarios, 200);
+    }
+
+    /**
+     * @param Request $request
+     * @param Response $response
+     * @param array $args
+     * @Get(name="/skill/{id}", middleware={"App\Http\Middleware\SessionMiddleware"}, alias="dashboard.skill")
+     */
+    public function skillAction(Request $request, Response $response, array $args){
+        $id = $args["id"];
+        $this->setAttributeView("skill", $this->_dm->getRepository(GroupActivities::class)->find($id));
+        return $this->view->render($response, "View/dashboard/skill/index.twig", $this->getAttributeView());
     }
 }

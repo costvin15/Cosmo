@@ -20,41 +20,96 @@
         </div>
         
         <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">
-                    <h5 class="card-title mb-0">Atividades</h5>
-                </div>
+            <div class="row">
+                <div class="col-12 my-2">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5 class="card-title mb-0">Atividades</h5>
+                        </div>
 
-                <div class="card-body">
-                    <div class="row">
-                        {% for activity in group.activities %}
-                            <div class="col-6">
-                                <div class="card">
-                                    <div class="card-header">
-                                        <h5 class="card-title mb-0">{{ activity.getTitle }}</h5>
-                                    </div>
-
-                                    <div class="card-body">
-                                        <p class="card-subtitle mb-2 text-muted">{{ activity.getQuestion }}</p>
-
-                                        {% for tag in activity.getGroup.getTags %}
-                                            <h5 class="mb-0"><span class="badge badge-cosmo-color-4">{{ tag }}</span></h5>
-                                        {% endfor %}
-                                    </div>
-
-                                    <div class="card-header">
-                                        <div class="row">
-                                            <div class="col-6">
-                                                <a href="{{ path_for("administrator.control.activities.modify", {id: activity.getId}) }}" class="btn btn-cosmo-color-1 w-100">Editar</a>
+                        <div class="card-body">
+                            <div class="row">
+                                {% for activity in group.activities %}
+                                    <div class="col-6">
+                                        <div class="card">
+                                            <div class="card-header">
+                                                <h5 class="card-title mb-0">{{ activity.getTitle }}</h5>
                                             </div>
-                                            <div class="col-6">
-                                                <a href="{{ path_for("administrator.control.activities.remove", {id: activity.getId}) }}" class="btn btn-danger w-100">Remover</a>
+
+                                            <div class="card-body">
+                                                <p class="card-subtitle mb-2 text-muted">{{ activity.getQuestion }}</p>
+
+                                                {% for tag in activity.getGroup.getTags %}
+                                                    <h5 class="mb-0"><span class="badge badge-cosmo-color-4">{{ tag }}</span></h5>
+                                                {% endfor %}
+                                            </div>
+
+                                            <div class="card-header">
+                                                <div class="row">
+                                                    <div class="col-6">
+                                                        <a href="{{ path_for("administrator.control.activities.modify", {id: activity.getId}) }}" class="btn btn-cosmo-color-1 w-100">Editar</a>
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <a href="{{ path_for("administrator.control.activities.remove", {id: activity.getId}) }}" class="btn btn-danger w-100">Remover</a>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                {% endfor %}
                             </div>
-                        {% endfor %}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="d-none col-12 my-2">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5 class="card-title mb-0">Desafios</h5>
+                        </div>
+
+                        <div class="card-body">
+                            <div class="row">
+                                {% for challenge in challenges %}
+                                    <div class="col-md-6">
+                                        <div class="card">
+                                            <div class="card-header">
+                                                <h5 class="card-title mb-0">{{ challenge.title }}</h5>
+                                                <h5 class="mb-0"><span class="badge badge-cosmo-color-4">{% if challenge.type == "common" %}Desafio comum{% elseif challenge.type == "clock" %}Desafio contra-o-relógio{% endif %}</span></h5>
+                                            </div>
+
+                                            <div class="card-body">
+                                                {% for question in challenge.questions %}
+                                                    <div class="card my-1">
+                                                        <div class="card-body">
+                                                            <p class="text-muted mb-0">Questão: {{ question.id.title }}</p>
+                                                            <p class="text-muted mb-0">Descrição: {{ question.id.question }}</p>
+                                                            <p class="mb-0">Nível: {% if question.level == "0" %}Fácil{% elseif question.level == "1" %}Médio{% elseif question.level == "2" %}Difícil{% endif %}</p>
+                                                        </div>
+                                                    </div>
+                                                {% endfor %}
+                                            </div>
+
+                                            <div class="card-footer">
+                                                <div class="row">
+                                                    <div class="col-6">
+                                                        <a href="{{ path_for("administrator.control.classes.challenges.edit", {id: challenge.id}) }}" class="btn btn-cosmo-color-1 w-100">Editar</a>
+                                                    </div>
+
+                                                    <div class="col-6">
+                                                        <a href="{{ path_for("administrator.control.classes.challenges.remove", {id: challenge.id}) }}" class="btn btn-danger w-100">Remover</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+
+                        <div class="card-footer">
+                            <a href="{{ path_for("administrator.control.skills.challenges.new", {id: group.id}) }}" class="btn btn-cosmo-color-1 float-right">Adicionar</a>
+                        </div>
                     </div>
                 </div>
             </div>

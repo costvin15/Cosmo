@@ -1,4 +1,112 @@
 {% extends "View/layout.twig" %}
+
+{% if class is defined %}
+    {% set page_title = class.getTitle %}
+{% else %}
+    {% set page_title = "Dashboard" %}
+{% endif %}
+
+{% block styles %}
+    <link rel="stylesheet" href="{{ base_url() }}/dist/css/index/style.min.css">
+{% endblock %}
+
+{% block content %}
+    <div class="row my-2">
+        {% if not class is defined %}
+            <div class="col-12 text-center mt-4 mb-2">
+                <span class="display-4">Você não está cadastrado em nenhum turma.</span>
+            </div>
+
+            <div class="col-12 text-center mt-2 mb-4">
+                <span class="text-muted">Para entrar em uma sala, vá em <a href="{{ path_for("dashboard.profile") }}">Configurações</a></span>
+            </div>
+        {% else %}
+            <div class="col-12">
+                <div class="row mb-2">
+                    <div class="col-12">
+                        <span class="display-4 text-muted">Alunos</span>
+                    </div>
+
+                    <div id="students-container" class="col-12">
+                        {% for user in class.getStudents %}
+                            <div class="col-2">
+                                <a href="#">
+                                    <img class="img-fluid rounded-circle" src="{{ user.getAvatar }}"></img>
+                                </a>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+
+                <div class="row my-4">
+                    <div class="col-12">
+                        <span class="display-4 text-muted">Habilidades</span>
+                    </div>
+
+                    <div class="col-12">
+                        <div class="row">
+                            {% for skill in groups %}
+                                <div class="col-lg-6 my-2">
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <h5 class="card-title mb-0">{{ skill.title }}</h5>
+                                        </div>
+
+                                        <div class="card-body">
+                                            <span class="text-muted">Questões mais recentes</span>
+                                            <div class="row mt-2">
+                                                {% set count_activity = 0 %}
+                                                {% for activity in skill.activities %}
+                                                    {% if count_activity < 2 %}
+                                                        <div class="col-lg-6">
+                                                            <div class="card">
+                                                                <div class="card-body">
+                                                                    <span class="card-title mb-0"><a href="{{ path_for("activities", {id: activity.getId}) }}">{{ activity.getTitle }}</a></span>
+                                                                    <p class="text-muted mb-0">{{ activity.getQuestion }}</p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    {% endif %}
+                                                    {% set count_activity = count_activity + 1 %}
+                                                {% endfor %}
+
+                                                {% if count_activity == 0 %}
+                                                    <div class="text-center w-100">
+                                                        <div class="row">
+                                                            <div class="col-12">
+                                                                <i class="display-4 fas fa-smile-wink"></i>
+                                                            </div>
+
+                                                            <div class="col-12">
+                                                                <span class="display-5 text-muted">Você completou essa habilidade!</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                {% endif %}
+                                            </div>
+                                        </div>
+
+                                        <div class="card-footer d-flex align-items-center">
+                                            <a href="{{ path_for("dashboard.skill", {id: skill.id}) }}" class="btn btn-cosmo-color-1">Ver habilidade</a>
+                                            
+                                            <div class="d-none ml-auto">
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}
+
+{#{% extends "View/layout.twig" %}
 {% set page_title = "Atividades" %}
 
 {% set groups_count = 0 %}
@@ -7,7 +115,9 @@
 {% block content %}
     <div class="row my-4">
         {% if hasNoClass is defined %}
-            <p>Sem turma</p>
+            <div class="col-12 text-center">
+                <span class="display-4">Você não está cadastrado em nenhuma sala.</span>
+            </div>
         {% else %}
             <div class="col-md-8">
                 <div class="row">
@@ -179,4 +289,4 @@
             </div>
         {% endif %}
     </div>
-{% endblock %}
+{% endblock %}#}

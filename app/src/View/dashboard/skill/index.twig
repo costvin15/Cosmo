@@ -1,0 +1,29 @@
+{% extends "View/layout.twig" %}
+{% set page_title = skill.getName %}
+
+{% block content %}
+    <div class="row my-4">
+        <div class="col-12">
+            <span class="display-4 text-muted">Atividades</span>
+            <div class="row">
+                {% for activity in skill.getActivity %}
+                    <div class="col-md-4 my-2">
+                        <div class="card">
+                            <div class="card-header">
+                                <h5 class="card-title mb-0">{{ activity.getTitle }}</h5>
+                            </div>
+
+                            <div class="card-body">
+                                <span class="text-muted mb-0">{{ activity.getQuestion }}</span>
+                            </div>
+
+                            <div class="card-footer">
+                                <a href="{{ path_for("activities", {id: activity.getId}) }}" class="btn btn-cosmo-color-1">Responder</a>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

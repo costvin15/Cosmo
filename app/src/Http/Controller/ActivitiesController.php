@@ -42,11 +42,12 @@ class ActivitiesController extends AbstractController
     /**
      * @param ServerRequestInterface $request
      * @param ResponseInterface $response
+     * @param array $args
      * @return mixed
-     * @Post(name="/", alias="activities")
+     * @Get(name="/{id}", alias="activities")
      */
-    public function activitiesAction(ServerRequestInterface $request, ResponseInterface $response) {
-        $idActivity = $request->getParam("id-activity");
+    public function activitiesAction(ServerRequestInterface $request, ResponseInterface $response, array $args) {
+        $idActivity = $args["id"];
         $this->activity = $this->_dm->getRepository(Activities::class)->find($idActivity);
         $this->setAttributeView("activity", $this->activity);
         if ($request->getParam("challenge-type")){
@@ -62,7 +63,7 @@ class ActivitiesController extends AbstractController
      * @param ResponseInterface $response
      * @param array $args
      * @return mixed
-     * @Get(name="/{id}", alias="activities.view")
+     * @Get(name="/{id}/decrepted", alias="activities.view")
      */
     public function viewAnswerAction(ServerRequestInterface $request, ResponseInterface $response, array $args){
         $id = $args["id"];

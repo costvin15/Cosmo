@@ -1,0 +1,13 @@
+#students-container {
+  overflow-x: scroll;
+  overflow-y: hidden;
+  white-space: nowrap;
+  padding-bottom: 10px;
+
+  .col-2 {
+    display: inline-block;
+  }
+}::-webkit-scrollbar-thumb {
+  height: 6px;
+  background-color: gray;
+}
