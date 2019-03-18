@@ -9,7 +9,7 @@ class Config
     {
         return [
             'name' => 'Problems',
-            'view' => 'Plugin/Activities/Problems/View/problems.twig',
+            'view' => 'Plugin\\Activities\\Problems\\View\\problems.twig',
             'hydrator' => 'App\\Plugin\\Activities\\Problems\\Mapper\\ProblemsHydrator',
             'validate' => 'App\\Plugin\\Activities\\Problems\\Mapper\\ProblemsValidate',
         ];

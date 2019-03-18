@@ -8,3 +8,6 @@ node_modules
 atividade_exemplo.json
 atividade_objetivo.json
 /storage/photo-save/*
+public/dist/js/
+
+public/dist/css/

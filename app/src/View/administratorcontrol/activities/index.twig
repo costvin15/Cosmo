@@ -2,6 +2,11 @@
 {% set page_title = "Atividades" %}
 
 {% block content %}
+    <ul class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{{ path_for("administrator.control.index") }}">Administração</a></li>
+        <li class="breadcrumb-item active">Atividades</li>
+    </ul>
+
     <div class="row">
         <div class="col-12">
             <a href="{{ path_for("administrator.control.activities.new") }}" class="btn btn-cosmo-color-1 float-right">Novo</a>
@@ -9,15 +14,15 @@
     </div>
 
     <div class="row my-4">
-        <div class="col-md-4">
+       {#  <div class="col-md-4">
             <div class="nav flex-column nav-pills mb-4" role="tablist" aria-orientation="vertical">
                 <a class="nav-link" href="{{ path_for("administrator.control.users") }}">Usuários</a>
                 <a class="nav-link active" href="{{ path_for("administrator.control.activities") }}">Atividades</a>
                 <a class="nav-link" href="{{ path_for("administrator.control.groupactivities") }}">Grupo de atividades</a>
             </div>
-        </div>
+        </div> #}
 
-        <div class="col-md-8">
+        <div class="col-md-12">
             <div class="row">
                 {% for activity in activities %}
                     <div class="col-md-6 my-1">

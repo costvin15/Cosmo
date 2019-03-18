@@ -40,6 +40,12 @@ class RegisterControllerValidate extends AbstractControllerValidate
             return false;
         }
 
+        if(!$is_empty->isValid($idTurma)){
+            $this->error = "O campo Código Turma é obrigatório.";
+            return false;
+        }
+    
+
         return true;
 
     }

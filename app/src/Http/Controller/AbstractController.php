@@ -10,7 +10,7 @@ namespace App\Http\Controller;
 
 use App\Facilitator\App\SessionFacilitator;
 use Doctrine\ODM\MongoDB\DocumentManager;
-use Interop\Container\ContainerInterface;
+use Psr\Container\ContainerInterface;
 use RKA\Session;
 use Slim\Views\Twig;
 

@@ -12,6 +12,10 @@ interface Activity {
     input_example: string;
     output_example: string;
     casos_testes: Array<Object>;
+    moedas: string;
+    cust: string;
+    xp: string;
+    category: string;
 }
 
 abstract class AbstractActivity {
@@ -45,12 +49,19 @@ abstract class AbstractActivity {
             input_example: (<HTMLTextAreaElement> document.getElementById("input-frmactivity-example-input")).value,
             output_example: (<HTMLTextAreaElement> document.getElementById("input-frmactivity-example-output")).value,
             casos_testes: casos_testes
+            output_example: (<HTMLTextAreaElement> document.getElementById("input-frmactivity-example-output")).value,
+            moedas: (<HTMLInputElement> document.getElementById("input-frmactivity-moedas")).value,
+            cust: (<HTMLInputElement> document.getElementById("input-frmactivity-cust")).value,
+            xp: (<HTMLInputElement> document.getElementById("input-frmactivity-xp")).value,
+            category:  (<HTMLInputElement> document.getElementById("input-frmactivity-category")).value
+             
         };
     }
 
     validate() : boolean {
+        
         let formObject = this.createObject();
-
+        
         if (formObject.title.trim() === ""){
             window.cosmo.dialog.error("Oops", "O campo Título não pode ficar vazio", () => {});
             return false;
@@ -61,7 +72,7 @@ abstract class AbstractActivity {
             window.cosmo.dialog.error("Oops", "O campo Descrição Completa não pode ficar vazio", () => {});
             return false;
         } else if (formObject.group.trim() === ""){
-            window.cosmo.dialog.error("Oops", "O campo Grupo é obrigatório", () => {});
+            window.cosmo.dialog.error("Oops", "O campo Habilidade é obrigatório", () => {});
             return false;
         } else if (formObject.input_description.trim() === ""){
             window.cosmo.dialog.error("Oops", "O campo Descrição da Entrada não pode ficar vazio", () => {});
@@ -78,8 +89,19 @@ abstract class AbstractActivity {
         } else if (formObject.casos_testes.length == 0){
             window.cosmo.dialog.error("Oops", "Sua atividade precisa ter pelo menos um caso de teste", () => {});
             return false;
+        } else if (formObject.moedas.trim() === ""){
+            window.cosmo.dialog.error("Oops", "O campo Valor em Moedas não pode ficar vazio", () => {});
+            return false;
+        } else if (formObject.cust.trim() === ""){
+            window.cosmo.dialog.error("Oops", "O campo Custo em Moedas não pode ficar vazio", () => {});
+            return false;
+        } else if (formObject.xp.trim() === ""){
+            window.cosmo.dialog.error("Oops", "O campo Pontos de Conhecimento não pode ficar vazio", () => {});
+            return false;
+        } else if (formObject.category.trim() === ""){
+            window.cosmo.dialog.error("Oops", "O campo Categoria não pode ficar vazio", () => {});
+            return false;
         }
-
         return true;
     }
 }

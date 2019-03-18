@@ -49,8 +49,8 @@ class PluginProblems {
         let formObject = this.createObject();
         let success = (content: any) => {
             if (content.return)
-                window.cosmo.dialog.success("Meus Parabéns", content.message, () => {
-                    window.location.href = window.cosmo.routes_name.dashboard_index
+                window.cosmo.dialog.success("Meus Parabéns", "A resposta está correta", () => {
+                    window.location.href = window.cosmo.routes_name.activities_history
                 });
             else
                 window.cosmo.dialog.error("Tente novamente!", content.message, () => {});

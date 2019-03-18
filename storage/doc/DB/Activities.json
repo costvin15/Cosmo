@@ -10,7 +10,7 @@
                 "in" : "\"-537 98\",\"1000 -846\",\"-309 951\",\"-751 -579\",\"730 -923\"", 
                 "out" : "\"-537 98\",\"1000 -846\",\"-309 951\",\"-751 -579\",\"730 -923\""
             }, 
-            "plugin" : "App\\PluginActivities\\Problems\\Mapper\\Config"
+            "plugin" : "\\App\\Plugin\\Activities\\Problems\\Mapper\\Config"
         }
     ]
 }
@@ -25,7 +25,7 @@
             "model" : {
                 "url" : "http://www.youtube.com/embed/zpOULjyy-n8?rel=0"
             }, 
-            "plugin" : "App\\PluginActivities\\Video\\Mapper\\Config"
+            "plugin" : "\\App\\Plugin\\Activities\\Video\\Mapper\\Config"
         }
     ]
 }

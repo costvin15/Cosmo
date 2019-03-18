@@ -1,7 +1,7 @@
 {% extends "View/layout.twig" %}
 
 {% if formCreate is defined %}
-    {% set page_title = "Nova atividade" %}
+    {% set page_title = "Criar Atividade" %}
 {% endif %}
 
 {% if formUpdate is defined %}
@@ -13,6 +13,11 @@
 {% endblock %}
 
 {% block content %}
+    <ul class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{{ path_for("administrator.control.index") }}">Administração</a></li>
+        <li class="breadcrumb-item"><a href="{{ path_for("administrator.control.activities") }}">Atividades</a></li>
+        <li class="breadcrumb-item active"> Editar Atividade </li>
+    </ul>
     <div class="row my-4">
         <div class="col-md-3">
             <div class="nav flex-columns nav-pills" role="tablist" aria-orientation="vertical">
@@ -27,21 +32,22 @@
                     <form>
                         <div class="form-group">
                             <label for="input-frmactivity-title">Título</label>
-                            <input id="input-frmactivity-title" class="form-control" type="text" placeholder="Título da questão" {% if formUpdate is defined %} value="{{ activity.title }}" {% endif %}>
+                            <input id="input-frmactivity-title" class="form-control" type="text" placeholder="Título da questão" {% if formUpdate is defined %} value="{{ activity.title }}" {% endif %}></input>
                         </div>
                         
                         <div class="form-group">
                             <label for="input-frmactivity-question">Descrição</label>
-                            <input id="input-frmactivity-question" class="form-control" type="text" placeholder="Descrição curta" {% if formUpdate is defined %} value="{{ activity.question }}" {% endif %}>
+                            <input id="input-frmactivity-question" class="form-control" type="text" placeholder="Descrição curta" {% if formUpdate is defined %} value="{{ activity.question }}" {% endif %}></input>
                         </div>
                         
                         <div class="form-group">
                             <label for="input-frmactivity-fullquestion">Descrição completa</label>
-                            <input id="input-frmactivity-fullquestion" class="form-control" type="text" placeholder="Descrição completa" {% if formUpdate is defined %} value="{{ activity.fullquestion }}" {% endif %}>
+                            <input id="input-frmactivity-fullquestion" class="form-control" type="text" placeholder="Descrição completa" {% if formUpdate is defined %} value="{{ activity.fullquestion }}" {% endif %}></input>
                         </div>
                         
+                        
                         <div class="form-group">
-                            <label for="input-frmactivity-fullquestion">Descrição completa</label>
+                            <label for="input-frmactivity-group">Habilidade</label>
                             <select id="input-frmactivity-group" class="form-control">
                                 {% for group in group_activities %}
                                     {% if formUpdate is defined and group.getName == activity.group.getName    %}
@@ -52,6 +58,29 @@
                                 {% endfor %}
                             </select>
                         </div>
+                        
+                        <div class="form-group">
+                            <label for="input-frmactivity-moedas" >Valor em Moedas</label>
+                            <input id="input-frmactivity-moedas" title="Valor da recompensa ao resolver a atividade" class="form-control" type="text" placeholder="Valor em Moedas" {% if formUpdate is defined %} value="{{ activity.moedas }}" {% endif %}></input>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="input-frmactivity-cust" >Custo em Moedas</label>
+                            <input id="input-frmactivity-cust" title="Valor que deve ser cobrado para resolver a atividade" class="form-control" type="text" placeholder="Valor em Moedas" {% if formUpdate is defined %} value="{{ activity.cust }}" {% endif %}></input>
+                        </div>
+    
+                        <div class="form-group">
+                            <label for="input-frmactivity-xp">Pontos de Conhecimento</label>
+                            <input id="input-frmactivity-xp" class="form-control" type="text" placeholder="Pontos de Conhecimento" {% if formUpdate is defined %} value="{{ activity.xp }}" {% endif %}></input>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="input-frmactivity-category">Categoria</label>
+                            <select id="input-frmactivity-category" class="form-control">
+                                    <option>Obrigatória</option>
+                                    <option>Extra</option>
+                            </select>
+                        </div>
                     </form>
                 </div>
 
@@ -59,17 +88,17 @@
                     <form>
                         <div class="form-group">
                             <label for="input-frmactivity-description-input">Descrição da entrada</label>
-                            <input id="input-frmactivity-description-input" class="form-control" type="text" placeholder="Descrição da entrada" {% if formUpdate is defined %} value="{{ activity.input_description }}" {% endif %}>
+                            <input id="input-frmactivity-description-input" class="form-control" type="text" placeholder="Descrição da entrada" {% if formUpdate is defined %} value="{{ activity.input_description }}" {% endif %}></input>
                         </div>
                         
                         <div class="form-group">
                             <label for="input-frmactivity-example-input">Exemplo de entrada</label>
-                            <textarea id="input-frmactivity-example-input" class="form-control" rows="3">{% if formUpdate is defined %}{{ activity.activity_example[0].in }}{% endif %}</textarea>
+                            <textarea id="input-frmactivity-example-input" class="form-control" rows="3">{% if formUpdate is defined %}{{ activity.activity_example[0].in }}{% endif %}</textarea></input>
                         </div>
                         
                         <div class="form-group">
                             <label for="input-frmactivity-description-output">Descrição da saída</label>
-                            <input id="input-frmactivity-description-output" class="form-control" type="text" placeholder="Descrição da saída" {% if formUpdate is defined %} value="{{ activity.output_description }}" {% endif %}>
+                            <input id="input-frmactivity-description-output" class="form-control" type="text" placeholder="Descrição da saída" {% if formUpdate is defined %} value="{{ activity.output_description }}" {% endif %}></input>
                         </div>
                         
                         <div class="form-group">

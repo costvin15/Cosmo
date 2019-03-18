@@ -13,6 +13,11 @@
 {% endblock %}
 
 {% block content %}
+    <ul class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{{ path_for("administrator.control.index") }}">Administração</a></li>
+        <li class="breadcrumb-item"><a href="{{ path_for("administrator.control.users") }}">Usuários</a></li>
+        <li class="breadcrumb-item active">Novo Usuário</li>
+    </ul>
     <div class="row mb-4">
         <div class="col-md-3 mt-4">
             <div class="card">
@@ -69,13 +74,20 @@
                                 <input id="input-frmuser-password" type="password" class="form-control" placeholder="Senha"></input>    
                             </div>
                         {% endif %}
-
+                        
+                        
+                        <div class="form-group">
+                            <label for="input-frmuser-idTurma">Turma</label>
+                            <input id="input-frmuser-idTurma" type="text" class="form-control" placeholder="Turma" value="{{ user.idTurma }}" ></input>
+                        </div>
+                       
                         <div class="form-check">
                             <input id="input-frmuser-administrator" type="checkbox" class="form-check-input" {% if formUpdate is defined and user.administrator %} checked {% endif %}>
                             <label for="input-frmuser-administrator" class="form-check-label">Administrador</label>
                         </div>
-
+                       
                         {% if formUpdate is defined %}
+                            
                             <div class="form-check">
                                 <input id="input-frmuser-block" type="checkbox" class="form-check-input" {% if formUpdate is defined and user.blocked and user.blocked.status %} checked {% endif %}>
                                 <label for="input-frmuser-block" class="form-check-label">Bloqueado</label>

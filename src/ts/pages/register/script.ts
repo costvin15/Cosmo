@@ -86,6 +86,10 @@ class Register {
             return false;
         }
 
+        if (formObject.idTurma.trim() === ""){
+            window.cosmo.dialog.error("Oops", "O campo Código Turma não pode ficar vazio.", () => {});
+            return false;
+        }
         return true;
     }
 

@@ -2,6 +2,12 @@
 {% set page_title = "Grupo de Atividades" %}
 
 {% block content %}
+
+    <ul class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{{ path_for("administrator.control.index") }}">Administração</a></li>
+        <li class="breadcrumb-item active">Grupo de Atividades</li>
+    </ul>
+
     <div class="row">
         <div class="col-12">
             <a href="{{ path_for("administrator.control.groupactivities.create") }}" class="btn btn-cosmo-color-1 float-right">Novo</a>
@@ -9,21 +15,27 @@
     </div>
 
     <div class="row my-4">
-        <div class="col-md-4">
+        {# <div class="col-md-4">
             <div class="nav flex-column nav-pills mb-4" role="tablist" aria-orientation="vertical">
                 <a class="nav-link" href="{{ path_for("administrator.control.users") }}">Usuários</a>
                 <a class="nav-link" href="{{ path_for("administrator.control.activities") }}">Atividades</a>
                 <a class="nav-link active" href="{{ path_for("administrator.control.groupactivities") }}">Grupo de atividades</a>
             </div>
         </div>
-
-        <div class="col-md-8">
+ #}
+        <div class="col-md-12">
             <div class="row">
                 {% for group in group_activities %}
                     <div class="col-md-6 my-1">
                         <div class="card">
                             <div class="card-header">
-                                <h5 class="card-title mb-0">{{ group.getName }}</h5>
+                                <h5 class="card-title mb-0">{{ group.getName }}           
+                                        <i class="fa fa-star fa-2x" style="float:right;"></i>
+                                        <i class="fa fa-star fa-2x" style="float:right;"></i>
+                                        <i class="fa fa-star fa-2x" style="float:right;"></i>
+                                        
+                                </h5>
+                                
                             </div>
 
                             <div class="card-body">

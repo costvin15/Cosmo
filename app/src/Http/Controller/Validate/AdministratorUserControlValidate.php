@@ -15,6 +15,7 @@ class AdministratorUserControlValidate extends AbstractControllerValidate
         $username = $request->getParam("username");
         $password = $request->getParam("password");
         $fullname = $request->getParam("fullname");
+        
 
         $is_email = new EmailAddress();
         $is_empty = new NotEmpty();

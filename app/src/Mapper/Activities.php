@@ -101,6 +101,25 @@ class Activities
      */
     private $validate;
 
+    /**
+     * @ODM\Field(name="moedas", type="int")
+     */
+    private $moedas;
+
+    /**
+     * @ODM\Field(name="cust", type="int")
+     */
+    private $cust = 0;
+
+    /**
+     * @ODM\Field(name="xp", type="int")
+     */
+    private $xp;
+
+    /**
+     * @ODM\Field(name="category", type="string")
+     */
+    private $category;
 
     public function __construct($params = array())
     {
@@ -130,8 +149,78 @@ class Activities
             "activities" => $this->getActivities(),
             "tasks" => $this->activities["tasks"],
             "group" => $this->group,
+            "moedas" => $this->moedas,
+            "cust" => $this->cust,
+            "xp" => $this->xp,
+            "category" => $this->category
         ];
     }
+
+    /**
+     * @return mixed
+     */
+    public function getCategory()
+    {
+        return $this->category;
+    }
+
+    /**
+     * @param mixed $category
+     */
+    public function setCategory($category)
+    {
+        $this->category = $category;
+    }
+
+
+      /**
+     * @return mixed
+     */
+    public function getMoedas()
+    {
+        return $this->moedas;
+    }
+
+     /**
+     * @param mixed $moedas
+     */
+    public function setMoedas($moedas)
+    {
+        $this->moedas = $moedas;
+    }
+
+     /**
+     * @return mixed
+     */
+    public function getCust()
+    {
+        return $this->cust;
+    }
+
+     /**
+     * @param mixed $cust
+     */
+    public function setCust($cust)
+    {
+        $this->cust = $cust;
+    }
+
+     /**
+     * @return mixed
+     */
+    public function getXP()
+    {
+        return $this->xp;
+    }
+
+     /**
+     * @param mixed $xp
+     */
+    public function setXP($xp)
+    {
+        $this->xp = $xp;
+    }
+
 
     /**
      * @return mixed
