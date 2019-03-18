@@ -6,7 +6,7 @@
 {% endblock %}
 
 {% block scripts %}
-    <script src="{{ base_url() }}/dist/js/profile.js"></script>
+    <script src="{{ base_url() }}/dist/js/profile.js"></script> 
 {% endblock %}
 
 {% block styles %}
@@ -15,102 +15,34 @@
 
 {% block content %}   
     <div class="row mb-5">
-        <div class="col-md-3 mt-4">
-            <div class="card primary-card">
-                <div class="card-header rounded">
-                    <h5 class="card-title mb-0 text-center">
-                        Sua foto e dados <i class = "fas fa-file-image"></i>
-                    </h5>
-                    {% if attributes.avatar %}
-                        <div class = "myImage">
-                            <input id="input-frmuser-fileupload" type="file" class="d-none">
-                            <a id="btn-alter-image" class = "text-center" style = "border: none;">
-                                <img id="img-frmuser-avatar" class="card-img-top img-fluid rounded-circle mt-2 text-center" src="{{ attributes.avatar }}">
-                                <h2 class = "overlay" style = "vertical-align">Trocar Foto</h2>
-                            </a>
-                        </div>
-                    {% else %}
-                        <div class = "myImage">
-                            <input id="input-frmuser-fileupload" type="file" class="d-none">
-                            <a id="btn-alter-image" class = "text-center" style = "border: none;">
-                                <img id="img-frmuser-avatar" class="card-img-top img-fluid rounded-circle mt-2 text-center" src="{{base_url()}}/storage/photo-save/default.png">
-                                <p class = "overlay">Trocar Foto</p>
-                            </a>
-                        </div>
-                    {% endif %}
-                </div>
-                <div class = "card-body text-center">
-                    <form>
-
-                        <div class="form-group">
-                            <div class="input-group">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text bg-light"><i class="fas fa-signature myName"></i></span>
-                                </div>
-                                <input disabled type="text" class="form-control" value="{{ attributes.fullname }}"></input>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="input-group">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text bg-light"><i class="fas fa-atom  myNick"></i></span>
-                                </div>
-                                <input  disabled type="text" class="form-control" value="{{ attributes.nickname }}"></input>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="input-group">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text bg-light"><i class="fas fa-crown myTitle"></i></span>
-                                </div>
-                                <input disabled type="text" class="form-control"  value="{{ attributes.fulltitle }}"></input>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="input-group">
-                                <div class="input-group-prepend">
-                                        <span class="input-group-text bg-light"><i class="fas fa-at  myEmail"></i></span>
-                                </div>
-                                <input  disabled type="text" class="form-control" value="{{ attributes.username }}"></input>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="input-group">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text bg-light"><i class="fas fa-book myAnswer"></i></span>
-                                </div>
-                                <input  disabled type="text" class="form-control" value="27 Questões"></input>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="input-group">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text bg-light"><i class="fas fa-coins myAnswer"></i></span>
-                                </div>
-                                <input disabled type="text" class="form-control" value="200 moedas"></input>
-                            </div>
-                        </div>
-
-                        <div class="form-group mb-0">
-                            <div class="input-group">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text bg-light"><i class="fas fa-clock myTime"></i></span>
-                                </div>
-                                <input  id = "frmuser-time-spent" disabled type="text" class="form-control" value="20 horas"></input>
-                            </div>
-                        </div>
-
-                    </form>
-                </div>
-            </div>
+        <div class="col-md-3 mt-3">
+            <figure class = "profile-card rounded">
+                <img src="https://img.freepik.com/free-photo/wooden-plank-textured-background-material_53876-33591.jpg?size=626&ext=jpg" alt="" />
+                <figcaption>
+                    <div class = "profile-img">
+                        {% if attributes.avatar %}
+                            <img id="img-frmuser-avatar" class="profile" src="{{ attributes.avatar }}">
+                        {% else %}
+                            <img class="profile" src="/assets/img/student-avatar.png">
+                        {% endif %}
+                    </div>
+                    <div class = "profile-data">
+                        <h2> {{attributes.fullname}}
+                        <span>{{attributes.fulltitle}}</span>
+                        <span>Faturou: 500 coins</span>
+                        <span>Questões feitas: 16</span>
+                        <span>Level: 12</span>
+                        <span>Desafios feitos: 7</span>
+                        <span>Skills: Atribuidor Mestre</span></h2>
+                        <input id="input-frmuser-fileupload" type="file" class="d-none">
+                        <a href = "#" id="btn-alter-image" class="back-profile">Mudar foto</a>
+                        <a href = "profile/visit">Ver como visitante</a>
+                    </div>
+                </figcaption>
+            </figure>
         </div>
 
-        <div id = "user-form" class="col-md-5 mt-4">
+        <div class="col-md-5 mt-4" id = "user-form">
             <div class="card">
                 <div class="card-header">
                     <h5 class="card-title mb-0 text-center">
@@ -148,10 +80,10 @@
                                 </div>
                                 <select class="form-control" id = "input-frmuser-fulltitle">
                                     <option value = "{{attributes.fulltitle}}" >Escolha um Título</option>
-                                    <option value = "Infante">Infante</option>
-                                    <option value = "Prodígio">Prodígio</option>
-                                    <option value = "Duro na queda">Duro na queda</option>
-                                    <option value = "Paladino Atribuidor">Paladino Atribuidor</option>
+                                    <option value = "Marquês">Marquês</option>
+                                    <option value = "Barão">Barão</option>
+                                    <option value = "Conde">Conde</option>
+                                    <option value = "Visconde">Visconde</option>
                                 </select>
                             </div>
                         </div>
@@ -180,8 +112,6 @@
 
                 <div class="card-footer text-center">
                     <input id="input-hidden-id" type="hidden" value="{{ attributes.id }}">
-                    <a href = "profile/visit" style = "text-decoration: none"><button id="btn-see-profile" href = "/../profile-visit/index.twig" class = "btn btn-cosmo-color-2 mr-1"><i class="fas fa-vr-cardboard"></i> Ver como visitante</button></a>
-                    {# <button id="btn-close-profile" class="btn btn-cosmo-color-6 mr-1"><i class="fas fa-exclamation"></i> Encerrar conta</button> #}
                     <button id="btn-update-profile" type="submit" class="btn btn-cosmo-color-2"><i class="fas fa-save"></i> Salvar</button>
                     
                 </div>
@@ -197,26 +127,27 @@
                 </div>
             
                 <div class = "btn-group mt-0">
-                    <button type="button" class="btn btn-xl" data-toggle="collapse" data-target="#cd-2" ><i class="fas fa-trophy"></i></button>
-                    <button type="button" class="btn btn-xl" data-toggle="collapse" data-target="#cd-3" ><i class="fas fa-crown"></i></button>
+                    <button type="button" class="btn btn-x3" data-toggle="collapse" data-target="#cd-1" ><i class="fas fa-crown"></i></button>
+                    <button type="button" class="btn btn-x2" data-toggle="collapse" data-target="#cd-2" ><i class="fas fa-trophy"></i></button>
                 </div>
 
-                <div id = "cd-2" class = "collapse">
+
+                 <div id = "cd-1" class = "collapse">
                     <div class="card border-cosmo-color-1 mx-sm-1 p-3 mt-4">
-                        <div class="card border-cosmo-color-1 shadow text-cosmo-color-1 p-3 my-card"><span class="fas fa-trophy" aria-hidden="true"></span></div>
-                        <div class="text-cosmo-color-1 text-center mt-3"><h4>Troféus</h4></div>
-                        <div class="text-cosmo-color-1 text-center mt-2"><h6>*IF's Ouro*</h6></div>
-                        <div class="text-cosmo-color-1 text-center mt-2"><h6>*While's Bronze*</h6></div>
+                        <div class="card border-cosmo-color-1 shadow text-cosmo-color-1 p-3 card-h"><span class="fas fa-crown" aria-hidden="true"></span></div>
+                        <div class="text-cosmo-color-1 text-center mt-3"><h4>Títulos</h4></div>
+                        <div class="text-cosmo-color-1 text-center mt-2"><h6>*Supremo Atribuidor*</h6></div>
+                        <div class="text-cosmo-color-1 text-center mt-2"><h6>*Repetidor Sagaz*</h6></div>
                         <div class="text-cosmo-color-1 text-center mt-2"><h6>***</h6></div>
                     </div>
                 </div>
 
-                <div id = "cd-3" class = "collapse">
+                <div id = "cd-2" class = "collapse">
                     <div class="card border-cosmo-color-1 mx-sm-1 p-3 mt-4">
-                        <div class="card border-cosmo-color-1 shadow text-cosmo-color-1 p-3 my-card"><span class="fas fa-crown" aria-hidden="true"></span></div>
-                        <div class="text-cosmo-color-1 text-center mt-3"><h4>Títulos</h4></div>
-                        <div class="text-cosmo-color-1 text-center mt-2"><h6>*Supremo Atribuidor*</h6></div>
-                        <div class="text-cosmo-color-1 text-center mt-2"><h6>*Repetidor Sagaz*</h6></div>
+                        <div class="card border-cosmo-color-1 shadow text-cosmo-color-1 p-3 card-h"><span class="fas fa-trophy" aria-hidden="true"></span></div>
+                        <div class="text-cosmo-color-1 text-center mt-3"><h4>Troféus</h4></div>
+                        <div class="text-cosmo-color-1 text-center mt-2"><h6>*IF's Ouro*</h6></div>
+                        <div class="text-cosmo-color-1 text-center mt-2"><h6>*While's Bronze*</h6></div>
                         <div class="text-cosmo-color-1 text-center mt-2"><h6>***</h6></div>
                     </div>
                 </div>
