@@ -19,7 +19,7 @@ class Register {
             password: (<HTMLInputElement> document.getElementById("frmregister-password")).value,
             nickname: (<HTMLInputElement> document.getElementById("frmregister-nickname")).value,
             code: (<HTMLInputElement> document.getElementById("frmregister-class")).value,
-            fulltitle: (<HTMLInputElement> document.getElementById("frmregister-fulltitle")).value
+            
         };
     }
 
@@ -82,10 +82,6 @@ class Register {
             return false;
         }
 
-        if (formObject.fulltitle.trim() === ""){
-            window.cosmo.dialog.error("Oops", "O campo de título não pode ficar vazio.", () => {});
-            return false;
-        }
 
         if (formObject.password.length <= 3){
             window.cosmo.dialog.error("Oops", "A senha deve ter mais de 3 caracteres.", () => {});
