@@ -633,8 +633,8 @@ class AdministratorControlController extends AbstractController
         $class = $this->_dm->getRepository(Classes::class)->find($id);
         if (!$class)
             return $response->withJson(["Turma não encontrada!"], 500);
-        if ($class->getAdministrator()->getId() !== SessionFacilitator::getAttributeSession()["id"])
-            return $response->withJson(["Desculpe-nos, mas você não possui os privilégios necessários para isto."], 500);
+        // if ($class->getAdministrator()->getId() !== SessionFacilitator::getAttributeSession()["id"])
+        //     return $response->withJson(["Desculpe-nos, mas você não possui os privilégios necessários para isto."], 500);
         $this->setAttributeView("class", $class->toArray());
         $this->setAttributeView("users", $class->getStudents());
         $this->setAttributeView("groups", $this->_dm->getRepository(GroupActivities::class)->findAll());
