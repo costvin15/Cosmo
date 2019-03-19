@@ -106,13 +106,13 @@ class User
      * @param $fulltitle
      * @param $administrator
      */
-    public function __construct($id = null, $username = null, $password = null, $fullname = null, $administrator = false, $fulltitle = null)
+    public function __construct($id = null, $username = null, $password = null, $fullname = null, $administrator = false)
     {
         $this->id = $id;
         $this->username = $username;
         $this->password = $password;
         $this->fullname = $fullname;
-        $this->fulltitle = $fulltitle;
+        $this->fulltitle = "";
         $this->administrator = $administrator;
         $this->historyActivities = [];
         $this->answered_activities = 0;
@@ -145,7 +145,7 @@ class User
             'blocked' => $this->blocked,
             'avatar' => $this->getAvatar(),
             'answered_activities' => $this->answered_activities,
-            "attemp_activities" => $this->attempt_activities,
+            "attemp_activities" => $this->attemptActivities,
             "class" => $this->class ? $this->class->toArray() : null,
             "moedas" => $this->moedas,
             "xp" => $this->xp

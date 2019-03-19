@@ -76,6 +76,27 @@
                         {% endif %}
 
                         <div class="form-group">
+                            <label for="input-frmuser-fulltitle-group">Título</label>
+                            <div class="input-group" id="input-frmuser-fulltitle-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text bg-light"><i class="fas fa-crown"></i></span>
+                                </div>
+                                <select class="form-control" id = "input-frmuser-fulltitle">
+                                    {% if not attributes.fulltitle is defined %}<option>Escolha um Título de nobreza</option>{% endif %}
+                                    <option {% if attributes.fulltitle is defined and attributes.fulltitle == "Escudeiro/Escudeira" %}selected{% endif %} value="Escudeiro/Escudeira">Escudeiro/Escudeira</option>
+                                    <option {% if attributes.fulltitle is defined and attributes.fulltitle == "Barão/Baronesa" %}selected{% endif %} value="Barão/Baronesa">Barão/Baronesa</option>
+                                    <option {% if attributes.fulltitle is defined and attributes.fulltitle == "Visconde/Viscondessa" %}selected{% endif %} value="Visconde/Viscondessa">Visconde/Viscondessa</option>
+                                    <option {% if attributes.fulltitle is defined and attributes.fulltitle == "Conde/Condessa" %}selected{% endif %} value="Conde/Condessa">Conde/Condessa</option>
+                                    <option {% if attributes.fulltitle is defined and attributes.fulltitle == "Marquês/Marquessa" %}selected{% endif %} value="Marquês/Marquessa">Marquês/Marquessa</option>
+                                    <option {% if attributes.fulltitle is defined and attributes.fulltitle == "Duque/Duquesa" %}selected{% endif %} value="Duque/Duquesa">Duque/Duquesa</option>
+                                    <option {% if attributes.fulltitle is defined and attributes.fulltitle == "Grão-duque/Grã-duquesa" %}selected{% endif %} value="Grão-duque/Grã-duquesa">Grão-duque/Grã-duquesa</option>
+                                    <option {% if attributes.fulltitle is defined and attributes.fulltitle == "Imperador/Imperadora" %}selected{% endif %} value="Imperador/Imperadora">Imperador/Imperadora</option>
+                                    <option {% if attributes.fulltitle is defined and attributes.fulltitle == "Herdeiro de Turing" %}selected{% endif %} value="Herdeiro de Turing">Herdeiro de Turing</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
                             <label for="input-frmuser-class-group">Turma</label>
                             <div class="input-group" id="input-frmuser-class-group">
                                 <div class="input-group-prepend">

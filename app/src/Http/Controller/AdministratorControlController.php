@@ -163,7 +163,7 @@ class AdministratorControlController extends AbstractController
             $password = $request->getParam("password");
             $fullname = $request->getParam("fullname");
             $administrator = $request->getParam("admin");
-            
+            $fulltitle = $request->getParam("fulltitle");
             $users_with_email_entered = $this->_dm->getRepository(User::class)->findBy([
                 "username" => $username
             ]);
@@ -224,7 +224,7 @@ class AdministratorControlController extends AbstractController
             $nickname = $request->getParam("nickname");
             $fullname = $request->getParam("fullname");
             $administrator = $request->getParam("admin");
-
+            $fulltitle = $request->getParam("fulltitle");
             $user = $this->_dm->getRepository(User::class)->find($id);
 
             $users_with_email_entered = $this->_dm->getRepository(User::class)->findBy([
@@ -252,6 +252,7 @@ class AdministratorControlController extends AbstractController
                 $user->setNickname($nickname);
                 $user->setAdministrator($administrator);
                 $user->setBlocked($block);
+                $user->setFullTitle($fulltitle);
             }
 
             $this->_dm->persist($user);
