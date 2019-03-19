@@ -388,7 +388,7 @@ class AdministratorControlController extends AbstractController
      * @param Response $response
      * @return mixed
      * @Post(name="/activity/save", middleware={"App\Http\Middleware\AdministratorSessionMiddleware"}, alias="administrator.control.activities.save")
-     * @Log(type="INFO", persist={"verb", "attributes", "session"}, message="O adminstrador salvou uma atividade.")
+     * @Log(type="INFO", persist={"verb", "session"}, message="O adminstrador salvou uma atividade.")
      */
     public function saveActivityAction(Request $request, Response $response){
         if ($request->isXhr()){
