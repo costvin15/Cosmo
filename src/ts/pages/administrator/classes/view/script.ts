@@ -77,6 +77,7 @@ class AdicionarHabilidades {
                 window.location.href = content.callback;
             });
         };
+        console.log();
         let fail = (content: any) => {
             console.log(content);
             window.cosmo.dialog.error("Oops", content.responseJSON[0], () => {});
