@@ -1,0 +1,98 @@
+.btn-1:hover {
+    color: #1880ff;
+    background-color: #EBEBEB;
+}
+
+.btn-2:hover {
+    color: #FFD700;
+    background-color: #EBEBEB;
+}
+
+.S-1 .btn-skill {
+    width: 70px;
+    height: 70px;
+    // padding: 10px 16px;
+    border-radius: 35px;
+    line-height: 1.33;
+    background: #FFD12A;
+}
+
+.S-2 .btn-skill {
+    width: 70px;
+    height: 70px;
+    // padding: 10px 16px;
+    border-radius: 35px;
+    line-height: 1.33;
+    background: #A57164;
+}
+
+.S-3 .btn-skill {
+    width: 70px;
+    height: 70px;
+    // padding: 10px 16px;
+    border-radius: 35px;
+    line-height: 1.33;
+    background: silver;
+}
+.S-4 .btn-skill {
+    width: 70px;
+    height: 70px;
+    // padding: 10px 16px;
+    border-radius: 35px;
+    line-height: 1.33;
+    background: grey;
+}
+
+.btn-skill:hover{
+    background-color: #6DBCF5; 
+}
+
+.card-h {   
+    position:absolute;
+    left:42%;
+    top:-20px;
+    border-radius:50%;
+}
+
+.p-card {
+    .avatar img{
+        margin-top: -55px;
+        width: 130;
+        height: 110;
+        max-width: 140px;
+        max-height: 110px;
+        border-radius: 50%;
+        overflow: hidden;
+        border: 5px solid #fff;
+    }
+    .card-up{
+        overflow: hidden;
+        height: 120px;
+        -webkit-border-top-left-radius: .25rem;
+        border-top-left-radius: .25rem;
+        -webkit-border-top-right-radius: .25rem;
+        border-top-right-radius: .25rem;
+        background-color: #5ba4fd !important; 
+    }
+}
+
+.p-header {
+    font-size: 20pt;
+}
+
+.p-body {
+    h2 {
+        margin: 0 0 5px;
+        font-weight: 300;
+        margin-top: -12px;
+        text-align: center;
+    }
+    
+    h3 span {
+        display: block;
+        font-weight: 300;
+        font-size: 0.8em;
+        color: #1e72aa;
+        margin-bottom: 3px;
+    }
+}

@@ -58,6 +58,7 @@ class CreateUser extends AbstractUser {
             avatar: (<HTMLImageElement> document.getElementById("img-frmuser-avatar")).getAttribute("src"),
             fullname: (<HTMLInputElement> document.getElementById("input-frmuser-name")).value,
             nickname: (<HTMLInputElement> document.getElementById("input-frmuser-nickname")).value,
+            fulltitle: (<HTMLInputElement> document.getElementById("input-frmuser-fulltitle")).value,
             username: (<HTMLInputElement> document.getElementById("input-frmuser-email")).value,
             password: (<HTMLInputElement> document.getElementById("input-frmuser-password")).value,
             admin: (<HTMLInputElement> document.getElementById("input-frmuser-administrator")).checked ? 1 : 0
@@ -79,6 +80,11 @@ class CreateUser extends AbstractUser {
 
         if (formObject.username.trim() === ""){
             window.cosmo.dialog.error("Oops", "O campo Email não pode ficar vazio", () => {});
+            return false;
+        }
+
+         if (formObject.fulltitle.trim() === ""){
+            window.cosmo.dialog.error("Oops", "O você não pode ficar sem título, escolha um!", () => {});
             return false;
         }
 
@@ -150,6 +156,7 @@ class UpdateUser extends AbstractUser {
             id: (<HTMLInputElement> document.getElementById("input-hidden-id")).value,
             avatar: (<HTMLImageElement> document.getElementById("img-frmuser-avatar")).getAttribute("src"),
             fullname: (<HTMLInputElement> document.getElementById("input-frmuser-name")).value,
+            fulltitle:(<HTMLInputElement> document.getElementById("input-frmuser-fulltitle")).value,
             nickname: (<HTMLInputElement> document.getElementById("input-frmuser-nickname")).value,
             username: (<HTMLInputElement> document.getElementById("input-frmuser-email")).value,
             admin: (<HTMLInputElement> document.getElementById("input-frmuser-administrator")).checked ? 1 : 0,

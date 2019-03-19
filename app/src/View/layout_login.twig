@@ -10,17 +10,17 @@
 
         <link rel="stylesheet" href="{{ base_url() }}/dist/css/main.min.css">
 
-        {% block styles %}{% endblock %}
+        {% block styles %}<link rel="stylesheet" href="/dist/css/login/style.min.css">{% endblock %}
 
         <title>{{ page_title }} - {{ appname }}</title>
     </head>
     
-    <body class="bg-cosmo-color-1">
+    <body class="bg-dark">
         <div class="container my-2 wrapper">
             {% block content %}{% endblock %}
         </div>
 
-        <footer class="footer bg-cosmo-color-2 py-3">
+        <footer class="footer py-3 bg-cosmo-color-2">
             <div class="container">
                 <div class="row">
                     <div class="col-6 text-left">

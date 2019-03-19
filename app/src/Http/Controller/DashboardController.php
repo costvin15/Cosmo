@@ -219,6 +219,7 @@ class DashboardController extends AbstractController
      * @param Request $request
      * @param Response $response
      * @return mixed
+     * 
      * @Get(name="/profile", middleware={"App\Http\Middleware\SessionMiddleware"}, alias="dashboard.profile")
      * @Log(type="INFO", persist={"verb", "attributes", "session"}, message="Acessou o seu perfil.")
      */
@@ -240,10 +241,12 @@ class DashboardController extends AbstractController
             $fullname = $request->getParam("fullname");
             $nickname = $request->getParam("nickname");
             $code = $request->getParam("code");
-
+            $fulltitle = $request->getParam("fulltitle");
+            
             $attributes = SessionFacilitator::getAttributeSession();
             
             $user = $this->_dm->getRepository(User::class)->find($attributes['id']);
+
             $user->setFullname($fullname);
             $user->setNickname($nickname);
 
@@ -253,6 +256,8 @@ class DashboardController extends AbstractController
                     return $response->withJson(["message" => "O código inserido não corresponde a nenhuma turma."], 500);
                 $user->setClass($classes[0]);
             }
+            
+            $user->setFulltitle($fulltitle);
             
             $this->_dm->persist($user);
             $this->_dm->flush();
@@ -267,6 +272,19 @@ class DashboardController extends AbstractController
             return $response->withJson(["message" => "Você precisará fazer login novamente.", "callback" => $router->pathFor("login.logout")], 200);
         } else
             return $response->withJson(["message" => "Requisição mal formatada"], 500);
+    }
+    
+    /**
+     * @param Request $request
+     * @param Response $response
+     * @return mixed
+     * 
+     * @Get(name="/profile/visit", middleware={"App\Http\Middleware\SessionMiddleware"}, alias="dashboard.profile.visit")
+     * @Log(type="INFO", persist={"verb", "attributes", "session"}, message="Acessou o seu perfil.")
+     */
+    public function visitProfile(Request $request, Response $response){
+        $attributes = SessionFacilitator::getAttributeSession();
+        return $this->view->render($response, "View/dashboard/profile-visit/index.twig", ["attributes" => $attributes]);
     }
 
     /**

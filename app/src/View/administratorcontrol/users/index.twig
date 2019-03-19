@@ -17,7 +17,7 @@
 
     <div class="row">
         <div class="col-12">
-            <a href="{{ path_for("administrator.control.users.new") }}" class="btn btn-cosmo-color-1 float-right">Novo</a>
+            <a href="{{ path_for("administrator.control.users.new") }}" class="btn btn-cosmo-color-2 float-right">Novo</a>
         </div>
     </div>
 
@@ -55,7 +55,7 @@
                                     <td>{{ user.nickname }}</td>
                                     <td>{{ user.username }}</td>
                                     <td>
-                                        <a href="{{ path_for("administrator.control.users.modify", {"id": user.getId }) }}" class="btn btn-cosmo-color-1">
+                                        <a href="{{ path_for("administrator.control.users.modify", {"id": user.getId }) }}" class="btn btn-cosmo-color-2">
                                             <i class="fas fa-edit"></i>
                                         </a>
                                         <a href="{{ path_for("administrator.controls.users.remove", {"id": user.getId }) }}" class="btn btn-danger">
