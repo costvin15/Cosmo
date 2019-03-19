@@ -8,9 +8,45 @@
     background-color: #EBEBEB;
 }
 
-// .myCard {
-//     font-family: 'Lilita One', cursive;
-// }
+.S-1 .btn-skill {
+    width: 70px;
+    height: 70px;
+    // padding: 10px 16px;
+    border-radius: 35px;
+    line-height: 1.33;
+    background: #FFD12A;
+}
+
+.S-2 .btn-skill {
+    width: 70px;
+    height: 70px;
+    // padding: 10px 16px;
+    border-radius: 35px;
+    line-height: 1.33;
+    background: #A57164;
+}
+
+.S-3 .btn-skill {
+    width: 70px;
+    height: 70px;
+    // padding: 10px 16px;
+    border-radius: 35px;
+    line-height: 1.33;
+    background: silver;
+}
+.S-4 .btn-skill {
+    width: 70px;
+    height: 70px;
+    // padding: 10px 16px;
+    border-radius: 35px;
+    line-height: 1.33;
+    background: grey;
+}
+
+.btn-skill:hover{
+    background-color: #6DBCF5; 
+}
+
 .card-h {   
     position:absolute;
     left:42%;
@@ -36,7 +72,7 @@
         border-top-left-radius: .25rem;
         -webkit-border-top-right-radius: .25rem;
         border-top-right-radius: .25rem;
-        background-color: #5c6bc0 !important; 
+        background-color: #5ba4fd !important; 
     }
 }
 
@@ -58,11 +94,5 @@
         font-size: 0.8em;
         color: #1e72aa;
         margin-bottom: 3px;
-    }
-}
-
-.p-footer{
-    a {
-        border-color: #1880ff;
     }
 }

@@ -14,7 +14,7 @@
             <div class="card">
                 <div class="card-header">
                     <h5 class="card-title text-center">
-                        Troféus e Títulos de {{attributes.fullname}} <i class = "fas fa-bolt"></i>
+                        Feitos de {{attributes.fullname}}
                     </h5>
                 </div>
 
@@ -34,8 +34,8 @@
                 </div>
 
                 <div id = "cd-2" class = "collapse">
-                    <div class="card border-cosmo-color-8 mx-sm-1 p-3 mt-4">
-                        <div class="card border-cosmo-color-8 shadow text-cosmo-color-8 p-3 card-h"><span class="fas fa-trophy" aria-hidden="true"></span></div>
+                    <div class="card border-cosmo-color-1 mx-sm-1 p-3 mt-4">
+                        <div class="card border-cosmo-color-1 shadow text-cosmo-color-1 p-3 card-h"><span class="fas fa-trophy" aria-hidden="true"></span></div>
                         <div class="mt-3"><h4>Troféus</h4></div>
                         <div class="mt-2"><h6>*IF's Ouro*</h6></div>
                         <div class="mt-2"><h6>*While's Bronze*</h6></div>
@@ -50,7 +50,7 @@
         <div class="col-md-4 mt-2">
             <div class = "card p-card">
                 <div class = "card-header p-header">
-                    <h5 class = "card-title mb-0 text-center">Sua foto e seus dados <i class = "fas fa-bolt"></i></h5>
+                    <h5 class = "card-title mb-0 text-center">Sua foto e seus dados</h5>
                 </div>
 
                 <div class="card-up"></div>
@@ -69,14 +69,29 @@
                     <span>Submissões: 120</span></h3>
                 </div>
 
-                <div class = "card-footer p-footer">
-                    <a class = "btn" href = "../profile"> Voltar </a>
+                <div class = "card-footer p-footer text-center">
+                    <a class = "btn btn-primary" href = "../profile"> Voltar </a>
                 </div>
             </div> 
         </div>
 
-        <div class = "col-md-4 bg-dark mt-2 text-center text-danger">
-            <h2>Skills(ta no pc do laws)</h2>
+        <div class = "col-md-4 mt-2 card-skill">
+            <div class = "card">
+                <div class="card-header">
+                    <h5 class="card-title text-center">
+                        Skills de {{attributes.fullname}}
+                    </h5>
+                </div>
+                <div class = "card-body card-skill-body">
+                    <figure class = "rounded">
+                            <h4 class = "S-1">Atribuição: <button class = "btn btn-skill" ><i class = "fas fa-star text-success"></i><i class = "fas fa-star text-success"></i><i class = "fas fa-star"></i></button></h4>
+                            <hr>
+                            <h4 class = "S-2">Condição: <button class = "btn btn-skill"><i class = "fas fa-star text-success"></i><i class = "fas fa-star text-success"></i><i class = "fas fa-star"></i></button></h4>
+                            <hr>
+                            <h4 class = "S-3">Repetição: <button class = "btn btn-skill"><i class = "fas fa-star text-success"></i><i class = "fas fa-star text-success"></i><i class = "fas fa-star"></i></button></h4>
+                    </figure>
+                </div>
+            </div>
         </div>
         
     </div>
