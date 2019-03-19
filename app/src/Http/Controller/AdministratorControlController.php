@@ -565,7 +565,7 @@ class AdministratorControlController extends AbstractController
         $this->_dm->remove($group);
         $this->_dm->flush();
 
-        return $response->withRedirect($router->pathFor("administrator.control.groupactivities"));
+        return $response->withRedirect($router->pathFor("administrator.control.index"));
     }
 
     /**
