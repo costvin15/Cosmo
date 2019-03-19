@@ -16,6 +16,7 @@ class RegisterControllerValidate extends AbstractControllerValidate
         $password = $request->getParam("password");
         $fullname = $request->getParam("fullname");
         $class = $request->getParam("class");
+        $fulltitle = $request->getParam("fulltitle");
 
         $is_email = new EmailAddress();
         $is_empty = new NotEmpty();

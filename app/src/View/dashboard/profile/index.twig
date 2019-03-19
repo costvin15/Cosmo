@@ -1,61 +1,137 @@
 {% extends "/View/layout.twig" %}
 {% set page_title = "Seu Perfil" %}
 
-{% block scripts %}
-    <script src="{{ base_url() }}/dist/js/profile.js"></script>
+{% block links %}
+    <link href="https://fonts.googleapis.com/css?family=Lilita+One" rel="stylesheet">
 {% endblock %}
 
-{% block content %}
-    <div class="row mb-4">
-        <div class="col-md-3 mt-4">
-            <div class="card">
-                <div class="card-header">
-                    {% if attributes.avatar %}
-                        <img id="img-frmuser-avatar" class="card-img-top" src="{{ attributes.avatar }}">
-                    {% else %}
-                        <img class="card-img-top" src="/assets/img/student-avatar.png">
-                    {% endif %}
+{% block scripts %}
+    <script src="{{ base_url() }}/dist/js/profile.js"></script> 
+{% endblock %}
+
+{% block styles %}
+    <link rel="stylesheet" href="/dist/css/profile/style.min.css">
+{% endblock %}
+
+{% block content %}   
+    <div class="row">
+        <div class="col-md-4 mt-4">
+            <div class = "card p-card">
+                <div class = "card-header p-header">
+                    <h5 class = "card-title mb-0 text-center">Sua foto e seus dados</h5>
                 </div>
 
-                <div class="card-body">
-                    <h5 class="card-title">{{ attributes.fullname }}</h5>
-                    <h6 class="card-subtitle">{{ attributes.nickname }}</h6>
-                    <p class="text-muted mb-0"><small>{{ attributes.username }}</small></p>
+                <div class="card-up"></div>
+
+                <div class="avatar mx-auto">
+                    <img id="img-frmuser-avatar" src= "{{attributes.avatar}}" class="rounded-circle" alt=""/>
                 </div>
 
-                <div class="card-footer">
-                    <input id="input-frmuser-fileupload" type="file" class="d-none">
-                    <button id="btn-alter-image" class="btn btn-cosmo-color-1">Alterar imagem</button>
+                <div class = "card-body p-body mt-0">
+                    <h2 class="card-title">{{attributes.fullname}}</h2>
+                    <hr />
+
+                    <div class="row">
+                        <span class="font-weight-bold">Título: {{attributes.fulltitle}}</span>
+                    </div>
+                    
+                    <div class="row">
+                        <span>Gold: {{ attributes.moedas }}</span>
+                    </div>
+                    
+                    <div class="row">
+                        <span>Level: {{ attributes.xp }}</span>
+                    </div>
+                    
+                    <div class="row">
+                        <span>Questões feitas: {{ attributes.answered_activities }}</span>
+                    </div>
+                    
+                    <div class="row">
+                        <span>Submissões: {{ attemp_activities|length }}</span>
+                    </div>
+
                 </div>
-            </div>
+
+                <div class = "card-footer p-footer">
+                    <div class = "btn-group">
+                        <input id="input-frmuser-fileupload" type="file" class="d-none">
+                        <button class="btn btn-primary rounded mr-1" id="btn-alter-image">Alterar imagem <i class="fa fa-file-photo-o text-danger"></i></button>
+                        <a class = "btn btn-info rounded" href = "profile/visit"> Ver como visitante </a>
+                    </div>
+                </div>
+            </div> 
         </div>
 
-        <div class="col-md-9 mt-4">
+        <div class="col-md-8 mt-4" id = "user-form">
             <div class="card">
                 <div class="card-header">
-                    <h5 class="card-title mb-0">Seus dados</h5>
+                    <h5 class="card-title mb-0 text-center">
+                       Editar dados
+                    </h5>
                 </div>
 
                 <div class="card-body">
                     <form>
                         <div class="form-group">
                             <label for="input-frmuser-name">Nome</label>
-                            <input id="input-frmuser-name" type="text" class="form-control" placeholder="Nome completo" value="{{ attributes.fullname }}"></input>
+                            <div class="input-group" id="input-frmuser-name-group">
+                                <div class="input-group-prepend">
+                                        <span class="input-group-text bg-light"><i class="fas fa-user"></i></span>
+                                </div>
+                                <input id="input-frmuser-name" type="text" class="form-control" placeholder="Nome completo" value="{{ attributes.fullname }}"></input>
+                            </div>
                         </div>
                         
                         <div class="form-group">
                             <label for="input-frmuser-nickname-group">Nome de usuário</label>
                             <div class="input-group" id="input-frmuser-nickname-group">
                                 <div class="input-group-prepend">
-                                    <span class="input-group-text">@</span>
+                                    <span class="input-group-text bg-light"><i class="fas fa-at"></i></span>
                                 </div>
                                 <input id="input-frmuser-nickname" type="text" class="form-control" placeholder="Nome de usuário" value="{{ attributes.nickname }}" aria-label="Nome de Usuário"></input>
                             </div>
+                        </div> 
+                        
+                        <div class="form-group">
+                            <label for="input-frmuser-fulltitle-group">Título</label>
+                            <div class="input-group" id="input-frmuser-fulltitle-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text bg-light"><i class="fas fa-crown"></i></span>
+                                </div>
+                                <select class="form-control" id = "input-frmuser-fulltitle">
+                                    {% if not attributes.fulltitle is defined %}<option>Escolha um Título de nobreza</option>{% endif %}
+                                    <option {% if attributes.fulltitle is defined and attributes.fulltitle == "Escudeiro/Escudeira" %}selected{% endif %} value="Escudeiro/Escudeira">Escudeiro/Escudeira</option>
+                                    <option {% if attributes.fulltitle is defined and attributes.fulltitle == "Barão/Baronesa" %}selected{% endif %} value="Barão/Baronesa">Barão/Baronesa</option>
+                                    <option {% if attributes.fulltitle is defined and attributes.fulltitle == "Visconde/Viscondessa" %}selected{% endif %} value="Visconde/Viscondessa">Visconde/Viscondessa</option>
+                                    <option {% if attributes.fulltitle is defined and attributes.fulltitle == "Conde/Condessa" %}selected{% endif %} value="Conde/Condessa">Conde/Condessa</option>
+                                    <option {% if attributes.fulltitle is defined and attributes.fulltitle == "Marquês/Marquessa" %}selected{% endif %} value="Marquês/Marquessa">Marquês/Marquessa</option>
+                                    <option {% if attributes.fulltitle is defined and attributes.fulltitle == "Duque/Duquesa" %}selected{% endif %} value="Duque/Duquesa">Duque/Duquesa</option>
+                                    <option {% if attributes.fulltitle is defined and attributes.fulltitle == "Grão-duque/Grã-duquesa" %}selected{% endif %} value="Grão-duque/Grã-duquesa">Grão-duque/Grã-duquesa</option>
+                                    <option {% if attributes.fulltitle is defined and attributes.fulltitle == "Imperador/Imperadora" %}selected{% endif %} value="Imperador/Imperadora">Imperador/Imperadora</option>
+                                    <option {% if attributes.fulltitle is defined and attributes.fulltitle == "Herdeiro de Turing" %}selected{% endif %} value="Herdeiro de Turing">Herdeiro de Turing</option>
+                                </select>
+                            </div>
                         </div>
+
+                        {# <div class="form-group">
+                            <label for="input-frmuser-classroom-group">Turma</label>
+                            <div class="input-group" id="input-frmuser-classroom-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text bg-light"><i class="fas fa-university"></i></span>
+                                </div>
+                                <input id="input-frmuser-classroom" type="text" class="form-control" placeholder="Turma"  aria-label="Turma"></input>
+                            </div>
+                        </div>  #}
                         
                         <div class="form-group">
                             <label for="input-frmuser-email">Email</label>
-                            <input id="input-frmuser-email" disabled type="text" class="form-control" placeholder="Email" value="{{ attributes.username }}"></input>
+                            <div class = "input-group" id = "input-frmuser-email-group">
+                                <div class= "input-group-prepend">
+                                    <span class="input-group-text bg-light"><i class="fas fa-envelope"></i></span>
+                                </div>
+                                <input id="input-frmuser-email" disabled type="text" class="form-control" placeholder="Email" value="{{ attributes.username }}"></input>
+                            </div>
                         </div>
 
                         <div class="form-group">
@@ -70,12 +146,81 @@
                     </form>
                 </div>
 
-                <div class="card-footer">
+                <div class="card-footer text-center">
                     <input id="input-hidden-id" type="hidden" value="{{ attributes.id }}">
-                    <button id="btn-close-profile" class="btn btn-danger">Encerrar conta</button>
-                    <button id="btn-update-profile" type="submit" class="btn btn-cosmo-color-1">Salvar</button>
+                    <button id="btn-update-profile" type="submit" class="btn btn-cosmo-color-2"><i class="fas fa-save"></i> Salvar</button>
                 </div>
             </div>
         </div>
+
+        {#<div class = "col-md-3 mt-4">
+            <div class="card myCard">
+                <div class="card-header">
+                    <h5 class="card-title mb-0 text-center">
+                        Seus feitos
+                    </h5>
+                </div>
+            
+                <div class = "btn-group mt-0">
+                    <button type="button" class="btn btn-1" data-toggle="collapse" data-target="#cd-1" ><i class="fas fa-certificate"></i></button>
+                    <button type="button" class="btn btn-2" data-toggle="collapse" data-target="#cd-2" ><i class="fas fa-trophy"></i></button>
+                </div>
+
+
+                 <div id = "cd-1" class = "collapse">
+                    <div class="card border-cosmo-color-1 mx-sm-1 p-3 mt-4">
+                        <div class="card border-cosmo-color-1 shadow text-cosmo-color-1 p-3 card-h"><span class="fas fa-certificate" aria-hidden="true"></span></div>
+                        <div class="row">
+                            <h4>Badges</h4>
+                        </div>
+                        <div class="row">
+                            <span>A</span>
+                        </div>
+                        <div class="row">
+                            <h6>B</h6>
+                        </div>
+                        <div class="row">
+                            <h6>C</h6>
+                        </div>
+                    </div>
+                </div>
+
+                <div id = "cd-2" class = "collapse">
+                    <div class="card border-cosmo-color-1 mx-sm-1 p-3 mt-4">
+                        <div class="card border-cosmo-color-1 shadow text-cosmo-color-1 p-3 card-h"><span class="fas fa-trophy" aria-hidden="true"></span></div>
+                        <div class="row">
+                            <h4>Troféus</h4>
+                        </div>
+                        <div class="row">
+                            <span>A</span>
+                        </div>
+                        <div class="row">
+                            <h6>B</h6>
+                        </div>
+                        <div class="row">
+                            <h6>C</h6>
+                        </div>
+                    </div>
+                </div>
+
+                <div class = "card">
+                    <div class="card-header">
+                        <h5 class="card-title text-center">
+                            Skills de {{attributes.fullname}}
+                        </h5>
+                    </div>
+                    <div class = "card-body card-skill-body">
+                        <div class = "rounded">
+                                <h4 class = "S-1">Atribuição: <button class = "btn btn-skill" ><i class = "fas fa-star text-success"></i><i class = "fas fa-star text-success"></i><i class = "fas fa-star"></i></button></h4>
+                                <hr>
+                                <h4 class = "S-2">Condição: <button class = "btn btn-skill"><i class = "fas fa-star text-success"></i><i class = "fas fa-star text-success"></i><i class = "fas fa-star"></i></button></h4>
+                                <hr>
+                                <h4 class = "S-3">Repetição: <button class = "btn btn-skill"><i class = "fas fa-star text-success"></i><i class = "fas fa-star text-success"></i><i class = "fas fa-star"></i></button></h4>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>#}
     </div>
 {% endblock %}

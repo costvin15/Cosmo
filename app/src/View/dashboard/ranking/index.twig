@@ -17,19 +17,19 @@
             <div class="box box-primary">
                 <div class="box-body box-profile">
                     {% if attributes.avatar is defined %}
-                        <img class="profile-user-img img-responsive"
+                        <img class="profile-user-img img-fluid rounded-circle"
                                 id="img-frmuser-avatar"
                                 src="{{ attributes.avatar }}"
                                 alt="Você">
                     {% else %}
-                        <img class="profile-user-img img-responsive"
+                        <img class="profile-user-img img-fluid rounded-circle"
                                 id="img-frmuser-avatar"
                                 src="{{ base_url() }}/assets/img/student-avatar.png"
                                 alt="Você">
                     {% endif %}
 
-                    <h3 class="profile-username text-center">{{ attributes.fullname }}</h3>
-                    <h4 class="text-center">Você respondeu {{ attributes.answered_activities }} {% if attributes.answered_activities < 2 %} questão {% else %} questões {% endif %}.</h4>
+                    <h3 class="profile-username text-center">   {{ attributes.fullname }}</h3>
+                    <h4 class="text-center">    Você respondeu     {{ attributes.answered_activities }} {% if attributes.answered_activities < 2 %} questão {% else %} questões {% endif %}.</h4>
                 </div>
             </div>
         </div>
@@ -39,7 +39,7 @@
                 <div class="col-lg-12 col-sm-12 col-xs-12">
                     <div class="input-group">
                         <span class="input-group-addon"><i class="fa fa-search"></i></span>
-                        <input type="text" class="form-control" placeholder="Buscar" id="frmuser-search">
+                        <input type="text" class="form-control ml-2" placeholder="Buscar" id="frmuser-search">
                     </div>
                 </div>
             </div>

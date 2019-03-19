@@ -72,6 +72,7 @@ class RegisterController extends AbstractController
                     return $response->withJson(["O código de turma inserido não corresponde a nenhuma turma."], 500);
                 $user->setClass($classes[0]);
             }
+            $user->setFulltitle($request->getParam('fulltitle'));
 
             $this->_dm->persist($user);
             $this->_dm->flush();
