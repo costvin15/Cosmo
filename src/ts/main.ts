@@ -137,7 +137,7 @@ window.cosmo = {
         user_update_profile: "/dashboard/profile/update",
         view_activity: "/activities/",
         submit_activity: "/activities/submit",
-        administrator_save_group_activity: "/admin/skill/save",
+        administrator_save_group_activity: "/admin/skills/save",
         administrator_save_activity: "/admin/activity/save",
         administrator_register_user: "/admin/user/save",
         administrator_update_user: "/admin/user/update",

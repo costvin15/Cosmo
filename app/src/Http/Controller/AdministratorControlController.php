@@ -388,7 +388,7 @@ class AdministratorControlController extends AbstractController
      * @param Response $response
      * @return mixed
      * @Post(name="/activity/save", middleware={"App\Http\Middleware\AdministratorSessionMiddleware"}, alias="administrator.control.activities.save")
-     * @Log(type="INFO", persist={"verb", "attributes", "session"}, message="O adminstrador salvou uma atividade.")
+     * @Log(type="INFO", persist={"verb", "session"}, message="O adminstrador salvou uma atividade.")
      */
     public function saveActivityAction(Request $request, Response $response){
         if ($request->isXhr()){
@@ -565,7 +565,7 @@ class AdministratorControlController extends AbstractController
         $this->_dm->remove($group);
         $this->_dm->flush();
 
-        return $response->withRedirect($router->pathFor("administrator.control.groupactivities"));
+        return $response->withRedirect($router->pathFor("administrator.control.index"));
     }
 
     /**
@@ -633,8 +633,8 @@ class AdministratorControlController extends AbstractController
         $class = $this->_dm->getRepository(Classes::class)->find($id);
         if (!$class)
             return $response->withJson(["Turma não encontrada!"], 500);
-        if ($class->getAdministrator()->getId() !== SessionFacilitator::getAttributeSession()["id"])
-            return $response->withJson(["Desculpe-nos, mas você não possui os privilégios necessários para isto."], 500);
+        // if ($class->getAdministrator()->getId() !== SessionFacilitator::getAttributeSession()["id"])
+        //     return $response->withJson(["Desculpe-nos, mas você não possui os privilégios necessários para isto."], 500);
         $this->setAttributeView("class", $class->toArray());
         $this->setAttributeView("users", $class->getStudents());
         $this->setAttributeView("groups", $this->_dm->getRepository(GroupActivities::class)->findAll());

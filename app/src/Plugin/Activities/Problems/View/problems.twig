@@ -10,11 +10,6 @@
 {% endblock %}
 
 {% block content %}
-    <ul class="breadcrumb">
-        <li class="breadcrumb-item"><a href="{{ path_for("dashboard.index") }}">Dashboard</a></li>
-        <li class="breadcrumb-item active">{{ activity.getTitle }}</li>
-    </ul>
-
     <div class="row my-4">
         <div class="col-12">
             <div class="row d-flex">
@@ -66,25 +61,9 @@
                 </div>
             </div>
         </div>
-    </div>
 
-    <div class="row">
-        
-        <div class="col-12">
-            <div class="row d-flex">
-                <div class="col-lg-6 ml-auto">
-                    <form>
-                        <div class="form-group">
-                            <select id="language-selector" class="form-control">
-                                <option value="lua" selected>Lua</option>
-                                <option value="cpp">C/C++</option>
-                                <option value="python">Python</option>
-                                <option value="java">Java</option>
-                            </select>
-                        </div>
-                    </form>
-                </div>
-            </div>
+        <div class="col-lg-6">
+            <div id="editor"></div>
         </div>
 
         <div class="col-12 mt-2">            
