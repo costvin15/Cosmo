@@ -138,6 +138,8 @@ class CreateActivity extends AbstractActivity {
         let formObject = this.createObject();
         let success = function(content: any){
             window.cosmo.dialog.success("Atividade", content.message, () => {
+                console.log(content);
+                console.log(window.base_url + window.cosmo.routes_name.administrator_save_activity);
                 window.location.href = content.callback;
             });
         };
