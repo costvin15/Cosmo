@@ -62,7 +62,7 @@ class CreateTurma extends AbstractTurma {
         };
 
         let ajax = window.cosmo.ajax.getDefaults();
-        ajax.url = window.cosmo.routes_name.administrator_save_class;
+        ajax.url = window.base_url + window.cosmo.routes_name.administrator_save_class;
         ajax.method = "POST";
         ajax.data = formObject;
         ajax.type = "json";

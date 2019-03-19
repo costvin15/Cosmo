@@ -74,6 +74,16 @@
                                 <input id="input-frmuser-password" type="password" class="form-control" placeholder="Senha"></input>    
                             </div>
                         {% endif %}
+
+                        <div class="form-group">
+                            <label for="input-frmuser-class-group">Turma</label>
+                            <div class="input-group" id="input-frmuser-class-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="fas fa-users"></i></span>
+                                </div>
+                                <input id="input-frmuser-class" type="text" class="form-control" placeholder="Turma" {% if attributes.class %} disabled value="{{ attributes.class.title }}" {% endif %} aria-label="Turma"></input>
+                            </div>
+                        </div>
                        
                         <div class="form-check">
                             <input id="input-frmuser-administrator" type="checkbox" class="form-check-input" {% if formUpdate is defined and user.administrator %} checked {% endif %}>
