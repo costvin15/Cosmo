@@ -14,32 +14,35 @@
 {% endblock %}
 
 {% block content %}   
-    <div class="row mb-5">
-        <div class="col-md-3 mt-3">
-            <figure class = "profile-card rounded">
-                <img src="https://img.freepik.com/free-photo/wooden-plank-textured-background-material_53876-33591.jpg?size=626&ext=jpg" alt="" />
-                <figcaption>
-                    <div class = "profile-img">
-                        {% if attributes.avatar %}
-                            <img id="img-frmuser-avatar" class="profile" src="{{ attributes.avatar }}">
-                        {% else %}
-                            <img class="profile" src="/assets/img/student-avatar.png">
-                        {% endif %}
-                    </div>
-                    <div class = "profile-data">
-                        <h2> {{attributes.fullname}}
-                        <span>{{attributes.fulltitle}}</span>
-                        <span>Faturou: 500 coins</span>
-                        <span>Questões feitas: 16</span>
-                        <span>Level: 12</span>
-                        <span>Desafios feitos: 7</span>
-                        <span>Skills: Atribuidor Mestre</span></h2>
-                        <input id="input-frmuser-fileupload" type="file" class="d-none">
-                        <a href = "#" id="btn-alter-image" class="back-profile">Mudar foto</a>
-                        <a href = "profile/visit">Ver como visitante</a>
-                    </div>
-                </figcaption>
-            </figure>
+    <div class="row">
+        <div class="col-md-4 mt-4">
+            <div class = "card p-card">
+                <div class = "card-header p-header">
+                    <h5 class = "card-title mb-0 text-center">Sua foto e seus dados <i class = "fas fa-bolt"></i></h5>
+                </div>
+
+                <div class="card-up"></div>
+
+                <div class="avatar mx-auto">
+                    <img id="img-frmuser-avatar" src= "{{attributes.avatar}}" class="rounded-circle" alt=""/>
+                </div>
+
+                <div class = "card-body p-body mt-0">
+                    <h2 class="card-title">{{attributes.fullname}}</h2>
+                    <hr>
+                    <h3><span>Título: {{attributes.fulltitle}}</span>
+                    <span>Gold: 1000</span>
+                    <span>Level: 15</span>
+                    <span>Questões feitas: 14</span>
+                    <span>Submissões: 120</span></h3>
+                </div>
+
+                <div class = "card-footer p-footer">
+                    <input id="input-frmuser-fileupload" type="file" class="d-none">
+                    <button id="btn-alter-image" class="btn">Alterar imagem <i class="fa fa-file-photo-o text-danger"></i></button>
+                    <a class = "btn " href = "profile/visit"> Ver como visitante </a>
+                </div>
+            </div> 
         </div>
 
         <div class="col-md-5 mt-4" id = "user-form">
@@ -113,7 +116,6 @@
                 <div class="card-footer text-center">
                     <input id="input-hidden-id" type="hidden" value="{{ attributes.id }}">
                     <button id="btn-update-profile" type="submit" class="btn btn-cosmo-color-2"><i class="fas fa-save"></i> Salvar</button>
-                    
                 </div>
             </div>
         </div>
@@ -127,28 +129,28 @@
                 </div>
             
                 <div class = "btn-group mt-0">
-                    <button type="button" class="btn btn-x3" data-toggle="collapse" data-target="#cd-1" ><i class="fas fa-crown"></i></button>
-                    <button type="button" class="btn btn-x2" data-toggle="collapse" data-target="#cd-2" ><i class="fas fa-trophy"></i></button>
+                    <button type="button" class="btn btn-1" data-toggle="collapse" data-target="#cd-1" ><i class="fas fa-crown"></i></button>
+                    <button type="button" class="btn btn-2" data-toggle="collapse" data-target="#cd-2" ><i class="fas fa-trophy"></i></button>
                 </div>
 
 
                  <div id = "cd-1" class = "collapse">
                     <div class="card border-cosmo-color-1 mx-sm-1 p-3 mt-4">
                         <div class="card border-cosmo-color-1 shadow text-cosmo-color-1 p-3 card-h"><span class="fas fa-crown" aria-hidden="true"></span></div>
-                        <div class="text-cosmo-color-1 text-center mt-3"><h4>Títulos</h4></div>
-                        <div class="text-cosmo-color-1 text-center mt-2"><h6>*Supremo Atribuidor*</h6></div>
-                        <div class="text-cosmo-color-1 text-center mt-2"><h6>*Repetidor Sagaz*</h6></div>
-                        <div class="text-cosmo-color-1 text-center mt-2"><h6>***</h6></div>
+                        <div class="mt-3"><h4>Títulos</h4></div>
+                        <div class="mt-2"><h6>*Supremo Atribuidor*</h6></div>
+                        <div class="mt-2"><h6>*Repetidor Sagaz*</h6></div>
+                        <div class="mt-2"><h6>***</h6></div>
                     </div>
                 </div>
 
                 <div id = "cd-2" class = "collapse">
                     <div class="card border-cosmo-color-1 mx-sm-1 p-3 mt-4">
                         <div class="card border-cosmo-color-1 shadow text-cosmo-color-1 p-3 card-h"><span class="fas fa-trophy" aria-hidden="true"></span></div>
-                        <div class="text-cosmo-color-1 text-center mt-3"><h4>Troféus</h4></div>
-                        <div class="text-cosmo-color-1 text-center mt-2"><h6>*IF's Ouro*</h6></div>
-                        <div class="text-cosmo-color-1 text-center mt-2"><h6>*While's Bronze*</h6></div>
-                        <div class="text-cosmo-color-1 text-center mt-2"><h6>***</h6></div>
+                        <div class="mt-3"><h4>Troféus</h4></div>
+                        <div class="mt-2"><h6>*IF's Ouro*</h6></div>
+                        <div class="mt-2"><h6>*While's Bronze*</h6></div>
+                        <div class="mt-2"><h6>***</h6></div>
                     </div>
                 </div>
 
