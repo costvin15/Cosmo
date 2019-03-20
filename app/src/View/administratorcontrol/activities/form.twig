@@ -48,13 +48,16 @@
                         
                         <div class="form-group">
                             <label for="input-frmactivity-group">Habilidade</label>
+{#                             <input id="input-frmactivity-group" class="form-control" type="text" placeholder="Habilidade" {% if formUpdate is defined %} value="{{ activity.group.getName }}" {% endif %}></input>
+ #}
                             <select id="input-frmactivity-group" class="form-control">
+                                {% if formUpdate is defined %}
+                                    <option selected>{{ activity.group.getName }}</option>
+                                {% endif %}
                                 {% for group in group_activities %}
-                                    {% if formUpdate is defined and group.getName == activity.group.getName    %}
-                                        <option selected>{{ group.getName }}</option>
-                                    {% else %}
-                                        <option>{{ group.getName }}</option>
-                                    {% endif %}
+                                        {% if  group.getName != activity.group.getName %}
+                                            <option>{{ group.getName }}</option>
+                                        {% endif %}
                                 {% endfor %}
                             </select>
                         </div>
@@ -77,8 +80,19 @@
                         <div class="form-group">
                             <label for="input-frmactivity-category">Categoria</label>
                             <select id="input-frmactivity-category" class="form-control">
+                                {% if formUpdate is defined %}
+                                    <option selected>{{ activity.category }}</option>
+                                    {% if activity.category == "Obrigatória" %}
+                                        <option>Extra</option>
+                                    {% else %}
+                                        <option>Obrigatória</option>
+                                    {% endif %}
+                                {% else %}
+                                
                                     <option>Obrigatória</option>
                                     <option>Extra</option>
+                                {% endif %}
+                               
                             </select>
                         </div>
                     </form>

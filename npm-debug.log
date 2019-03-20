@@ -1,0 +1,152 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/bin/node',
+1 verbose cli   '/usr/bin/npm',
+1 verbose cli   'install',
+1 verbose cli   '-g',
+1 verbose cli   'gulpjs/gulp-cli#4.0' ]
+2 info using npm@3.5.2
+3 info using node@v8.10.0
+4 silly loadCurrentTree Starting
+5 silly install loadCurrentTree
+6 silly install readGlobalPackageData
+7 silly fetchPackageMetaData gulpjs/gulp-cli#4.0
+8 silly fetchOtherPackageData gulpjs/gulp-cli#4.0
+9 silly cache add args [ 'gulpjs/gulp-cli#4.0', null ]
+10 verbose cache add spec gulpjs/gulp-cli#4.0
+11 silly cache add parsed spec Result {
+11 silly cache add   raw: 'gulpjs/gulp-cli#4.0',
+11 silly cache add   scope: null,
+11 silly cache add   name: null,
+11 silly cache add   rawSpec: 'gulpjs/gulp-cli#4.0',
+11 silly cache add   spec: 'github:gulpjs/gulp-cli#4.0',
+11 silly cache add   type: 'hosted',
+11 silly cache add   hosted:
+11 silly cache add    { type: 'github',
+11 silly cache add      ssh: 'git@github.com:gulpjs/gulp-cli.git#4.0',
+11 silly cache add      sshUrl: 'git+ssh://git@github.com/gulpjs/gulp-cli.git#4.0',
+11 silly cache add      httpsUrl: 'git+https://github.com/gulpjs/gulp-cli.git#4.0',
+11 silly cache add      gitUrl: 'git://github.com/gulpjs/gulp-cli.git#4.0',
+11 silly cache add      shortcut: 'github:gulpjs/gulp-cli#4.0',
+11 silly cache add      directUrl: 'https://raw.githubusercontent.com/gulpjs/gulp-cli/4.0/package.json' } }
+12 verbose addRemoteGit caching gulpjs/gulp-cli#4.0
+13 verbose addRemoteGit gulpjs/gulp-cli#4.0 is a repository hosted by github
+14 silly tryGitProto attempting to clone git://github.com/gulpjs/gulp-cli.git#4.0
+15 silly tryClone cloning gulpjs/gulp-cli#4.0 via git://github.com/gulpjs/gulp-cli.git#4.0
+16 verbose tryClone git-github-com-gulpjs-gulp-cli-git-4-0-177dc8bb not in flight; caching
+17 verbose makeDirectory /home/danielsm/.npm/_git-remotes creation not in flight; initializing
+18 silly makeDirectory /home/danielsm/.npm/_git-remotes uid: 1000 gid: 1000
+19 info git [ 'clone',
+19 info git   '--template=/home/danielsm/.npm/_git-remotes/_templates',
+19 info git   '--mirror',
+19 info git   'git://github.com/gulpjs/gulp-cli.git',
+19 info git   '/home/danielsm/.npm/_git-remotes/git-github-com-gulpjs-gulp-cli-git-4-0-177dc8bb' ]
+20 verbose mirrorRemote gulpjs/gulp-cli#4.0 git clone git://github.com/gulpjs/gulp-cli.git
+21 verbose setPermissions gulpjs/gulp-cli#4.0 set permissions on /home/danielsm/.npm/_git-remotes/git-github-com-gulpjs-gulp-cli-git-4-0-177dc8bb
+22 verbose resolveHead gulpjs/gulp-cli#4.0 original treeish: 4.0
+23 info git [ 'rev-list', '-n1', '4.0' ]
+24 error git rev-list -n1 4.0: fatal: ambiguous argument '4.0': unknown revision or path not in the working tree.
+24 error git rev-list -n1 4.0: Use '--' to separate paths from revisions, like this:
+24 error git rev-list -n1 4.0: 'git <command> [<revision>...] -- [<file>...]'
+25 silly tryHTTPS attempting to clone git+https://github.com/gulpjs/gulp-cli.git#4.0
+26 silly tryClone cloning gulpjs/gulp-cli#4.0 via git+https://github.com/gulpjs/gulp-cli.git#4.0
+27 verbose tryClone git-https-github-com-gulpjs-gulp-cli-git-4-0-4d1486f1 not in flight; caching
+28 info git [ 'clone',
+28 info git   '--template=/home/danielsm/.npm/_git-remotes/_templates',
+28 info git   '--mirror',
+28 info git   'https://github.com/gulpjs/gulp-cli.git',
+28 info git   '/home/danielsm/.npm/_git-remotes/git-https-github-com-gulpjs-gulp-cli-git-4-0-4d1486f1' ]
+29 verbose mirrorRemote gulpjs/gulp-cli#4.0 git clone https://github.com/gulpjs/gulp-cli.git
+30 verbose setPermissions gulpjs/gulp-cli#4.0 set permissions on /home/danielsm/.npm/_git-remotes/git-https-github-com-gulpjs-gulp-cli-git-4-0-4d1486f1
+31 verbose resolveHead gulpjs/gulp-cli#4.0 original treeish: 4.0
+32 info git [ 'rev-list', '-n1', '4.0' ]
+33 error git rev-list -n1 4.0: fatal: ambiguous argument '4.0': unknown revision or path not in the working tree.
+33 error git rev-list -n1 4.0: Use '--' to separate paths from revisions, like this:
+33 error git rev-list -n1 4.0: 'git <command> [<revision>...] -- [<file>...]'
+34 silly trySSH attempting to clone git@github.com:gulpjs/gulp-cli.git#4.0
+35 silly tryClone cloning gulpjs/gulp-cli#4.0 via git@github.com:gulpjs/gulp-cli.git#4.0
+36 verbose tryClone git-github-com-gulpjs-gulp-cli-git-4-0-799725fb not in flight; caching
+37 info git [ 'clone',
+37 info git   '--template=/home/danielsm/.npm/_git-remotes/_templates',
+37 info git   '--mirror',
+37 info git   'git@github.com:gulpjs/gulp-cli.git',
+37 info git   '/home/danielsm/.npm/_git-remotes/git-github-com-gulpjs-gulp-cli-git-4-0-799725fb' ]
+38 error git clone --template=/home/danielsm/.npm/_git-remotes/_templates --mirror git@github.com:gulpjs/gulp-cli.git /home/danielsm/.npm/_git-remotes/git-github-com-gulpjs-gulp-cli-git-4-0-799725fb: Cloning into bare repository '/home/danielsm/.npm/_git-remotes/git-github-com-gulpjs-gulp-cli-git-4-0-799725fb'...
+38 error git clone --template=/home/danielsm/.npm/_git-remotes/_templates --mirror git@github.com:gulpjs/gulp-cli.git /home/danielsm/.npm/_git-remotes/git-github-com-gulpjs-gulp-cli-git-4-0-799725fb: Warning: Permanently added 'github.com,192.30.253.113' (RSA) to the list of known hosts.
+38 error git clone --template=/home/danielsm/.npm/_git-remotes/_templates --mirror git@github.com:gulpjs/gulp-cli.git /home/danielsm/.npm/_git-remotes/git-github-com-gulpjs-gulp-cli-git-4-0-799725fb: sign_and_send_pubkey: signing failed: agent refused operation
+38 error git clone --template=/home/danielsm/.npm/_git-remotes/_templates --mirror git@github.com:gulpjs/gulp-cli.git /home/danielsm/.npm/_git-remotes/git-github-com-gulpjs-gulp-cli-git-4-0-799725fb: git@github.com: Permission denied (publickey).
+38 error git clone --template=/home/danielsm/.npm/_git-remotes/_templates --mirror git@github.com:gulpjs/gulp-cli.git /home/danielsm/.npm/_git-remotes/git-github-com-gulpjs-gulp-cli-git-4-0-799725fb: fatal: Could not read from remote repository.
+38 error git clone --template=/home/danielsm/.npm/_git-remotes/_templates --mirror git@github.com:gulpjs/gulp-cli.git /home/danielsm/.npm/_git-remotes/git-github-com-gulpjs-gulp-cli-git-4-0-799725fb:
+38 error git clone --template=/home/danielsm/.npm/_git-remotes/_templates --mirror git@github.com:gulpjs/gulp-cli.git /home/danielsm/.npm/_git-remotes/git-github-com-gulpjs-gulp-cli-git-4-0-799725fb: Please make sure you have the correct access rights
+38 error git clone --template=/home/danielsm/.npm/_git-remotes/_templates --mirror git@github.com:gulpjs/gulp-cli.git /home/danielsm/.npm/_git-remotes/git-github-com-gulpjs-gulp-cli-git-4-0-799725fb: and the repository exists.
+39 silly fetchPackageMetaData Error: Command failed: git clone --template=/home/danielsm/.npm/_git-remotes/_templates --mirror git@github.com:gulpjs/gulp-cli.git /home/danielsm/.npm/_git-remotes/git-github-com-gulpjs-gulp-cli-git-4-0-799725fb
+39 silly fetchPackageMetaData Cloning into bare repository '/home/danielsm/.npm/_git-remotes/git-github-com-gulpjs-gulp-cli-git-4-0-799725fb'...
+39 silly fetchPackageMetaData Warning: Permanently added 'github.com,192.30.253.113' (RSA) to the list of known hosts.
+39 silly fetchPackageMetaData sign_and_send_pubkey: signing failed: agent refused operation
+39 silly fetchPackageMetaData git@github.com: Permission denied (publickey).
+39 silly fetchPackageMetaData fatal: Could not read from remote repository.
+39 silly fetchPackageMetaData
+39 silly fetchPackageMetaData Please make sure you have the correct access rights
+39 silly fetchPackageMetaData and the repository exists.
+39 silly fetchPackageMetaData
+39 silly fetchPackageMetaData     at ChildProcess.exithandler (child_process.js:275:12)
+39 silly fetchPackageMetaData     at emitTwo (events.js:126:13)
+39 silly fetchPackageMetaData     at ChildProcess.emit (events.js:214:7)
+39 silly fetchPackageMetaData     at maybeClose (internal/child_process.js:925:16)
+39 silly fetchPackageMetaData     at Process.ChildProcess._handle.onexit (internal/child_process.js:209:5)
+39 silly fetchPackageMetaData  error for gulpjs/gulp-cli#4.0 { Error: Command failed: git clone --template=/home/danielsm/.npm/_git-remotes/_templates --mirror git@github.com:gulpjs/gulp-cli.git /home/danielsm/.npm/_git-remotes/git-github-com-gulpjs-gulp-cli-git-4-0-799725fb
+39 silly fetchPackageMetaData Cloning into bare repository '/home/danielsm/.npm/_git-remotes/git-github-com-gulpjs-gulp-cli-git-4-0-799725fb'...
+39 silly fetchPackageMetaData Warning: Permanently added 'github.com,192.30.253.113' (RSA) to the list of known hosts.
+39 silly fetchPackageMetaData sign_and_send_pubkey: signing failed: agent refused operation
+39 silly fetchPackageMetaData git@github.com: Permission denied (publickey).
+39 silly fetchPackageMetaData fatal: Could not read from remote repository.
+39 silly fetchPackageMetaData
+39 silly fetchPackageMetaData Please make sure you have the correct access rights
+39 silly fetchPackageMetaData and the repository exists.
+39 silly fetchPackageMetaData
+39 silly fetchPackageMetaData     at ChildProcess.exithandler (child_process.js:275:12)
+39 silly fetchPackageMetaData     at emitTwo (events.js:126:13)
+39 silly fetchPackageMetaData     at ChildProcess.emit (events.js:214:7)
+39 silly fetchPackageMetaData     at maybeClose (internal/child_process.js:925:16)
+39 silly fetchPackageMetaData     at Process.ChildProcess._handle.onexit (internal/child_process.js:209:5)
+39 silly fetchPackageMetaData   killed: false,
+39 silly fetchPackageMetaData   code: 128,
+39 silly fetchPackageMetaData   signal: null,
+39 silly fetchPackageMetaData   cmd: 'git clone --template=/home/danielsm/.npm/_git-remotes/_templates --mirror git@github.com:gulpjs/gulp-cli.git /home/danielsm/.npm/_git-remotes/git-github-com-gulpjs-gulp-cli-git-4-0-799725fb' }
+40 silly rollbackFailedOptional Starting
+41 silly rollbackFailedOptional Finishing
+42 silly runTopLevelLifecycles Starting
+43 silly runTopLevelLifecycles Finishing
+44 silly install printInstalled
+45 verbose stack Error: Command failed: git clone --template=/home/danielsm/.npm/_git-remotes/_templates --mirror git@github.com:gulpjs/gulp-cli.git /home/danielsm/.npm/_git-remotes/git-github-com-gulpjs-gulp-cli-git-4-0-799725fb
+45 verbose stack Cloning into bare repository '/home/danielsm/.npm/_git-remotes/git-github-com-gulpjs-gulp-cli-git-4-0-799725fb'...
+45 verbose stack Warning: Permanently added 'github.com,192.30.253.113' (RSA) to the list of known hosts.
+45 verbose stack sign_and_send_pubkey: signing failed: agent refused operation
+45 verbose stack git@github.com: Permission denied (publickey).
+45 verbose stack fatal: Could not read from remote repository.
+45 verbose stack
+45 verbose stack Please make sure you have the correct access rights
+45 verbose stack and the repository exists.
+45 verbose stack
+45 verbose stack     at ChildProcess.exithandler (child_process.js:275:12)
+45 verbose stack     at emitTwo (events.js:126:13)
+45 verbose stack     at ChildProcess.emit (events.js:214:7)
+45 verbose stack     at maybeClose (internal/child_process.js:925:16)
+45 verbose stack     at Process.ChildProcess._handle.onexit (internal/child_process.js:209:5)
+46 verbose cwd /var/www/html/Cosmo
+47 error Linux 4.15.0-46-generic
+48 error argv "/usr/bin/node" "/usr/bin/npm" "install" "-g" "gulpjs/gulp-cli#4.0"
+49 error node v8.10.0
+50 error npm  v3.5.2
+51 error code 128
+52 error Command failed: git clone --template=/home/danielsm/.npm/_git-remotes/_templates --mirror git@github.com:gulpjs/gulp-cli.git /home/danielsm/.npm/_git-remotes/git-github-com-gulpjs-gulp-cli-git-4-0-799725fb
+52 error Cloning into bare repository '/home/danielsm/.npm/_git-remotes/git-github-com-gulpjs-gulp-cli-git-4-0-799725fb'...
+52 error Warning: Permanently added 'github.com,192.30.253.113' (RSA) to the list of known hosts.
+52 error sign_and_send_pubkey: signing failed: agent refused operation
+52 error git@github.com: Permission denied (publickey).
+52 error fatal: Could not read from remote repository.
+52 error
+52 error Please make sure you have the correct access rights
+52 error and the repository exists.
+53 error If you need help, you may report this error at:
+53 error     <https://github.com/npm/npm/issues>
+54 verbose exit [ 1, true ]
