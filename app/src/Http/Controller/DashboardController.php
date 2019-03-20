@@ -220,12 +220,12 @@ class DashboardController extends AbstractController
      * @param Response $response
      * @return mixed
      * 
-     * @Get(name="/profile", middleware={"App\Http\Middleware\SessionMiddleware"}, alias="dashboard.profile")
+     * @Get(name="/profile/edit", middleware={"App\Http\Middleware\SessionMiddleware"}, alias="dashboard.profile.edit")
      * @Log(type="INFO", persist={"verb", "attributes", "session"}, message="Acessou o seu perfil.")
      */
     public function profileAction(Request $request, Response $response){
         $attributes = SessionFacilitator::getAttributeSession();
-        return $this->view->render($response, "View/dashboard/profile/index.twig", ["attributes" => $attributes]);
+        return $this->view->render($response, "View/dashboard/profile/profile_edit.twig", ["attributes" => $attributes]);
     }
 
     /**
@@ -279,12 +279,12 @@ class DashboardController extends AbstractController
      * @param Response $response
      * @return mixed
      * 
-     * @Get(name="/profile/visit", middleware={"App\Http\Middleware\SessionMiddleware"}, alias="dashboard.profile.visit")
+     * @Get(name="/profile", middleware={"App\Http\Middleware\SessionMiddleware"}, alias="dashboard.profile")
      * @Log(type="INFO", persist={"verb", "attributes", "session"}, message="Acessou o seu perfil.")
      */
     public function visitProfile(Request $request, Response $response){
         $attributes = SessionFacilitator::getAttributeSession();
-        return $this->view->render($response, "View/dashboard/profile-visit/index.twig", ["attributes" => $attributes]);
+        return $this->view->render($response, "View/dashboard/profile/index.twig", ["attributes" => $attributes]);
     }
 
     /**
