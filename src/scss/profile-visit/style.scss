@@ -96,3 +96,32 @@
         margin-bottom: 3px;
     }
 }
+
+.coins {
+    position: relative;
+    background-image: url("../../../piggy-bank.svg");
+    height: 32px;
+    width: 32px;
+    display: inline-block;
+}
+
+.brain {
+    background-image: url("../../../brain.png");
+    height: 32px;
+    width: 32px;
+    display: inline-block;
+}
+
+.papyrus{
+    background-image: url("../../../papyrus.png");
+    height: 32px;
+    width: 32px;
+    display: inline-block;
+}
+
+.progress{
+    top: -20%;
+    max-width: 85%;
+    margin-left: 3%;
+    display: inline-block;
+}
