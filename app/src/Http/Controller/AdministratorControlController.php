@@ -273,7 +273,7 @@ class AdministratorControlController extends AbstractController
     }
 
     /**
-     * @Post(name="/user/remove/{id}", middleware={"App\Http\Middleware\AdministratorSessionMiddleware"}, alias="administrator.controls.users.remove")
+     * @Post(name="/user/remove/{id}", middleware={"App\Http\Middleware\AdministratorSessionMiddleware"}, alias="administrator.control.users.remove")
      */
     public function removeUserAction(Request $request, Response $response, array $args){
         $router = $this->_ci->get("router");

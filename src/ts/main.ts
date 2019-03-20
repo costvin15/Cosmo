@@ -141,7 +141,7 @@ window.cosmo = {
         administrator_save_activity: "/admin/activity/save",
         administrator_register_user: "/admin/user/save",
         administrator_update_user: "/admin/user/update",
-        administrator_close_user: "/admin/user/remove/",
+        administrator_close_user: "/admin/user/remove",
         administrator_save_class: "/admin/classes/save",
         administrator_insert_students: "/admin/classes/insert_students",
         administrator_insert_skills: "/admin/class/insert_skills",
