@@ -48,19 +48,19 @@
 
 .coins {
   position: relative;
-  background-image: url("../../../piggy-bank.svg");
+  background-image: url("../../../icons/piggy-bank.png");
   height: 32px;
   width: 32px;
   display: inline-block; }
 
 .brain {
-  background-image: url("../../../brain.png");
+  background-image: url("../../../icons/brain.png");
   height: 32px;
   width: 32px;
   display: inline-block; }
 
 .papyrus {
-  background-image: url("../../../papyrus.png");
+  background-image: url("../../../icons/papyrus.png");
   height: 32px;
   width: 32px;
   display: inline-block; }

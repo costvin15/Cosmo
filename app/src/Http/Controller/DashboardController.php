@@ -282,10 +282,24 @@ class DashboardController extends AbstractController
      * @Get(name="/profile", middleware={"App\Http\Middleware\SessionMiddleware"}, alias="dashboard.profile")
      * @Log(type="INFO", persist={"verb", "attributes", "session"}, message="Acessou o seu perfil.")
      */
-    public function visitProfile(Request $request, Response $response){
+    public function visitYourProfile(Request $request, Response $response){
         $attributes = SessionFacilitator::getAttributeSession();
         return $this->view->render($response, "View/dashboard/profile/index.twig", ["attributes" => $attributes]);
     }
+
+     /**
+     * @param Request $request
+     * @param Response $response
+     * @param array $args
+     * @return mixed
+     *
+     * @Get(name="/profile/{id}", middleware={"App\Http\Middleware\SessionMiddleware"}, alias="dashboard.profile.visit") 
+     */
+    public function visitAnotherProfile(Request $request, Response $response, array $args){      
+        $this->setAttributeView("user", $this->_dm->getRepository(User::class)->find($args["id"]));
+        return $this->view->render($response, "View/dashboard/profile/profile_visit.twig", $this->getAttributeView());
+    }
+
 
     /**
      * @param Request $request
