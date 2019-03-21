@@ -1,47 +1,26 @@
 .btn-1:hover {
-  color: #1880ff;
-  background-color: #EBEBEB; }
+  color: #FFD700; }
 
 .btn-2:hover {
-  color: #FFD700;
-  background-color: #EBEBEB; }
+  color: #FFD700; }
 
-.S-1 .btn-skill {
-  width: 70px;
-  height: 70px;
+.btn-C {
+  width: 60px;
+  height: 60px;
+  padding: 10px 16px;
   border-radius: 35px;
-  line-height: 1.33;
-  background: #FFD12A; }
-
-.S-2 .btn-skill {
-  width: 70px;
-  height: 70px;
-  border-radius: 35px;
-  line-height: 1.33;
-  background: #A57164; }
-
-.S-3 .btn-skill {
-  width: 70px;
-  height: 70px;
-  border-radius: 35px;
-  line-height: 1.33;
-  background: silver; }
-
-.S-4 .btn-skill {
-  width: 70px;
-  height: 70px;
-  border-radius: 35px;
-  line-height: 1.33;
-  background: grey; }
-
-.btn-skill:hover {
-  background-color: #6DBCF5; }
+  font-size: 24px;
+  line-height: 1.33; }
 
 .card-h {
   position: absolute;
   left: 42%;
   top: -20px;
   border-radius: 50%; }
+
+.card-badge, .card-trophy {
+  text-align: left;
+  display: block; }
 
 .p-card .avatar img {
   margin-top: -55px;
@@ -60,7 +39,7 @@
   border-top-left-radius: .25rem;
   -webkit-border-top-right-radius: .25rem;
   border-top-right-radius: .25rem;
-  background-color: #5ba4fd !important; }
+  background-color: #5ba4fd; }
 
 .p-header {
   font-size: 20pt; }

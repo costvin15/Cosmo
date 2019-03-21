@@ -10,7 +10,7 @@
 {% endblock %}
 
 {% block styles %}
-    <link rel="stylesheet" href="{{ base_url() }}/dist/css/profile/style.min.css">
+    <link rel="stylesheet" href="{{ base_url() }}/dist/css/profile-edit/style.min.css">
 {% endblock %}
 
 {% block content %}   
@@ -34,31 +34,20 @@
 
                 <div class = "card-body p-body mt-0">
                     <h2 class="card-title">{{attributes.fullname}}</h2>
-                    <hr />
-
-                    <div class="row">
-                        <span class="font-weight-bold">Título: {{attributes.fulltitle}}</span>
+                    <hr>
+                    <div class = "row">
+                        <span> <i class="brain" title="Pontos de Conhecimento" ></i> {{attributes.xp}} Pontos de Conhecimento: </span>
+                            <!-- <span id="dynamic" title="Pontos de Conhecimento" class="progress progress-bar progress-bar-striped" role="progressbar" style="width: 10%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></span> -->                
                     </div>
-                    
-                    <div class="row">
-                        <span>Gold: {{ attributes.moedas }}</span>
+                    <div class = "row">
+                        <span> <i class="coins" title="Moedas arrecadadas"> </i> {{attributes.moedas}} Moedas: </span>
                     </div>
-                    
-                    <div class="row">
-                        <span>Level: {{ attributes.xp }}</span>
+                    <div class = row>
+                        <span> <i class="papyrus"></i>Título: {{attributes.fulltitle}}</span>
                     </div>
-                    
-                    <div class="row">
-                        <span>Questões feitas: {{ attributes.answered_activities }}</span>
-                    </div>
-                    
-                    <div class="row">
-                        <span>Submissões: {{ attemp_activities|length }}</span>
-                    </div>
-
                 </div>
 
-                <div class = "card-footer p-footer">
+                <div class = "card-footer p-footer text-center">
                     <div class = "btn-group">
                         <input id="input-frmuser-fileupload" type="file" class="d-none">
                         <button class="btn btn-primary rounded mr-1" id="btn-alter-image">Alterar imagem <i class="fa fa-file-photo-o text-danger"></i></button>
