@@ -19,10 +19,12 @@
         <li class="breadcrumb-item"><a href="{{ path_for("dashboard.profile") }}">Perfil</a></li>
         <li class="breadcrumb-item active">Editar Perfil</li>
     </ul>
+
     <div class="row">
+        
         <div class="col-md-4 mt-4">
             <div class = "card p-card">
-                <div class = "card-header p-header">
+                <div class = "card-header">
                     <h5 class = "card-title mb-0 text-center">Sua foto e seus dados</h5>
                 </div>
 
@@ -32,18 +34,26 @@
                     <img id="img-frmuser-avatar" src= "{{attributes.avatar}}" class="rounded-circle" alt=""/>
                 </div>
 
-                <div class = "card-body p-body mt-0">
-                    <h2 class="card-title">{{attributes.fullname}}</h2>
+                <div class = "card-body">
+                    <div class="d-flex justify-content-center">
+                        <h5 = "p-2">{{attributes.fullname}}</h5>
+                    </div>
                     <hr>
                     <div class = "row">
-                        <span> <i class="brain" title="Pontos de Conhecimento" ></i> Pontos de Conhecimento: {{attributes.xp}}</span>
+                        <div class = "d-flex justify-content-center">
+                            <i class="brain"></i> <span class = "p-2">Conhecimento: {{attributes.xp}}</span>
                             <!-- <span id="dynamic" title="Pontos de Conhecimento" class="progress progress-bar progress-bar-striped" role="progressbar" style="width: 10%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></span> -->                
+                        </div>
                     </div>
                     <div class = "row">
-                        <span> <i class="coins" title="Moedas arrecadadas"> </i> Moedas: {{attributes.moedas}} </span>
+                        <div class = "d-flex justify-content-center">
+                            <i class="coins"> </i> <span class = "p-2">Moedas: {{attributes.moedas}}</span>
+                        </div>
                     </div>
-                    <div class = row>
-                        <span> <i class="papyrus"></i>Título: {{attributes.fulltitle}}</span>
+                    <div class = "row">
+                        <div class = "d-flex justify-content-center">
+                            <i class="papyrus"></i> <span class = "p-2">Título: {{attributes.fulltitle}}</span>
+                        </div>
                     </div>
                 </div>
 
@@ -97,13 +107,13 @@
                                     {% if not attributes.fulltitle is defined %}<option>Escolha um Título de nobreza</option>{% endif %}
                                     <option {% if attributes.fulltitle is defined and attributes.fulltitle == "Escudeiro/Escudeira" %}selected{% endif %} value="Escudeiro/Escudeira">Escudeiro/Escudeira</option>
                                     <option {% if attributes.fulltitle is defined and attributes.fulltitle == "Barão/Baronesa" %}selected{% endif %} value="Barão/Baronesa">Barão/Baronesa</option>
-                                    <option {% if attributes.fulltitle is defined and attributes.fulltitle == "Visconde/Viscondessa" %}selected{% endif %} value="Visconde/Viscondessa">Visconde/Viscondessa</option>
+                                    {# <option {% if attributes.fulltitle is defined and attributes.fulltitle == "Visconde/Viscondessa" %}selected{% endif %} value="Visconde/Viscondessa">Visconde/Viscondessa</option>
                                     <option {% if attributes.fulltitle is defined and attributes.fulltitle == "Conde/Condessa" %}selected{% endif %} value="Conde/Condessa">Conde/Condessa</option>
                                     <option {% if attributes.fulltitle is defined and attributes.fulltitle == "Marquês/Marquessa" %}selected{% endif %} value="Marquês/Marquessa">Marquês/Marquessa</option>
                                     <option {% if attributes.fulltitle is defined and attributes.fulltitle == "Duque/Duquesa" %}selected{% endif %} value="Duque/Duquesa">Duque/Duquesa</option>
                                     <option {% if attributes.fulltitle is defined and attributes.fulltitle == "Grão-duque/Grã-duquesa" %}selected{% endif %} value="Grão-duque/Grã-duquesa">Grão-duque/Grã-duquesa</option>
                                     <option {% if attributes.fulltitle is defined and attributes.fulltitle == "Imperador/Imperadora" %}selected{% endif %} value="Imperador/Imperadora">Imperador/Imperadora</option>
-                                    <option {% if attributes.fulltitle is defined and attributes.fulltitle == "Herdeiro de Turing" %}selected{% endif %} value="Herdeiro de Turing">Herdeiro de Turing</option>
+                                    <option {% if attributes.fulltitle is defined and attributes.fulltitle == "Herdeiro de Turing" %}selected{% endif %} value="Herdeiro de Turing">Herdeiro de Turing</option> #}
                                 </select>
                             </div>
                         </div>
@@ -147,74 +157,5 @@
             </div>
         </div>
 
-        {#<div class = "col-md-3 mt-4">
-            <div class="card myCard">
-                <div class="card-header">
-                    <h5 class="card-title mb-0 text-center">
-                        Seus feitos
-                    </h5>
-                </div>
-            
-                <div class = "btn-group mt-0">
-                    <button type="button" class="btn btn-1" data-toggle="collapse" data-target="#cd-1" ><i class="fas fa-certificate"></i></button>
-                    <button type="button" class="btn btn-2" data-toggle="collapse" data-target="#cd-2" ><i class="fas fa-trophy"></i></button>
-                </div>
-
-
-                 <div id = "cd-1" class = "collapse">
-                    <div class="card border-cosmo-color-1 mx-sm-1 p-3 mt-4">
-                        <div class="card border-cosmo-color-1 shadow text-cosmo-color-1 p-3 card-h"><span class="fas fa-certificate" aria-hidden="true"></span></div>
-                        <div class="row">
-                            <h4>Badges</h4>
-                        </div>
-                        <div class="row">
-                            <span>A</span>
-                        </div>
-                        <div class="row">
-                            <h6>B</h6>
-                        </div>
-                        <div class="row">
-                            <h6>C</h6>
-                        </div>
-                    </div>
-                </div>
-
-                <div id = "cd-2" class = "collapse">
-                    <div class="card border-cosmo-color-1 mx-sm-1 p-3 mt-4">
-                        <div class="card border-cosmo-color-1 shadow text-cosmo-color-1 p-3 card-h"><span class="fas fa-trophy" aria-hidden="true"></span></div>
-                        <div class="row">
-                            <h4>Troféus</h4>
-                        </div>
-                        <div class="row">
-                            <span>A</span>
-                        </div>
-                        <div class="row">
-                            <h6>B</h6>
-                        </div>
-                        <div class="row">
-                            <h6>C</h6>
-                        </div>
-                    </div>
-                </div>
-
-                <div class = "card">
-                    <div class="card-header">
-                        <h5 class="card-title text-center">
-                            Skills de {{attributes.fullname}}
-                        </h5>
-                    </div>
-                    <div class = "card-body card-skill-body">
-                        <div class = "rounded">
-                                <h4 class = "S-1">Atribuição: <button class = "btn btn-skill" ><i class = "fas fa-star text-success"></i><i class = "fas fa-star text-success"></i><i class = "fas fa-star"></i></button></h4>
-                                <hr>
-                                <h4 class = "S-2">Condição: <button class = "btn btn-skill"><i class = "fas fa-star text-success"></i><i class = "fas fa-star text-success"></i><i class = "fas fa-star"></i></button></h4>
-                                <hr>
-                                <h4 class = "S-3">Repetição: <button class = "btn btn-skill"><i class = "fas fa-star text-success"></i><i class = "fas fa-star text-success"></i><i class = "fas fa-star"></i></button></h4>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>#}
     </div>
 {% endblock %}
