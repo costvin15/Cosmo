@@ -16,7 +16,7 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col-12">
-                            <button id="btn-adicionar-alunos" type="buttonn" class="btn btn-cosmo-color-1 w-100">Adicionar</button>
+                            <button id="btn-adicionar-alunos" type="buttonn" class="btn btn-cosmo-color-2 w-100">Adicionar</button>
                         </div>
                         {% for student in class.students %}
                             <div class="col-12 mt-3">
@@ -60,7 +60,7 @@
                                             <div class="card-footer">
                                                 <div class="row">
                                                     <div class="col-6">
-                                                        <a href="{{ path_for("administrator.control.groupactivities.view", {id: group.getId}) }}" class="btn btn-cosmo-color-1 w-100">Ver</a>
+                                                        <a href="{{ path_for("administrator.control.groupactivities.view", {id: group.getId}) }}" class="btn btn-cosmo-color-2 w-100">Ver</a>
                                                     </div>
                                                     <div class="col-6">
                                                         <a href="{{ path_for("administrator.control.groupactivities.remove", {id: group.getId}) }}" class="btn btn-danger w-100">Remover</a>
@@ -74,7 +74,7 @@
                         </div>
 
                         <div class="card-footer">
-                            <button id="btn-adicionar-habilidade" type="button" class="btn btn-cosmo-color-1 float-right">Adicionar</button>
+                            <button id="btn-adicionar-habilidade" type="button" class="btn btn-cosmo-color-2 float-right">Adicionar</button>
                         </div>
                     </div>
                 </div>

@@ -70,7 +70,7 @@
                                                 {% set count_activity = 0 %}
                                                 {% for activity in skill.activities %}
                                                     {% if count_activity < 2 %}
-                                                        <div class="col-lg-6">
+                                                        <div class="col-lg-7">
                                                             <div class="card">
                                                                 <div class="card-body">
                                                                     <span class="card-title mb-0"><a href="{{ path_for("activities", {id: activity.getId}) }}">{{ activity.getTitle }}</a></span>
@@ -99,7 +99,7 @@
                                         </div>
 
                                         <div class="card-footer d-flex align-items-center">
-                                            <a href="{{ path_for("dashboard.skill", {id: skill.id}) }}" class="btn btn-cosmo-color-1">Ver habilidade</a>
+                                            <a href="{{ path_for("dashboard.skill", {id: skill.id}) }}" class="btn btn-cosmo-color-2">Ver habilidade</a>
                                             
                                             <div class="d-none ml-auto">
                                                 <i class="fas fa-star"></i>

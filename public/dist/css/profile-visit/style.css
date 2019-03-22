@@ -12,6 +12,10 @@
   top: -20px;
   border-radius: 50%; }
 
+.card-scroll {
+  height: 320px;
+  overflow-y: scroll; }
+
 .p-card .avatar img {
   margin-top: -55px;
   width: 130;
