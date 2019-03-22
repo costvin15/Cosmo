@@ -1,6 +1,6 @@
 <?php
 
-namespace App\model\Category;
+namespace App\Model\Category;
 
 use App\Mapper\HistoryActivities;
 
@@ -8,14 +8,14 @@ use App\Mapper\HistoryActivities;
 class CategoryAgainstTime implements InterfaceCategory{
 
 
-    public function check(HistoryActivities $historyActivities){
+    public function check($historyActivities,$star,$user){
         $count = 0;
         foreach($historyActivities as $history){
-            if($history->getActivity()->getCategory() == AGAINST_TIME){
+            if($history->getActivity()->getCategory() == InterfaceCategory::AGAINST_TIME){
                 $count++;
             }
         }
-        if($count >= 3)
+        if($count >= 3 && !$star->getCompleted())
             return true;
         
         return false;

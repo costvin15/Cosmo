@@ -41,18 +41,29 @@ class PluginProblems {
         return {
             id_activity: (<HTMLInputElement> document.getElementById("id-activity")).value,
             source_code: this.editor.getValue(),
-            language: (<HTMLInputElement> document.getElementById("language-selector")).value
+            language: (<HTMLInputElement> document.getElementById("language-selector")).value,
+            id_group: (<HTMLInputElement> document.getElementById("id-group")).value,
         };
     }
 
     send(){
         let formObject = this.createObject();
         let success = (content: any) => {
-            if (content.return)
-                window.cosmo.dialog.success("Meus Parabéns", "A resposta está correta", () => {
-                    window.location.href = window.cosmo.routes_name.activities_history
-                });
-            else
+            if (content.return){
+                console.log(content);
+                if(content.star){
+                    let time = "";
+                    if(content.time)
+                        time = "Com o tempo de "+content.time+" s";
+                    window.cosmo.dialog.success("Estrela "+content.star, "A resposta está correta e você ganhou a estrela de "+
+                    content.star+". "+time, () => {
+                        window.location.href = window.cosmo.routes_name.activities_history
+                    });
+                }else
+                    window.cosmo.dialog.success("Meus Parabéns", "A resposta está correta", () => {
+                        window.location.href = window.cosmo.routes_name.activities_history
+                    });
+            }else
                 window.cosmo.dialog.error("Tente novamente!", content.message, () => {});
         };
         let fail = (content: any) => {
@@ -101,6 +112,7 @@ class PluginChallenges {
     createObject(){
         return {
             id_activity: (<HTMLInputElement> document.getElementById("id-activity")).value,
+            id_group: (<HTMLInputElement> document.getElementById("id-group")).value,
             source_code: this.editor.getValue(),
             language: (<HTMLInputElement> document.getElementById("language-selector")).value,
             type: (<HTMLInputElement> document.getElementById("input-frmactivity-type")).value,

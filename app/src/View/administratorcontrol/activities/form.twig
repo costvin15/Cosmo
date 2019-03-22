@@ -82,15 +82,15 @@
                             <select id="input-frmactivity-category" class="form-control">
                                 {% if formUpdate is defined %}
                                     <option selected>{{ activity.category }}</option>
-                                    {% if activity.category == "Obrigatória" %}
-                                        <option>Extra</option>
-                                    {% else %}
-                                        <option>Obrigatória</option>
-                                    {% endif %}
+                                    {% for category in categories %}
+                                        {% if activity.category != category %}
+                                            <option>{{category}}</option>
+                                        {% endif %}
+                                    {% endfor %}
                                 {% else %}
-                                
-                                    <option>Obrigatória</option>
-                                    <option>Extra</option>
+                                    {% for category in categories %}
+                                        <option>{{category}}</option>
+                                    {% endfor %}
                                 {% endif %}
                                
                             </select>

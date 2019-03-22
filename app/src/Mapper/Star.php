@@ -26,6 +26,11 @@ class Star
     private $groupActivities;
 
     /**
+     * @ODM\ReferenceOne(targetDocument="CategoryActivities")
+     */
+    private $categoryActivities;
+
+    /**
      * @ODM\Field(name="time_start", type="float")
      */
     private $timeStart;
@@ -40,7 +45,11 @@ class Star
      */
     private $completed;
 
+    function __construct() {
 
+        $this->completed = false;
+
+    }
     public function toArray(){
         return array(
             "id" => $this->id,
@@ -98,6 +107,22 @@ class Star
     public function setGroupActivities($groupActivities)
     {
         $this->groupActivities = $groupActivities;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCategoryActivities()
+    {
+        return $this->categoryActivities;
+    }
+
+    /**
+     * @param mixed $groupActivities
+     */
+    public function setCategoryActivities($categoryActivities)
+    {
+        $this->categoryActivities = $categoryActivities;
     }
 
     /**

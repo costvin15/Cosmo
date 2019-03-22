@@ -19,7 +19,7 @@ class CategoryActivities {
     private $category;
 
     /**
-     * @ODM\Field(name="desription", type="string")
+     * @ODM\Field(name="description", type="string")
      */
     private $description;
 

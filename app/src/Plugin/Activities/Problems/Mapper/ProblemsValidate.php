@@ -8,6 +8,7 @@ use App\Mapper\Activities;
 use App\Mapper\AttemptActivities;
 use App\Mapper\HistoryActivities;
 use App\Mapper\User;
+use App\Mapper\GroupActivities;
 use App\Plugin\Activities\Problems\Model\CppExecute;
 use App\Plugin\Activities\Problems\Model\LuaExecute;
 use App\Plugin\Activities\Problems\Model\PythonExecute;
@@ -88,6 +89,8 @@ class ProblemsValidate
         $attributeSession = SessionFacilitator::getAttributeSession();
         $user = $this->_dm->getRepository(User::class)->find($attributeSession['id']);
 
+        $group = $this->_dm->getRepository(GroupActivities::class)->find($data['id_group']);
+
         if (isset($data["type"])){
             $challenge = $this->_dm->getRepository(Challenge::class)->find($data["challenge_id"]);
             try {
@@ -115,6 +118,7 @@ class ProblemsValidate
             $history->setLanguage($data["language"]);
             $history->setLevel($data["level"]);
             $history->setType($data["type"]);
+            $history->setGroupActivities($group);
         } else {
             $historyCursor = $this->_dm->createQueryBuilder(HistoryActivities::class)
                 ->field('activity')
@@ -142,6 +146,7 @@ class ProblemsValidate
             $history->setLanguage($data["language"]);
             $history->setTimeStart($data['dateini']);
             $history->setTimeEnd($data['datefim']);
+            $history->setGroupActivities($group);
 
             if (key_exists('classification', $data)) {
                 $history->setClassification($data['classification']);

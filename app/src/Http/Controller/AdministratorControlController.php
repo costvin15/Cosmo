@@ -21,6 +21,7 @@ use App\Mapper\GroupActivities;
 use App\Facilitator\App\SessionFacilitator;
 use App\Mapper\Classes;
 use App\Mapper\Challenge;
+use App\Model\Category\InterfaceCategory;
 
 /**
  * Class AdministratorControlController
@@ -335,6 +336,7 @@ class AdministratorControlController extends AbstractController
      */
     public function newActivityAction(Request $request, Response $response){
         $this->setAttributeView("formCreate", true);
+        $this->setAttributeView("categories", InterfaceCategory::CATEGORIES);
         $this->setAttributeView("group_activities", $this->_dm->getRepository(GroupActivities::class)->findAll());
         return $this->view->render($response, "View/administratorcontrol/activities/form.twig", $this->getAttributeView());
     }
@@ -358,6 +360,7 @@ class AdministratorControlController extends AbstractController
             throw new \Exception("Atividade não encontrada");
         
         $this->setAttributeView("formUpdate", true);
+        $this->setAttributeView("categories", InterfaceCategory::CATEGORIES);
         $this->setAttributeView("activity", $activity->toArray());
         $this->setAttributeView("group_activities", $this->_dm->getRepository(GroupActivities::class)->findAll());
         return $this->view->render($response, "View/administratorcontrol/activities/form.twig", $this->getAttributeView());

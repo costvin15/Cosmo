@@ -6,7 +6,7 @@
         <div class="col-12">
             <span class="display-4 text-muted">Atividades</span>
             <div class="row">
-                {% for activity in skill.getActivity %}
+                {% for activity in activities %}
                     <div class="col-md-4 my-2">
                         <div class="card">
                             <div class="card-header">
@@ -19,7 +19,7 @@
                             </div>
 
                             <div class="card-footer">
-                                <a href="{{ path_for("activities", {id: activity.getId}) }}" class="btn btn-cosmo-color-1">Responder</a>
+                                <a href="{{ path_for("activities", {id: activity.getId,idGroup: idGroup}) }}" class="btn btn-cosmo-color-1">Responder</a>
                             </div>
                         </div>
                     </div>
