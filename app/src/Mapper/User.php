@@ -63,6 +63,16 @@ class User
     private $moedas = 0;
 
     /**
+     * @ODM\Field(name="acumulo", type="int")
+     */
+    private $acumulo = 0;
+
+    /**
+     * @ODM\Field(name="gasto", type="int")
+     */
+    private $gastos = 0;
+
+    /**
      * @ODM\Field(name="xp", type="int")
      */
     private $xp = 0;
@@ -98,6 +108,11 @@ class User
     private $administrator_class;
 
     /**
+     * @ODM\ReferenceMany(targetDocument="Achievements", mappedBy="users")
+     */
+    private $achievements;
+
+    /**
      * @ODM\ReferenceOne(targetDocument="Classes", inversedBy="students")
      */
     private $class;
@@ -124,6 +139,9 @@ class User
         $this->answered_activities = 0;
         $this->xp = 0;
         $this->moedas = 0;
+        $this->acumulo = 0;
+        $this->gasto = 0;
+        $this->achievements = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     public function getAvatar(){
@@ -154,6 +172,8 @@ class User
             "attemp_activities" => $this->attemptActivities,
             "class" => $this->class ? $this->class->toArray() : null,
             "moedas" => $this->moedas,
+            "acummulo" => $this->acumulo,
+            "gastos" => $this->gastos,
             "xp" => $this->xp
         ];
     }
@@ -178,6 +198,14 @@ class User
             'moedas' => $this->moedas,
             'xp' => $this->xp,
         ];
+    }
+
+    public function setAchievements(Achievements $achievement){
+        foreach ($this->achievements as $value){
+            if($achievement->type == "badge"){
+                
+            }
+       }
     }
     
     /**
@@ -348,6 +376,34 @@ class User
      */
     public function setMoedas($moedas){
         $this->moedas = $moedas;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getAcumulo(){
+        return $this->acumulo;
+    }
+
+    /**
+     * @param mixed $acumulo
+     */
+    public function updateAcumulo($acumulo){
+        $this->acumulo += $acumulo;
+    }
+
+    /**
+     * @return mixed 
+     */
+    public function getGasto(){
+        return $this->gastos;
+    }
+
+    /**
+     * @param mixed $acumulo
+     */
+    public function updateGastos($gastos){
+        $this->gastos += $gastos;
     }
 
      /**

@@ -1,11 +1,3 @@
-.btn-1:hover {
-    color: #FFD700;
-}
-
-.btn-2:hover {
-    color: #FFD700;
-}
-
 .btn-C {
     width: 60px;
     height: 60px;
@@ -14,6 +6,7 @@
     font-size: 24px;
     line-height: 1.33;
 }
+
 .card-h {   
     position:absolute;
     left:42%;
@@ -21,9 +14,9 @@
     border-radius:50%;
 }
 
-.card-badge, .card-trophy {
-    text-align: left;
-    display: block;
+.card-scroll {
+    height: 320px;
+    overflow-y: scroll;
 }
 
 .p-card {
@@ -45,27 +38,6 @@
         -webkit-border-top-right-radius: .25rem;
         border-top-right-radius: .25rem;
         background-color: #5ba4fd; 
-    }
-}
-
-.p-header {
-    font-size: 20pt;
-}
-
-.p-body {
-    h2 {
-        margin: 0 0 5px;
-        font-weight: 300;
-        margin-top: -12px;
-        text-align: center;
-    }
-    
-    h3 span {
-        display: block;
-        font-weight: 300;
-        font-size: 0.8em;
-        color: #1e72aa;
-        margin-bottom: 3px;
     }
 }
 

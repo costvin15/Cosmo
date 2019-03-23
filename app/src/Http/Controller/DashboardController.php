@@ -14,7 +14,6 @@ use App\Mapper\HistoryActivities;
 use App\Mapper\User;
 use Interop\Container\ContainerInterface;
 use Psr\Http\Message\ResponseInterface;
-use Psr\Http\Message\ServerRequestInterface;
 use Slim\Http\Request;
 use Slim\Http\Response;
 use App\Model\Util\ImageBase64;
@@ -24,6 +23,8 @@ use App\Mapper\CategoryActivities;
 use Twig\Extension\StagingExtension;
 use App\Mapper\Star;
 use App\Model\Category\InterfaceCategory;
+use App\Auth\Adapters\UserWithPassword;
+use SlimAuth\SlimAuthFacade;
 
 /**
  * Class DashboardController
@@ -50,7 +51,7 @@ class DashboardController extends AbstractController
      * @Get(name="/", middleware={"App\Http\Middleware\SessionMiddleware"}, alias="dashboard.index")
      * @Log(type="INFO", persist={"verb", "attributes", "session"}, message="Acessou a página inicial.")
      */
-    public function indexAction(ServerRequestInterface $request, ResponseInterface $response){
+    public function indexAction($request, $response){
         $attributes = SessionFacilitator::getAttributeSession();
         $user = $this->_dm->getRepository(User::class)->find($attributes["id"]);
 
@@ -275,7 +276,10 @@ class DashboardController extends AbstractController
             file_put_contents($filename, base64_decode($matches[2]));
 
             $router = $this->_ci->get("router");
-            return $response->withJson(["message" => "Você precisará fazer login novamente.", "callback" => $router->pathFor("login.logout")], 200);
+
+            UserWithPassword::updateSession($nickname);
+
+            return $response->withJson(["message" => "Seu perfil foi atualizado com sucesso."], 200);
         } else
             return $response->withJson(["message" => "Requisição mal formatada"], 500);
     }
@@ -290,7 +294,27 @@ class DashboardController extends AbstractController
      */
     public function visitYourProfile(Request $request, Response $response){
         $attributes = SessionFacilitator::getAttributeSession();
-        return $this->view->render($response, "View/dashboard/profile/index.twig", ["attributes" => $attributes]);
+        $user = $this->_dm->getRepository(User::class)->find($attributes["id"]);
+        if ($user->getClass()){
+            $user_history = $this->_dm->createQueryBuilder(HistoryActivities::class)
+                ->field("user")->references($user)->getQuery()->execute();
+            $user_history_ids = array();
+            foreach ($user_history as $activity)
+                $user_history_ids[] = $activity->getActivity()->getId();
+
+            $groups = $this->_dm->getRepository(GroupActivities::class)->findBy(array("class" => $user->getClass()));
+            for ($i = 0; $i < count($groups); $i++){
+                $group = $groups[$i]->toArray();
+                $group["activities"] = $this->_dm->createQueryBuilder(Activities::class)
+                    ->field("group")->references($groups[$i])
+                    ->field("id")->notIn($user_history_ids)->getQuery()->execute();
+                $groups[$i] = $group;
+            }
+            $this->setAttributeView("groups", $groups);
+            $this->setAttributeView("class", $user->getClass());
+        }
+        return $this->view->render($response, "View/dashboard/profile/index.twig", $this->getAttributeView());
+        
     }
 
      /**

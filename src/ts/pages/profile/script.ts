@@ -98,7 +98,7 @@ class UpdateUser {
             formObject.code = (<HTMLInputElement> document.getElementById("input-frmuser-class")).value;
         let success = function(content: any){
             window.cosmo.dialog.success("Atualização do usuário", content.message, () => {
-                window.location.href = content.callback;
+                location.reload();
             });
         };
         let fail = function(content: any){

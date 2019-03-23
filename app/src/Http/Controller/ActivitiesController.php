@@ -102,6 +102,10 @@ class ActivitiesController extends AbstractController
         $params = $request->getParsedBody();
         $idActivity = $params['id_activity'];
 
+        $attributes = SessionFacilitator::getAttributeSession();
+
+        $user = $this->_dm->getRepository(User::class)->find($attributes['id']);
+
         $activity = $this->_dm->getRepository(Activities::class)->find($idActivity);
         $validateClass = $activity->getValidate();
 
@@ -120,7 +124,7 @@ class ActivitiesController extends AbstractController
             return $response->withJson([ 'return' => true,  'message' => 'A resposta está correta!',"star" => $router->pathFor("star.check",
                 ["id_group" => $params['id_group'],"id_category"=>$categoryType])]);
         }
-
+        
         return $response->withJson([ 'return' => false,  'message' => 'A resposta está errada! Lembre-se de colocar uma quebra de linha ao imprimir suas respostas.', 'id' => $idActivity ]);
     }
 

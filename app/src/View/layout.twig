@@ -31,12 +31,6 @@
                         </a>
                     </li>
 
-                    <li class="nav-item">
-                        <a href="{{ path_for("dashboard.history") }}" class="nav-link text-white">
-                            <i class="fas fa-history"></i> Histórico
-                        </a>
-                    </li>
-
                     {# <li class="nav-item">
                         <a href="{{ path_for("dashboard.ranking") }}" class="nav-link">
                             <i class="fas fa-chart-bar"></i> Ranking
@@ -77,37 +71,16 @@
                         </a>
 
                         <div class= "dropdown-menu dropdown-menu-right mt-2" aria-labelledby="user-dropdown">
-                            <a class = "dropdown-item" href = "{{path_for("dashboard.profile")}}"><i class = "fas fa-user"></i> Meu Perfil</a>
-                            {#<a class = "dropdown-item" href = "#"><i class="fas fa-exclamation-triangle"></i> Avisos</a>#}
+                            <a class = "dropdown-item" href = "{{path_for("dashboard.profile.edit")}}"><i class = "fas fa-user"></i> Editar Perfil</a>
+                            <a class = "dropdown-item" href = "{{path_for("dashboard.profile")}}"><i class = "fas fa-user"></i> Ver Perfil</a>
+                            {# <a class = "dropdown-item" href = "{{}}"><i class="fas fa-exclamation-triangle"></i> Historico</a> #}
                             {#<a class = "dropdown-item" href="{{ path_for("dashboard.index") }}"><i class="fas fa-book"></i> Tarefas</a>#}
                             <div class="dropdown-divider"></div>
                             <a id = "exit" class = "dropdown-item" href = "{{path_for('login.logout')}}"><i class="fas fa-power-off"></i> Sair</a>
                         </div>
                     </li>
                 </ul>
-
-                {# <div class = "myCoins"> 
-                    <ul class = "navbar-nav ml-2">
-                        <li class = "nav-item"> 1250 <i class = "fas fa-coins red" aria-hidden="true"></i></li>
-                    </ul>
-                </div>
-
-                <div class = "myXp"> 
-                    <ul class = "navbar-nav ml-2">
-                        <li class = "nav-item dropdown">
-                            <div class="progress text-right" style="height:30px">
-                                <div class="progress-bar" style="width:100%"><i class = "fas fa-brain"></i></div>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-
-                <div class = "myRank">
-                    <ul class = "navbar-nav ml-2">
-                        <li class = "nav-item">Sua posição: 5º <i class = "fas fa-award"></i></li>
-                    </ul>
-                </div> #}
-
+                
             </div>
 
             
@@ -121,10 +94,6 @@
                
 
             <span class="display-4">{{ page_title }}</span>
-            {# <h1>
-                {{ page_title }}
-                <small>{{ page_description }}</small>
-            </h1> #}
 
             {% block breakcrumb %}{% endblock %}
 

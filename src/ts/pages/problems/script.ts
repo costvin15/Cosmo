@@ -67,6 +67,7 @@ class PluginProblems {
                 window.cosmo.dialog.error("Tente novamente!", content.message, () => {});
         };
         let fail = (content: any) => {
+            console.log(content);
             window.cosmo.dialog.error("Erro", content.responseJSON[0], () => {});
         };
 
