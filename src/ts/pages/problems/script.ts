@@ -48,14 +48,15 @@ class PluginProblems {
     send(){
         let formObject = this.createObject();
         let success = (content: any) => {
-            if (content.return)
+            if (content.return){
                 window.cosmo.dialog.success("Meus Parabéns", "A resposta está correta", () => {
-                    window.location.href = window.cosmo.routes_name.activities_history
+                    window.location.href = window.cosmo.routes_name.activities_history;
                 });
-            else
+            } else
                 window.cosmo.dialog.error("Tente novamente!", content.message, () => {});
         };
         let fail = (content: any) => {
+            console.log(content);
             window.cosmo.dialog.error("Erro", content.responseJSON[0], () => {});
         };
 

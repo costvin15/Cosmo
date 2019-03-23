@@ -1,6 +1,6 @@
 /**
  * @author zhixin wen <wenzhixin2010@gmail.com>
- * version: 1.13.4
+ * version: 1.14.2
  * https://github.com/wenzhixin/bootstrap-table/
  */
 .bootstrap-table .fixed-table-toolbar:after {
@@ -52,15 +52,15 @@
 .bootstrap-table .fixed-table-container {
   position: relative;
   clear: both; }
-  .bootstrap-table .fixed-table-container.fixed-height {
+  .bootstrap-table .fixed-table-container.fixed-height:not(.has-footer) {
     border-bottom: 1px solid #dee2e6; }
-    .bootstrap-table .fixed-table-container.fixed-height .fixed-table-border {
-      border-left: 1px solid #dee2e6;
-      border-right: 1px solid #dee2e6; }
-    .bootstrap-table .fixed-table-container.fixed-height .table thead th {
-      border-bottom: 1px solid #dee2e6; }
-    .bootstrap-table .fixed-table-container.fixed-height .table-dark thead th {
-      border-bottom: 1px solid #32383e; }
+  .bootstrap-table .fixed-table-container.fixed-height .fixed-table-border {
+    border-left: 1px solid #dee2e6;
+    border-right: 1px solid #dee2e6; }
+  .bootstrap-table .fixed-table-container.fixed-height .table thead th {
+    border-bottom: 1px solid #dee2e6; }
+  .bootstrap-table .fixed-table-container.fixed-height .table-dark thead th {
+    border-bottom: 1px solid #32383e; }
   .bootstrap-table .fixed-table-container .fixed-table-header {
     overflow: hidden; }
   .bootstrap-table .fixed-table-container .fixed-table-body {
@@ -68,15 +68,49 @@
     overflow-y: auto;
     height: 100%; }
     .bootstrap-table .fixed-table-container .fixed-table-body .fixed-table-loading {
+      align-items: center;
+      background: #fff;
       display: none;
+      justify-content: center;
       position: absolute;
-      top: 42px;
-      right: 0;
       bottom: 0;
-      left: 0;
-      z-index: 99;
-      background-color: #fff;
-      text-align: center; }
+      width: 100%;
+      z-index: 1000; }
+      .bootstrap-table .fixed-table-container .fixed-table-body .fixed-table-loading .loading-wrap {
+        align-items: baseline;
+        display: flex;
+        justify-content: center; }
+        .bootstrap-table .fixed-table-container .fixed-table-body .fixed-table-loading .loading-wrap .loading-text {
+          font-size: 2rem;
+          margin-right: 6px; }
+        .bootstrap-table .fixed-table-container .fixed-table-body .fixed-table-loading .loading-wrap .animation-wrap {
+          align-items: center;
+          display: flex;
+          justify-content: center; }
+        .bootstrap-table .fixed-table-container .fixed-table-body .fixed-table-loading .loading-wrap .animation-dot,
+        .bootstrap-table .fixed-table-container .fixed-table-body .fixed-table-loading .loading-wrap .animation-wrap:after,
+        .bootstrap-table .fixed-table-container .fixed-table-body .fixed-table-loading .loading-wrap .animation-wrap:before {
+          content: "";
+          animation-duration: 1.5s;
+          animation-iteration-count: infinite;
+          animation-name: LOADING;
+          background: #212529;
+          border-radius: 50%;
+          display: block;
+          height: 5px;
+          margin: 0 4px;
+          opacity: 0;
+          width: 5px; }
+        .bootstrap-table .fixed-table-container .fixed-table-body .fixed-table-loading .loading-wrap .animation-dot {
+          animation-delay: .3s; }
+        .bootstrap-table .fixed-table-container .fixed-table-body .fixed-table-loading .loading-wrap .animation-wrap:after {
+          animation-delay: .6s; }
+      .bootstrap-table .fixed-table-container .fixed-table-body .fixed-table-loading.table-dark {
+        background: #212529; }
+        .bootstrap-table .fixed-table-container .fixed-table-body .fixed-table-loading.table-dark .animation-dot,
+        .bootstrap-table .fixed-table-container .fixed-table-body .fixed-table-loading.table-dark .animation-wrap:after,
+        .bootstrap-table .fixed-table-container .fixed-table-body .fixed-table-loading.table-dark .animation-wrap:before {
+          background: #fff; }
   .bootstrap-table .fixed-table-container .table {
     width: 100%;
     margin-bottom: 0 !important; }
@@ -113,7 +147,7 @@
       background-color: rgba(0, 0, 0, 0.075); }
     .bootstrap-table .fixed-table-container .table tbody tr.no-records-found {
       text-align: center; }
-    .bootstrap-table .fixed-table-container .table tbody tr .card-view .title {
+    .bootstrap-table .fixed-table-container .table tbody tr .card-view .card-view-title {
       font-weight: bold;
       display: inline-block;
       min-width: 30%;
@@ -126,14 +160,7 @@
     .bootstrap-table .fixed-table-container .table.table-sm .th-inner {
       padding: .3rem; }
   .bootstrap-table .fixed-table-container .fixed-table-footer {
-    overflow: hidden;
-    border-top: 1px solid #dee2e6; }
-    .bootstrap-table .fixed-table-container .fixed-table-footer .table {
-      border-bottom: none;
-      border-radius: 0;
-      padding: 0 !important; }
-      .bootstrap-table .fixed-table-container .fixed-table-footer .table tbody > tr > td {
-        padding: 0 !important; }
+    overflow: hidden; }
 
 .bootstrap-table .fixed-table-pagination:after {
   content: "";
@@ -193,3 +220,11 @@ div.fixed-table-scroll-outer {
   width: 200px;
   height: 150px;
   overflow: hidden; }
+
+@keyframes LOADING {
+  0% {
+    opacity: 0; }
+  50% {
+    opacity: 1; }
+  to {
+    opacity: 0; } }

@@ -4,7 +4,7 @@
 {% block scripts %}
 
     <script>
-        {# $(function setProgress(valor) {
+        /* $(function setProgress(valor) {
         /* var current_progress = 0;
             var interval = setInterval(function() {
                 current_progress += 10;
@@ -14,7 +14,7 @@
                     .text(current_progress + "/100%");
                 if (current_progress >= 100)
                 clearInterval(interval);
-            }, 1000); */
+            }, 1000); 
 
             var elem = document.getElementById("dynamic");
             var width = 1;
@@ -27,7 +27,7 @@
                 elem.style.width = width + '%';
         }
     }
-        }); #}
+        }); */
 
         $(function () {
             $('[data-toggle="popover"]').popover()
@@ -284,39 +284,25 @@
         <div class = "col-md-4 mt-2 card-skill">
             <div class = "card">
                 <div class="card-header">
-                    <h5 class="card-title text-center">
+                    <h5 class=" text-center">
                         Skills de {{attributes.fullname}}
                     </h5>
                 </div>
-                <div class = "card-body card-skill-body">
-                    <h4>Atribuição:
-                        <button class = "btn btn-cosmo-color-8" > 
-                                <i class = "fas fa-star text-cosmo-color-7"></i>
-                                <i class = "fas fa-star"></i>
-                                <i class = "fas fa-star"></i>
-                        </button>
-                    </h4>
-
-                    <hr>
-
-                    <h4>Condição:
-                        <button class = "btn btn-dark" > 
-                                <i class = "fas fa-star"></i>
-                                <i class = "fas fa-star"></i>
-                                <i class = "fas fa-star"></i>
-                        </button>
-                    </h4>
-
-                    <hr>
-
-                    <h4>Repetição:
-                        <button class = "btn btn-dark" > 
-                                <i class = "fas fa-star"></i>
-                                <i class = "fas fa-star"></i>
-                                <i class = "fas fa-star"></i>
-                        </button>
-                    </h4>
-
+                <div class = "card-body d-flex flex-column">
+                    {% for skill in groups %}
+                            <div class="text-center">
+                                    <h5 class="">{{ skill.title }}: </h5>
+                                    <div center="">
+                                        <button class = "btn btn-dark ml-1" > 
+                                                <i class = "fas fa-star text-warning"></i>
+                                                <i class = "fas fa-star"></i>
+                                                <i class = "fas fa-star"></i>
+                                        </button>
+                                    </div>
+                                    <hr>
+                            </div>
+                            
+                    {% endfor %}
                 </div>
             </div>
         </div>
