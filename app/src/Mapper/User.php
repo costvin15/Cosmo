@@ -88,6 +88,11 @@ class User
     private $attemptActivities;
 
     /**
+     * @ODM\ReferenceMany(targetDocument="Activities", inversedBy="user")
+     */
+    private $purchasedActivities;
+
+    /**
      * @ODM\ReferenceMany(targetDocument="Classes", mappedBy="administrator")
      */
     private $administrator_class;
@@ -115,6 +120,7 @@ class User
         $this->fulltitle = "";
         $this->administrator = $administrator;
         $this->historyActivities = [];
+        $this->purchasedActivities = [];
         $this->answered_activities = 0;
         $this->xp = 0;
         $this->moedas = 0;
@@ -388,6 +394,23 @@ class User
     public function setAttemptActivities($attemptActivities)
     {
         $this->attemptActivities = $attemptActivities;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPurchasedActivities()
+    {
+        return $this->purchasedActivities;
+    }
+
+    /**
+     * @param mixed $attemptActivities
+     */
+    public function addPurchasedActivities($purchasedActivitie)
+    {
+        if(!in_array($purchasedActivitie,$this->purchasedActivities->toArray(),true))
+            $this->purchasedActivities[] = $purchasedActivitie;
     }
 
     /**

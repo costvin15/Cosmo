@@ -13,4 +13,7 @@ class StarRepository extends DocumentRepository
     public function findStar(User $user, GroupActivities $group,CategoryActivities $category) {
         return $this->dm->getRepository(Star::class)->findOneBy(['user' => $user, 'groupActivities' => $group,"categoryActivities" => $category]);
     }
+    public function findStarWithUser(User $user) {
+        return $this->dm->getRepository(Star::class)->findBy(['user' => $user]);
+    }
 }

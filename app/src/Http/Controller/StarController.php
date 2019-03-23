@@ -14,6 +14,7 @@ use App\Mapper\GroupActivities;
 use App\Mapper\CategoryActivities;
 use App\Mapper\Star;
 use App\Mapper\HistoryActivities;
+use App\Model\Category\CategoryTheInvestor;
 
 
 /**
@@ -58,6 +59,9 @@ class StarController extends AbstractController
         if($category->getCategory() == InterfaceCategory::AGAINST_TIME){
             $optional = ["time"=>$star->getTimeEnd()-$star->getTimeStart()];
             $checker = new CategoryAgainstTime();
+        }
+        if($category->getCategory() == InterfaceCategory::CHALLENGE){
+            $checker = new CategoryTheInvestor();   
         }
 
         if($checker->check($history,$star,$user)){

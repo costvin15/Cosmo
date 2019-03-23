@@ -50,13 +50,26 @@ class ActivitiesController extends AbstractController
     public function activitiesAction(ServerRequestInterface $request, ResponseInterface $response, array $args) {
         $idActivity = $args["id"];
         $this->activity = $this->_dm->getRepository(Activities::class)->find($idActivity);
+        
+        //adicionar questões compradas
+        $attributes = SessionFacilitator::getAttributeSession();
+        $user = $this->_dm->getRepository(User::class)->find($attributes["id"]);
+        
+        if(!in_array($this->activity, $user->getPurchasedActivities()->toArray(),true)){
+            $user->setMoedas($user->getMoedas() - $this->activity->getCust());
+        }
+        $user->addPurchasedActivities($this->activity);
+
+        $this->_dm->persist($user);
+        $this->_dm->flush();
+
         $this->setAttributeView("activity", $this->activity);
         $this->setAttributeView("idGroup", $args["idGroup"]);
+        
         if ($request->getParam("challenge-type")){
             $this->setAttributeView("type", $request->getParam("challenge-type"));
             $this->setAttributeView("challenge_id", $request->getParam("challenge-id"));
             $this->setAttributeView("level", $request->getParam("challenge-level"));
-
         }
         return $this->view->render($response, $this->activity->getView(), $this->getAttributeView());
     }

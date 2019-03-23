@@ -71,6 +71,9 @@ class DashboardController extends AbstractController
             }
             $this->setAttributeView("groups", $groups);
 
+            $stars =  $this->_dm->getRepository(Star::class)->findStarWithUser($user);
+            $this->setAttributeView("stars", $stars);
+
             // $db_challenges = $user->getClass()->getChallenges();
             // $challenges = array();
             // for ($i = 0, $k = 0; $i < count($db_challenges); $i++){
@@ -429,7 +432,12 @@ class DashboardController extends AbstractController
                 $activities[] = $activity;
             }
         }
-
+        $this->setAttributeView("price", false);
+        if($category->getCategory() == InterfaceCategory::CHALLENGE){
+            $this->setAttributeView("price", true);
+            $this->setAttributeView("payments", $user->getPurchasedActivities());
+            $this->setAttributeView("coins", $user->getMoedas());
+        }
         $this->setAttributeView("activities", $activities);
         $this->setAttributeView("idGroup", $idGroup);
         return $this->view->render($response, "View/dashboard/skill/index.twig", $this->getAttributeView());
