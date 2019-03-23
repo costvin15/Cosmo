@@ -288,7 +288,27 @@ class DashboardController extends AbstractController
      */
     public function visitYourProfile(Request $request, Response $response){
         $attributes = SessionFacilitator::getAttributeSession();
-        return $this->view->render($response, "View/dashboard/profile/index.twig", ["attributes" => $attributes]);
+        $user = $this->_dm->getRepository(User::class)->find($attributes["id"]);
+        if ($user->getClass()){
+            $user_history = $this->_dm->createQueryBuilder(HistoryActivities::class)
+                ->field("user")->references($user)->getQuery()->execute();
+            $user_history_ids = array();
+            foreach ($user_history as $activity)
+                $user_history_ids[] = $activity->getActivity()->getId();
+
+            $groups = $this->_dm->getRepository(GroupActivities::class)->findBy(array("class" => $user->getClass()));
+            for ($i = 0; $i < count($groups); $i++){
+                $group = $groups[$i]->toArray();
+                $group["activities"] = $this->_dm->createQueryBuilder(Activities::class)
+                    ->field("group")->references($groups[$i])
+                    ->field("id")->notIn($user_history_ids)->getQuery()->execute();
+                $groups[$i] = $group;
+            }
+            $this->setAttributeView("groups", $groups);
+            $this->setAttributeView("class", $user->getClass());
+        }
+        return $this->view->render($response, "View/dashboard/profile/index.twig", $this->getAttributeView());
+        
     }
 
      /**
