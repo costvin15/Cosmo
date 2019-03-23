@@ -14,12 +14,13 @@ use App\Mapper\HistoryActivities;
 use App\Mapper\User;
 use Interop\Container\ContainerInterface;
 use Psr\Http\Message\ResponseInterface;
-use Psr\Http\Message\ServerRequestInterface;
 use Slim\Http\Request;
 use Slim\Http\Response;
 use App\Model\Util\ImageBase64;
 use App\Mapper\Classes;
 use App\Mapper\ChallengeHistory;
+use App\Auth\Adapters\UserWithPassword;
+use SlimAuth\SlimAuthFacade;
 
 /**
  * Class DashboardController
@@ -46,7 +47,7 @@ class DashboardController extends AbstractController
      * @Get(name="/", middleware={"App\Http\Middleware\SessionMiddleware"}, alias="dashboard.index")
      * @Log(type="INFO", persist={"verb", "attributes", "session"}, message="Acessou a página inicial.")
      */
-    public function indexAction(ServerRequestInterface $request, ResponseInterface $response){
+    public function indexAction($request, $response){
         $attributes = SessionFacilitator::getAttributeSession();
         $user = $this->_dm->getRepository(User::class)->find($attributes["id"]);
 
@@ -269,7 +270,10 @@ class DashboardController extends AbstractController
             file_put_contents($filename, base64_decode($matches[2]));
 
             $router = $this->_ci->get("router");
-            return $response->withJson(["message" => "Você precisará fazer login novamente.", "callback" => $router->pathFor("login.logout")], 200);
+
+            UserWithPassword::updateSession($nickname);
+
+            return $response->withJson(["message" => "Seu perfil foi atualizado com sucesso."], 200);
         } else
             return $response->withJson(["message" => "Requisição mal formatada"], 500);
     }
