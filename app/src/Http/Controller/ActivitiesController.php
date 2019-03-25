@@ -16,6 +16,7 @@ use Interop\Container\ContainerInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use App\Validator;
+use App\Mapper\PVP;
 
 /**
  * @package App\Http\Controller
@@ -63,6 +64,42 @@ class ActivitiesController extends AbstractController
      * @param ResponseInterface $response
      * @param array $args
      * @return mixed
+     * @Get(name="/{id}/{challenge}", alias="activities.pvp")
+     */
+    public function pvpActivitiesAction(ServerRequestInterface $request, ResponseInterface $response, array $args){
+        $activity = $args["id"];
+        $challenge = $args["challenge"];
+        $attributes = $this->getAttributeView();
+        
+        $user = $this->_dm->getRepository(User::class)->find($attributes["attributes"]["id"]);
+        $this->activity = $this->_dm->getRepository(Activities::class)->find($activity);
+        $challenge = $this->_dm->getRepository(PVP::class)->find($challenge);
+        
+        $this->setAttributeView("activity", $this->activity);
+
+        if ($user->getId() === $challenge->getChallenger()->getId())
+            if (!$challenge->getStartTimeChallenger())
+                $challenge->setStartTimeChallenger(time());
+        if ($user->getId() === $challenge->getChallenged()->getId())
+            if (!$challenge->getStartTimeChallenged())
+                $challenge->setStartTimeChallenged(time());
+        
+        $this->_dm->persist($challenge);
+        $this->_dm->flush();
+        
+        $this->setAttributeView("challenge", $challenge);
+
+        if ($challenge->getStartTimeChallenger() && $challenge->getSubmissionTimeChallenger())
+            $this->setAttributeView("challenger_time", $challenge->getSubmissionTimeChallenger()->diff($challenge->getStartTimeChallenger()));
+
+        return $this->view->render($response, $this->activity->getView(), $this->getAttributeView());
+    }
+
+    /**
+     * @param ServerRequestInterface $request
+     * @param ResponseInterface $response
+     * @param array $args
+     * @return mixed
      * @Get(name="/{id}/decrepted", alias="activities.view")
      */
     public function viewAnswerAction(ServerRequestInterface $request, ResponseInterface $response, array $args){
@@ -85,10 +122,24 @@ class ActivitiesController extends AbstractController
     public function submitActivityAction(ServerRequestInterface $request, ResponseInterface $response) {
         $params = $request->getParsedBody();
         $idActivity = $params['id_activity'];
-
+        $challenge = $params["challenge"];
+        
         $attributes = SessionFacilitator::getAttributeSession();
-
         $user = $this->_dm->getRepository(User::class)->find($attributes['id']);
+
+        if ($challenge){
+            $instance_challenge = $this->_dm->getRepository(PVP::class)->find($challenge);
+
+            if ($user->getId() === $instance_challenge->getChallenger()->getId())
+                if (!$instance_challenge->getSubmissionTimeChallenger())
+                    $instance_challenge->setSubmissionTimeChallenger(time());
+            if ($user->getId() === $instance_challenge->getChallenged()->getId())
+                if (!$instance_challenge->getSubmissionTimeChallenged())
+                    $instance_challenge->setSubmissionTimeChallenged(time());
+            
+            $this->_dm->persist($instance_challenge);
+            $this->_dm->flush();
+        }
 
         $activity = $this->_dm->getRepository(Activities::class)->find($idActivity);
         $validateClass = $activity->getValidate();
@@ -101,10 +152,13 @@ class ActivitiesController extends AbstractController
 
         $validateInstanced->saveAttempt($params, $returnValidate);
 
-        if ($returnValidate->answer) {            
-            $validateInstanced->saveHistory($params);
-
-            return $response->withJson([ 'return' => true,  'message' => 'A resposta está correta!', 'user' => $user->toArray()]);
+        if ($returnValidate->answer) {
+            if ($challenge)
+                return $response->withJson([ 'return' => true,  'message' => 'Sua resposta está correta, veja seu resultado no painel de desafios!', 'user' => $user->toArray()]);
+            else {
+                $validateInstanced->saveHistory($params);
+                return $response->withJson([ 'return' => true,  'message' => 'A resposta está correta!', 'user' => $user->toArray()]);
+            }
         }
         
         return $response->withJson([ 'return' => false,  'message' => 'A resposta está errada! Lembre-se de colocar uma quebra de linha ao imprimir suas respostas.', 'id' => $idActivity ]);

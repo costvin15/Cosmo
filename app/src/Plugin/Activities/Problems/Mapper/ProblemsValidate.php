@@ -156,17 +156,17 @@ class ProblemsValidate
         $user->setMoedas($user->getMoedas() + $activity->getMoedas());
         $user->updateAcumulo($activity->getMoedas());
         $user->setXP($user->getXP() + $activity->getXP());
-        if (count($user->achievements) == 0){
-            if ($user->acumulo >= 100){
+        if (count($user->getAchievements()) == 0){
+            if ($user->getAcumulo() >= 100){
                 $achievement = new Achievements("badge","Acumulador",1);
                 $user->setAchievements($achievement);
             }
-            if($user->answered_activities >= 1){
+            if($user->getAnsweredActivities() >= 1){
                 $achievement = new Achievements("badge","Devorador",1);
                 $user->setAchievements($achievement);
             }
         } else {
-            foreach ($user->achievements as $value) {
+            foreach ($user->getAchievements() as $value) {
                 if ($value->name == "Acumulador" && $value->type == "badge"){
                     $value->level++;
                 }

@@ -1,5 +1,10 @@
 {% extends "View/layout.twig" %}
-{% set page_title = "Resolva o problema" %}
+
+{% if challenge is defined %}
+    {% set page_title = "PVP" %}
+{% else %}
+    {% set page_title = "Resolva o problema" %}
+{% endif %}
 
 {% block scripts %}
     <script type="text/javascript" src="{{ base_url() }}/dist/js/problems.js"></script>
@@ -11,6 +16,54 @@
 
 {% block content %}
     <div class="row my-4">
+        <div class="col-12 mb-2">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5 class="card-title mb-0">Desafiante</h5>
+                        </div>
+
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-2">
+                                    <img class="img-fluid" src="{{ challenge.getChallenger.getAvatar }}"></img>
+                                </div>
+
+                                <div class="col-10">
+                                    <span class="display-5">{{ challenge.getChallenger.getFullname }}</span>
+                                    <span class="text-muted mb-0"> - @{{ challenge.getChallenger.getNickname }}</span>
+                                    <p class="display-5 mb-0">Tempo: {{ challenger_time ? challenger_time : "Não respondido ainda" }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5 class="card-title mb-0">Desafiado</h5>
+                        </div>
+
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-2">
+                                    <img class="img-fluid" src="{{ challenge.getChallenged.getAvatar }}"></img>
+                                </div>
+
+                                <div class="col-10">
+                                    <span class="display-5">{{ challenge.getChallenged.getFullname }}</span>
+                                    <span class="text-muted mb-0"> - @{{ challenge.getChallenged.getNickname }}</span>
+                                    <p class="display-5 mb-0">Tempo: {{ challenge.getTimeChallenged == -1 ? "Sem resposta" : challenge.getTimeChallenged }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <div class="col-12">
             <div class="row d-flex">
                 <div class="col-lg-6 ml-auto">
@@ -68,6 +121,9 @@
 
         <div class="col-12 mt-2">            
             <input id="id-activity" type="hidden" value="{{ activity.getId }}" />
+            {% if challenge is defined %}
+                <input id="id-challenge" type="hidden" value="{{ challenge.getId }}" />
+            {% endif %}
 
             {% if type is defined %}
                 <input type="hidden" value="{{ type }}" id="input-frmactivity-type">

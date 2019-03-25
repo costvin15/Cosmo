@@ -8,6 +8,7 @@ module.exports = {
         profile: "./src/ts/pages/profile/script.ts",
         history: "./src/ts/pages/history/script.ts",
         problems: "./src/ts/pages/problems/script.ts",
+        pvp: "./src/ts/pages/pvp/script.ts",
         administrator_group_activities: "./src/ts/pages/administrator/groupactivities/script.ts",
         administrator_activities: "./src/ts/pages/administrator/activities/script.ts",
         administrator_users: "./src/ts/pages/administrator/users/script.ts",

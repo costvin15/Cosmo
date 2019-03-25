@@ -46,10 +46,13 @@ class PluginProblems {
     }
 
     send(){
-        let formObject = this.createObject();
+        let formObject : any = this.createObject();
+        if (<HTMLInputElement> document.getElementById("id-challenge"))
+            formObject.challenge = (<HTMLInputElement> document.getElementById("id-challenge")).value;
+
         let success = (content: any) => {
             if (content.return){
-                window.cosmo.dialog.success("Meus Parabéns", "A resposta está correta", () => {
+                window.cosmo.dialog.success("Meus Parabéns", content.message, () => {
                     window.location.href = window.cosmo.routes_name.activities_history;
                 });
             } else
