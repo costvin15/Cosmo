@@ -41,8 +41,17 @@
                     <hr>
                     <div class = "row">
                         <div class = "d-flex justify-content-center">
+                            <i class="signature"></i> <span class = "p-2">Apelido: {{attributes.nickname}}</span>
+                        </div>
+                    </div>
+                    <div class = "row">
+                        <div class = "d-flex justify-content-center">
+                            <i class="papyrus"></i> <span class = "p-2">Título: {{attributes.fulltitle}}</span>
+                        </div>
+                    </div>
+                    <div class = "row">
+                        <div class = "d-flex justify-content-center">
                             <i class="brain"></i> <span class = "p-2">Conhecimento: {{attributes.xp}}</span>
-                            <!-- <span id="dynamic" title="Pontos de Conhecimento" class="progress progress-bar progress-bar-striped" role="progressbar" style="width: 10%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></span> -->                
                         </div>
                     </div>
                     <div class = "row">
@@ -52,9 +61,10 @@
                     </div>
                     <div class = "row">
                         <div class = "d-flex justify-content-center">
-                            <i class="papyrus"></i> <span class = "p-2">Título: {{attributes.fulltitle}}</span>
+                            <i class="correct"> </i> <span class = "p-2">Questões feitas: {{attributes.answered_activities}}</span>
                         </div>
                     </div>
+    
                 </div>
 
                 <div class = "card-footer p-footer text-center">
@@ -105,8 +115,8 @@
                                 </div>
                                 <select class="form-control" id = "input-frmuser-fulltitle">
                                     {% if not attributes.fulltitle is defined %}<option>Escolha um Título de nobreza</option>{% endif %}
-                                    <option {% if attributes.fulltitle is defined and attributes.fulltitle == "Escudeiro/Escudeira" %}selected{% endif %} value="Escudeiro/Escudeira">Escudeiro/Escudeira</option>
-                                    <option {% if attributes.fulltitle is defined and attributes.fulltitle == "Barão/Baronesa" %}selected{% endif %} value="Barão/Baronesa">Barão/Baronesa</option>
+                                    <option {% if attributes.fulltitle is defined and attributes.fulltitle == "Escudeiro" %}selected{% endif %} value="Escudeiro">Escudeiro</option>
+                                    <option {% if attributes.fulltitle is defined and attributes.fulltitle == "Barão" %}selected{% endif %} value="Barão">Barão</option>
                                     {# <option {% if attributes.fulltitle is defined and attributes.fulltitle == "Visconde/Viscondessa" %}selected{% endif %} value="Visconde/Viscondessa">Visconde/Viscondessa</option>
                                     <option {% if attributes.fulltitle is defined and attributes.fulltitle == "Conde/Condessa" %}selected{% endif %} value="Conde/Condessa">Conde/Condessa</option>
                                     <option {% if attributes.fulltitle is defined and attributes.fulltitle == "Marquês/Marquessa" %}selected{% endif %} value="Marquês/Marquessa">Marquês/Marquessa</option>

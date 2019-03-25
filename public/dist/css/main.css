@@ -12267,6 +12267,52 @@ body {
   min-height: 100vh;
   flex-direction: column;
   font-family: "Montserrat", sans-serif; }
+  body .coins {
+    position: relative;
+    background-image: url("../icons/piggy-bank.png");
+    height: 32px;
+    width: 32px;
+    display: inline-block; }
+  body .brain {
+    background-image: url("../icons/brain.png");
+    height: 32px;
+    width: 32px;
+    display: inline-block; }
+  body .papyrus {
+    background-image: url("../icons/papyrus.png");
+    height: 32px;
+    width: 32px;
+    display: inline-block; }
+  body .medal {
+    background-image: url("../icons/medal.png");
+    height: 32px;
+    width: 32px;
+    display: inline-block; }
+  body .trophy {
+    background-image: url("../icons/trophy.png");
+    height: 32px;
+    width: 32px;
+    display: inline-block; }
+  body .top-3 {
+    background-image: url("../icons/badge.png");
+    height: 32px;
+    width: 32px;
+    display: inline-block; }
+  body .crown {
+    background-image: url("../icons/crown.png");
+    height: 24px;
+    width: 24px;
+    display: inline-block; }
+  body .signature {
+    background-image: url("../icons/contract.png");
+    height: 32px;
+    width: 32px;
+    display: inline-block; }
+  body .correct {
+    background-image: url("../icons/correct.png");
+    height: 32px;
+    width: 32px;
+    display: inline-block; }
 
 .stop-scrolling {
   height: 100%;
