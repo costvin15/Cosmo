@@ -106,6 +106,9 @@ class ProblemsValidate
             if (!$history){
                 $history = new ChallengeHistory();
                 $user->setAnsweredActivities($user->getAnsweredActivities() + 1);
+                $user->updateAcumulo($activity->getMoedas());
+                $user->setXP($user->getXP() + $activity->getXP());
+                
                 $this->_dm->persist($user);
                 $this->_dm->flush();
             }
@@ -132,6 +135,11 @@ class ProblemsValidate
 
             if ($history == null){
                 $history = new HistoryActivities();
+                
+                $user->setAnsweredActivities($user->getAnsweredActivities() + 1);
+                $user->updateAcumulo($activity->getMoedas());
+                $user->setXP($user->getXP() + $activity->getXP());
+                
             }
 
             $history->setActivity($activity);
@@ -157,29 +165,7 @@ class ProblemsValidate
             }
         }
 
-        $user->setAnsweredActivities($user->getAnsweredActivities());
-        $user->setMoedas($user->getMoedas() + $activity->getMoedas());
-        $user->updateAcumulo($activity->getMoedas());
-        $user->setXP($user->getXP() + $activity->getXP());
-        if (count($user->achievements) == 0){
-            if ($user->acumulo >= 100){
-                $achievement = new Achievements("badge","Acumulador",1);
-                $user->setAchievements($achievement);
-            }
-            if($user->answered_activities >= 1){
-                $achievement = new Achievements("badge","Devorador",1);
-                $user->setAchievements($achievement);
-            }
-        } else {
-            foreach ($user->achievements as $value) {
-                if ($value->name == "Acumulador" && $value->type == "badge"){
-                    $value->level++;
-                }
-                if ($value->name == "Devorador" && $value->type == "badge" ){
-                    $value->level++;
-                }
-            }
-        }
+        
         $this->_dm->persist($user);
         $this->_dm->persist($history);
         $this->_dm->flush();
