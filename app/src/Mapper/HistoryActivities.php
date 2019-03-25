@@ -26,6 +26,11 @@ class HistoryActivities
     private $activity;
 
     /**
+     * @ODM\ReferenceOne(targetDocument="GroupActivities")
+     */
+    private $groupActivities;
+
+    /**
      * @ODM\Field(name="time_start", type="float")
      */
     private $timeStart;
@@ -113,6 +118,23 @@ class HistoryActivities
     {
         $this->activity = $activity;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getGroupActivities()
+    {
+        return $this->groupActivities;
+    }
+
+    /**
+     * @param mixed $activity
+     */
+    public function setGroupActivities($groupActivities)
+    {
+        $this->groupActivities = $groupActivities;
+    }
+
 
     /**
      * @return mixed

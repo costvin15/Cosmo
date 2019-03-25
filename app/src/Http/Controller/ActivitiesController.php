@@ -16,6 +16,7 @@ use Interop\Container\ContainerInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use App\Validator;
+use App\Mapper\CategoryActivities;
 
 /**
  * @package App\Http\Controller
@@ -44,12 +45,27 @@ class ActivitiesController extends AbstractController
      * @param ResponseInterface $response
      * @param array $args
      * @return mixed
-     * @Get(name="/{id}", alias="activities")
+     * @Get(name="/{id}/{idGroup}", alias="activities")
      */
     public function activitiesAction(ServerRequestInterface $request, ResponseInterface $response, array $args) {
         $idActivity = $args["id"];
         $this->activity = $this->_dm->getRepository(Activities::class)->find($idActivity);
+        
+        //adicionar questões compradas
+        $attributes = SessionFacilitator::getAttributeSession();
+        $user = $this->_dm->getRepository(User::class)->find($attributes["id"]);
+        
+        if(!in_array($this->activity, $user->getPurchasedActivities()->toArray(),true)){
+            $user->setMoedas($user->getMoedas() - $this->activity->getCust());
+        }
+        $user->addPurchasedActivities($this->activity);
+
+        $this->_dm->persist($user);
+        $this->_dm->flush();
+
         $this->setAttributeView("activity", $this->activity);
+        $this->setAttributeView("idGroup", $args["idGroup"]);
+        
         if ($request->getParam("challenge-type")){
             $this->setAttributeView("type", $request->getParam("challenge-type"));
             $this->setAttributeView("challenge_id", $request->getParam("challenge-id"));
@@ -100,11 +116,13 @@ class ActivitiesController extends AbstractController
         $params["datefim"] = $returnValidate->timeOut;
 
         $validateInstanced->saveAttempt($params, $returnValidate);
-
         if ($returnValidate->answer) {            
             $validateInstanced->saveHistory($params);
-
-            return $response->withJson([ 'return' => true,  'message' => 'A resposta está correta!', 'user' => $user->toArray()]);
+            $categoryType = $this->_dm->getRepository(CategoryActivities::class)->findCategory($activity->getCategory())->getId();
+            $router = $this->_ci->get("router");
+            return $response->withRedirect($router->pathFor("star.check",["id_group" => $params['id_group'],"id_category"=>$categoryType]));
+            return $response->withJson([ 'return' => true,  'message' => 'A resposta está correta!',"star" => $router->pathFor("star.check",
+                ["id_group" => $params['id_group'],"id_category"=>$categoryType])]);
         }
         
         return $response->withJson([ 'return' => false,  'message' => 'A resposta está errada! Lembre-se de colocar uma quebra de linha ao imprimir suas respostas.', 'id' => $idActivity ]);

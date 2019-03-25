@@ -1,0 +1,33 @@
+{% extends "View/layout.twig" %}
+{% set page_title = skill.getName %}
+
+{% block content %}
+    <div class="row my-4">
+        <div class="col-12">
+            <span class="display-4 text-muted">{{group.getName}}</span>
+            <div class="row">
+                {% for category in categories %}
+                    <div class="col-md-4 my-2">
+                        <div class="card">
+                            <div class="card-header">
+                                <h5 class="card-title mb-0">{{ category.getCategory }}</h5>
+                            </div>
+
+                            <div class="card-body">
+                                <span class="text-muted mb-0">{{ category.getDescription }}</span><br>
+                            </div>
+
+                            <div class="card-footer">
+                                {% if blocked and category.getCategory != required %}
+                                    <span class="text-muted mb-0">Sem acesso</span><br>
+                                {% else %}
+                                    <a href="{{ path_for("dashboard.skill.questions", {idGroup: group.getId , idCategory: category.getId}) }}" class="btn btn-cosmo-color-1">Entrar</a>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

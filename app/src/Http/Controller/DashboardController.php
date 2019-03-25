@@ -19,8 +19,10 @@ use Slim\Http\Response;
 use App\Model\Util\ImageBase64;
 use App\Mapper\Classes;
 use App\Mapper\ChallengeHistory;
-use App\Auth\Adapters\UserWithPassword;
-use SlimAuth\SlimAuthFacade;
+use App\Mapper\CategoryActivities;
+use Twig\Extension\StagingExtension;
+use App\Mapper\Star;
+use App\Model\Category\InterfaceCategory;
 
 /**
  * Class DashboardController
@@ -67,6 +69,9 @@ class DashboardController extends AbstractController
                 $groups[$i] = $group;
             }
             $this->setAttributeView("groups", $groups);
+
+            $stars =  $this->_dm->getRepository(Star::class)->findStarWithUser($user);
+            $this->setAttributeView("stars", $stars);
 
             // $db_challenges = $user->getClass()->getChallenges();
             // $challenges = array();
@@ -131,7 +136,6 @@ class DashboardController extends AbstractController
         // }
 
         // $this->setAttributeView('allActivities', $allActivities);
-
         return $this->view->render($response, 'View/dashboard/index/index.twig', $this->getAttributeView());
     }
 
@@ -390,11 +394,74 @@ class DashboardController extends AbstractController
      * @param Request $request
      * @param Response $response
      * @param array $args
-     * @Get(name="/skill/{id}", middleware={"App\Http\Middleware\SessionMiddleware"}, alias="dashboard.skill")
+     * @Get(name="/skill/{idGroup}", middleware={"App\Http\Middleware\SessionMiddleware"}, alias="dashboard.skill")
+     */
+    public function skillCategoryAction(Request $request, Response $response, array $args){
+        $idGroup = $args["idGroup"];
+
+        $attributes = SessionFacilitator::getAttributeSession();
+        $user = $this->_dm->getRepository(User::class)->find($attributes["id"]);
+
+        $category = $this->_dm->getRepository(CategoryActivities::class)->findCategory(InterfaceCategory::REQUIRED);
+        $group = $this->_dm->getRepository(GroupActivities::class)->find($idGroup);
+        $star = $this->_dm->getRepository(Star::class)->findStar($user,$group,$category);
+
+        
+        $this->setAttributeView("required", InterfaceCategory::REQUIRED);
+        if($star)
+            $this->setAttributeView("blocked", !$star->getCompleted());
+        else
+            $this->setAttributeView("blocked",true);
+        $this->setAttributeView("group", $group);
+        $this->setAttributeView("categories", $this->_dm->getRepository(CategoryActivities::class)->findAll());
+        $star = $this->_dm->getRepository(Star::class)->findStar($user,$group,$category);
+
+        if($star){
+        
+        }
+        return $this->view->render($response, "View/dashboard/skill/categories.twig", $this->getAttributeView());
+    }
+     /**
+     * @param Request $request
+     * @param Response $response
+     * @param array $args
+     * @Get(name="/skill/{idGroup}/{idCategory}", middleware={"App\Http\Middleware\SessionMiddleware"}, alias="dashboard.skill.questions")
      */
     public function skillAction(Request $request, Response $response, array $args){
-        $id = $args["id"];
-        $this->setAttributeView("skill", $this->_dm->getRepository(GroupActivities::class)->find($id));
+        $idGroup = $args["idGroup"];        
+        $idCategory = $args["idCategory"];
+        
+        $attributes = SessionFacilitator::getAttributeSession();
+        $user = $this->_dm->getRepository(User::class)->find($attributes["id"]);
+
+        $category = $this->_dm->getRepository(CategoryActivities::class)->find($idCategory);
+        $group = $this->_dm->getRepository(GroupActivities::class)->find($idGroup);
+        $star = $this->_dm->getRepository(Star::class)->findStar($user,$group,$category);
+
+        if(!$star){
+            $star = new Star();
+            $star->setUser($user);
+            $star->setGroupActivities($group);
+            $star->setCategoryActivities($category);
+            $star->setTimeStart(time());
+            $this->_dm->persist($star);
+            $this->_dm->flush();
+        }
+        
+        $activities = [];
+        foreach($group->getActivity() as $activity){
+            if($activity->getCategory() == $category->getCategory()){
+                $activities[] = $activity;
+            }
+        }
+        $this->setAttributeView("price", false);
+        if($category->getCategory() == InterfaceCategory::CHALLENGE){
+            $this->setAttributeView("price", true);
+            $this->setAttributeView("payments", $user->getPurchasedActivities());
+            $this->setAttributeView("coins", $user->getMoedas());
+        }
+        $this->setAttributeView("activities", $activities);
+        $this->setAttributeView("idGroup", $idGroup);
         return $this->view->render($response, "View/dashboard/skill/index.twig", $this->getAttributeView());
     }
 }

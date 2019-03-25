@@ -6,6 +6,8 @@ use App\Mapper\Activities;
 use App\Mapper\HistoryActivities;
 use App\Mapper\User;
 use Doctrine\ODM\MongoDB\DocumentRepository;
+use App\Mapper\CategoryActivities;
+use App\Mapper\GroupActivities;
 
 class HistoryActivitiesRepository extends DocumentRepository
 {
@@ -14,6 +16,10 @@ class HistoryActivitiesRepository extends DocumentRepository
             ->field('user')->references($user)
             ->field('activity')->references($activities)
             ->getQuery()->execute());
+    }
+
+    public function findHistories(User $user, GroupActivities $group) {
+        return $this->dm->getRepository(HistoryActivities::class)->findBy(['user' => $user, 'groupActivities' => $group]);
     }
 
 }
