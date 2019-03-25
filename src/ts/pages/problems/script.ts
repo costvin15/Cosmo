@@ -57,11 +57,11 @@ class PluginProblems {
                         time = "Com o tempo de "+content.time+" s";
                     window.cosmo.dialog.success("Estrela "+content.star, "A resposta está correta e você ganhou a estrela de "+
                     content.star+". "+time, () => {
-                        window.location.href = window.cosmo.routes_name.activities_history
+                        window.location.href = window.base_url + window.cosmo.routes_name.activities_history
                     });
                 }else
                     window.cosmo.dialog.success("Meus Parabéns", "A resposta está correta", () => {
-                        window.location.href = window.cosmo.routes_name.activities_history
+                        window.location.href = window.base_url + window.cosmo.routes_name.activities_history
                     });
             }else
                 window.cosmo.dialog.error("Tente novamente!", content.message, () => {});
@@ -127,7 +127,7 @@ class PluginChallenges {
         let success = (content: any) => {
             if (content.return)
                 window.cosmo.dialog.success("Desafio concluído", content.message, () => {
-                    window.location.href = window.cosmo.routes_name.dashboard_index
+                    window.location.href = window.base_url + window.cosmo.routes_name.dashboard_index
                 });
             else
                 window.cosmo.dialog.error("Tente novamente!", content.message, () => {});
