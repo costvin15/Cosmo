@@ -12,7 +12,7 @@ body {
    font-family: "Montserrat", sans-serif;
    .coins {
       position: relative;
-      background-image: url("../icons/piggy-bank.png");
+      background-image: url("../icons/gold-ingots.png");
       height: 32px;
       width: 32px;
       display: inline-block;
@@ -25,7 +25,7 @@ body {
   }
   
   .papyrus{
-      background-image: url("../icons/papyrus.png");
+      background-image: url("../icons/scroll.png");
       height: 32px;
       width: 32px;
       display: inline-block;
@@ -54,8 +54,8 @@ body {
 
    .crown {
       background-image: url("../icons/crown.png");
-      height: 24px;
-      width: 24px;
+      height: 32px;
+      width: 32px;
       display: inline-block;
    }
 
@@ -72,6 +72,7 @@ body {
       width: 32px;
       display: inline-block;
    }
+
 }
 
 .stop-scrolling {
@@ -124,5 +125,92 @@ transition: color 1s;
 
 .dropdown-menu #exit:hover {
    color: #b4131d;
+}
+
+.sidenav .centered{
+   position: absolute;
+   top: 155px;
+   left: 100px;;
+   transform: translate(-50%, -50%);
+}
+
+.sidenav {
+   height: 100%; 
+   width: 0px; 
+   position: fixed; 
+   z-index: 1; 
+   top: 0; 
+   left: 0;
+   background-color: white; 
+   overflow-x: hidden;
+   overflow-y: scroll;  
+   padding-top: 40px;
+   transition: 0.5s;
+   display: block; 
+}
+
+.sidenav img{
+border-color: white;
+}
+
+#content {
+   transition: margin-left .5s;
+}
+
+#menu-btn{
+   cursor: pointer;
+}
+
+@media screen and (max-height: 450px) {
+   .sidenav {padding-top: 15px;}
+}
+
+.side-card {
+   margin-bottom: 10px;
+   max-width: auto;
+
+   .avatar img{
+      margin-top: -55px;
+      width: 130;
+      height: 110;
+      max-width: 140px;
+      max-height: 110px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 5px solid #fff;
+   }
+
+   .card-up{
+      overflow: hidden;
+      height: 60px;
+      -webkit-border-top-left-radius: .25rem;
+      border-top-left-radius: .25rem;
+      -webkit-border-top-right-radius: .25rem;
+      border-top-right-radius: .25rem;
+   }
+   
+   .card-info {
+      word-break: break-all;
+      height: 100%;
+      width: 100%;
+   }
+
+   #eye-footer:hover {
+      color: black;
+      transition: color 0.5s;
+   }
+
+}
+
+
+.card-info:hover {
+   color: #1CB0F6;
+   transition: color 0.7s;
+}
+
+.card-info {
+   height: 100%;
+   width: 100%;
+   text-align: center;
 }
 

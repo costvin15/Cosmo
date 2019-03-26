@@ -7,7 +7,6 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-
         <link rel="stylesheet" href="{{ base_url() }}/dist/css/main.min.css">
 
         {% block styles %}{% endblock %}
@@ -16,9 +15,40 @@
     </head>
     
     <body id = "content">
-        <nav class="navbar navbar-expand-lg navbar-dark bg-cosmo-color-2">
-            <a href="{{ path_for("dashboard.index") }}" class="navbar-brand"><b>{{ appname }}</b>Telemídia</a>
 
+        <ul class = "list-group sidenav text-center" id = "mySidenav">
+            <a href="javascript:void(0)" class="closebtn mr-3" onclick="closeNav()"><i class = "fas fa-users text-cosmo-color-1"></i></a><a class="badge badge-primary text-light"><b>{{ appname }}</b> Telemídia</a>           
+            <div class="dropdown-divider"></div>
+            <li class = "d-flex justify-content-center list-group item">
+                <span class="fas fa-users text-cosmo-color-1"> </span> <span class = "p-2">Minha Turma</span>
+                {% for user in class.getStudents %}
+                    <div class = "card side-card">
+                        {% if user.getAnsweredActivities >= 10 %}
+                            <div class = "card-up bg-cosmo-color-7"></div>
+                        {% else %}
+                            <div class = "card-up bg-light"></div>
+                        {% endif %}
+                        <div class = "avatar"> 
+                            <img class="img-fluid mb-1 " src="{{ user.getAvatar }}" style = "width: 64px; height:64px;"/>
+                        </div>
+                        <div class = "card-body card-info text-center">
+                            <i class="fas fa-user"></i> <span> {{user.getFullname}}</span>
+                        </div>
+                        <div class = "card-footer text-center">
+                            <a id = "eye-footer" href="{{ path_for("dashboard.profile.visit", {id: user.id}) }}" style = "text-decoration: none;">
+                                <i class="fas fa-eye"></i>
+                            </a>
+                        </div> 
+                    </div>
+                {% endfor %} 
+            </li>
+            <div class="dropdown-divider"></div>
+            <li class = "list-group item"> <h2> AAAA </h2></li>
+        </ul>
+
+        <nav class="navbar navbar-expand-lg navbar-dark bg-cosmo-color-2">
+            <div class = "float left"><i id = "menu-btn" class="fas fa-users text-white mr-3" onclick="openNav()"></i></div>
+            <a href="{{ path_for("dashboard.index") }}" class="navbar-brand"><b>{{ appname }}</b>Telemídia</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-content-collapse" aria-controls="navbar-content-collapse" aria-expanded="false" aria-toggle="Alternar navegação">
                 <i class="navbar-toggler-icon"></i>
             </button>
@@ -71,7 +101,7 @@
                         </a>
 
                         <div class= "dropdown-menu dropdown-menu-right mt-2" aria-labelledby="user-dropdown">
-                            <a class = "dropdown-item" href = "{{path_for("dashboard.profile.edit")}}"><i class = "fas fa-user"></i> Editar Perfil</a>
+                            {# <a class = "dropdown-item" href = "{{path_for("dashboard.profile.edit")}}"><i class = "fas fa-user"></i> Editar Perfil</a> #}
                             <a class = "dropdown-item" href = "{{path_for("dashboard.profile")}}"><i class = "fas fa-user"></i> Ver Perfil</a>
                             {# <a class = "dropdown-item" href = "{{}}"><i class="fas fa-exclamation-triangle"></i> Historico</a> #}
                             {#<a class = "dropdown-item" href="{{ path_for("dashboard.index") }}"><i class="fas fa-book"></i> Tarefas</a>#}
@@ -129,6 +159,15 @@
         </script>
         <script type="text/javascript" src="{{ base_url() }}/dist/js/main.js"></script>
         <script type="text/javascript" src="{{ base_url() }}/dist/js/script.min.js"></script>
+        <script>
+            function openNav() {
+                document.getElementById("mySidenav").style.width = "210px";
+            }
+
+            function closeNav() {
+                document.getElementById("mySidenav").style.width = "0";
+            } 
+        </script>
         {% block scripts %}{% endblock %}
     </body>
 </html>
