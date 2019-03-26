@@ -13,10 +13,10 @@ use App\Mapper\GroupActivities;
 use App\Mapper\HistoryActivities;
 use App\Mapper\User;
 use Interop\Container\ContainerInterface;
-use Psr\Http\Message\ResponseInterface;
-use Psr\Http\Message\ServerRequestInterface;
 use App\Validator;
 use App\Mapper\PVP;
+use Slim\Http\Request;
+use Slim\Http\Response;
 
 /**
  * @package App\Http\Controller
@@ -41,13 +41,13 @@ class ActivitiesController extends AbstractController
     }
 
     /**
-     * @param ServerRequestInterface $request
-     * @param ResponseInterface $response
+     * @param Request $request
+     * @param Response $response
      * @param array $args
      * @return mixed
      * @Get(name="/{id}", alias="activities")
      */
-    public function activitiesAction(ServerRequestInterface $request, ResponseInterface $response, array $args) {
+    public function activitiesAction(Request $request, Response $response, array $args) {
         $idActivity = $args["id"];
         $this->activity = $this->_dm->getRepository(Activities::class)->find($idActivity);
         $this->setAttributeView("activity", $this->activity);
@@ -60,20 +60,23 @@ class ActivitiesController extends AbstractController
     }
 
     /**
-     * @param ServerRequestInterface $request
-     * @param ResponseInterface $response
+     * @param Request $request
+     * @param Response $response
      * @param array $args
      * @return mixed
-     * @Get(name="/{id}/{challenge}", alias="activities.pvp")
+     * @Get(name="/pvp/{challenge}", alias="activities.pvp")
      */
-    public function pvpActivitiesAction(ServerRequestInterface $request, ResponseInterface $response, array $args){
-        $activity = $args["id"];
+    public function pvpActivitiesAction(Request $request, Response $response, array $args){
         $challenge = $args["challenge"];
         $attributes = $this->getAttributeView();
         
         $user = $this->_dm->getRepository(User::class)->find($attributes["attributes"]["id"]);
-        $this->activity = $this->_dm->getRepository(Activities::class)->find($activity);
         $challenge = $this->_dm->getRepository(PVP::class)->find($challenge);
+        $this->activity = $challenge->getActivity();
+        $router = $this->_ci->get("router");
+
+        if ($challenge->getCompleted())
+            return $response->withRedirect($router->pathFor("dashboard.index"));
         
         $this->setAttributeView("activity", $this->activity);
 
@@ -81,8 +84,10 @@ class ActivitiesController extends AbstractController
             if (!$challenge->getStartTimeChallenger())
                 $challenge->setStartTimeChallenger(microtime(true));
         if ($user->getId() === $challenge->getChallenged()->getId())
-            if (!$challenge->getStartTimeChallenged())
+            if (!$challenge->getStartTimeChallenged()){
+                $challenge->setAccepted(true);
                 $challenge->setStartTimeChallenged(microtime(true));
+            }
         
         $this->_dm->persist($challenge);
         $this->_dm->flush();
@@ -91,18 +96,20 @@ class ActivitiesController extends AbstractController
 
         if ($challenge->getStartTimeChallenger() && $challenge->getSubmissionTimeChallenger())
             $this->setAttributeView("challenger_time", $challenge->getSubmissionTimeChallenger() - $challenge->getStartTimeChallenger());
+        if ($challenge->getStartTimeChallenged() && $challenge->getSubmissionTimeChallenged())
+            $this->setAttributeView("challenged_time", $challenge->getSubmissionTimeChallenged() - $challenge->getStartTimeChallenged());
 
         return $this->view->render($response, $this->activity->getView(), $this->getAttributeView());
     }
 
     /**
-     * @param ServerRequestInterface $request
-     * @param ResponseInterface $response
+     * @param Request $request
+     * @param Response $response
      * @param array $args
      * @return mixed
      * @Get(name="/{id}/decrepted", alias="activities.view")
      */
-    public function viewAnswerAction(ServerRequestInterface $request, ResponseInterface $response, array $args){
+    public function viewAnswerAction(Request $request, Response $response, array $args){
         $id = $args["id"];
         if (!$id)
             throw new \Exception("Resposta não encontrada");
@@ -114,12 +121,12 @@ class ActivitiesController extends AbstractController
     }
 
     /**
-     * @param ServerRequestInterface $request
-     * @param ResponseInterface $response
+     * @param Request $request
+     * @param Response $response
      * @return mixed
      * @Post(name="/submit", middleware={"App\Http\Middleware\SessionMiddleware"}, alias="submitactivity")
      */
-    public function submitActivityAction(ServerRequestInterface $request, ResponseInterface $response) {
+    public function submitActivityAction(Request $request, Response $response) {
         $params = $request->getParsedBody();
         $idActivity = $params['id_activity'];
         $challenge = $params["challenge"];
@@ -147,6 +154,16 @@ class ActivitiesController extends AbstractController
                 if ($user->getId() === $instance_challenge->getChallenged()->getId())
                     if (!$instance_challenge->getSubmissionTimeChallenged())
                         $instance_challenge->setSubmissionTimeChallenged(microtime(true));
+
+                if ($instance_challenge->getSubmissionTimeChallenger() && $instance_challenge->getSubmissionTimeChallenged()){
+                    $instance_challenge->setCompleted(true);
+                    if ($instance_challenge->getSubmissionTimeChallenger() > $instance_challenge->getSubmissionTimeChallenged())
+                        $instance_challenge->setWinner($instance_challenge->getChallenger());
+                    else if ($instance_challenge->getSubmissionTimeChallenged() > $instance_challenge->getSubmissionTimeChallenger())
+                        $instance_challenge->setWinner($instance_challenge->getChallenged());
+                    else
+                        $instance_challenge->setWinner(null);
+                }
                 $this->_dm->persist($instance_challenge);
                 $this->_dm->flush();
                     

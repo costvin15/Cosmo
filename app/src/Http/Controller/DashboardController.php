@@ -52,7 +52,7 @@ class DashboardController extends AbstractController
         $attributes = SessionFacilitator::getAttributeSession();
         $user = $this->_dm->getRepository(User::class)->find($attributes["id"]);
 
-        if ($user->getClass()){
+        if ($user && $user->getClass()){
             $user_history = $this->_dm->createQueryBuilder(HistoryActivities::class)
                 ->field("user")->references($user)->getQuery()->execute();
             $user_history_ids = array();
@@ -68,23 +68,6 @@ class DashboardController extends AbstractController
                 $groups[$i] = $group;
             }
             $this->setAttributeView("groups", $groups);
-
-            // $db_challenges = $user->getClass()->getChallenges();
-            // $challenges = array();
-            // for ($i = 0, $k = 0; $i < count($db_challenges); $i++){
-            //     $search = $this->_dm->getRepository(ChallengeHistory::class)->findBy(array(
-            //         "user" => $user,
-            //         "challenge" => $db_challenges[$i]
-            //     ));
-            //     if (count($search) == 0){
-            //         $challenges[$k] = $db_challenges[$i]->toArray();
-            //         for ($j = 0; $j < count($challenges[$k]["questions"]); $j++){
-            //             $challenges[$k]["questions"][$j]["id"] = $this->_dm->getRepository(Activities::class)->find($challenges[$k]["questions"][$j]["id"]);
-            //         }
-            //         $k++;
-            //     }
-            // }
-            // $this->setAttributeView("challenges", $challenges);
             $this->setAttributeView("class", $user->getClass());
         }
         
@@ -455,5 +438,22 @@ class DashboardController extends AbstractController
 
         $router = $this->_ci->get("router");
         return $response->withJson(array("message" => "Desafio criado com sucesso.", "callback" => $router->pathFor("activities.pvp", array("id" => $request->getParam("activity"), "challenge" => $pvp->getId()))), 200);
+    }
+    
+    /**
+     * @param Request $request
+     * @param Response $response
+     * @Get(name="/pvp/history", alias="dashboard.pvp.history")
+     */
+    public function getPvpHistory(Request $request, Response $response){
+        $attributes = SessionFacilitator::getAttributeSession();
+        $user = $this->_dm->getRepository(User::class)->find($attributes['id']);
+
+        $pvps_challenger_query = $this->_dm->createQueryBuilder(PVP::class)
+            ->field("challenger")->references($user)->getQuery()->execute();
+        $pvps_challenged_query = $this->_dm->createQueryBuilder(PVP::class)
+            ->field("challenged")->references($user)->getQuery()->execute();
+        $this->setAttributeView("pvps", array_merge($pvps_challenger_query->toArray(), $pvps_challenged_query->toArray()));
+        return $this->view->render($response, "View/dashboard/pvp/history.twig", $this->getAttributeView());
     }
 }

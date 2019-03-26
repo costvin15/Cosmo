@@ -71,26 +71,30 @@
                         </a>
 
                         <div class="pvp-dropdown-menu dropdown-menu dropdown-menu-right mt-2 px-2">
-                            <h5 class="card-title">Desafios</h5>
+                            <h5 class="card-title">PVP</h5>
                             
                             <ul class="list-group">
-                                <li class="list-group-item px-0 py-0">
-                                    <div class="card-body">
-                                        <p class="mb-0">Você foi desafiado por user.name</p>
-                                        <small>Atividade: activity.name</small>
-                                        <hr />
+                                {% for pvp in pvps %}
+                                    {% if not pvp.getCompleted %}
+                                        <li class="list-group-item px-0 py-0">
+                                            <div class="card-body">
+                                                <p class="mb-0">Você foi desafiado por {{ pvp.getChallenger.getFullname }}</p>
+                                                <small>Atividade: {{ pvp.getActivity.getTitle }}</small>
+                                                <hr />
 
-                                        <div class="row">
-                                            <div class="col-6">
-                                                <a href="" class="btn btn-success w-100"><i class="fas fa-check"></i></a>
-                                            </div>
+                                                <div class="row">
+                                                    <div class="col-6">
+                                                        <a href="{{ path_for("activities.pvp", {challenge: pvp.getId}) }}" class="btn btn-success w-100"><i class="fas fa-check"></i></a>
+                                                    </div>
 
-                                            <div class="col-6">
-                                                <a href="" class="btn btn-danger w-100"><i class="fas fa-times"></i></a>
+                                                    <div class="col-6">
+                                                        <a href="" class="btn btn-danger w-100"><i class="fas fa-times"></i></a>
+                                                    </div>
+                                                </div>
                                             </div>
-                                        </div>
-                                    </div>
-                                </li>
+                                        </li>
+                                    {% endif %}
+                                {% endfor %}
                             </ul>
 
                             <div class="row mt-2">
@@ -101,7 +105,7 @@
                                 </div>
 
                                 <div class="col-6">
-                                    <a href="" class="btn btn-cosmo-color-2 w-100">
+                                    <a href="{{ path_for("dashboard.pvp.history") }}" class="btn btn-cosmo-color-2 w-100">
                                         <i class="fas fa-clock"></i>
                                     </a>
                                 </div>

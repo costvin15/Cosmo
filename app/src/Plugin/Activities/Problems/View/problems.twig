@@ -16,6 +16,7 @@
 
 {% block content %}
     <div class="row my-4">
+        {% if challenge %}
         <div class="col-12 mb-2">
             <div class="row">
                 <div class="col-md-6">
@@ -33,7 +34,7 @@
                                 <div class="col-10">
                                     <span class="display-5">{{ challenge.getChallenger.getFullname }}</span>
                                     <span class="text-muted mb-0"> - @{{ challenge.getChallenger.getNickname }}</span>
-                                    <p class="display-5 mb-0">Tempo: {{ challenger_time ? challenger_time : "Não respondido ainda" }}</p>
+                                    <p class="display-5 mb-0">Tempo: {{ challenger_time ? challenger_time|number_format(3, '.', ',') ~ " segundos" : "Não respondido ainda" }}</p>
                                 </div>
                             </div>
                         </div>
@@ -55,7 +56,7 @@
                                 <div class="col-10">
                                     <span class="display-5">{{ challenge.getChallenged.getFullname }}</span>
                                     <span class="text-muted mb-0"> - @{{ challenge.getChallenged.getNickname }}</span>
-                                    <p class="display-5 mb-0">Tempo: {{ challenge.getTimeChallenged == -1 ? "Sem resposta" : challenge.getTimeChallenged }}</p>
+                                    <p class="display-5 mb-0">Tempo: {{ challenged_time ? challenged_time|number_format(3, '.', ',') ~ " segundos" : "Não respondido ainda" }}</p>
                                 </div>
                             </div>
                         </div>
@@ -63,6 +64,7 @@
                 </div>
             </div>
         </div>
+        {% endif %}
 
         <div class="col-12">
             <div class="row d-flex">
@@ -70,9 +72,8 @@
                     <form>
                         <div class="form-group">
                             <select id="language-selector" class="form-control">
-                                <option value="lua" selected>Lua</option>
-                                <option value="cpp">C/C++</option>
-                                {# <option value="python">Python</option> #}
+                                <option value="lua" selected>Lua (Lua5.2.4 - Ubuntu 18.04.2 LTS)</option>
+                                <option value="cpp">C/C++ (G++ 7.3.0 x86_64-linux-gnu - Ubuntu 18.04.2 LTS)</option>
                             </select>
                         </div>
                     </form>

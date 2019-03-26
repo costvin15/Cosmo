@@ -34,6 +34,11 @@ class PVP {
     private $completed;
 
     /**
+     * @ODM\Field(name="accepted", type="boolean")
+     */
+    private $accepted;
+
+    /**
      * @ODM\Field(name="start_time_challenger", type="float")
      */
     private $start_time_challenger;
@@ -53,15 +58,22 @@ class PVP {
      */
     private $submission_time_challenged;
 
+    /**
+     * @ODM\ReferenceOne(targetDocument="User", inversedBy="challenges_victory")
+     */
+    private $winner;
+
     public function __construct(Activities $activity, User $challenger, User $challenged){
         $this->activity = $activity;
         $this->challenger = $challenger;
         $this->challenged = $challenged;
         $this->completed = false;
+        $this->accepted = false;
         $this->start_time_challenger = null;
         $this->submission_time_challenger = null;
         $this->start_time_challenged = null;
         $this->submission_time_challenged = null;
+        $this->winner = null;
     }
 
     public function toArray(){
@@ -73,7 +85,10 @@ class PVP {
             "start_time_challenger" => $this->start_time_challenger,
             "submission_time_challenger" => $this->submission_time_challenger,
             "start_time_challenged" => $this->start_time_challenged,
-            "submission_time_challenged" => $this->submission_time_challenged
+            "submission_time_challenged" => $this->submission_time_challenged,
+            "completed" => $this->completed,
+            "accepted" => $this->accepted,
+            "winner" => $this->winner
         );
     }
 
@@ -113,6 +128,14 @@ class PVP {
         $this->completed = $completed;
     }
 
+    public function getAccepted(){
+        return $this->accepted;
+    }
+
+    public function setAccepted(bool $accepted){
+        $this->accepted = $accepted;
+    }
+
     public function getStartTimeChallenger(){
         return $this->start_time_challenger;
     }
@@ -144,5 +167,13 @@ class PVP {
 
     public function setSubmissionTimeChallenged($submission_time_challenged){
         $this->submission_time_challenged = $submission_time_challenged;
+    }
+
+    public function getWinner(){
+        return $this->winner;
+    }
+
+    public function setWinner($winner){
+        $this->winner = $winner;
     }
 }

@@ -1,0 +1,72 @@
+{% extends "View/layout.twig" %}
+{% set page_title = "Histórico de PVPs" %}
+
+{% block content %}
+    <div class="row">
+        {% for pvp in pvps %}
+            <div class="col-md-4">
+                <div class="card my-2">
+                    <div class="card-body">
+                        <h5 class="card-title text-muted">Desafiante:</h5>
+                        <div class="card mb-2">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-3">
+                                        <img class="img-fluid" src="{{ pvp.getChallenger.getAvatar }}">
+                                    </div>
+
+                                    <div class="col-9">
+                                        <p class="mb-0">{{ pvp.getChallenger.getFullname }}</p>
+                                        <p class="mb-0"><small>@{{ pvp.getChallenger.getNickname }}</small></p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            {% if pvp.getCompleted %}
+                                {% if pvp.getChallenger == pvp.getWinner %}
+                                    <div class="card-footer">
+                                        <button class="btn btn-success">Vencedor</button>
+                                    </div>
+                                {% endif %}
+                            {% endif %}
+                        </div>
+
+                        <h5 class="card-title text-muted">Desafiado:</h5>
+                        <div class="card mb-2">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-3">
+                                        <img class="img-fluid" src="{{ pvp.getChallenged.getAvatar }}">
+                                    </div>
+
+                                    <div class="col-9">
+                                        <p class="mb-0">{{ pvp.getChallenged.getFullname }}</p>
+                                        <p class="mb-0"><small>@{{ pvp.getChallenged.getNickname }}</small></p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            {% if pvp.getCompleted %}
+                                {% if pvp.getChallenged == pvp.getWinner %}
+                                    <div class="card-footer">
+                                        <button class="btn btn-success">Vencedor</button>
+                                    </div>
+                                {% endif %}
+                            {% endif %}
+                        </div>
+
+                        <h5 class="mb-0">Status: {{ pvp.getCompleted ? "Terminado" : "Pendente" }}</h5>
+
+                        {% if pvp.getCompleted %}
+                            {% if not pvp.getWinner %}
+                                    <div class="card-footer">
+                                        <button class="btn btn-warning">Empate</button>
+                                    </div>
+                            {% endif %}
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
