@@ -79,10 +79,10 @@ class ActivitiesController extends AbstractController
 
         if ($user->getId() === $challenge->getChallenger()->getId())
             if (!$challenge->getStartTimeChallenger())
-                $challenge->setStartTimeChallenger(time());
+                $challenge->setStartTimeChallenger(microtime(true));
         if ($user->getId() === $challenge->getChallenged()->getId())
             if (!$challenge->getStartTimeChallenged())
-                $challenge->setStartTimeChallenged(time());
+                $challenge->setStartTimeChallenged(microtime(true));
         
         $this->_dm->persist($challenge);
         $this->_dm->flush();
@@ -90,7 +90,7 @@ class ActivitiesController extends AbstractController
         $this->setAttributeView("challenge", $challenge);
 
         if ($challenge->getStartTimeChallenger() && $challenge->getSubmissionTimeChallenger())
-            $this->setAttributeView("challenger_time", $challenge->getSubmissionTimeChallenger()->diff($challenge->getStartTimeChallenger()));
+            $this->setAttributeView("challenger_time", $challenge->getSubmissionTimeChallenger() - $challenge->getStartTimeChallenger());
 
         return $this->view->render($response, $this->activity->getView(), $this->getAttributeView());
     }
@@ -127,20 +127,6 @@ class ActivitiesController extends AbstractController
         $attributes = SessionFacilitator::getAttributeSession();
         $user = $this->_dm->getRepository(User::class)->find($attributes['id']);
 
-        if ($challenge){
-            $instance_challenge = $this->_dm->getRepository(PVP::class)->find($challenge);
-
-            if ($user->getId() === $instance_challenge->getChallenger()->getId())
-                if (!$instance_challenge->getSubmissionTimeChallenger())
-                    $instance_challenge->setSubmissionTimeChallenger(time());
-            if ($user->getId() === $instance_challenge->getChallenged()->getId())
-                if (!$instance_challenge->getSubmissionTimeChallenged())
-                    $instance_challenge->setSubmissionTimeChallenged(time());
-            
-            $this->_dm->persist($instance_challenge);
-            $this->_dm->flush();
-        }
-
         $activity = $this->_dm->getRepository(Activities::class)->find($idActivity);
         $validateClass = $activity->getValidate();
 
@@ -153,9 +139,19 @@ class ActivitiesController extends AbstractController
         $validateInstanced->saveAttempt($params, $returnValidate);
 
         if ($returnValidate->answer) {
-            if ($challenge)
+            if ($challenge){
+                $instance_challenge = $this->_dm->getRepository(PVP::class)->find($challenge);
+                if ($user->getId() === $instance_challenge->getChallenger()->getId())
+                    if (!$instance_challenge->getSubmissionTimeChallenger())
+                        $instance_challenge->setSubmissionTimeChallenger(microtime(true));
+                if ($user->getId() === $instance_challenge->getChallenged()->getId())
+                    if (!$instance_challenge->getSubmissionTimeChallenged())
+                        $instance_challenge->setSubmissionTimeChallenged(microtime(true));
+                $this->_dm->persist($instance_challenge);
+                $this->_dm->flush();
+                    
                 return $response->withJson([ 'return' => true,  'message' => 'Sua resposta está correta, veja seu resultado no painel de desafios!', 'user' => $user->toArray()]);
-            else {
+            } else {
                 $validateInstanced->saveHistory($params);
                 return $response->withJson([ 'return' => true,  'message' => 'A resposta está correta!', 'user' => $user->toArray()]);
             }

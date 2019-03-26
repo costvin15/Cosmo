@@ -34,22 +34,22 @@ class PVP {
     private $completed;
 
     /**
-     * @ODM\Field(name="start_time_challenger", type="date")
+     * @ODM\Field(name="start_time_challenger", type="float")
      */
     private $start_time_challenger;
     
     /**
-     * @ODM\Field(name="submission_time_challenger", type="date")
+     * @ODM\Field(name="submission_time_challenger", type="float")
      */
     private $submission_time_challenger;
     
     /**
-     * @ODM\Field(name="start_time_challenged", type="date")
+     * @ODM\Field(name="start_time_challenged", type="float")
      */
     private $start_time_challenged;
     
     /**
-     * @ODM\Field(name="submission_time_challenged", type="date")
+     * @ODM\Field(name="submission_time_challenged", type="float")
      */
     private $submission_time_challenged;
 
