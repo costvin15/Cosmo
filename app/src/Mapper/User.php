@@ -551,4 +551,18 @@ class User
     public function setClass($class){
         $this->class = $class;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getAchievements(){
+        return $this->achievements;
+    }
+
+    /**
+     * @param mixed $achievements
+     */
+    public function setAchievements($achievements){
+        $this->achievements = $achievements;
+    }
 }
