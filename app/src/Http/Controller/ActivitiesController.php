@@ -50,11 +50,11 @@ class ActivitiesController extends AbstractController
     public function activitiesAction(ServerRequestInterface $request, ResponseInterface $response, array $args) {
         $idActivity = $args["id"];
         $this->activity = $this->_dm->getRepository(Activities::class)->find($idActivity);
-        
+
         //adicionar questões compradas
         $attributes = SessionFacilitator::getAttributeSession();
         $user = $this->_dm->getRepository(User::class)->find($attributes["id"]);
-        
+
         if(!in_array($this->activity, $user->getPurchasedActivities()->toArray(),true)){
             $user->updateGastos($this->activity->getCust());
         }
@@ -65,7 +65,7 @@ class ActivitiesController extends AbstractController
 
         $this->setAttributeView("activity", $this->activity);
         $this->setAttributeView("idGroup", $args["idGroup"]);
-        
+
         if ($request->getParam("challenge-type")){
             $this->setAttributeView("type", $request->getParam("challenge-type"));
             $this->setAttributeView("challenge_id", $request->getParam("challenge-id"));
@@ -111,21 +111,21 @@ class ActivitiesController extends AbstractController
 
         $validateInstanced = new $validateClass();
         $returnValidate = $validateInstanced($params);
-        
+
         $params["dateini"] = $returnValidate->timeIn;
         $params["datefim"] = $returnValidate->timeOut;
 
         $validateInstanced->saveAttempt($params, $returnValidate);
-        if ($returnValidate->answer) {            
-            
+        if ($returnValidate->answer) {
+
             $validateInstanced->saveHistory($params);
-            
+
             $categoryType = $this->_dm->getRepository(CategoryActivities::class)->findCategory($activity->getCategory())->getId();
             
             $router = $this->_ci->get("router");
             return $response->withRedirect($router->pathFor("star.check",["id_group" => $params['id_group'],"id_category"=>$categoryType]));
         }
-        
+
         return $response->withJson([ 'return' => false,  'message' => 'A resposta está errada! Lembre-se de colocar uma quebra de linha ao imprimir suas respostas.', 'id' => $idActivity ]);
     }
 

@@ -26,6 +26,11 @@ class User
      */
     private $username;
 
+    /**
+     * @ODM\Field(name="sexo", type="string")
+     */
+    private $sexo;
+
 
     /**
      * @ODM\Field(name="password", type="string")
@@ -132,6 +137,7 @@ class User
         $this->username = $username;
         $this->password = $password;
         $this->fullname = $fullname;
+        $this->sexo = "";
         $this->fulltitle = "";
         $this->administrator = $administrator;
         $this->historyActivities = [];
@@ -168,6 +174,7 @@ class User
             'username' => $this->username,
             'password' => $this->password,
             'fullname' => $this->fullname,
+            'sexo' => $this->sexo,
             'fulltitle' => $this->fulltitle,
             'administrator' => $this->administrator,
             'blocked' => $this->blocked,
@@ -188,6 +195,7 @@ class User
             'nickname' => $this->nickname,
             'username' => $this->username,
             'fullname' => $this->fullname,
+            'sexo' => $this->sexo,
             'fulltitle' => $this->fulltitle,
             'answered_activities' => $this->answered_activities,
             'moedas' => $this->moedas,
@@ -237,6 +245,21 @@ class User
     /**
      * @return mixed
      */
+    public function getSexo(){
+        return $this->sexo;
+    }
+
+    /**
+     * @param mixed $sexo
+     */
+    public function setSexo($sexo){
+        $this->sexo = $sexo;
+    }
+
+
+    /**
+     * @return mixed
+     */
     public function getUsername()
     {
         return $this->username;
@@ -254,7 +277,7 @@ class User
     /**
      * @return mixed
      */
-    public function getFulltitle()
+    public function getFullTitle()
     {
         return $this->fulltitle;
     }
@@ -262,7 +285,7 @@ class User
     /**
      * @param mixed $fulltitle
      */
-    public function setFulltitle($fulltitle)
+    public function setFullTitle($fulltitle)
     {
         $this->fulltitle = $fulltitle;
     }

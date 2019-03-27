@@ -89,4 +89,18 @@ class LoginController extends AbstractController
         $router = $this->_ci->get('router');
         return $response->withRedirect($router->pathFor('login.index'));
     }
+
+    /**
+     * @param Request $request
+     * @param Response $response
+     * @return mixed
+     * @Post(name="/informations", alias="login.informations")
+     */
+    public function informationAction(Request $request, Response $response) {
+        $attributes = SessionFacilitator::getAttributeSession();
+        if($attributes)
+            return $response->withJson($attributes, 200);
+        else
+            return $response->withJson(array("message" => "O usuário não foi encontrado"), 500);
+    }
 }

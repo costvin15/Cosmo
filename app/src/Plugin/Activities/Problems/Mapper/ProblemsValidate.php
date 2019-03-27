@@ -106,9 +106,10 @@ class ProblemsValidate
             if (!$history){
                 $history = new ChallengeHistory();
                 $user->setAnsweredActivities($user->getAnsweredActivities() + 1);
+                $user->setMoedas($user->getMoedas()+$activity->getMoedas());
                 $user->updateAcumulo($activity->getMoedas());
                 $user->setXP($user->getXP() + $activity->getXP());
-                
+
                 $this->_dm->persist($user);
                 $this->_dm->flush();
             }
@@ -135,11 +136,29 @@ class ProblemsValidate
 
             if ($history == null){
                 $history = new HistoryActivities();
-                
-                $user->setAnsweredActivities($user->getAnsweredActivities() + 1);
-                $user->updateAcumulo($activity->getMoedas());
-                $user->setXP($user->getXP() + $activity->getXP());
-                
+
+                // $user_history = $this->_dm->getRepository(HistoryActivities::class)->findBy([ "user" => $user ]);
+
+                // if ($user_history != null){
+                //     $found = false;
+                //     for ($i = 0; $i < count($user_history); $i++){
+                //         if ($user_history[$i]->getId() == $activity.getId()){
+                //             $found = true;
+                //             break;
+                //         }
+                //     }
+                //     if (!$found){
+                //         $user->setAnsweredActivities($user->getAnsweredActivities() + 1);
+                //         $user->setMoedas($user->getMoedas()+$activity->getMoedas());
+                //         $user->updateAcumulo($activity->getMoedas());
+                //         $user->setXP($user->getXP() + $activity->getXP());
+                //     }
+                // }else{
+                    $user->setAnsweredActivities($user->getAnsweredActivities() + 1);
+                    $user->setMoedas($user->getMoedas()+$activity->getMoedas());
+                    $user->updateAcumulo($activity->getMoedas());
+                    $user->setXP($user->getXP() + $activity->getXP());
+                //}
             }
 
             $history->setActivity($activity);
@@ -165,7 +184,17 @@ class ProblemsValidate
             }
         }
 
-        
+
+        if($user->getXP() > 25){
+            $user->setFullTitle("Escudeiro(a)");
+        }elseif($user->getXP() > 50){
+            $user->setFullTitle("Visconde/Vinscodessa");
+        }elseif($user->getXP() > 75){
+            $user->setFullTitle("Duque/Duquesa");
+        }elseif($user->getXP() > 100){
+            $user->setFullTitle("Imperador/Imperatriz");
+        }
+
         $this->_dm->persist($user);
         $this->_dm->persist($history);
         $this->_dm->flush();

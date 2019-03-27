@@ -135,16 +135,19 @@ window.cosmo = {
         register_user: "/login/register/save",
         user_close_profile: "/dashboard/profile/close",
         user_update_profile: "/dashboard/profile/update",
+        user_update_profile_view: "/dashboard/profile/edit",
         view_activity: "/activities/",
         submit_activity: "/activities/submit",
+        get_informations: "/login/informations",
         administrator_save_group_activity: "/admin/skills/save",
         administrator_save_activity: "/admin/activity/save",
         administrator_register_user: "/admin/user/save",
         administrator_update_user: "/admin/user/update",
-        administrator_close_user: "/admin/user/remove",
+        administrator_close_user: "/admin/user/remove/",
         administrator_save_class: "/admin/classes/save",
         administrator_insert_students: "/admin/classes/insert_students",
         administrator_insert_skills: "/admin/class/insert_skills",
         administrator_save_challenge_class: "/admin/class/challenges/save"
     }
 };
+
