@@ -67,15 +67,34 @@
                         <hr>
 
                         <div class="row">
+                            {% set devorador = 0 %}
+                            {% set acumulador = 0 %}
+                            {% set gastador = 0 %}
 
+                            {% for achiv in user.getAchievements %}
+                                {% if achiv.getName == "Gastador" %}
+                                    {% set gastador = achiv.getLevel %}
+                                {% endif %}
+                                {% if achiv.getName == "Devorador" %}
+                                    {% set devorador = achiv.getLevel %}
+                                {% endif %}
+                                {% if achiv.getName == "Acumulador" %}
+                                    {% set acumulador = achiv.getLevel %}
+                                {% endif %}
+                            {% endfor %}
                             <div class = "d-flex justify-content-center">
                                 <h5 = "p-2">Acumulador :</h5>
                             </div>
 
                             <button class = "btn btn-cosmo-color-8 ml-2" type="button" data-toggle="collapse" data-target="#bge-1"> 
-                                <i class = "fas fa-medal text-cosmo-color-7"></i>
-                                <i class = "fas fa-medal"></i>
-                                <i class = "fas fa-medal"></i>
+                                {% set count = 0 %}
+                                
+                                {% for i in 0.. (acumulador - 1) if acumulador != 0 %}
+                                    <i class = "fas fa-medal text-cosmo-color-7"></i>
+                                {% endfor %}
+                                {% for i in 0..( 2 - acumulador ) if 3 - acumulador != 0 %}
+                                    <i class = "fas fa-medal"></i>
+                                {% endfor %}
                             </button>
 
                             <div class="collapse mt-3" id="bge-1">
@@ -106,9 +125,12 @@
                         <div class="row">
                             <h5>Gastador: </h5>
                             <button class = "btn btn-cosmo-color-8 ml-2" type="button" data-toggle="collapse" data-target="#bge-2"> 
-                                <i class = "fas fa-medal text-cosmo-color-7"></i>
-                                <i class = "fas fa-medal"></i>
-                                <i class = "fas fa-medal"></i>
+                                {% for i in 0.. (gastador - 1) if gastador != 0 %}
+                                    <i class = "fas fa-medal text-cosmo-color-7"></i>
+                                {% endfor %}
+                                {% for i in 0..( 2 - gastador ) if 3 - gastador != 0 %}
+                                    <i class = "fas fa-medal"></i>
+                                {% endfor %}
                             </button>
                             <div class="collapse mt-3" id="bge-2">
                                 <div class="card text-cosmo-color-3 text-center">
@@ -139,9 +161,12 @@
                         <div class="row">
                             <h5>Devorador: </h5>
                             <button class = "btn btn-cosmo-color-8 ml-2" type="button" data-toggle="collapse" data-target="#bge-3"> 
-                                <i class = "fas fa-medal text-cosmo-color-7"></i>
-                                <i class = "fas fa-medal"></i>
-                                <i class = "fas fa-medal"></i>
+                                {% for i in 0.. (devorador - 1) if devorador != 0 %}
+                                    <i class = "fas fa-medal text-cosmo-color-7"></i>
+                                {% endfor %}
+                                {% for i in 0..( 2 - devorador ) if 3 - devorador != 0 %}
+                                    <i class = "fas fa-medal"></i>
+                                {% endfor %}
                             </button>
                             <div class="collapse mt-3" id="bge-3">
                                 <div class="card text-cosmo-color-3">

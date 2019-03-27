@@ -23,6 +23,8 @@ use App\Mapper\CategoryActivities;
 use Twig\Extension\StagingExtension;
 use App\Mapper\Star;
 use App\Model\Category\InterfaceCategory;
+use App\Auth\Adapters\UserWithPassword;
+use SlimAuth\SlimAuthFacade;
 
 /**
  * Class DashboardController
@@ -309,6 +311,7 @@ class DashboardController extends AbstractController
                 $groups[$i] = $group;
             }
             $this->setAttributeView("groups", $groups);
+            $this->setAttributeView("user", $user);
             $this->setAttributeView("class", $user->getClass());
         }
         return $this->view->render($response, "View/dashboard/profile/index.twig", $this->getAttributeView());

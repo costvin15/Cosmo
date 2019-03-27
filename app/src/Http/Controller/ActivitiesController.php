@@ -56,7 +56,7 @@ class ActivitiesController extends AbstractController
         $user = $this->_dm->getRepository(User::class)->find($attributes["id"]);
         
         if(!in_array($this->activity, $user->getPurchasedActivities()->toArray(),true)){
-            $user->setMoedas($user->getMoedas() - $this->activity->getCust());
+            $user->updateGastos($this->activity->getCust());
         }
         $user->addPurchasedActivities($this->activity);
 
@@ -117,12 +117,13 @@ class ActivitiesController extends AbstractController
 
         $validateInstanced->saveAttempt($params, $returnValidate);
         if ($returnValidate->answer) {            
+            
             $validateInstanced->saveHistory($params);
+            
             $categoryType = $this->_dm->getRepository(CategoryActivities::class)->findCategory($activity->getCategory())->getId();
+            
             $router = $this->_ci->get("router");
             return $response->withRedirect($router->pathFor("star.check",["id_group" => $params['id_group'],"id_category"=>$categoryType]));
-            return $response->withJson([ 'return' => true,  'message' => 'A resposta está correta!',"star" => $router->pathFor("star.check",
-                ["id_group" => $params['id_group'],"id_category"=>$categoryType])]);
         }
         
         return $response->withJson([ 'return' => false,  'message' => 'A resposta está errada! Lembre-se de colocar uma quebra de linha ao imprimir suas respostas.', 'id' => $idActivity ]);

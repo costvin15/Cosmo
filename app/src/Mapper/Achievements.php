@@ -6,7 +6,7 @@ namespace App\Mapper;
 use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
 
 /**
- * @ODM\Document(collection="Badges")
+ * @ODM\Document(collection="Achievements")
  */
 class Achievements{
     /**
@@ -25,14 +25,11 @@ class Achievements{
     private $name;
 
     /**
-     * @ODM\Field(name="level", type="number")
+     * @ODM\Field(name="level", type="int")
      */
     private $level;
 
-     /**
-     * @ODM\ReferenceMany(targetDocument="User", mappedBy="achievements")
-     */
-    private $users;
+    
     /**
      * Achievements constructor.
      * @param $id
@@ -45,7 +42,6 @@ class Achievements{
         $this->type = $type;
         $this->name = $name;
         $this->level = 0;
-        $this->users = new \Doctrine\Common\Collections\ArrayCollection();
     }
     public function toArray(){
         return array(
@@ -59,9 +55,22 @@ class Achievements{
     public function getId(){
         return $this->id;
     }
+    public function setId($id){
+        $this->$id = $id;
+    }
+
 
     public function getType(){
         return $this->type;
+    }
+
+    public function setType($type){
+        $this->$type = $type;
+    }
+
+
+    public function setName($name){
+        $this->$name = $name;
     }
 
     public function getName(){

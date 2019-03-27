@@ -108,7 +108,7 @@ class User
     private $administrator_class;
 
     /**
-     * @ODM\ReferenceMany(targetDocument="Achievements", mappedBy="users")
+     * @ODM\ReferenceMany(targetDocument="Achievements", cascade={"persist"})
      */
     private $achievements;
 
@@ -141,7 +141,11 @@ class User
         $this->moedas = 0;
         $this->acumulo = 0;
         $this->gasto = 0;
-        $this->achievements = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->achievements = [];
+        $this->achievements[] = new Achievements("badge","Acumulador",0);
+        $this->achievements[] = new Achievements("badge","Devorador",0);
+        $this->achievements[] = new Achievements("badge","Gastador",0);
+
     }
 
     public function getAvatar(){
@@ -198,14 +202,6 @@ class User
             'moedas' => $this->moedas,
             'xp' => $this->xp,
         ];
-    }
-
-    public function setAchievements(Achievements $achievement){
-        foreach ($this->achievements as $value){
-            if($achievement->type == "badge"){
-                
-            }
-       }
     }
     
     /**
@@ -361,7 +357,30 @@ class User
      * @param mixed $answered_activities
      */
     public function setAnsweredActivities($answered_activities){
+        $exists = false;
         $this->answered_activities = $answered_activities;
+        foreach($this->achievements->toArray() as $achievement){
+            if ($achievement->getName() == "Devorador" && $achievement->getType() == "badge"){
+                if($this->answered_activities >= 10)
+                    $achievement->setLevel(3);
+                else if($this->answered_activities >= 5)
+                    $achievement->setLevel(2);
+                else if($this->answered_activities >= 1)
+                    $achievement->setLevel(1);
+                $exists = true;
+                break;
+            }
+        }
+        if(!$exists){
+            $level = 0;
+            if($this->answered_activities >= 10)
+                $level = 3;
+            else if($this->answered_activities >= 5)
+                $level = 2;
+            else if($this->answered_activities >= 1)
+                $level = 1;
+            $this->achievements[] = new Achievements("badge","Devorador",$level);
+        }
     }
 
      /**
@@ -389,7 +408,33 @@ class User
      * @param mixed $acumulo
      */
     public function updateAcumulo($acumulo){
+        $exists = false;
         $this->acumulo += $acumulo;
+        $this->moedas += $acumulo;
+        foreach($this->achievements->toArray() as $achievement){
+            if ($achievement->getName() == "Acumulador" && $achievement->getType() == "badge"){
+                if($this->acumulo >= 500)
+                    $achievement->setLevel(3);
+                else if($this->acumulo >= 200)
+                    $achievement->setLevel(2);
+                else if($this->acumulo >= 100)
+                    $achievement->setLevel(1);
+                $exists = true;
+                break;
+            }
+        }
+        if(!$exists){
+            $level = 0;
+            if($this->acumulo >= 500)
+                    $level = 3;
+                else if($this->acumulo >= 200)
+                    $level = 2;
+                else if($this->acumulo >= 100)
+                    $level = 1;
+            $this->achievements[] = new Achievements("badge","Acumulador",$level);
+        }
+
+        
     }
 
     /**
@@ -403,7 +448,31 @@ class User
      * @param mixed $acumulo
      */
     public function updateGastos($gastos){
+        $exists = false;
         $this->gastos += $gastos;
+        $this->moedas -= $gastos;
+        foreach($this->achievements->toArray() as $achievement){
+            if ($achievement->getName() == "Gastador" && $achievement->getType() == "badge"){
+                if($this->gastos >= 500)
+                    $achievement->setLevel(3);
+                else if($this->gastos >= 200)
+                    $achievement->setLevel(2);
+                else if($this->gastos >= 100)
+                    $achievement->setLevel(1);
+                $exists = true;
+                break;
+            }
+        }
+        if(!$exists){
+            $level = 0;
+            if($this->gastos >= 500)
+                    $level = 3;
+                else if($this->gastos >= 200)
+                    $level = 2;
+                else if($this->gastos >= 100)
+                    $level = 1;
+            $this->achievements[] = new Achievements("badge","Gastador",$level);
+        }
     }
 
      /**
@@ -481,5 +550,19 @@ class User
      */
     public function setClass($class){
         $this->class = $class;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getAchievements(){
+        return $this->achievements;
+    }
+
+    /**
+     * @param mixed $achievements
+     */
+    public function setAchievements($achievements){
+        $this->achievements = $achievements;
     }
 }
