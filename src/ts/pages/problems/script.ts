@@ -47,10 +47,12 @@ class PluginProblems {
     }
 
     send(){
-        let formObject = this.createObject();
+        let formObject : any = this.createObject();
+        if (<HTMLInputElement> document.getElementById("id-challenge"))
+            formObject.challenge = (<HTMLInputElement> document.getElementById("id-challenge")).value;
+
         let success = (content: any) => {
             if (content.return){
-                console.log(content);
                 if(content.star){
                     let time = "";
                     if(content.time)
@@ -59,7 +61,7 @@ class PluginProblems {
                     content.star+". "+time, () => {
                         window.location.href = window.base_url + window.cosmo.routes_name.activities_history
                     });
-                }else
+                } else
                     window.cosmo.dialog.success("Meus Parabéns", "A resposta está correta", () => {
                         window.location.href = window.base_url + window.cosmo.routes_name.activities_history
                     });
@@ -67,8 +69,10 @@ class PluginProblems {
                 window.cosmo.dialog.error("Tente novamente!", content.message, () => {});
         };
         let fail = (content: any) => {
-            console.log(content);
-            window.cosmo.dialog.error("Erro", content.responseJSON[0], () => {});
+            if (content && content.message)
+                window.cosmo.dialog.error("Erro", content.message, () => {});
+            else
+                console.log(content);
         };
 
         let ajax = window.cosmo.ajax.getDefaults();
@@ -133,7 +137,7 @@ class PluginChallenges {
                 window.cosmo.dialog.error("Tente novamente!", content.message, () => {});
         };
         let fail = (content: any) => {
-            window.cosmo.dialog.error("Erro", content.responseJSON[0], () => {});
+            window.cosmo.dialog.error("Erro", content.message, () => {});
         };
         let ajax = window.cosmo.ajax.getDefaults();
         ajax.url = window.base_url + window.cosmo.routes_name.submit_activity;

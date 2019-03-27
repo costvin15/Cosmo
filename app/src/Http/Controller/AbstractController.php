@@ -13,6 +13,8 @@ use Doctrine\ODM\MongoDB\DocumentManager;
 use Psr\Container\ContainerInterface;
 use RKA\Session;
 use Slim\Views\Twig;
+use App\Mapper\PVP;
+use App\Mapper\User;
 
 abstract class AbstractController
 {
@@ -53,6 +55,15 @@ abstract class AbstractController
         $this->view = $this->_ci->get('view');
         $arraySession = SessionFacilitator::getAttributeSession();
         $this->setAttributeView('attributes', $arraySession);
+
+        $attributes = SessionFacilitator::getAttributeSession();
+        $user = $this->_dm->getRepository(User::class)->find($attributes["id"]);
+
+        if ($user){
+            $pvp_query = $this->_dm->createQueryBuilder(PVP::class)
+                ->field("challenged")->references($user)->getQuery()->execute();
+            $this->setAttributeView("pvps", $pvp_query);
+        }
     }
 
     /**

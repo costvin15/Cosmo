@@ -38,6 +38,16 @@ class User
     private $fullname;
 
     /**
+     * @ODM\ReferenceMany(targetDocument="PVP", mappedBy="challenger")
+     */
+    private $challenges_created;
+    
+    /**
+     * @ODM\ReferenceMany(targetDocument="PVP", mappedBy="challenged")
+     */
+    private $challenges_suffered;
+
+    /**
      * @ODM\Field(name="administrator", type="boolean")
      */
     private $administrator;
@@ -198,6 +208,10 @@ class User
             'moedas' => $this->moedas,
             'xp' => $this->xp,
         ];
+    }
+
+    public function getAchievements(){
+        return $this->achievements;
     }
 
     public function setAchievements(Achievements $achievement){

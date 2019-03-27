@@ -54,7 +54,6 @@
                             <i class="fa fa-skull"></i> Desafios
                         </a>
                     </li> #}
-
                 </ul>
 
                  <ul class="navbar-nav ml-auto">
@@ -65,6 +64,65 @@
                             </a>
                         </li>
                     {% endif %}
+
+                    <li class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle align-self-center" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fas fa-gamepad"></i>
+                        </a>
+
+                        <div class="pvp-dropdown-menu dropdown-menu dropdown-menu-right mt-2 px-2">
+                            <h5 class="card-title">PVP</h5>
+                            
+                            <ul class="list-group">
+                                {% set pvp_count = 0 %}
+                                {% for pvp in pvps %}
+                                    {% if not pvp.getCompleted %}
+                                        <li class="list-group-item px-0 py-0">
+                                            <div class="card-body">
+                                                <p class="mb-0">Você foi desafiado por {{ pvp.getChallenger.getFullname }}</p>
+                                                <small>Atividade: {{ pvp.getActivity.getTitle }}</small>
+                                                <hr />
+
+                                                <div class="row">
+                                                    <div class="col-6">
+                                                        <a href="{{ path_for("activities.pvp", {challenge: pvp.getId}) }}" class="btn btn-success w-100"><i class="fas fa-check"></i></a>
+                                                    </div>
+
+                                                    <div class="col-6">
+                                                        <a href="{{ path_for("activities.deny", {id: pvp.getId}) }}" class="btn btn-danger w-100"><i class="fas fa-times"></i></a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        {% set pvp_count = pvp_count + 1 %}
+                                    {% endif %}
+                                {% endfor %}
+
+                                {% if pvp_count == 0 %}
+                                    <div class="row">
+                                        <div class="col-12 text-center">
+                                            <p class="my-3">Você não tem nenhum desafio pendente</p>
+                                        </div>
+                                    </div>
+                                {% endif %}
+                            </ul>
+
+                            <div class="row mt-2">
+                                <div class="col-6">
+                                    <a href="{{ path_for("dashboard.pvp.new") }}" class="btn btn-cosmo-color-2 w-100">
+                                        <i class="fas fa-plus-square"></i>
+                                    </a>
+                                </div>
+
+                                <div class="col-6">
+                                    <a href="{{ path_for("dashboard.pvp.history") }}" class="btn btn-cosmo-color-2 w-100">
+                                        <i class="fas fa-clock"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    
                     <li class="nav-item dropdown">
                         <a id="user-dropdown" href="#" class="nav-link dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <img class="rounded-circle" src="{{ attributes.avatar }}" style = "width: 32px;height: 32px;" > {{ attributes.nickname }}
@@ -80,19 +138,10 @@
                         </div>
                     </li>
                 </ul>
-                
-            </div>
-
-            
+            </div>    
         </nav>
 
-       
-            
-       
         <div class="container my-2 wrapper">
-
-               
-
             <span class="display-4">{{ page_title }}</span>
 
             {% block breakcrumb %}{% endblock %}

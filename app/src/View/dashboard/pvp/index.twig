@@ -1,0 +1,47 @@
+{% extends "View/layout.twig" %}
+
+{% set page_title = "Desafiar alguém" %}
+
+{% block scripts %}
+    <script type="text/javascript" src="{{ base_url() }}/dist/js/pvp.js"></script>
+{% endblock %}
+
+{% block content %}
+    <div class="row my-4">
+        <div class="col-12">
+            <form>
+                <div class="row">
+                    <div class="col-12">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <label for="form-challenged">Desafiado</label>
+                                    <select id="form-challenged" class="form-control">
+                                        {% for student in class.getStudents %}
+                                            {% if student.getId != attributes.id %}
+                                                <option value="{{ student.getId }}">{{ student.getFullname }}</option>
+                                            {% endif %}
+                                        {% endfor %}
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="form-activity">Atividade</label>
+                                    <select id="form-activity" class="form-control">
+                                        {% for group in class.groups %}
+                                            {% for activity in group.getActivity %}
+                                                <option value="{{ activity.getId }}">{{ activity.getTitle }}</option>
+                                            {% endfor %}
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <button id="btn-form-send" type="button" class="btn btn-cosmo-color-2 ml-auto">Desafiar</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}

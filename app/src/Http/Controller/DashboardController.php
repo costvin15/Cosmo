@@ -23,6 +23,9 @@ use App\Mapper\CategoryActivities;
 use Twig\Extension\StagingExtension;
 use App\Mapper\Star;
 use App\Model\Category\InterfaceCategory;
+use App\Mapper\PVP;
+use SlimAuth\SlimAuthFacade;
+use App\Auth\Adapters\UserWithPassword;
 
 /**
  * Class DashboardController
@@ -53,7 +56,7 @@ class DashboardController extends AbstractController
         $attributes = SessionFacilitator::getAttributeSession();
         $user = $this->_dm->getRepository(User::class)->find($attributes["id"]);
 
-        if ($user->getClass()){
+        if ($user && $user->getClass()){
             $user_history = $this->_dm->createQueryBuilder(HistoryActivities::class)
                 ->field("user")->references($user)->getQuery()->execute();
             $user_history_ids = array();
@@ -91,8 +94,6 @@ class DashboardController extends AbstractController
             // $this->setAttributeView("challenges", $challenges);
             $this->setAttributeView("class", $user->getClass());
         }
-        
-        // $questionNumber = 4;
 
         // $user = $this->_dm->getRepository(User::class)->find($attributes['id']);
         // $queryBuilderHistory = $this->_dm->createQueryBuilder(HistoryActivities::class)
@@ -405,7 +406,6 @@ class DashboardController extends AbstractController
         $category = $this->_dm->getRepository(CategoryActivities::class)->findCategory(InterfaceCategory::REQUIRED);
         $group = $this->_dm->getRepository(GroupActivities::class)->find($idGroup);
         $star = $this->_dm->getRepository(Star::class)->findStar($user,$group,$category);
-
         
         $this->setAttributeView("required", InterfaceCategory::REQUIRED);
         if($star)
@@ -463,5 +463,80 @@ class DashboardController extends AbstractController
         $this->setAttributeView("activities", $activities);
         $this->setAttributeView("idGroup", $idGroup);
         return $this->view->render($response, "View/dashboard/skill/index.twig", $this->getAttributeView());
+    }
+
+    /**
+     * @param Request $request
+     * @param Response $response
+     * @Get(name="/pvp/new", middleware={"App\Http\Middleware\SessionMiddleware"}, alias="dashboard.pvp.new")
+     */
+    public function newPVPAction(Request $request, Response $response){
+        $attributes = SessionFacilitator::getAttributeSession();
+        $user = $this->_dm->getRepository(User::class)->find($attributes["id"]);
+
+        if ($user->getClass()){
+            $user_history = $this->_dm->createQueryBuilder(HistoryActivities::class)
+                ->field("user")->references($user)->getQuery()->execute();
+            $user_history_ids = array();
+            foreach ($user_history as $activity)
+                $user_history_ids[] = $activity->getActivity()->getId();
+
+            $groups = $this->_dm->getRepository(GroupActivities::class)->findBy(array("class" => $user->getClass()));
+            for ($i = 0; $i < count($groups); $i++){
+                $group = $groups[$i]->toArray();
+                $group["activities"] = $this->_dm->createQueryBuilder(Activities::class)
+                    ->field("group")->references($groups[$i])
+                    ->field("id")->notIn($user_history_ids)->getQuery()->execute();
+                $groups[$i] = $group;
+            }
+            $this->setAttributeView("groups", $groups);
+            $this->setAttributeView("class", $user->getClass());
+        }
+
+        return $this->view->render($response, "View/dashboard/pvp/index.twig", $this->getAttributeView());
+    }
+
+    /**
+     * @param Request $request
+     * @param Response $response
+     * @Post(name="/pvp/new", middleware={}, alias="dashboard.pvp.new")
+     */
+    public function newPVPFormAction(Request $request, Response $response){
+        $attributes = $this->getAttributeView();
+        $challenger = $this->_dm->getRepository(User::class)->find($attributes["attributes"]["id"]);
+        $challenged = $this->_dm->getRepository(User::class)->find($request->getParam("challenged"));
+        $activity = $this->_dm->getRepository(Activities::class)->find($request->getParam("activity"));
+
+        if (!$challenger)
+            return $response->withJson(array("message" => "Desafiante não encontrado "), 500);
+        if (!$challenged)
+            return $response->withJson(array("message" => "Desafiado não encontrado"), 500);
+        if (!$activity)
+            return $response->withJson(array("message" => "Atividade não encontrada"), 500);
+
+        $pvp = new PVP($activity, $challenger, $challenged);
+
+        $this->_dm->persist($pvp);
+        $this->_dm->flush();
+
+        $router = $this->_ci->get("router");
+        return $response->withJson(array("message" => "Desafio criado com sucesso.", "callback" => $router->pathFor("activities.pvp", array("id" => $request->getParam("activity"), "challenge" => $pvp->getId()))), 200);
+    }
+    
+    /**
+     * @param Request $request
+     * @param Response $response
+     * @Get(name="/pvp/history", alias="dashboard.pvp.history")
+     */
+    public function getPvpHistory(Request $request, Response $response){
+        $attributes = SessionFacilitator::getAttributeSession();
+        $user = $this->_dm->getRepository(User::class)->find($attributes['id']);
+
+        $pvps_challenger_query = $this->_dm->createQueryBuilder(PVP::class)
+            ->field("challenger")->references($user)->getQuery()->execute();
+        $pvps_challenged_query = $this->_dm->createQueryBuilder(PVP::class)
+            ->field("challenged")->references($user)->getQuery()->execute();
+        $this->setAttributeView("pvps_history", array_merge($pvps_challenger_query->toArray(), $pvps_challenged_query->toArray()));
+        return $this->view->render($response, "View/dashboard/pvp/history.twig", $this->getAttributeView());
     }
 }

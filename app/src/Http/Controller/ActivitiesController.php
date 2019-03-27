@@ -13,10 +13,11 @@ use App\Mapper\GroupActivities;
 use App\Mapper\HistoryActivities;
 use App\Mapper\User;
 use Interop\Container\ContainerInterface;
-use Psr\Http\Message\ResponseInterface;
-use Psr\Http\Message\ServerRequestInterface;
 use App\Validator;
 use App\Mapper\CategoryActivities;
+use App\Mapper\PVP;
+use Slim\Http\Request;
+use Slim\Http\Response;
 
 /**
  * @package App\Http\Controller
@@ -41,13 +42,13 @@ class ActivitiesController extends AbstractController
     }
 
     /**
-     * @param ServerRequestInterface $request
-     * @param ResponseInterface $response
+     * @param Request $request
+     * @param Response $response
      * @param array $args
      * @return mixed
      * @Get(name="/{id}/{idGroup}", alias="activities")
      */
-    public function activitiesAction(ServerRequestInterface $request, ResponseInterface $response, array $args) {
+    public function activitiesAction(Request $request, Response $response, array $args) {
         $idActivity = $args["id"];
         $this->activity = $this->_dm->getRepository(Activities::class)->find($idActivity);
         
@@ -75,13 +76,76 @@ class ActivitiesController extends AbstractController
     }
 
     /**
-     * @param ServerRequestInterface $request
-     * @param ResponseInterface $response
+     * @param Request $request
+     * @param Response $response
+     * @param array $args
+     * @return mixed
+     * @Get(name="/pvp/challenge/{challenge}", alias="activities.pvp")
+     */
+    public function pvpActivitiesAction(Request $request, Response $response, array $args){
+        $challenge = $args["challenge"];
+        $attributes = $this->getAttributeView();
+        
+        $user = $this->_dm->getRepository(User::class)->find($attributes["attributes"]["id"]);
+        $challenge = $this->_dm->getRepository(PVP::class)->find($challenge);
+        $this->activity = $challenge->getActivity();
+        $router = $this->_ci->get("router");
+
+        if ($challenge->getCompleted())
+            return $response->withRedirect($router->pathFor("dashboard.index"));
+        
+        $this->setAttributeView("activity", $this->activity);
+
+        if ($user->getId() === $challenge->getChallenger()->getId())
+            if (!$challenge->getStartTimeChallenger())
+                $challenge->setStartTimeChallenger(microtime(true));
+        if ($user->getId() === $challenge->getChallenged()->getId())
+            if (!$challenge->getStartTimeChallenged()){
+                $challenge->setAccepted(true);
+                $challenge->setStartTimeChallenged(microtime(true));
+            }
+        
+        $this->_dm->persist($challenge);
+        $this->_dm->flush();
+        
+        $this->setAttributeView("challenge", $challenge);
+
+        if ($challenge->getStartTimeChallenger() && $challenge->getSubmissionTimeChallenger())
+            $this->setAttributeView("challenger_time", $challenge->getSubmissionTimeChallenger() - $challenge->getStartTimeChallenger());
+        if ($challenge->getStartTimeChallenged() && $challenge->getSubmissionTimeChallenged())
+            $this->setAttributeView("challenged_time", $challenge->getSubmissionTimeChallenged() - $challenge->getStartTimeChallenged());
+
+        return $this->view->render($response, $this->activity->getView(), $this->getAttributeView());
+    }
+
+    /**
+     * @param Request $request
+     * @param Response $response
+     * @param array $args
+     * @return mixed
+     * @Get(name="/pvp/deny/{id}", alias="activities.deny")
+     */
+    public function pvpDenyAction(Request $request, Response $response, array $args){
+        $router = $this->_ci->get("router");
+        $id = $args["id"];
+        if (!$id)
+            return $response->withRedirect($router->pathFor("dashboard.index"));
+        $pvp = $this->_dm->getRepository(PVP::class)->find($id);
+        $pvp->setCompleted(true);
+        $pvp->setAccepted(false);
+        $this->_dm->persist($pvp);
+        $this->_dm->flush();
+        return $response->withRedirect($router->pathFor("dashboard.index"));
+    }
+
+    /**
+     * @param Request $request
+     * @param Response $response
      * @param array $args
      * @return mixed
      * @Get(name="/{id}/decrepted", alias="activities.view")
      */
-    public function viewAnswerAction(ServerRequestInterface $request, ResponseInterface $response, array $args){
+    public function viewAnswerAction(Request $request, Response $response, array $args){
         $id = $args["id"];
         if (!$id)
             throw new \Exception("Resposta não encontrada");
@@ -93,17 +157,18 @@ class ActivitiesController extends AbstractController
     }
 
     /**
-     * @param ServerRequestInterface $request
-     * @param ResponseInterface $response
+     * @param Request $request
+     * @param Response $response
      * @return mixed
      * @Post(name="/submit", middleware={"App\Http\Middleware\SessionMiddleware"}, alias="submitactivity")
      */
-    public function submitActivityAction(ServerRequestInterface $request, ResponseInterface $response) {
+    public function submitActivityAction(Request $request, Response $response) {
         $params = $request->getParsedBody();
         $idActivity = $params['id_activity'];
-
+        
+        $challenge = array_key_exists("challenge", $params) ? $params["challenge"] : null;
+        
         $attributes = SessionFacilitator::getAttributeSession();
-
         $user = $this->_dm->getRepository(User::class)->find($attributes['id']);
 
         $activity = $this->_dm->getRepository(Activities::class)->find($idActivity);
@@ -117,15 +182,40 @@ class ActivitiesController extends AbstractController
 
         $validateInstanced->saveAttempt($params, $returnValidate);
         if ($returnValidate->answer) {            
+            if ($challenge){
+                $instance_challenge = $this->_dm->getRepository(PVP::class)->find($challenge);
+                if ($user->getId() === $instance_challenge->getChallenger()->getId())
+                    if (!$instance_challenge->getSubmissionTimeChallenger())
+                        $instance_challenge->setSubmissionTimeChallenger(microtime(true));
+                if ($user->getId() === $instance_challenge->getChallenged()->getId())
+                    if (!$instance_challenge->getSubmissionTimeChallenged())
+                        $instance_challenge->setSubmissionTimeChallenged(microtime(true));
+
+                if ($instance_challenge->getSubmissionTimeChallenger() && $instance_challenge->getSubmissionTimeChallenged()){
+                    $instance_challenge->setCompleted(true);
+                    if (bccomp($instance_challenge->getSubmissionTimeChallenger(), $instance_challenge->getSubmissionTimeChallenged(), 3) == 1)
+                        $instance_challenge->setWinner($instance_challenge->getChallenger());
+                    else if (bccomp($instance_challenge->getSubmissionTimeChallenger(), $instance_challenge->getSubmissionTimeChallenged(), 3) == -1)
+                        $instance_challenge->setWinner($instance_challenge->getChallenged());
+                    else
+                        $instance_challenge->setWinner(null);
+                }
+                $this->_dm->persist($instance_challenge);
+                $this->_dm->flush();
+                    
+                return $response->withJson([ 'return' => true,  'message' => 'Sua resposta está correta, veja seu resultado no painel de desafios!', 'user' => $user->toArray()], 200);
+            } else {
+                $validateInstanced->saveHistory($params);
+                return $response->withJson([ 'return' => true,  'message' => 'A resposta está correta!', 'user' => $user->toArray()], 200);
+            }
+
             $validateInstanced->saveHistory($params);
             $categoryType = $this->_dm->getRepository(CategoryActivities::class)->findCategory($activity->getCategory())->getId();
             $router = $this->_ci->get("router");
             return $response->withRedirect($router->pathFor("star.check",["id_group" => $params['id_group'],"id_category"=>$categoryType]));
-            return $response->withJson([ 'return' => true,  'message' => 'A resposta está correta!',"star" => $router->pathFor("star.check",
-                ["id_group" => $params['id_group'],"id_category"=>$categoryType])]);
         }
         
-        return $response->withJson([ 'return' => false,  'message' => 'A resposta está errada! Lembre-se de colocar uma quebra de linha ao imprimir suas respostas.', 'id' => $idActivity ]);
+        return $response->withJson([ 'return' => false,  'message' => 'A resposta está errada! Lembre-se de colocar uma quebra de linha ao imprimir suas respostas.', 'id' => $idActivity ], 500);
     }
 
 }
