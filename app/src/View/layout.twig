@@ -74,6 +74,7 @@
                             <h5 class="card-title">PVP</h5>
                             
                             <ul class="list-group">
+                                {% set pvp_count = 0 %}
                                 {% for pvp in pvps %}
                                     {% if not pvp.getCompleted %}
                                         <li class="list-group-item px-0 py-0">
@@ -88,13 +89,22 @@
                                                     </div>
 
                                                     <div class="col-6">
-                                                        <a href="" class="btn btn-danger w-100"><i class="fas fa-times"></i></a>
+                                                        <a href="{{ path_for("activities.deny", {id: pvp.getId}) }}" class="btn btn-danger w-100"><i class="fas fa-times"></i></a>
                                                     </div>
                                                 </div>
                                             </div>
                                         </li>
+                                        {% set pvp_count = pvp_count + 1 %}
                                     {% endif %}
                                 {% endfor %}
+
+                                {% if pvp_count == 0 %}
+                                    <div class="row">
+                                        <div class="col-12 text-center">
+                                            <p class="my-3">Você não tem nenhum desafio pendente</p>
+                                        </div>
+                                    </div>
+                                {% endif %}
                             </ul>
 
                             <div class="row mt-2">

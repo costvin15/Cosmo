@@ -70,51 +70,6 @@ class DashboardController extends AbstractController
             $this->setAttributeView("groups", $groups);
             $this->setAttributeView("class", $user->getClass());
         }
-        
-        // $questionNumber = 4;
-
-        // $user = $this->_dm->getRepository(User::class)->find($attributes['id']);
-        // $queryBuilderHistory = $this->_dm->createQueryBuilder(HistoryActivities::class)
-            // ->field('user')->references($user)
-            // ->getQuery()->execute();
-
-        // $idActivitiesUser = [];
-        // foreach($queryBuilderHistory as $activies) {
-            // $idActivitiesUser[] = $activies->getActivity()->getId();
-        // }
-
-//        $groupActivities = $this->_dm->getRepository(GroupActivities::class)->find("581a10bd7b3ceb04bb7b47cd");
-
-        // $allActivities = [];
-        // for($i = 0; $i <= $questionNumber - 1; $i++) {
-            // $qb = $this->_dm->createQueryBuilder(Activities::class)
-                // ->field('id')
-                // ->notIn($idActivitiesUser);
-//                ->in(['580ff69b5bd49c0ac5809682'])
-//                ->field('group');
-//                ->references($groupActivities);
-
-            // $count =  $qb->getQuery()->count();
-
-            // $random_position = rand(0, $count - 1);
-
-            // $activeRandom = $qb
-                // ->skip($random_position)
-                // ->limit(1)
-                // ->sort('order', 'asc')
-                // ->getQuery()
-                // ->execute();
-
-            // if ($activeRandom->count() == 0) {
-                // break 1;
-            // }
-
-            // $activies = $activeRandom->getNext();
-            // $allActivities[] = $activies;
-            // $idActivitiesUser[] = $activies->getId();
-        // }
-
-        // $this->setAttributeView('allActivities', $allActivities);
 
         return $this->view->render($response, 'View/dashboard/index/index.twig', $this->getAttributeView());
     }
@@ -453,7 +408,7 @@ class DashboardController extends AbstractController
             ->field("challenger")->references($user)->getQuery()->execute();
         $pvps_challenged_query = $this->_dm->createQueryBuilder(PVP::class)
             ->field("challenged")->references($user)->getQuery()->execute();
-        $this->setAttributeView("pvps", array_merge($pvps_challenger_query->toArray(), $pvps_challenged_query->toArray()));
+        $this->setAttributeView("pvps_history", array_merge($pvps_challenger_query->toArray(), $pvps_challenged_query->toArray()));
         return $this->view->render($response, "View/dashboard/pvp/history.twig", $this->getAttributeView());
     }
 }

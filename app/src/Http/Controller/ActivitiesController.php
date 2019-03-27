@@ -107,6 +107,26 @@ class ActivitiesController extends AbstractController
      * @param Response $response
      * @param array $args
      * @return mixed
+     * @Get(name="/pvp/deny/{id}", alias="activities.deny")
+     */
+    public function pvpDenyAction(Request $request, Response $response, array $args){
+        $router = $this->_ci->get("router");
+        $id = $args["id"];
+        if (!$id)
+            return $response->withRedirect($router->pathFor("dashboard.index"));
+        $pvp = $this->_dm->getRepository(PVP::class)->find($id);
+        $pvp->setCompleted(true);
+        $pvp->setAccepted(false);
+        $this->_dm->persist($pvp);
+        $this->_dm->flush();
+        return $response->withRedirect($router->pathFor("dashboard.index"));
+    }
+
+    /**
+     * @param Request $request
+     * @param Response $response
+     * @param array $args
+     * @return mixed
      * @Get(name="/{id}/decrepted", alias="activities.view")
      */
     public function viewAnswerAction(Request $request, Response $response, array $args){
