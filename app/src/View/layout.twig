@@ -7,7 +7,6 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-
         <link rel="stylesheet" href="{{ base_url() }}/dist/css/main.min.css">
 
         {% block styles %}{% endblock %}
@@ -52,11 +51,6 @@
                             {% endif %}
                         {% endfor %}
                     </li> 
-                    {# <li class="list-group-item list-group-item-action bg-light">Shortcuts</li>
-                    <li class="list-group-item list-group-item-action bg-light">Overview</li>
-                    <li class="list-group-item list-group-item-action bg-light">Events</li>
-                    <li class="list-group-item list-group-item-action bg-light">Profile</li>
-                    <li class="list-group-item list-group-item-action bg-light">Status</li> #}
                 </ul>
                 <div class="card-footer text-center">
                     <a href = "{{path_for("dashboard.profile.edit")}}" class = "mr-1 btn btn-sm btn-cosmo-color-1 text-white">

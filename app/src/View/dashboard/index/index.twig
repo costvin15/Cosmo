@@ -15,7 +15,6 @@
 {% endblock %}
 
 {% block content %}
-
     <div class="row my-2">
         {% if not class is defined %}
             <div class="col-12 text-center mt-4 mb-2">
@@ -31,10 +30,9 @@
                     <div class="col-12">
                         <span class="display-4 text-muted">Mestres da turma</span><i class = "top-3"></i>
                     </div>
-
                     <div id="students-container" class="col-12">
                         {% for user in class.getStudents %}
-                            {% if user.getAnsweredActivities >= 5 %}
+                            {% if user.getAnsweredActivities >= 90 %}
                                 <div class="col-2 d-inline">
                                     <a href="{{ path_for("dashboard.profile.visit", {id: user.id}) }}" style = "text-decoration: none;">
                                         <img class="img-fluid rounded-circle" src="{{ user.getAvatar }}"/>

@@ -12,7 +12,7 @@ body {
    font-family: "Montserrat", sans-serif;
    .coins {
       position: relative;
-      background-image: url("../icons/piggy-bank.png");
+      background-image: url("../icons/gold-ingots.png");
       height: 32px;
       width: 32px;
       display: inline-block;
@@ -25,7 +25,7 @@ body {
   }
   
   .papyrus{
-      background-image: url("../icons/papyrus.png");
+      background-image: url("../icons/scroll.png");
       height: 32px;
       width: 32px;
       display: inline-block;
@@ -54,8 +54,8 @@ body {
 
    .crown {
       background-image: url("../icons/crown.png");
-      height: 24px;
-      width: 24px;
+      height: 32px;
+      width: 32px;
       display: inline-block;
    }
 
@@ -72,6 +72,7 @@ body {
       width: 32px;
       display: inline-block;
    }
+
 }
 
 .stop-scrolling {
@@ -188,6 +189,7 @@ body {
       -webkit-border-top-right-radius: .25rem;
       border-top-right-radius: .25rem;
    }
+   
    .card-info {
       word-break: break-all;
       height: 100%;

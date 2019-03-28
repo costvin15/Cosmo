@@ -12269,7 +12269,7 @@ body {
   font-family: "Montserrat", sans-serif; }
   body .coins {
     position: relative;
-    background-image: url("../icons/piggy-bank.png");
+    background-image: url("../icons/gold-ingots.png");
     height: 32px;
     width: 32px;
     display: inline-block; }
@@ -12279,7 +12279,7 @@ body {
     width: 32px;
     display: inline-block; }
   body .papyrus {
-    background-image: url("../icons/papyrus.png");
+    background-image: url("../icons/scroll.png");
     height: 32px;
     width: 32px;
     display: inline-block; }
@@ -12300,8 +12300,8 @@ body {
     display: inline-block; }
   body .crown {
     background-image: url("../icons/crown.png");
-    height: 24px;
-    width: 24px;
+    height: 32px;
+    width: 32px;
     display: inline-block; }
   body .signature {
     background-image: url("../icons/contract.png");
