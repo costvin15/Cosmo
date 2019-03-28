@@ -7,17 +7,7 @@
 {% endif %}
 
 {% block scripts %}
-     <script>
-        function openNav() {
-            document.getElementById("mySidenav").style.width = "250px";
-            document.getElementById("content").style.marginLeft = "250px";
-        }
-
-        function closeNav() {
-            document.getElementById("mySidenav").style.width = "0";
-            document.getElementById("content").style.marginLeft = "0";
-        } 
-    </script>
+     
 {% endblock %}
 
 {% block styles %}
@@ -25,44 +15,7 @@
 {% endblock %}
 
 {% block content %}
-    <div class="sidenav text-center clearfix" id="mySidenav">
-        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a> 
-        <div class="sidebar-heading">Minha turma</div> 
-        <hr>      
-        {% for user in class.getStudents %}
-            {# <div class = "row bg-light border border-dark">
-                <div class = "d-flex align-items-center">
-                    
-                </div>
-            </div> #}
 
-            <div class = "card p-card">
-                {% if user.getMoedas >= 1000 %}
-                    <div class = "card-up bg-cosmo-color-7"></div>
-                {% else %}
-                    <div class = "card-up bg-cosmo-color-1"></div>
-                {% endif %}
-                <div class = "card-body d-flex justify-content-center">
-                    <div class = "avatar"> 
-                        <a class = "text-info" href="{{ path_for("dashboard.profile.visit", {id: user.id}) }}" style = "text-decoration: none;">
-                            <img class="img-fluid mb-1 " src="{{ user.getAvatar }}" style = "width: 64px; height:64px;"/>
-                        </a>
-                    </div>
-                    <div class="card-info d-flex justify-content-center">
-                        <div class = "row">
-                            <div class = "d-flex justify-content-center">
-                                <i class="crown"> </i> <span class = "p-2"> {{user.getNickName}}</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                {# <div class = "card-footer">
-                </div> #}
-            </div>
-            <hr>
-        {% endfor %}
-    </div>
-    
     <div class="row my-2">
         {% if not class is defined %}
             <div class="col-12 text-center mt-4 mb-2">
@@ -77,7 +30,6 @@
                 <div class="row mb-2">
                     <div class="col-12">
                         <span class="display-4 text-muted">Mestres da turma</span><i class = "top-3"></i>
-                         <strong id = "menu-btn" class="text-info" onclick="openNav()">Ver turma</strong>
                     </div>
 
                     <div id="students-container" class="col-12">
@@ -85,9 +37,8 @@
                             {% if user.getAnsweredActivities >= 5 %}
                                 <div class="col-2 d-inline">
                                     <a href="{{ path_for("dashboard.profile.visit", {id: user.id}) }}" style = "text-decoration: none;">
-                                        <img class="img-fluid rounded" src="{{ user.getAvatar }}"/>
+                                        <img class="img-fluid rounded-circle" src="{{ user.getAvatar }}"/>
                                     </a>
-                                    <i class = "bg-light centered top-3"></i>
                                 </div>
                             {% endif %}
                         {% endfor %}
