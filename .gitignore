@@ -3,6 +3,7 @@
 /storage/log/
 php_errors.log
 /public/node_modules
+/public/dist/js/
 /node_modules
 node_modules
 atividade_exemplo.json
