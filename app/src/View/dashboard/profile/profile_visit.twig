@@ -52,7 +52,7 @@
             <div class="card">
                 <div class="card-header d-flex justify-content-center">
                     <span class="p-2">
-                        Feitos de {{user.fullname}}
+                        Conquistas de {{user.fullname}}
                     </span>
                 </div>
 
@@ -68,103 +68,129 @@
 
                         <div class="row">
 
-                            <div class = "d-flex justify-content-center">
-                                <h5 = "p-2">Acumulador :</h5>
-                            </div>
-
-                            <button class = "btn btn-cosmo-color-8 ml-2" type="button" data-toggle="collapse" data-target="#bge-1"> 
-                                <i class = "fas fa-medal text-cosmo-color-7"></i>
-                                <i class = "fas fa-medal"></i>
-                                <i class = "fas fa-medal"></i>
-                            </button>
-
-                            <div class="collapse mt-3" id="bge-1">
-                                <div class="card text-cosmo-color-3">
-                                    <div class = "card-header text-center">Requisitos</div>
-                                    <div class = "card-body d-flex flex-column">
-                                        <div class = "p-2">
-                                            Acumular 100 coins = <i class = "fas fa-medal text-cosmo-color-7"></i>
+                                {% set devorador = 0 %}
+                                {% set acumulador = 0 %}
+                                {% set gastador = 0 %}
+    
+                                {% for achiv in user.getAchievements %}
+                                    {% if achiv.getName == "Gastador" %}
+                                        {% set gastador = achiv.getLevel %}
+                                    {% endif %}
+                                    {% if achiv.getName == "Devorador" %}
+                                        {% set devorador = achiv.getLevel %}
+                                    {% endif %}
+                                    {% if achiv.getName == "Acumulador" %}
+                                        {% set acumulador = achiv.getLevel %}
+                                    {% endif %}
+                                {% endfor %}
+                                <div class = "d-flex justify-content-center">
+                                    <h5 = "p-2">Acumulador :</h5>
+                                </div>
+    
+                                <button class = "btn btn-cosmo-color-8 ml-2" type="button" data-toggle="collapse" data-target="#bge-1">
+                                    {% set count = 0 %}
+    
+                                    {% for i in 0.. (acumulador - 1) if acumulador != 0 %}
+                                        <i class = "fas fa-medal text-cosmo-color-7"></i>
+                                    {% endfor %}
+                                    {% for i in 0..( 2 - acumulador ) if 3 - acumulador != 0 %}
+                                        <i class = "fas fa-medal"></i>
+                                    {% endfor %}
+                                </button>
+    
+                                <div class="collapse mt-3" id="bge-1">
+                                    <div class="card text-cosmo-color-3">
+                                        <div class = "card-header text-center">Requisitos</div>
+                                        <div class = "card-body d-flex flex-column">
+                                            <div class = "p-2">
+                                                Acumular 100 coins = <i class = "fas fa-medal text-cosmo-color-7"></i>
+                                            </div>
+    
+                                            <div class = "p-2">
+                                                Acumular 200 coins = <i class = "fas fa-medal text-cosmo-color-7"></i><i class = "fas fa-medal text-cosmo-color-7"></i>
+                                            </div>
+    
+                                            <div class = "p-2">
+                                                Acumular 500 coins = <i class = "fas fa-medal text-cosmo-color-7"></i><i class = "fas fa-medal text-cosmo-color-7"></i><i class = "fas fa-medal text-cosmo-color-7"></i>
+                                            </div>
                                         </div>
-                                        
-                                        <div class = "p-2">
-                                            Acumular 200 coins = <i class = "fas fa-medal text-cosmo-color-7"></i><i class = "fas fa-medal text-cosmo-color-7"></i>
+                                        <div class = "card-footer text-center">
+                                            <span>500 <i class="coins"></i></span>
+                                            <span>100 <i class="brain"></i></span>
                                         </div>
-
-                                        <div class = "p-2">
-                                            Acumular 500 coins = <i class = "fas fa-medal text-cosmo-color-7"></i><i class = "fas fa-medal text-cosmo-color-7"></i><i class = "fas fa-medal text-cosmo-color-7"></i>
-                                        </div>
-                                    </div> 
-                                    <div class = "card-footer text-center">
-                                        <span>500 <i class="coins"></i></span>
-                                        <span>100 <i class="brain"></i></span>
                                     </div>
                                 </div>
-                            </div>
                         </div>
                         <hr>
 
                         <div class="row">
-                            <h5>Gastador: </h5>
-                            <button class = "btn btn-cosmo-color-8 ml-2" type="button" data-toggle="collapse" data-target="#bge-2"> 
-                                <i class = "fas fa-medal text-cosmo-color-7"></i>
-                                <i class = "fas fa-medal"></i>
-                                <i class = "fas fa-medal"></i>
-                            </button>
-                            <div class="collapse mt-3" id="bge-2">
-                                <div class="card text-cosmo-color-3 text-center">
-                                    <div class = "card-header text-center">Requisitos</div>
-                                    <div class = "card-body d-flex flex-column">
-                                        <div class = "p-2">
-                                            Gastar 100 coins = <i class = "fas fa-medal text-cosmo-color-7"></i>
+                                <h5>Gastador: </h5>
+                                <button class = "btn btn-cosmo-color-8 ml-2" type="button" data-toggle="collapse" data-target="#bge-2">
+                                    {% for i in 0.. (gastador - 1) if gastador != 0 %}
+                                        <i class = "fas fa-medal text-cosmo-color-7"></i>
+                                    {% endfor %}
+                                    {% for i in 0..( 2 - gastador ) if 3 - gastador != 0 %}
+                                        <i class = "fas fa-medal"></i>
+                                    {% endfor %}
+                                </button>
+                                <div class="collapse mt-3" id="bge-2">
+                                    <div class="card text-cosmo-color-3 text-center">
+                                        <div class = "card-header text-center">Requisitos</div>
+                                        <div class = "card-body d-flex flex-column">
+                                            <div class = "p-2">
+                                                Gastar 100 coins = <i class = "fas fa-medal text-cosmo-color-7"></i>
+                                            </div>
+    
+                                            <div class = "p-2">
+                                                Gastar 200 coins = <i class = "fas fa-medal text-cosmo-color-7"></i> <i class = "fas fa-medal text-cosmo-color-7"></i>
+                                            </div>
+    
+                                            <div class = "p-2">
+                                                Gastar 500 coins =  <i class = "fas fa-medal text-cosmo-color-7"></i> <i class = "fas fa-medal text-cosmo-color-7"></i> <i class = "fas fa-medal text-cosmo-color-7"></i>
+                                            </div>
+    
                                         </div>
-                                        
-                                        <div class = "p-2">
-                                            Gastar 200 coins = <i class = "fas fa-medal text-cosmo-color-7"></i> <i class = "fas fa-medal text-cosmo-color-7"></i>
+                                        <div class = "card-footer text-center">
+                                            <span>500 <i class="coins"></i></span>
+                                            <span>100 <i class="brain"></i></span>
                                         </div>
-
-                                        <div class = "p-2">
-                                            Gastar 500 coins =  <i class = "fas fa-medal text-cosmo-color-7"></i> <i class = "fas fa-medal text-cosmo-color-7"></i> <i class = "fas fa-medal text-cosmo-color-7"></i>
-                                        </div>
-
                                     </div>
-                                    <div class = "card-footer text-center">
-                                        <span>500 <i class="coins"></i></span>
-                                        <span>100 <i class="brain"></i></span>
-                                    </div> 
                                 </div>
-                            </div>
                         </div>
                         <hr>
 
                         <div class="row">
-                            <h5>Devorador: </h5>
-                            <button class = "btn btn-cosmo-color-8 ml-2" type="button" data-toggle="collapse" data-target="#bge-3"> 
-                                <i class = "fas fa-medal text-cosmo-color-7"></i>
-                                <i class = "fas fa-medal"></i>
-                                <i class = "fas fa-medal"></i>
-                            </button>
-                            <div class="collapse mt-3" id="bge-3">
-                                <div class="card text-cosmo-color-3">
-                                    <div class = "card-header text-center">Requisitos</div>
-                                    <div class = "card-body d-flex flex-column">
-                                       <div class = "p-2">
-                                            Fazer 1 questão = <i class = "fas fa-medal text-cosmo-color-7"></i>
+                                <h5>Devorador: </h5>
+                                <button class = "btn btn-cosmo-color-8 ml-2" type="button" data-toggle="collapse" data-target="#bge-3">
+                                    {% for i in 0.. (devorador - 1) if devorador != 0 %}
+                                        <i class = "fas fa-medal text-cosmo-color-7"></i>
+                                    {% endfor %}
+                                    {% for i in 0..( 2 - devorador ) if 3 - devorador != 0 %}
+                                        <i class = "fas fa-medal"></i>
+                                    {% endfor %}
+                                </button>
+                                <div class="collapse mt-3" id="bge-3">
+                                    <div class="card text-cosmo-color-3">
+                                        <div class = "card-header text-center">Requisitos</div>
+                                        <div class = "card-body d-flex flex-column">
+                                           <div class = "p-2">
+                                                Fazer 1 questão = <i class = "fas fa-medal text-cosmo-color-7"></i>
+                                            </div>
+    
+                                            <div class = "p-2">
+                                                Fazer 5 questões = <i class = "fas fa-medal text-cosmo-color-7"></i> <i class = "fas fa-medal text-cosmo-color-7"></i>
+                                            </div>
+    
+                                            <div class = "p-2">
+                                                Fazer 10 questões =  <i class = "fas fa-medal text-cosmo-color-7"></i> <i class = "fas fa-medal text-cosmo-color-7"></i> <i class = "fas fa-medal text-cosmo-color-7"></i>
+                                            </div>
                                         </div>
-                                        
-                                        <div class = "p-2">
-                                            Fazer 5 questões = <i class = "fas fa-medal text-cosmo-color-7"></i> <i class = "fas fa-medal text-cosmo-color-7"></i>
-                                        </div>
-
-                                        <div class = "p-2">
-                                            Fazer 10 questões =  <i class = "fas fa-medal text-cosmo-color-7"></i> <i class = "fas fa-medal text-cosmo-color-7"></i> <i class = "fas fa-medal text-cosmo-color-7"></i>
+                                        <div class = "card-footer text-center">
+                                            <span>500 <i class="coins"></i></span>
+                                            <span>100 <i class="brain"></i></span>
                                         </div>
                                     </div>
-                                    <div class = "card-footer text-center">
-                                        <span>500 <i class="coins"></i></span>
-                                        <span>100 <i class="brain"></i></span>
-                                    </div> 
                                 </div>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -306,59 +332,33 @@
             </div> 
         </div>
 
-        <div class = "col-md-4 mt-2">
+         <div class = "col-md-4 mt-2">
             <div class = "card">
-                <div class="card-header d-flex justify-content-center">
-                    <span class="p-2">
-                        Skills de {{user.fullname}}
+                <div class="card-header">
+                    <h5 class=" text-center">
+                        Habilidades de {{user.fullname}}
                     </span>
                 </div>
-                <div class = "card-body card-skill-body">
-                    <h4 class = "p-2">Atribuição:
-                        <button class = "btn btn-cosmo-color-8" >
-                            <i class = "fas fa-star text-cosmo-color-7"></i>
-                            <i class = "fas fa-star text-cosmo-color-7"></i>
-                            <i class = "fas fa-star text-cosmo-color-7"></i> 
-                            {# {% if user.answered_activities >= 10 %}
-                                <i class = "fas fa-star text-cosmo-color-7"></i>
-                                <i class = "fas fa-star text-cosmo-color-7"></i>
-                                <i class = "fas fa-star text-cosmo-color-7"></i>
-                            {% elseif user.answered_activities < 10 and user.answered_activities >= 5 %}
-                                <i class = "fas fa-star text-cosmo-color-7"></i>
-                                <i class = "fas fa-star text-cosmo-color-7"></i>
-                                <i class = "fas fa-star"></i>
-                            {% elseif user.answered_activities >= 3 and user.answered_activites < 5 %}
-                                <i class = "fas fa-star text-cosmo-color-7"></i>
-                                <i class = "fas fa-star"></i>
-                                <i class = "fas fa-star"></i>
-                            {% else %}
-                                 <i class = "fas fa-star"></i>
-                                <i class = "fas fa-star"></i>
-                                <i class = "fas fa-star"></i>
-                            {% endif %} #}
-                        </button>
-                    </h4>
+                <div class = "card-body d-flex flex-column">
+                    {% for skill in groups %}
+                            <div class="text-center">
+                                    <h5 class="">{{ skill.title }}: </h5>
+                                    <div center="">
+                                        <button class = "btn btn-dark ml-1" >
+                                                {% set count = 0 %}
+                                                {% for star in stars if star.completed and star.getGroupActivities.id == skill.id %}
+                                                    <i class="fa fa-star fa-1x text-cosmo-color-7" style="float:right;"></i>
+                                                    {% set count = count + 1 %}
+                                                {% endfor %}
+                                                {% for i in 1..( 3 - count) %}                                                
+                                                    <i class="fa fa-star fa-1x " style="float:right;"></i>
+                                                {% endfor %}
+                                        </button>
+                                    </div>
+                                    <hr>
+                            </div>
 
-                    <hr>
-
-                    <h4 class = "p-2">Condição:
-                        <button class = "btn btn-dark" > 
-                                <i class = "fas fa-star"></i>
-                                <i class = "fas fa-star"></i>
-                                <i class = "fas fa-star"></i>
-                        </button>
-                    </h4>
-
-                    <hr>
-
-                    <h4 class = "p-2">Repetição:
-                        <button class = "btn btn-dark" > 
-                                <i class = "fas fa-star"></i>
-                                <i class = "fas fa-star"></i>
-                                <i class = "fas fa-star"></i>
-                        </button>
-                    </h4>
-
+                    {% endfor %}
                 </div>
             </div>
         </div>

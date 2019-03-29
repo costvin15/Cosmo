@@ -339,6 +339,25 @@ class DashboardController extends AbstractController
      * @Get(name="/profile/{id}", middleware={"App\Http\Middleware\SessionMiddleware"}, alias="dashboard.profile.visit")
      */
     public function visitAnotherProfile(Request $request, Response $response, array $args){
+        $attributes = SessionFacilitator::getAttributeSession();
+        $user = $this->_dm->getRepository(User::class)->find($args["id"]);
+        $stars =  $this->_dm->getRepository(Star::class)->findStarWithUser($user);
+        $user_history = $this->_dm->createQueryBuilder(HistoryActivities::class)
+                ->field("user")->references($user)->getQuery()->execute();
+            $user_history_ids = array();
+            foreach ($user_history as $activity)
+                $user_history_ids[] = $activity->getActivity()->getId();
+
+            $groups = $this->_dm->getRepository(GroupActivities::class)->findBy(array("class" => $user->getClass()));
+            for ($i = 0; $i < count($groups); $i++){
+                $group = $groups[$i]->toArray();
+                $group["activities"] = $this->_dm->createQueryBuilder(Activities::class)
+                    ->field("group")->references($groups[$i])
+                    ->field("id")->notIn($user_history_ids)->getQuery()->execute();
+                $groups[$i] = $group;
+            }
+        $this->setAttributeView("stars", $stars);
+        $this->setAttributeView("groups", $groups);
         $this->setAttributeView("user", $this->_dm->getRepository(User::class)->find($args["id"]));
         return $this->view->render($response, "View/dashboard/profile/profile_visit.twig", $this->getAttributeView());
     }
