@@ -60,6 +60,7 @@ class CreateUser extends AbstractUser {
             nickname: (<HTMLInputElement> document.getElementById("input-frmuser-nickname")).value,
             fulltitle: (<HTMLInputElement> document.getElementById("input-frmuser-fulltitle")).value,
             username: (<HTMLInputElement> document.getElementById("input-frmuser-email")).value,
+            sexo: (<HTMLInputElement> document.querySelector('input[name="input-frmuser-sexo"]:checked')).value,
             password: (<HTMLInputElement> document.getElementById("input-frmuser-password")).value,
             admin: (<HTMLInputElement> document.getElementById("input-frmuser-administrator")).checked ? 1 : 0
         };
@@ -83,10 +84,10 @@ class CreateUser extends AbstractUser {
             return false;
         }
 
-         if (formObject.fulltitle.trim() === ""){
-            window.cosmo.dialog.error("Oops", "O você não pode ficar sem título, escolha um!", () => {});
-            return false;
-        }
+        //  if (formObject.fulltitle.trim() === ""){
+        //     window.cosmo.dialog.error("Oops", "O você não pode ficar sem título, escolha um!", () => {});
+        //     return false;
+        // }
 
         if (formObject.password.trim() === ""){
             window.cosmo.dialog.error("Oops", "O campo Senha não pode ficar vazio.", () => {});
@@ -159,6 +160,7 @@ class UpdateUser extends AbstractUser {
             fulltitle:(<HTMLInputElement> document.getElementById("input-frmuser-fulltitle")).value,
             nickname: (<HTMLInputElement> document.getElementById("input-frmuser-nickname")).value,
             username: (<HTMLInputElement> document.getElementById("input-frmuser-email")).value,
+            sexo: (<HTMLInputElement> document.querySelector('input[name="input-frmuser-sexo"]:checked')).value,
             admin: (<HTMLInputElement> document.getElementById("input-frmuser-administrator")).checked ? 1 : 0,
             block_status: (<HTMLInputElement> document.getElementById("input-frmuser-block")).checked ? 1 : 0,
             block_reason: (<HTMLInputElement> document.getElementById("input-frmuser-reason")).value

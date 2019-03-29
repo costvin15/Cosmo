@@ -15,6 +15,10 @@
 {% endblock %}
 
 {% block content %}
+    <ul class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{{ path_for("dashboard.index") }}">Dashboard</a></li>
+        <li class="breadcrumb-item active">{{ activity.getTitle }}</li>
+    </ul>
     <div class="row my-4">
         {% if challenge %}
         <div class="col-12 mb-2">

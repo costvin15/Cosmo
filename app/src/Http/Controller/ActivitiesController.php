@@ -51,13 +51,13 @@ class ActivitiesController extends AbstractController
     public function activitiesAction(Request $request, Response $response, array $args) {
         $idActivity = $args["id"];
         $this->activity = $this->_dm->getRepository(Activities::class)->find($idActivity);
-        
+
         //adicionar questões compradas
         $attributes = SessionFacilitator::getAttributeSession();
         $user = $this->_dm->getRepository(User::class)->find($attributes["id"]);
-        
+
         if(!in_array($this->activity, $user->getPurchasedActivities()->toArray(),true)){
-            $user->setMoedas($user->getMoedas() - $this->activity->getCust());
+            $user->updateGastos($this->activity->getCust());
         }
         $user->addPurchasedActivities($this->activity);
 
@@ -66,7 +66,7 @@ class ActivitiesController extends AbstractController
 
         $this->setAttributeView("activity", $this->activity);
         $this->setAttributeView("idGroup", $args["idGroup"]);
-        
+
         if ($request->getParam("challenge-type")){
             $this->setAttributeView("type", $request->getParam("challenge-type"));
             $this->setAttributeView("challenge_id", $request->getParam("challenge-id"));
@@ -176,7 +176,7 @@ class ActivitiesController extends AbstractController
 
         $validateInstanced = new $validateClass();
         $returnValidate = $validateInstanced($params);
-        
+
         $params["dateini"] = $returnValidate->timeIn;
         $params["datefim"] = $returnValidate->timeOut;
 
@@ -210,7 +210,9 @@ class ActivitiesController extends AbstractController
             }
 
             $validateInstanced->saveHistory($params);
+
             $categoryType = $this->_dm->getRepository(CategoryActivities::class)->findCategory($activity->getCategory())->getId();
+            
             $router = $this->_ci->get("router");
             return $response->withRedirect($router->pathFor("star.check",["id_group" => $params['id_group'],"id_category"=>$categoryType]));
         }

@@ -217,7 +217,7 @@ class DashboardController extends AbstractController
             $history[$i] = $history[$i]->toArray();
 
         $this->setAttributeView("history", $history);
-        
+
         return $this->view->render($response, 'View/dashboard/history/index.twig', $this->getAttributeView());
     }
 
@@ -225,7 +225,7 @@ class DashboardController extends AbstractController
      * @param Request $request
      * @param Response $response
      * @return mixed
-     * 
+     *
      * @Get(name="/profile/edit", middleware={"App\Http\Middleware\SessionMiddleware"}, alias="dashboard.profile.edit")
      * @Log(type="INFO", persist={"verb", "attributes", "session"}, message="Acessou o seu perfil.")
      */
@@ -246,13 +246,24 @@ class DashboardController extends AbstractController
             $avatar = $request->getParam("avatar");
             $fullname = $request->getParam("fullname");
             $nickname = $request->getParam("nickname");
+            $sexo = $request->getParam("sexo");
             $code = $request->getParam("code");
-            $fulltitle = $request->getParam("fulltitle");
-            
-            $attributes = SessionFacilitator::getAttributeSession();
-            
-            $user = $this->_dm->getRepository(User::class)->find($attributes['id']);
+            // $fulltitle = $request->getParam("fulltitle");
 
+
+            $attributes = SessionFacilitator::getAttributeSession();
+
+            $user = $this->_dm->getRepository(User::class)->find($attributes['id']);
+            if($user->getXP() > 25){
+                $user->setFullTitle("Escudeiro(a)");
+            }elseif($user->getXP() > 50){
+                $user->setFullTitle("Visconde/Vinscodessa");
+            }elseif($user->getXP() > 75){
+                $user->setFullTitle("Duque/Duquesa");
+            }elseif($user->getXP() > 100){
+                $user->setFullTitle("Imperador/Imperatriz");
+            }
+            $user->setSexo($sexo);
             $user->setFullname($fullname);
             $user->setNickname($nickname);
 
@@ -262,9 +273,9 @@ class DashboardController extends AbstractController
                     return $response->withJson(["message" => "O código inserido não corresponde a nenhuma turma."], 500);
                 $user->setClass($classes[0]);
             }
-            
-            $user->setFulltitle($fulltitle);
-            
+
+            // $user->setFullTitle($fulltitle);
+
             $this->_dm->persist($user);
             $this->_dm->flush();
 
@@ -282,19 +293,19 @@ class DashboardController extends AbstractController
         } else
             return $response->withJson(["message" => "Requisição mal formatada"], 500);
     }
-    
+
     /**
      * @param Request $request
      * @param Response $response
      * @return mixed
-     * 
+     *
      * @Get(name="/profile", middleware={"App\Http\Middleware\SessionMiddleware"}, alias="dashboard.profile")
      * @Log(type="INFO", persist={"verb", "attributes", "session"}, message="Acessou o seu perfil.")
      */
     public function visitYourProfile(Request $request, Response $response){
         $attributes = SessionFacilitator::getAttributeSession();
         $user = $this->_dm->getRepository(User::class)->find($attributes["id"]);
-        if ($user->getClass()){
+        if ($user && $user->getClass()){
             $user_history = $this->_dm->createQueryBuilder(HistoryActivities::class)
                 ->field("user")->references($user)->getQuery()->execute();
             $user_history_ids = array();
@@ -310,10 +321,11 @@ class DashboardController extends AbstractController
                 $groups[$i] = $group;
             }
             $this->setAttributeView("groups", $groups);
+            $this->setAttributeView("user", $user);
             $this->setAttributeView("class", $user->getClass());
         }
         return $this->view->render($response, "View/dashboard/profile/index.twig", $this->getAttributeView());
-        
+
     }
 
      /**
@@ -322,9 +334,9 @@ class DashboardController extends AbstractController
      * @param array $args
      * @return mixed
      *
-     * @Get(name="/profile/{id}", middleware={"App\Http\Middleware\SessionMiddleware"}, alias="dashboard.profile.visit") 
+     * @Get(name="/profile/{id}", middleware={"App\Http\Middleware\SessionMiddleware"}, alias="dashboard.profile.visit")
      */
-    public function visitAnotherProfile(Request $request, Response $response, array $args){      
+    public function visitAnotherProfile(Request $request, Response $response, array $args){
         $this->setAttributeView("user", $this->_dm->getRepository(User::class)->find($args["id"]));
         return $this->view->render($response, "View/dashboard/profile/profile_visit.twig", $this->getAttributeView());
     }
@@ -340,7 +352,7 @@ class DashboardController extends AbstractController
     public function closeAccountAction(Request $request, Response $response){
         if ($request->isXhr()){
             $attributes = SessionFacilitator::getAttributeSession();
-            
+
             $user = $this->_dm->getRepository(User::class)->find($attributes["id"]);
             $this->_dm->remove($user);
             $this->_dm->flush();
@@ -417,7 +429,7 @@ class DashboardController extends AbstractController
         $star = $this->_dm->getRepository(Star::class)->findStar($user,$group,$category);
 
         if($star){
-        
+
         }
         return $this->view->render($response, "View/dashboard/skill/categories.twig", $this->getAttributeView());
     }
@@ -428,9 +440,9 @@ class DashboardController extends AbstractController
      * @Get(name="/skill/{idGroup}/{idCategory}", middleware={"App\Http\Middleware\SessionMiddleware"}, alias="dashboard.skill.questions")
      */
     public function skillAction(Request $request, Response $response, array $args){
-        $idGroup = $args["idGroup"];        
+        $idGroup = $args["idGroup"];
         $idCategory = $args["idCategory"];
-        
+
         $attributes = SessionFacilitator::getAttributeSession();
         $user = $this->_dm->getRepository(User::class)->find($attributes["id"]);
 
@@ -447,7 +459,7 @@ class DashboardController extends AbstractController
             $this->_dm->persist($star);
             $this->_dm->flush();
         }
-        
+
         $activities = [];
         foreach($group->getActivity() as $activity){
             if($activity->getCategory() == $category->getCategory()){

@@ -6,6 +6,7 @@ module.exports = {
         register: "./src/ts/pages/register/script.ts",
         login: "./src/ts/pages/login/script.ts",
         profile: "./src/ts/pages/profile/script.ts",
+        index: "./src/ts/pages/index/script.ts",
         history: "./src/ts/pages/history/script.ts",
         problems: "./src/ts/pages/problems/script.ts",
         pvp: "./src/ts/pages/pvp/script.ts",

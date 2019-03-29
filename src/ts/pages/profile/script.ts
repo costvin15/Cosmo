@@ -5,6 +5,7 @@ interface User {
     avatar: string;
     fullname: string;
     nickname: string;
+    sexo: string;
     fulltitle: string;
 }
 class UpdateUser {
@@ -22,12 +23,12 @@ class UpdateUser {
             this.loadAvatar();
         });
 
-        (<HTMLButtonElement> document.getElementById("btn-close-profile")).addEventListener("click", () => {
-            window.cosmo.dialog.confirm("Encerrar sua conta", "Você tem certeza que deseja encerrar sua conta? Esta ação é irreversível.", (result: any) => {
-                if (result)
-                    this.closeAccount();
-            });
-        });
+        // (<HTMLButtonElement> document.getElementById("btn-close-profile")).addEventListener("click", () => {
+        //     window.cosmo.dialog.confirm("Encerrar sua conta", "Você tem certeza que deseja encerrar sua conta? Esta ação é irreversível.", (result: any) => {
+        //         if (result)
+        //             this.closeAccount();
+        //     });
+        // });
     }
 
     createObject() : User {
@@ -36,6 +37,7 @@ class UpdateUser {
             avatar: (<HTMLInputElement> document.getElementById("img-frmuser-avatar")).getAttribute("src"),
             fullname: (<HTMLInputElement> document.getElementById("input-frmuser-name")).value,
             nickname: (<HTMLInputElement> document.getElementById("input-frmuser-nickname")).value,
+            sexo: (<HTMLInputElement> document.querySelector('input[name="input-frmuser-sexo"]:checked')).value,
             fulltitle: (<HTMLInputElement> document.getElementById("input-frmuser-fulltitle")).value
         }
     }
@@ -54,6 +56,7 @@ class UpdateUser {
             window.cosmo.dialog.error("Oops", "O campo Imagem é obrigatório", () => {});
             return false;
         }
+
 
         return true;
     }

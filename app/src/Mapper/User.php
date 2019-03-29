@@ -26,6 +26,11 @@ class User
      */
     private $username;
 
+    /**
+     * @ODM\Field(name="sexo", type="string")
+     */
+    private $sexo;
+
 
     /**
      * @ODM\Field(name="password", type="string")
@@ -118,7 +123,7 @@ class User
     private $administrator_class;
 
     /**
-     * @ODM\ReferenceMany(targetDocument="Achievements", mappedBy="users")
+     * @ODM\ReferenceMany(targetDocument="Achievements", cascade={"persist"})
      */
     private $achievements;
 
@@ -142,6 +147,7 @@ class User
         $this->username = $username;
         $this->password = $password;
         $this->fullname = $fullname;
+        $this->sexo = "";
         $this->fulltitle = "";
         $this->administrator = $administrator;
         $this->historyActivities = [];
@@ -151,7 +157,11 @@ class User
         $this->moedas = 0;
         $this->acumulo = 0;
         $this->gasto = 0;
-        $this->achievements = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->achievements = [];
+        $this->achievements[] = new Achievements("badge","Acumulador",0);
+        $this->achievements[] = new Achievements("badge","Devorador",0);
+        $this->achievements[] = new Achievements("badge","Gastador",0);
+
     }
 
     public function getAvatar(){
@@ -174,6 +184,7 @@ class User
             'username' => $this->username,
             'password' => $this->password,
             'fullname' => $this->fullname,
+            'sexo' => $this->sexo,
             'fulltitle' => $this->fulltitle,
             'administrator' => $this->administrator,
             'blocked' => $this->blocked,
@@ -194,6 +205,7 @@ class User
             'nickname' => $this->nickname,
             'username' => $this->username,
             'fullname' => $this->fullname,
+            'sexo' => $this->sexo,
             'fulltitle' => $this->fulltitle,
             'answered_activities' => $this->answered_activities,
             'moedas' => $this->moedas,
@@ -255,6 +267,21 @@ class User
     /**
      * @return mixed
      */
+    public function getSexo(){
+        return $this->sexo;
+    }
+
+    /**
+     * @param mixed $sexo
+     */
+    public function setSexo($sexo){
+        $this->sexo = $sexo;
+    }
+
+
+    /**
+     * @return mixed
+     */
     public function getUsername()
     {
         return $this->username;
@@ -272,7 +299,7 @@ class User
     /**
      * @return mixed
      */
-    public function getFulltitle()
+    public function getFullTitle()
     {
         return $this->fulltitle;
     }
@@ -280,7 +307,7 @@ class User
     /**
      * @param mixed $fulltitle
      */
-    public function setFulltitle($fulltitle)
+    public function setFullTitle($fulltitle)
     {
         $this->fulltitle = $fulltitle;
     }
@@ -375,7 +402,30 @@ class User
      * @param mixed $answered_activities
      */
     public function setAnsweredActivities($answered_activities){
+        $exists = false;
         $this->answered_activities = $answered_activities;
+        foreach($this->achievements->toArray() as $achievement){
+            if ($achievement->getName() == "Devorador" && $achievement->getType() == "badge"){
+                if($this->answered_activities >= 10)
+                    $achievement->setLevel(3);
+                else if($this->answered_activities >= 5)
+                    $achievement->setLevel(2);
+                else if($this->answered_activities >= 1)
+                    $achievement->setLevel(1);
+                $exists = true;
+                break;
+            }
+        }
+        if(!$exists){
+            $level = 0;
+            if($this->answered_activities >= 10)
+                $level = 3;
+            else if($this->answered_activities >= 5)
+                $level = 2;
+            else if($this->answered_activities >= 1)
+                $level = 1;
+            $this->achievements[] = new Achievements("badge","Devorador",$level);
+        }
     }
 
      /**
@@ -403,7 +453,33 @@ class User
      * @param mixed $acumulo
      */
     public function updateAcumulo($acumulo){
+        $exists = false;
         $this->acumulo += $acumulo;
+        $this->moedas += $acumulo;
+        foreach($this->achievements->toArray() as $achievement){
+            if ($achievement->getName() == "Acumulador" && $achievement->getType() == "badge"){
+                if($this->acumulo >= 500)
+                    $achievement->setLevel(3);
+                else if($this->acumulo >= 200)
+                    $achievement->setLevel(2);
+                else if($this->acumulo >= 100)
+                    $achievement->setLevel(1);
+                $exists = true;
+                break;
+            }
+        }
+        if(!$exists){
+            $level = 0;
+            if($this->acumulo >= 500)
+                    $level = 3;
+                else if($this->acumulo >= 200)
+                    $level = 2;
+                else if($this->acumulo >= 100)
+                    $level = 1;
+            $this->achievements[] = new Achievements("badge","Acumulador",$level);
+        }
+
+        
     }
 
     /**
@@ -417,7 +493,31 @@ class User
      * @param mixed $acumulo
      */
     public function updateGastos($gastos){
+        $exists = false;
         $this->gastos += $gastos;
+        $this->moedas -= $gastos;
+        foreach($this->achievements->toArray() as $achievement){
+            if ($achievement->getName() == "Gastador" && $achievement->getType() == "badge"){
+                if($this->gastos >= 500)
+                    $achievement->setLevel(3);
+                else if($this->gastos >= 200)
+                    $achievement->setLevel(2);
+                else if($this->gastos >= 100)
+                    $achievement->setLevel(1);
+                $exists = true;
+                break;
+            }
+        }
+        if(!$exists){
+            $level = 0;
+            if($this->gastos >= 500)
+                    $level = 3;
+                else if($this->gastos >= 200)
+                    $level = 2;
+                else if($this->gastos >= 100)
+                    $level = 1;
+            $this->achievements[] = new Achievements("badge","Gastador",$level);
+        }
     }
 
      /**
@@ -496,4 +596,18 @@ class User
     public function setClass($class){
         $this->class = $class;
     }
+
+    // /**
+    //  * @return mixed
+    //  */
+    // public function getAchievements(){
+    //     return $this->achievements;
+    // }
+
+    // /**
+    //  * @param mixed $achievements
+    //  */
+    // public function setAchievements($achievements){
+    //     $this->achievements = $achievements;
+    // }
 }

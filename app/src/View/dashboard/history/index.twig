@@ -11,6 +11,11 @@
 {% endblock %}
 
 {% block content %}
+    <ul class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{{ path_for("dashboard.index") }}">Dashboard</a></li>
+        <li class="breadcrumb-item active">Histórico de Submissões</li>
+    </ul>
+
     <div class="row my-4">
         <div class="col-md-4">
             <div class="card">

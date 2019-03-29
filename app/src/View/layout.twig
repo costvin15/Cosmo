@@ -11,7 +11,8 @@
         <link rel="stylesheet" href="{{ base_url() }}/dist/css/main.min.css">
 
         {% block styles %}{% endblock %}
-
+        <script type="text/javascript" src="{{ base_url() }}/dist/js/main.js"></script>
+        <script type="text/javascript" src="{{ base_url() }}/dist/js/script.min.js"></script>
         <title>{{ page_title }} - {{ appname }}</title>
     </head>
     
@@ -145,7 +146,6 @@
             <span class="display-4">{{ page_title }}</span>
 
             {% block breakcrumb %}{% endblock %}
-
             {% block content %}{% endblock %}
         </div>
 
@@ -176,8 +176,7 @@
         <script type="text/javascript">
             window.base_url = "{{ base_url() }}";
         </script>
-        <script type="text/javascript" src="{{ base_url() }}/dist/js/main.js"></script>
-        <script type="text/javascript" src="{{ base_url() }}/dist/js/script.min.js"></script>
+        
         {% block scripts %}{% endblock %}
     </body>
 </html>
