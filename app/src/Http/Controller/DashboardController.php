@@ -320,6 +320,8 @@ class DashboardController extends AbstractController
                     ->field("id")->notIn($user_history_ids)->getQuery()->execute();
                 $groups[$i] = $group;
             }
+            $stars =  $this->_dm->getRepository(Star::class)->findStarWithUser($user);
+            $this->setAttributeView("stars", $stars);
             $this->setAttributeView("groups", $groups);
             $this->setAttributeView("user", $user);
             $this->setAttributeView("class", $user->getClass());

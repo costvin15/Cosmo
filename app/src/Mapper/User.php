@@ -161,6 +161,8 @@ class User
         $this->achievements[] = new Achievements("badge","Acumulador",0);
         $this->achievements[] = new Achievements("badge","Devorador",0);
         $this->achievements[] = new Achievements("badge","Gastador",0);
+        $this->achievements[] = new Achievements("trophie","Aprendiz",0);
+        $this->achievements[] = new Achievements("trophie","De Primeira",0);
 
     }
 
@@ -222,17 +224,17 @@ class User
         ];
     }
 
-    public function getAchievements(){
-        return $this->achievements;
-    }
+    // public function getAchievements(){
+    //     return $this->achievements;
+    // }
 
-    public function setAchievements(Achievements $achievement){
-        foreach ($this->achievements as $value){
-            if($achievement->type == "badge"){
+    // public function setAchievements(Achievements $achievement){
+    //     foreach ($this->achievements as $value){
+    //         if($achievement->type == "badge"){
                 
-            }
-       }
-    }
+    //         }
+    //    }
+    // }
     
     /**
      * @return mixed
@@ -597,17 +599,17 @@ class User
         $this->class = $class;
     }
 
-    // /**
-    //  * @return mixed
-    //  */
-    // public function getAchievements(){
-    //     return $this->achievements;
-    // }
+    /**
+     * @return mixed
+     */
+    public function getAchievements(){
+        return $this->achievements;
+    }
 
-    // /**
-    //  * @param mixed $achievements
-    //  */
-    // public function setAchievements($achievements){
-    //     $this->achievements = $achievements;
-    // }
+    /**
+     * @param mixed $achievements
+     */
+    public function setAchievements($achievements){
+        $this->achievements = $achievements;
+    }
 }
