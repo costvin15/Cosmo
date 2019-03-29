@@ -4,7 +4,7 @@
 {% block scripts %}
 
     <script>
-        {# $(function setProgress(valor) {
+        /* $(function setProgress(valor) {
         /* var current_progress = 0;
             var interval = setInterval(function() {
                 current_progress += 10;
@@ -14,7 +14,7 @@
                     .text(current_progress + "/100%");
                 if (current_progress >= 100)
                 clearInterval(interval);
-            }, 1000); */
+            }, 1000);
 
             var elem = document.getElementById("dynamic");
             var width = 1;
@@ -27,7 +27,7 @@
                 elem.style.width = width + '%';
         }
     }
-        }); #}
+        }); */
 
         $(function () {
             $('[data-toggle="popover"]').popover()
@@ -40,11 +40,11 @@
     <link rel="stylesheet" href="{{ base_url() }}/dist/css/profile-visit/style.min.css">
 {% endblock %}
 
-{% block content %}   
+{% block content %}
 
     <ul class="breadcrumb">
         <li class="breadcrumb-item"><a href="{{ path_for("dashboard.index") }}">Dashboard</a></li>
-        <li class="breadcrumb-item active">Perfil</li>
+        <li class="breadcrumb-item active">Meu Perfil</li>
     </ul>
 
     <div class = "row">
@@ -52,7 +52,7 @@
             <div class="card">
                 <div class="card-header d-flex justify-content-center">
                     <span class="p-2">
-                        Feitos de {{attributes.fullname}}
+                        Conquistas de {{attributes.fullname}}
                     </span>
                 </div>
 
@@ -60,22 +60,41 @@
                     <div class="card border-cosmo-color-1 shadow text-cosmo-color-1 p-3 card-h">
                         <span class="medal" aria-hidden="true"></span>
                     </div>
-                    <div class = "card-body card-scroll"> 
+                    <div class = "card-body card-scroll">
                         <div class="mt-3 row">
                             <h4>Badges: </h4>
                         </div>
                         <hr>
 
                         <div class="row">
+                            {% set devorador = 0 %}
+                            {% set acumulador = 0 %}
+                            {% set gastador = 0 %}
 
+                            {% for achiv in user.getAchievements %}
+                                {% if achiv.getName == "Gastador" %}
+                                    {% set gastador = achiv.getLevel %}
+                                {% endif %}
+                                {% if achiv.getName == "Devorador" %}
+                                    {% set devorador = achiv.getLevel %}
+                                {% endif %}
+                                {% if achiv.getName == "Acumulador" %}
+                                    {% set acumulador = achiv.getLevel %}
+                                {% endif %}
+                            {% endfor %}
                             <div class = "d-flex justify-content-center">
                                 <h5 = "p-2">Acumulador :</h5>
                             </div>
 
-                            <button class = "btn btn-cosmo-color-8 ml-2" type="button" data-toggle="collapse" data-target="#bge-1"> 
-                                <i class = "fas fa-medal text-cosmo-color-7"></i>
-                                <i class = "fas fa-medal"></i>
-                                <i class = "fas fa-medal"></i>
+                            <button class = "btn btn-cosmo-color-8 ml-2" type="button" data-toggle="collapse" data-target="#bge-1">
+                                {% set count = 0 %}
+
+                                {% for i in 0.. (acumulador - 1) if acumulador != 0 %}
+                                    <i class = "fas fa-medal text-cosmo-color-7"></i>
+                                {% endfor %}
+                                {% for i in 0..( 2 - acumulador ) if 3 - acumulador != 0 %}
+                                    <i class = "fas fa-medal"></i>
+                                {% endfor %}
                             </button>
 
                             <div class="collapse mt-3" id="bge-1">
@@ -85,7 +104,7 @@
                                         <div class = "p-2">
                                             Acumular 100 coins = <i class = "fas fa-medal text-cosmo-color-7"></i>
                                         </div>
-                                        
+
                                         <div class = "p-2">
                                             Acumular 200 coins = <i class = "fas fa-medal text-cosmo-color-7"></i><i class = "fas fa-medal text-cosmo-color-7"></i>
                                         </div>
@@ -93,7 +112,7 @@
                                         <div class = "p-2">
                                             Acumular 500 coins = <i class = "fas fa-medal text-cosmo-color-7"></i><i class = "fas fa-medal text-cosmo-color-7"></i><i class = "fas fa-medal text-cosmo-color-7"></i>
                                         </div>
-                                    </div> 
+                                    </div>
                                     <div class = "card-footer text-center">
                                         <span>500 <i class="coins"></i></span>
                                         <span>100 <i class="brain"></i></span>
@@ -105,10 +124,13 @@
 
                         <div class="row">
                             <h5>Gastador: </h5>
-                            <button class = "btn btn-cosmo-color-8 ml-2" type="button" data-toggle="collapse" data-target="#bge-2"> 
-                                <i class = "fas fa-medal text-cosmo-color-7"></i>
-                                <i class = "fas fa-medal"></i>
-                                <i class = "fas fa-medal"></i>
+                            <button class = "btn btn-cosmo-color-8 ml-2" type="button" data-toggle="collapse" data-target="#bge-2">
+                                {% for i in 0.. (gastador - 1) if gastador != 0 %}
+                                    <i class = "fas fa-medal text-cosmo-color-7"></i>
+                                {% endfor %}
+                                {% for i in 0..( 2 - gastador ) if 3 - gastador != 0 %}
+                                    <i class = "fas fa-medal"></i>
+                                {% endfor %}
                             </button>
                             <div class="collapse mt-3" id="bge-2">
                                 <div class="card text-cosmo-color-3 text-center">
@@ -117,7 +139,7 @@
                                         <div class = "p-2">
                                             Gastar 100 coins = <i class = "fas fa-medal text-cosmo-color-7"></i>
                                         </div>
-                                        
+
                                         <div class = "p-2">
                                             Gastar 200 coins = <i class = "fas fa-medal text-cosmo-color-7"></i> <i class = "fas fa-medal text-cosmo-color-7"></i>
                                         </div>
@@ -130,7 +152,7 @@
                                     <div class = "card-footer text-center">
                                         <span>500 <i class="coins"></i></span>
                                         <span>100 <i class="brain"></i></span>
-                                    </div> 
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -138,10 +160,13 @@
 
                         <div class="row">
                             <h5>Devorador: </h5>
-                            <button class = "btn btn-cosmo-color-8 ml-2" type="button" data-toggle="collapse" data-target="#bge-3"> 
-                                <i class = "fas fa-medal text-cosmo-color-7"></i>
-                                <i class = "fas fa-medal"></i>
-                                <i class = "fas fa-medal"></i>
+                            <button class = "btn btn-cosmo-color-8 ml-2" type="button" data-toggle="collapse" data-target="#bge-3">
+                                {% for i in 0.. (devorador - 1) if devorador != 0 %}
+                                    <i class = "fas fa-medal text-cosmo-color-7"></i>
+                                {% endfor %}
+                                {% for i in 0..( 2 - devorador ) if 3 - devorador != 0 %}
+                                    <i class = "fas fa-medal"></i>
+                                {% endfor %}
                             </button>
                             <div class="collapse mt-3" id="bge-3">
                                 <div class="card text-cosmo-color-3">
@@ -150,7 +175,7 @@
                                        <div class = "p-2">
                                             Fazer 1 questão = <i class = "fas fa-medal text-cosmo-color-7"></i>
                                         </div>
-                                        
+
                                         <div class = "p-2">
                                             Fazer 5 questões = <i class = "fas fa-medal text-cosmo-color-7"></i> <i class = "fas fa-medal text-cosmo-color-7"></i>
                                         </div>
@@ -162,20 +187,20 @@
                                     <div class = "card-footer text-center">
                                         <span>500 <i class="coins"></i></span>
                                         <span>100 <i class="brain"></i></span>
-                                    </div> 
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                
+
 
                 <div class="card border-cosmo-color-1 mx-sm-1 p-3 mt-4">
                         <div class="card border-cosmo-color-1 shadow text-cosmo-color-1 p-3 card-h">
                             <span class="trophy" aria-hidden="true"></span>
                         </div>
 
-                        <div class = "card-body card-scroll"> 
+                        <div class = "card-body card-scroll">
 
                             <div class="mt-3 row">
                                 <h4>Troféus: </h4>
@@ -184,7 +209,7 @@
 
                             <div class="row">
                                 <h5>Gafanhoto :</h5>
-                                <button class = "btn btn-sm btn-cosmo-color-8 ml-2" type="button" data-toggle="collapse" data-target="#bge-4"> 
+                                <button class = "btn btn-sm btn-cosmo-color-8 ml-2" type="button" data-toggle="collapse" data-target="#bge-4">
                                     <i class = "fas fa-trophy text-cosmo-color-7"></i>
                                 </button>
                                 <div class="collapse mt-3" id="bge-4">
@@ -194,7 +219,7 @@
                                             <div class = "d-flex flex-column">
                                                 <div class = "p-2"> Responder sua primeira questão.</div>
                                             </div>
-                                        </div> 
+                                        </div>
                                         <div class = "card-footer text-center">
                                             <span>5 <i class="coins"></i></span>
                                             <span>10 <i class="brain"></i></span>
@@ -202,12 +227,12 @@
                                     </div>
                                 </div>
                             </div>
-                            
+
                             <hr>
 
                             <div class="row">
                                 <h5>Decorador :</h5>
-                                <button class = "btn btn-sm btn-cosmo-color-8 ml-2" type="button" data-toggle="collapse" data-target="#bge-5"> 
+                                <button class = "btn btn-sm btn-cosmo-color-8 ml-2" type="button" data-toggle="collapse" data-target="#bge-5">
                                     <i class = "fas fa-trophy text-cosmo-color-7"></i>
                                 </button>
                                 <div class="collapse mt-3" id="bge-5">
@@ -217,7 +242,7 @@
                                             <div class = "d-inline-flex p-2">
                                                 Comprar todas a personalizações de perfil.
                                             </div>
-                                        </div> 
+                                        </div>
                                         <div class = "card-footer text-center">
                                             <span>5 <i class="coins"></i></span>
                                             <span>10 <i class="brain"></i></span>
@@ -230,7 +255,7 @@
 
                             <div class="row">
                                 <h5>De primeira :</h5>
-                                <button class = "btn btn-sm btn-cosmo-color-8 ml-2" type="button" data-toggle="collapse" data-target="#bge-6"> 
+                                <button class = "btn btn-sm btn-cosmo-color-8 ml-2" type="button" data-toggle="collapse" data-target="#bge-6">
                                     <i class = "fas fa-trophy"></i>
                                 </button>
                                 <div class="collapse mt-3" id="bge-6">
@@ -240,7 +265,7 @@
                                             <div class = "d-inline-flex p-2">
                                                 Responder uma questão sem errar, uma única vez.
                                             </div>
-                                        </div> 
+                                        </div>
                                         <div class = "card-footer text-center">
                                             <span>5 <i class="coins"></i></span>
                                             <span>10 <i class="brain"></i></span>
@@ -250,7 +275,7 @@
                             </div>
                         </div>
                 </div>
-            
+
             </div>
         </div>
 
@@ -278,7 +303,7 @@
                         <div class = "row">
                             <div class = "d-flex justify-content-center">
                                 <i class="brain" ></i> <span class = "p-2"> Conhecimento: {{attributes.xp}}</span>
-                                <!-- <span id="dynamic" title="Pontos de Conhecimento" class="progress progress-bar progress-bar-striped" role="progressbar" style="width: 10%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></span> -->                
+                                <!-- <span id="dynamic" title="Pontos de Conhecimento" class="progress progress-bar progress-bar-striped" role="progressbar" style="width: 10%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></span> -->
                             </div>
                         </div>
 
@@ -291,11 +316,11 @@
                         <div class = "row">
                             <div class = "d-flex justify-content-center">
                                 <i class="papyrus"></i> <span class = "p-2">
-                                {% if attributes.answered_activities >= 3 %}
+                                {# {% if attributes.answered_activities >= 3 %} #}
                                     Título: {{attributes.fulltitle}}</span>
-                                {% elseif attributes.answered_activities < 3 %}
+                                {# {% elseif attributes.answered_activities < 3 %}
                                     Título: Sem título</span>
-                                {% endif %}
+                                {% endif %} #}
                             </div>
                         </div>
                     </div>
@@ -310,62 +335,31 @@
                         <a class = "btn p-btn btn-primary" href = "{{ path_for("dashboard.history") }}"> Histórico </a>
                     </div>
                 </div>
-            </div> 
+            </div>
         </div>
 
         <div class = "col-md-4 mt-2">
             <div class = "card">
-                <div class="card-header d-flex justify-content-center">
-                    <span class="p-2">
-                        Skills de {{attributes.fullname}}
+                <div class="card-header">
+                    <h5 class=" text-center">
+                        Habilidades de {{attributes.fullname}}
                     </span>
                 </div>
-                <div class = "card-body card-skill-body">
-                    <h4 class = "p-2">Atribuição:
-                        <button class = "btn btn-cosmo-color-8" >
-                            <i class = "fas fa-star text-cosmo-color-7"></i>
-                            <i class = "fas fa-star text-cosmo-color-7"></i>
-                            <i class = "fas fa-star text-cosmo-color-7"></i> 
-                            {# {% if attributes.answered_activities >= 10 %}
-                                <i class = "fas fa-star text-cosmo-color-7"></i>
-                                <i class = "fas fa-star text-cosmo-color-7"></i>
-                                <i class = "fas fa-star text-cosmo-color-7"></i>
-                            {% elseif attributes.answered_activities < 10 and attributes.answered_activities >= 5 %}
-                                <i class = "fas fa-star text-cosmo-color-7"></i>
-                                <i class = "fas fa-star text-cosmo-color-7"></i>
-                                <i class = "fas fa-star"></i>
-                            {% elseif attributes.answered_activities >= 3 and attributes.answered_activites < 5 %}
-                                <i class = "fas fa-star text-cosmo-color-7"></i>
-                                <i class = "fas fa-star"></i>
-                                <i class = "fas fa-star"></i>
-                            {% else %}
-                                 <i class = "fas fa-star"></i>
-                                <i class = "fas fa-star"></i>
-                                <i class = "fas fa-star"></i>
-                            {% endif %} #}
-                        </button>
-                    </h4>
+                <div class = "card-body d-flex flex-column">
+                    {% for skill in groups %}
+                            <div class="text-center">
+                                    <h5 class="">{{ skill.title }}: </h5>
+                                    <div center="">
+                                        <button class = "btn btn-dark ml-1" >
+                                                <i class = "fas fa-star text-warning"></i>
+                                                <i class = "fas fa-star"></i>
+                                                <i class = "fas fa-star"></i>
+                                        </button>
+                                    </div>
+                                    <hr>
+                            </div>
 
-                    <hr>
-
-                    <h4 class = "p-2">Condição:
-                        <button class = "btn btn-dark" > 
-                                <i class = "fas fa-star"></i>
-                                <i class = "fas fa-star"></i>
-                                <i class = "fas fa-star"></i>
-                        </button>
-                    </h4>
-
-                    <hr>
-
-                    <h4 class = "p-2">Repetição:
-                        <button class = "btn btn-dark" > 
-                                <i class = "fas fa-star"></i>
-                                <i class = "fas fa-star"></i>
-                                <i class = "fas fa-star"></i>
-                        </button>
-                    </h4>
-
+                    {% endfor %}
                 </div>
             </div>
         </div>

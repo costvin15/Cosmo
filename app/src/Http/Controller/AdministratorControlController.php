@@ -21,6 +21,7 @@ use App\Mapper\GroupActivities;
 use App\Facilitator\App\SessionFacilitator;
 use App\Mapper\Classes;
 use App\Mapper\Challenge;
+use App\Model\Category\InterfaceCategory;
 
 /**
  * Class AdministratorControlController
@@ -104,6 +105,7 @@ class AdministratorControlController extends AbstractController
     public function newUserAction(Request $request, Response $response) {
         $this->setAttributeView('show_adm', true);
         $this->setAttributeView('formCreate', true);
+        $this->setAttributeView("classes", $this->_dm->getRepository(Classes::class)->findAll());
         return $this->view->render($response, 'View/administratorcontrol/users/form.twig', $this->getAttributeView());
     }
 
@@ -140,6 +142,7 @@ class AdministratorControlController extends AbstractController
 
         $this->setAttributeView('id', $id);
         $this->setAttributeView('user', $user->toArray());
+        $this->setAttributeView("classes", $this->_dm->getRepository(Classes::class)->findAll());
         return $this->view->render($response, 'View/administratorcontrol/users/form.twig', $this->getAttributeView());
     }
 
@@ -161,6 +164,7 @@ class AdministratorControlController extends AbstractController
             $username = $request->getParam("username");
             $nickname = $request->getParam("nickname");
             $password = $request->getParam("password");
+            $sexo = $request->getParam("sexo");
             $fullname = $request->getParam("fullname");
             $administrator = $request->getParam("admin");
             $fulltitle = $request->getParam("fulltitle");
@@ -179,7 +183,9 @@ class AdministratorControlController extends AbstractController
             unset($users_with_nickname_entered);
 
             $user = new User(null, $username, md5($password), $fullname, $administrator);
+            $user->setFullTitle($fulltitle);
             $user->setNickname($nickname);
+            $user->setSexo($sexo);
 
             $this->_dm->persist($user);
             $this->_dm->flush();
@@ -223,8 +229,9 @@ class AdministratorControlController extends AbstractController
             $username = $request->getParam("username");
             $nickname = $request->getParam("nickname");
             $fullname = $request->getParam("fullname");
+            $sexo = $request->getParam("sexo");
             $administrator = $request->getParam("admin");
-            $fulltitle = $request->getParam("fulltitle");
+            // $fulltitle = $request->getParam("fulltitle");
             $user = $this->_dm->getRepository(User::class)->find($id);
 
             $users_with_email_entered = $this->_dm->getRepository(User::class)->findBy([
@@ -240,7 +247,7 @@ class AdministratorControlController extends AbstractController
             if ($nickname != $user->getNickname() && count($users_with_nickname_entered) > 0)
                 return $response->withJson(["Este Nome de Usuário já está sendo usado"], 500);
             unset($users_with_nickname_entered);
-            
+
             $block = array(
                 "status" => $request->getParam("block_status") == "1" ? true : false,
                 "reason" => $request->getParam("block_reason")
@@ -250,9 +257,10 @@ class AdministratorControlController extends AbstractController
                 $user->setFullname($fullname);
                 $user->setUsername($username);
                 $user->setNickname($nickname);
+                $user->setSexo($sexo);
                 $user->setAdministrator($administrator);
                 $user->setBlocked($block);
-                $user->setFullTitle($fulltitle);
+                // $user->setFullTitle($fulltitle);
             }
 
             $this->_dm->persist($user);
@@ -280,7 +288,7 @@ class AdministratorControlController extends AbstractController
         $id = $args["id"];
         if (!$id)
             return $response->withJson(["Usuário não encontrado"], 500);
-        
+
         $user = $this->_dm->getRepository(User::class)->find($id);
         $this->_dm->remove($user);
         $this->_dm->flush();
@@ -298,7 +306,7 @@ class AdministratorControlController extends AbstractController
     public function userImageAction(Request $request, Response $response, array $args){
         if (!$args["id"])
             return $response->withJson(["message" => "O ID é obrigatório"], 500);
-        
+
         $id = $args["id"];
         $image64 = new ImageBase64();
         $path_storage = $this->_ci->get("settings")->get("storage.photo");
@@ -335,6 +343,7 @@ class AdministratorControlController extends AbstractController
      */
     public function newActivityAction(Request $request, Response $response){
         $this->setAttributeView("formCreate", true);
+        $this->setAttributeView("categories", InterfaceCategory::CATEGORIES);
         $this->setAttributeView("group_activities", $this->_dm->getRepository(GroupActivities::class)->findAll());
         return $this->view->render($response, "View/administratorcontrol/activities/form.twig", $this->getAttributeView());
     }
@@ -352,12 +361,13 @@ class AdministratorControlController extends AbstractController
 
         if (!$id)
             throw new \Exception("Atividade não encontrada");
-        
+
         $activity = $this->_dm->getRepository(Activities::class)->find($id);
         if (!$activity)
             throw new \Exception("Atividade não encontrada");
-        
+
         $this->setAttributeView("formUpdate", true);
+        $this->setAttributeView("categories", InterfaceCategory::CATEGORIES);
         $this->setAttributeView("activity", $activity->toArray());
         $this->setAttributeView("group_activities", $this->_dm->getRepository(GroupActivities::class)->findAll());
         return $this->view->render($response, "View/administratorcontrol/activities/form.twig", $this->getAttributeView());
@@ -376,7 +386,7 @@ class AdministratorControlController extends AbstractController
         $id = $args["id"];
         if (!$id)
             return $response->withRedirect($router->pathFor("administrator.control.activities"));
-        
+
         $activity = $this->_dm->getRepository(Activities::class)->find($id);
         $this->_dm->remove($activity);
         $this->_dm->flush();
@@ -420,7 +430,7 @@ class AdministratorControlController extends AbstractController
 
                 if (!$activity)
                     return $response->withJson(["Atividade não encontrada."], 500);
-                
+
                 $activity->setTitle($title);
                 $activity->setQuestion($question);
                 $activity->setFullquestion($fullquestion);
@@ -450,9 +460,9 @@ class AdministratorControlController extends AbstractController
                 $this->_dm->flush();
 
                 $router = $this->_ci->get("router");
-                
+
                 if ($id)
-                    return $response->withJson(["message" => "Atividade atualizada com sucesso!", "callback" => $router->pathFor("administrator.control.activities")], 200);    
+                    return $response->withJson(["message" => "Atividade atualizada com sucesso!", "callback" => $router->pathFor("administrator.control.activities")], 200);
                 else
                     return $response->withJson(["message" => "Atividade cadastrada com sucesso!", "callback" => $router->pathFor("administrator.control.activities")], 200);
             } catch (\Exception $e){
@@ -499,11 +509,11 @@ class AdministratorControlController extends AbstractController
 
         if (!$id)
             throw new \Exception("Grupo de Atividades não encontrado");
-        
+
         $group = $this->_dm->getRepository(GroupActivities::class)->find($id);
         if (!$group)
             throw new \Exception("Grupo de Atividades não encontrado");
-        
+
         $this->setAttributeView("formUpdate", true);
         $this->setAttributeView("group_activity", $group->toArray());
         return $this->view->render($response, "View/administratorcontrol/groupactivities/form.twig", $this->getAttributeView());
@@ -531,7 +541,7 @@ class AdministratorControlController extends AbstractController
 
             if (!$group)
                 return $response->withJson(["Grupo não encontrado."], 500);
-            
+
             $group->setName($name);
             $group->setVisible($visible);
             $group->setTags($tags);
@@ -561,7 +571,7 @@ class AdministratorControlController extends AbstractController
         $id = $args["id"];
         if (!$id)
             return $response->withRedirect($router->pathFor("administrator.control.groupactivities"));
-        
+
         $group = $this->_dm->getRepository(GroupActivities::class)->find($id);
         $this->_dm->remove($group);
         $this->_dm->flush();
@@ -667,7 +677,7 @@ class AdministratorControlController extends AbstractController
                 $class = $this->_dm->getRepository(Classes::class)->find($id);
             else
                 $class = new Classes();
-            
+
             $attributes = SessionFacilitator::getAttributeSession();
             if (!$attributes)
                 return $response->withJson(["Você precisa estar logado para isto."], 500);

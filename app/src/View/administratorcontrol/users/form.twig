@@ -48,30 +48,57 @@
 
                 <div class="card-body">
                     <form>
+
                         <div class="form-group">
                             <label for="input-frmuser-name">Nome</label>
-                            <input id="input-frmuser-name" type="text" class="form-control" placeholder="Nome completo" {% if formUpdate is defined %} value="{{ user.fullname }}" {% endif %}></input>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="input-frmuser-nickname-group">Nome de usuário</label>
-                            <div class="input-group" id="input-frmuser-nickname-group">
+                            <div class="input-group" id="input-frmuser-name-group">
                                 <div class="input-group-prepend">
-                                    <span class="input-group-text">@</span>
+                                        <span class="input-group-text bg-light"><i class="fas fa-user"></i></span>
                                 </div>
-                                <input id="input-frmuser-nickname" type="text" class="form-control" placeholder="Nome de usuário" {% if formUpdate is defined %} value="{{ user.nickname }}" {% endif %} aria-label="Nome de Usuário"></input>
+                                <input id="input-frmuser-name" type="text" class="form-control" placeholder="Nome completo" {% if formUpdate is defined %} value="{{ user.fullname }}" {% endif %}></input>
                             </div>
                         </div>
                         
                         <div class="form-group">
+                                <label for="input-frmuser-nickname-group">Nome de usuário</label>
+                                <div class="input-group" id="input-frmuser-nickname-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text bg-light"><i class="fas fa-at"></i></span>
+                                    </div>
+                                    <input id="input-frmuser-nickname" type="text" class="form-control" placeholder="Nome de usuário" {% if formUpdate is defined %} value="{{ user.nickname }}" {% endif %} aria-label="Nome de Usuário"></input>                                </div>
+                            </div> 
+                        
+                        <div class="form-group">
+                            <label for="input-frmuser-sexo-group">Sexo</label>
+                            <div class="input-group " id="input-frmuser-sexo-group">
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" id="input-frmuser-sexo-male" name="input-frmuser-sexo" value="Masculino" {% if user.sexo == "Masculino" %} checked {% endif %}><label class="form-check-label" for="input-frmuser-sexo-male"> Masculino </label></input>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" id="input-frmuser-sexo-female" name="input-frmuser-sexo" value="Feminino" {% if user.sexo == "Feminino" %} checked {% endif %}><label class="form-check-label" for="input-frmuser-sexo-female"> Feminino</label></input>
+                                </div>
+                            </div>
+                        </div> 
+
+                        <div class="form-group">
                             <label for="input-frmuser-email">Email</label>
-                            <input id="input-frmuser-email" type="text" class="form-control" placeholder="Email" {% if formUpdate is defined %} value="{{ user.username }}" {% endif %}></input>
+                            <div class = "input-group" id = "input-frmuser-email-group">
+                                <div class= "input-group-prepend">
+                                    <span class="input-group-text bg-light"><i class="fas fa-envelope"></i></span>
+                                </div>
+                                <input id="input-frmuser-email" type="text" class="form-control" placeholder="Email" {% if formUpdate is defined %} value="{{ user.username }}" {% endif %}></input>
+                            </div>
                         </div>
                         
                         {% if formCreate is defined %}
                             <div class="form-group">
                                 <label for="input-frmuser-password">Senha</label>
-                                <input id="input-frmuser-password" type="password" class="form-control" placeholder="Senha"></input>    
+                                <div class = "input-group" id = "input-frmuser-password-group">
+                                    <div class= "input-group-prepend">
+                                        <span class="input-group-text bg-light"><i class="fas fa-envelope"></i></span>
+                                    </div>
+                                    <input id="input-frmuser-password" type="password" class="form-control" placeholder="Senha"></input> 
+                                </div>
                             </div>
                         {% endif %}
 
@@ -81,18 +108,7 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text bg-light"><i class="fas fa-crown"></i></span>
                                 </div>
-                                <select class="form-control" id = "input-frmuser-fulltitle">
-                                    {% if not attributes.fulltitle is defined %}<option>Escolha um Título de nobreza</option>{% endif %}
-                                    <option {% if attributes.fulltitle is defined and attributes.fulltitle == "Escudeiro/Escudeira" %}selected{% endif %} value="Escudeiro/Escudeira">Escudeiro/Escudeira</option>
-                                    <option {% if attributes.fulltitle is defined and attributes.fulltitle == "Barão/Baronesa" %}selected{% endif %} value="Barão/Baronesa">Barão/Baronesa</option>
-                                    <option {% if attributes.fulltitle is defined and attributes.fulltitle == "Visconde/Viscondessa" %}selected{% endif %} value="Visconde/Viscondessa">Visconde/Viscondessa</option>
-                                    <option {% if attributes.fulltitle is defined and attributes.fulltitle == "Conde/Condessa" %}selected{% endif %} value="Conde/Condessa">Conde/Condessa</option>
-                                    <option {% if attributes.fulltitle is defined and attributes.fulltitle == "Marquês/Marquessa" %}selected{% endif %} value="Marquês/Marquessa">Marquês/Marquessa</option>
-                                    <option {% if attributes.fulltitle is defined and attributes.fulltitle == "Duque/Duquesa" %}selected{% endif %} value="Duque/Duquesa">Duque/Duquesa</option>
-                                    <option {% if attributes.fulltitle is defined and attributes.fulltitle == "Grão-duque/Grã-duquesa" %}selected{% endif %} value="Grão-duque/Grã-duquesa">Grão-duque/Grã-duquesa</option>
-                                    <option {% if attributes.fulltitle is defined and attributes.fulltitle == "Imperador/Imperadora" %}selected{% endif %} value="Imperador/Imperadora">Imperador/Imperadora</option>
-                                    <option {% if attributes.fulltitle is defined and attributes.fulltitle == "Herdeiro de Turing" %}selected{% endif %} value="Herdeiro de Turing">Herdeiro de Turing</option>
-                                </select>
+                                <input class="form-control" disabled id = "input-frmuser-fulltitle" placeholder="Título" {% if formUpdate is defined %} value="{{ user.fulltitle }}" {% else %} value="Camponês(a)" {% endif %}></input>
                             </div>
                         </div>
 
@@ -102,7 +118,12 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"><i class="fas fa-users"></i></span>
                                 </div>
-                                <input id="input-frmuser-class" type="text" class="form-control" placeholder="Turma" {% if attributes.class %} disabled value="{{ attributes.class.title }}" {% endif %} aria-label="Turma"></input>
+                                <select  class="form-control">
+                                    {% for turma in classes %}
+                                        <option id="input-frmuser-class">{{ turma.getTitle }}</option>
+                                    {% endfor %}
+                                </select>
+                                {# <input id="input-frmuser-class" type="text" class="form-control" placeholder="Turma" {% if user.class %} disabled value="{{ user.class.title }}" {% endif %} aria-label="Turma"></input> #}
                             </div>
                         </div>
                        

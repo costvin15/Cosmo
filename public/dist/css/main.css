@@ -4296,6 +4296,7 @@ readers do not read off random characters that represent icons */
   --cosmo-color-7: #FFC300;
   --cosmo-color-8: #8549BA;
   --cosmo-color-9: #FA811B;
+  --cosmo-color-10: #A2A2A2;
   --breakpoint-xs: 0;
   --breakpoint-sm: 576px;
   --breakpoint-md: 768px;
@@ -5629,6 +5630,23 @@ pre {
   .table-hover .table-cosmo-color-9:hover > th {
     background-color: #fecea6; }
 
+.table-cosmo-color-10,
+.table-cosmo-color-10 > th,
+.table-cosmo-color-10 > td {
+  background-color: #e5e5e5; }
+
+.table-cosmo-color-10 th,
+.table-cosmo-color-10 td,
+.table-cosmo-color-10 thead th,
+.table-cosmo-color-10 tbody + tbody {
+  border-color: #cfcfcf; }
+
+.table-hover .table-cosmo-color-10:hover {
+  background-color: #d8d8d8; }
+  .table-hover .table-cosmo-color-10:hover > td,
+  .table-hover .table-cosmo-color-10:hover > th {
+    background-color: #d8d8d8; }
+
 .table-active,
 .table-active > th,
 .table-active > td {
@@ -6508,6 +6526,29 @@ fieldset:disabled a.btn {
     .show > .btn-cosmo-color-9.dropdown-toggle:focus {
       box-shadow: 0 0 0 0.2rem rgba(217, 115, 29, 0.5); }
 
+.btn-cosmo-color-10 {
+  color: #212529;
+  background-color: #A2A2A2;
+  border-color: #A2A2A2; }
+  .btn-cosmo-color-10:hover {
+    color: #fff;
+    background-color: #8f8f8f;
+    border-color: #898989; }
+  .btn-cosmo-color-10:focus, .btn-cosmo-color-10.focus {
+    box-shadow: 0 0 0 0.2rem rgba(143, 143, 144, 0.5); }
+  .btn-cosmo-color-10.disabled, .btn-cosmo-color-10:disabled {
+    color: #212529;
+    background-color: #A2A2A2;
+    border-color: #A2A2A2; }
+  .btn-cosmo-color-10:not(:disabled):not(.disabled):active, .btn-cosmo-color-10:not(:disabled):not(.disabled).active,
+  .show > .btn-cosmo-color-10.dropdown-toggle {
+    color: #fff;
+    background-color: #898989;
+    border-color: #828282; }
+    .btn-cosmo-color-10:not(:disabled):not(.disabled):active:focus, .btn-cosmo-color-10:not(:disabled):not(.disabled).active:focus,
+    .show > .btn-cosmo-color-10.dropdown-toggle:focus {
+      box-shadow: 0 0 0 0.2rem rgba(143, 143, 144, 0.5); }
+
 .btn-outline-primary {
   color: #007bff;
   border-color: #007bff; }
@@ -6864,6 +6905,27 @@ fieldset:disabled a.btn {
     .btn-outline-cosmo-color-9:not(:disabled):not(.disabled):active:focus, .btn-outline-cosmo-color-9:not(:disabled):not(.disabled).active:focus,
     .show > .btn-outline-cosmo-color-9.dropdown-toggle:focus {
       box-shadow: 0 0 0 0.2rem rgba(250, 129, 27, 0.5); }
+
+.btn-outline-cosmo-color-10 {
+  color: #A2A2A2;
+  border-color: #A2A2A2; }
+  .btn-outline-cosmo-color-10:hover {
+    color: #212529;
+    background-color: #A2A2A2;
+    border-color: #A2A2A2; }
+  .btn-outline-cosmo-color-10:focus, .btn-outline-cosmo-color-10.focus {
+    box-shadow: 0 0 0 0.2rem rgba(162, 162, 162, 0.5); }
+  .btn-outline-cosmo-color-10.disabled, .btn-outline-cosmo-color-10:disabled {
+    color: #A2A2A2;
+    background-color: transparent; }
+  .btn-outline-cosmo-color-10:not(:disabled):not(.disabled):active, .btn-outline-cosmo-color-10:not(:disabled):not(.disabled).active,
+  .show > .btn-outline-cosmo-color-10.dropdown-toggle {
+    color: #212529;
+    background-color: #A2A2A2;
+    border-color: #A2A2A2; }
+    .btn-outline-cosmo-color-10:not(:disabled):not(.disabled):active:focus, .btn-outline-cosmo-color-10:not(:disabled):not(.disabled).active:focus,
+    .show > .btn-outline-cosmo-color-10.dropdown-toggle:focus {
+      box-shadow: 0 0 0 0.2rem rgba(162, 162, 162, 0.5); }
 
 .btn-link {
   font-weight: 400;
@@ -8468,6 +8530,16 @@ input[type="button"].btn-block {
     outline: 0;
     box-shadow: 0 0 0 0.2rem rgba(250, 129, 27, 0.5); }
 
+.badge-cosmo-color-10 {
+  color: #212529;
+  background-color: #A2A2A2; }
+  a.badge-cosmo-color-10:hover, a.badge-cosmo-color-10:focus {
+    color: #212529;
+    background-color: #898989; }
+  a.badge-cosmo-color-10:focus, a.badge-cosmo-color-10.focus {
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgba(162, 162, 162, 0.5); }
+
 .jumbotron {
   padding: 2rem 1rem;
   margin-bottom: 2rem;
@@ -8656,6 +8728,15 @@ input[type="button"].btn-block {
     border-top-color: #fecea6; }
   .alert-cosmo-color-9 .alert-link {
     color: #542b09; }
+
+.alert-cosmo-color-10 {
+  color: #545454;
+  background-color: #ececec;
+  border-color: #e5e5e5; }
+  .alert-cosmo-color-10 hr {
+    border-top-color: #d8d8d8; }
+  .alert-cosmo-color-10 .alert-link {
+    color: #3b3b3b; }
 
 @keyframes progress-bar-stripes {
   from {
@@ -9023,6 +9104,17 @@ input[type="button"].btn-block {
     color: #fff;
     background-color: #82430e;
     border-color: #82430e; }
+
+.list-group-item-cosmo-color-10 {
+  color: #545454;
+  background-color: #e5e5e5; }
+  .list-group-item-cosmo-color-10.list-group-item-action:hover, .list-group-item-cosmo-color-10.list-group-item-action:focus {
+    color: #545454;
+    background-color: #d8d8d8; }
+  .list-group-item-cosmo-color-10.list-group-item-action.active {
+    color: #fff;
+    background-color: #545454;
+    border-color: #545454; }
 
 .close {
   float: right;
@@ -9778,6 +9870,14 @@ button.bg-cosmo-color-9:hover,
 button.bg-cosmo-color-9:focus {
   background-color: #dd6805 !important; }
 
+.bg-cosmo-color-10 {
+  background-color: #A2A2A2 !important; }
+
+a.bg-cosmo-color-10:hover, a.bg-cosmo-color-10:focus,
+button.bg-cosmo-color-10:hover,
+button.bg-cosmo-color-10:focus {
+  background-color: #898989 !important; }
+
 .bg-white {
   background-color: #fff !important; }
 
@@ -9864,6 +9964,9 @@ button.bg-cosmo-color-9:focus {
 
 .border-cosmo-color-9 {
   border-color: #FA811B !important; }
+
+.border-cosmo-color-10 {
+  border-color: #A2A2A2 !important; }
 
 .border-white {
   border-color: #fff !important; }
@@ -12169,6 +12272,12 @@ a.text-cosmo-color-8:hover, a.text-cosmo-color-8:focus {
 a.text-cosmo-color-9:hover, a.text-cosmo-color-9:focus {
   color: #c45c04 !important; }
 
+.text-cosmo-color-10 {
+  color: #A2A2A2 !important; }
+
+a.text-cosmo-color-10:hover, a.text-cosmo-color-10:focus {
+  color: #7c7c7c !important; }
+
 .text-body {
   color: #212529 !important; }
 
@@ -12356,6 +12465,7 @@ body {
 .dropdown-menu #exit:hover {
   color: #b4131d; }
 
+<<<<<<< HEAD
 #sidebar {
   min-height: 100vh;
   margin-left: -15rem;
@@ -12406,3 +12516,7 @@ body {
     word-break: break-all;
     height: 100%;
     width: 100%; }
+=======
+.pvp-dropdown-menu {
+  width: 250px; }
+>>>>>>> master

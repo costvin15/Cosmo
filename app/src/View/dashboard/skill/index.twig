@@ -2,11 +2,19 @@
 {% set page_title = skill.getName %}
 
 {% block content %}
+    <ul class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{{ path_for("dashboard.index") }}">Dashboard</a></li>
+        <li class="breadcrumb-item active">Habilidade</li>
+    </ul>
     <div class="row my-4">
         <div class="col-12">
             <span class="display-4 text-muted">Atividades</span>
+            {% if price %}
+                <br>
+                <span class="display-6 text-muted">Compre uma questão e responda para ganhar uma estrela.</span>
+            {% endif %}
             <div class="row">
-                {% for activity in skill.getActivity %}
+                {% for activity in activities %}
                     <div class="col-md-4 my-2">
                         <div class="card">
                             <div class="card-header">
@@ -17,10 +25,22 @@
                                 <span class="text-muted mb-0">{{ activity.getQuestion }}</span><br>
                                 Categoria: <span class="text-muted mb-0">{{ activity.category }}</span>
                             </div>
-
-                            <div class="card-footer">
-                                <a href="{{ path_for("activities", {id: activity.getId}) }}" class="btn btn-cosmo-color-2">Responder</a>
-                            </div>
+                            {% if price and activity not in payments %}
+                                <div class="card-footer">
+                                    <a href="" class="btn btn-cosmo-color-1 disabled" disabled>Responder</a>
+                                    {% if coins >= activity.getCust %}
+                                        <a href="{{ path_for("activities", {id: activity.getId,idGroup: idGroup}) }}" class="btn btn-cosmo-color-1">Pagar {{activity.getCust}} ¢</a>
+                                    {% else %}
+                                        <span class="d-inline-block" tabindex="0" data-toggle="tooltip" data-placement="right" title="Sem moedas suficientes">
+                                            <a href="#" class="btn btn-cosmo-color-1 disabled" >Pagar {{activity.getCust}} ¢</a>
+                                        </span>
+                                    {% endif %}
+                                </div>
+                            {% else %}
+                                <div class="card-footer">
+                                    <a href="{{ path_for("activities", {id: activity.getId,idGroup: idGroup}) }}" class="btn btn-cosmo-color-1">Responder</a>
+                                </div>
+                            {% endif %}
                         </div>
                     </div>
                 {% endfor %}

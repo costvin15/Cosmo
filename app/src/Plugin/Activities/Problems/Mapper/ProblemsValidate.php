@@ -8,12 +8,14 @@ use App\Mapper\Activities;
 use App\Mapper\AttemptActivities;
 use App\Mapper\HistoryActivities;
 use App\Mapper\User;
+use App\Mapper\GroupActivities;
 use App\Plugin\Activities\Problems\Model\CppExecute;
 use App\Plugin\Activities\Problems\Model\LuaExecute;
 use App\Plugin\Activities\Problems\Model\PythonExecute;
 use Doctrine\ODM\MongoDB\DocumentManager;
 use App\Mapper\ChallengeHistory;
 use App\Mapper\Challenge;
+use App\Mapper\Achievements;
 
 class ProblemsValidate
 {
@@ -88,6 +90,8 @@ class ProblemsValidate
         $attributeSession = SessionFacilitator::getAttributeSession();
         $user = $this->_dm->getRepository(User::class)->find($attributeSession['id']);
 
+        $group = $this->_dm->getRepository(GroupActivities::class)->find($data['id_group']);
+
         if (isset($data["type"])){
             $challenge = $this->_dm->getRepository(Challenge::class)->find($data["challenge_id"]);
             try {
@@ -102,6 +106,10 @@ class ProblemsValidate
             if (!$history){
                 $history = new ChallengeHistory();
                 $user->setAnsweredActivities($user->getAnsweredActivities() + 1);
+                $user->setMoedas($user->getMoedas()+$activity->getMoedas());
+                $user->updateAcumulo($activity->getMoedas());
+                $user->setXP($user->getXP() + $activity->getXP());
+
                 $this->_dm->persist($user);
                 $this->_dm->flush();
             }
@@ -115,6 +123,7 @@ class ProblemsValidate
             $history->setLanguage($data["language"]);
             $history->setLevel($data["level"]);
             $history->setType($data["type"]);
+            $history->setGroupActivities($group);
         } else {
             $historyCursor = $this->_dm->createQueryBuilder(HistoryActivities::class)
                 ->field('activity')
@@ -128,12 +137,28 @@ class ProblemsValidate
             if ($history == null){
                 $history = new HistoryActivities();
 
-                $user->setAnsweredActivities($user->getAnsweredActivities() + 1);
-                $user->setMoedas($user->getMoedas() + $activity->getMoedas());
-                $user->setXP($user->getXP() + $activity->getXP());
+                // $user_history = $this->_dm->getRepository(HistoryActivities::class)->findBy([ "user" => $user ]);
 
-                $this->_dm->persist($user);
-                $this->_dm->flush();
+                // if ($user_history != null){
+                //     $found = false;
+                //     for ($i = 0; $i < count($user_history); $i++){
+                //         if ($user_history[$i]->getId() == $activity.getId()){
+                //             $found = true;
+                //             break;
+                //         }
+                //     }
+                //     if (!$found){
+                //         $user->setAnsweredActivities($user->getAnsweredActivities() + 1);
+                //         $user->setMoedas($user->getMoedas()+$activity->getMoedas());
+                //         $user->updateAcumulo($activity->getMoedas());
+                //         $user->setXP($user->getXP() + $activity->getXP());
+                //     }
+                // }else{
+                    $user->setAnsweredActivities($user->getAnsweredActivities() + 1);
+                    $user->setMoedas($user->getMoedas()+$activity->getMoedas());
+                    $user->updateAcumulo($activity->getMoedas());
+                    $user->setXP($user->getXP() + $activity->getXP());
+                //}
             }
 
             $history->setActivity($activity);
@@ -142,6 +167,7 @@ class ProblemsValidate
             $history->setLanguage($data["language"]);
             $history->setTimeStart($data['dateini']);
             $history->setTimeEnd($data['datefim']);
+            $history->setGroupActivities($group);
 
             if (key_exists('classification', $data)) {
                 $history->setClassification($data['classification']);
@@ -158,6 +184,18 @@ class ProblemsValidate
             }
         }
 
+
+        if($user->getXP() > 25){
+            $user->setFullTitle("Escudeiro(a)");
+        }elseif($user->getXP() > 50){
+            $user->setFullTitle("Visconde/Vinscodessa");
+        }elseif($user->getXP() > 75){
+            $user->setFullTitle("Duque/Duquesa");
+        }elseif($user->getXP() > 100){
+            $user->setFullTitle("Imperador/Imperatriz");
+        }
+
+        $this->_dm->persist($user);
         $this->_dm->persist($history);
         $this->_dm->flush();
     }

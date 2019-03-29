@@ -41,22 +41,38 @@ class PluginProblems {
         return {
             id_activity: (<HTMLInputElement> document.getElementById("id-activity")).value,
             source_code: this.editor.getValue(),
-            language: (<HTMLInputElement> document.getElementById("language-selector")).value
+            language: (<HTMLInputElement> document.getElementById("language-selector")).value,
+            id_group: (<HTMLInputElement> document.getElementById("id-group")).value,
         };
     }
 
     send(){
-        let formObject = this.createObject();
+        let formObject : any = this.createObject();
+        if (<HTMLInputElement> document.getElementById("id-challenge"))
+            formObject.challenge = (<HTMLInputElement> document.getElementById("id-challenge")).value;
+
         let success = (content: any) => {
-            if (content.return)
-                window.cosmo.dialog.success("Meus Parabéns", "A resposta está correta", () => {
-                    window.location.href = window.cosmo.routes_name.activities_history
-                });
-            else
+            if (content.return){
+                if(content.star){
+                    let time = "";
+                    if(content.time)
+                        time = "Com o tempo de "+content.time+" s";
+                    window.cosmo.dialog.success("Estrela "+content.star, "A resposta está correta e você ganhou a estrela de "+
+                    content.star+". "+time, () => {
+                        window.location.href = window.base_url + window.cosmo.routes_name.activities_history
+                    });
+                } else
+                    window.cosmo.dialog.success("Meus Parabéns", "A resposta está correta", () => {
+                        window.location.href = window.base_url + window.cosmo.routes_name.activities_history
+                    });
+            }else
                 window.cosmo.dialog.error("Tente novamente!", content.message, () => {});
         };
         let fail = (content: any) => {
-            window.cosmo.dialog.error("Erro", content.responseJSON[0], () => {});
+            if (content && content.message)
+                window.cosmo.dialog.error("Erro", content.message, () => {});
+            else
+                console.log(content);
         };
 
         let ajax = window.cosmo.ajax.getDefaults();
@@ -101,6 +117,7 @@ class PluginChallenges {
     createObject(){
         return {
             id_activity: (<HTMLInputElement> document.getElementById("id-activity")).value,
+            id_group: (<HTMLInputElement> document.getElementById("id-group")).value,
             source_code: this.editor.getValue(),
             language: (<HTMLInputElement> document.getElementById("language-selector")).value,
             type: (<HTMLInputElement> document.getElementById("input-frmactivity-type")).value,
@@ -114,13 +131,13 @@ class PluginChallenges {
         let success = (content: any) => {
             if (content.return)
                 window.cosmo.dialog.success("Desafio concluído", content.message, () => {
-                    window.location.href = window.cosmo.routes_name.dashboard_index
+                    window.location.href = window.base_url + window.cosmo.routes_name.dashboard_index
                 });
             else
                 window.cosmo.dialog.error("Tente novamente!", content.message, () => {});
         };
         let fail = (content: any) => {
-            window.cosmo.dialog.error("Erro", content.responseJSON[0], () => {});
+            window.cosmo.dialog.error("Erro", content.message, () => {});
         };
         let ajax = window.cosmo.ajax.getDefaults();
         ajax.url = window.base_url + window.cosmo.routes_name.submit_activity;
