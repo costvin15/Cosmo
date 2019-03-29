@@ -127,46 +127,35 @@ body {
    color: #b4131d;
 }
 
-<<<<<<< HEAD
 #sidebar {
-   min-height: 100vh;
-   margin-left: -15rem;
-   -webkit-transition: margin .25s ease-out;
-   -moz-transition: margin .25s ease-out;
-   -o-transition: margin .25s ease-out;
-   transition: margin .20s ease-out;
+   height: 100%; /* 100% Full-height */
+   width: 0; /* 0 width - change this with JavaScript */
+   position: fixed; /* Stay in place */
+   z-index: 1; /* Stay on top */
+   top: 0; /* Stay at the top */
+   left: 0;
+   background-color: #111; /* Black*/
+   overflow-x: hidden; /* Disable horizontal scroll */
+   padding-top: 5px; /* Place content 60px from the top */
+   transition: 0.3s; /* 0.5 second transition effect to slide in the sidenav */
+}
+
+#sidebar .closebtn {
+   position: absolute;
+   top: 0;
+   right: 25px;
+   font-size: 36px;
+   margin-left: 50px;
+ }
+
+ /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+@media screen and (max-height: 450px) {
+   #sidebar {padding-top: 15px;}
+   #sidebar a {font-size: 18px;}
  }
  
- #sidebar .sidebar-heading {
-   padding: 0.75rem 1.30rem;
-   font-size: 1.2rem;
- }
- 
- #sidebar .list-group {
-   width: 15rem;
- }
- 
- #page-content-wrapper {
-   min-width: 100vw;
- }
- 
- #content-wrapper.toggled #sidebar {
-   margin-left: 0;
- }
- 
- @media (min-width: 768px) {
-   #sidebar {
-     margin-left: 0;
-   }
- 
-   #content-wrapper #sidebar {
-     margin-left: -243px;
-   }
- }
- 
- .side-card {
-   margin-bottom: 10px;
-   max-width: auto;
+.side-card {
+   margin-bottom: 10px; 
    .avatar img{
       margin-top: -55px;
       width: 130;
@@ -184,20 +173,18 @@ body {
       border-top-left-radius: .25rem;
       -webkit-border-top-right-radius: .25rem;
       border-top-right-radius: .25rem;
-   }
-   
-   .card-info {
-      word-break: break-all;
-      height: 100%;
-      width: 100%;
-   }
+}
+
+.card-info {
+   word-break: break-all;
+   height: 100%;
+   width: 100%;
+}
 }
 
 
 
-=======
 .pvp-dropdown-menu {
    width: 250px;
 }
 
->>>>>>> master
