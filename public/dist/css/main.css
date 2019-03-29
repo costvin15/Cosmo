@@ -12362,10 +12362,10 @@ body {
   -webkit-transition: margin .25s ease-out;
   -moz-transition: margin .25s ease-out;
   -o-transition: margin .25s ease-out;
-  transition: margin .25s ease-out; }
+  transition: margin .20s ease-out; }
 
 #sidebar .sidebar-heading {
-  padding: 1.00rem 1.30rem;
+  padding: 0.75rem 1.30rem;
   font-size: 1.2rem; }
 
 #sidebar .list-group {
@@ -12380,11 +12380,8 @@ body {
 @media (min-width: 768px) {
   #sidebar {
     margin-left: 0; }
-  #page-content-wrapper {
-    min-width: 0;
-    width: 100%; }
-  #content-wrapper.toggled #sidebar {
-    margin-left: -15rem; } }
+  #content-wrapper #sidebar {
+    margin-left: -243px; } }
 
 .side-card {
   margin-bottom: 10px;
