@@ -59,19 +59,11 @@ class PluginProblems {
                         time = "Com o tempo de "+content.time+" s";
                     window.cosmo.dialog.success("Estrela "+content.star, "A resposta está correta e você ganhou a estrela de "+
                     content.star+". "+time, () => {
-<<<<<<< HEAD
-                        window.location.href = window.base_url + window.history.back();
-                    });
-                } else
-                    window.cosmo.dialog.success("Meus Parabéns", "A resposta está correta", () => {
-                        window.location.href = window.base_url + window.history.back();
-=======
                         window.history.back()
                     });
                 } else
                     window.cosmo.dialog.success("Meus Parabéns", "A resposta está correta", () => {
                         window.history.back()
->>>>>>> daniel
                     });
             }else
                 window.cosmo.dialog.error("Tente novamente!", content.message, () => {});
