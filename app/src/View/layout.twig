@@ -17,7 +17,40 @@
     </head>
     
     <body>
+
+        <div class="bg-light border-right text-center" id="sidebar">
+            <div class = "card-header">
+                <button class="closeBtn btn btn-sm btn-dark rounded-circle" onclick = "closeNav()">
+                    <i class="text-light fas fa-users"></i>
+                </button>
+                <span class="badge badge-pill p-2 badge-primary"><b>{{ appname }}Telemídia</b></span></br>
+            </div>
+                
+            <ul class="list-group">
+                {% if class.getStudents %}
+                    <li class="list-group-item class-card"><h5><i class = "fas fa-users text-primary mb-1"></i> <span>Minha Turma</span></h5>
+                        {% for user in class.getStudents %}
+                            <div class = "card side-card">
+                                <div class = "card-up bg-cosmo-color-1"></div>
+                                <div class = "avatar"> 
+                                    <img class="img-fluid mb-1 " src="{{ user.getAvatar }}" style = "width: 64px; height:64px;"/>
+                                </div>
+                                <div class = "card-body card-info text-center">
+                                    <a href="{{ path_for("dashboard.profile.visit", {id: user.id}) }}" style = "text-decoration: none;"><i class="fas fa-user"></i> <span> {{user.getFullname}}</span></a>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </li>
+                {% endif %} 
+            </ul>
+        </div>
+
         <nav class="navbar navbar-expand-lg navbar-dark bg-cosmo-color-2">
+            {% if not attributes.administrator %}
+                <button id="menu-toggle" class="btn btn-sm btn-light rounded-circle mr-3" onclick = "openNav()">
+                    <i class="fas fa-users"></i>
+                </button>
+            {% endif %}
             <a href="{{ path_for("dashboard.index") }}" class="navbar-brand"><b>{{ appname }}</b>Telemídia</a>
 
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-content-collapse" aria-controls="navbar-content-collapse" aria-expanded="false" aria-toggle="Alternar navegação">
@@ -31,33 +64,9 @@
                             <i class="fas fa-tachometer-alt"></i> Dashboard
                         </a>
                     </li>
-
-                    {# <li class="nav-item">
-                        <a href="{{ path_for("dashboard.ranking") }}" class="nav-link">
-                            <i class="fas fa-chart-bar"></i> Ranking
-                        </a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a href="#" class="nav-link">
-                            <i class="fas fa-book"></i> Habilidades
-                        </a>
-                    </li>
-                    
-                    <li class="nav-item">
-                        <a href="#" class="nav-link">
-                            <i class="fas fa-shopping-cart"></i> Loja
-                        </a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a href="#" class="nav-link">
-                            <i class="fa fa-skull"></i> Desafios
-                        </a>
-                    </li> #}
                 </ul>
 
-                 <ul class="navbar-nav ml-auto">
+                <ul class="navbar-nav ml-auto">
                     {% if attributes.administrator %}
                         <li class="nav-item">
                             <a href="{{ path_for("administrator.control.index") }}" class="nav-link">
@@ -68,13 +77,13 @@
 
                     <li class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle align-self-center" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <i class="fas fa-gamepad"></i>
+                            <i class="fas fa-gamepad fa"></i>
                         </a>
 
-                        <div class="pvp-dropdown-menu dropdown-menu dropdown-menu-right mt-2 px-2">
+                        <div class="pvp-dropdown-menu dropdown-menu dropdown-menu-right mt-2 px-2 text-center">
                             <h5 class="card-title">PVP</h5>
                             
-                            <ul class="list-group">
+                            <ul class="list-group card">
                                 {% set pvp_count = 0 %}
                                 {% for pvp in pvps %}
                                     {% if not pvp.getCompleted %}
@@ -123,19 +132,18 @@
                             </div>
                         </div>
                     </li>
-                    
                     <li class="nav-item dropdown">
                         <a id="user-dropdown" href="#" class="nav-link dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <img class="rounded-circle" src="{{ attributes.avatar }}" style = "width: 32px;height: 32px;" > {{ attributes.nickname }}
+                            <img class="rounded-circle" src="{{ attributes.avatar }}" style = "width: 32px;height: 32px;"/> {{ attributes.nickname }}
                         </a>
-
-                        <div class= "dropdown-menu dropdown-menu-right mt-2" aria-labelledby="user-dropdown">
-                            <a class = "dropdown-item" href = "{{path_for("dashboard.profile.edit")}}"><i class = "fas fa-user"></i> Editar Perfil</a>
-                            <a class = "dropdown-item" href = "{{path_for("dashboard.profile")}}"><i class = "fas fa-user"></i> Ver Perfil</a>
-                            {# <a class = "dropdown-item" href = "{{}}"><i class="fas fa-exclamation-triangle"></i> Historico</a> #}
-                            {#<a class = "dropdown-item" href="{{ path_for("dashboard.index") }}"><i class="fas fa-book"></i> Tarefas</a>#}
-                            <div class="dropdown-divider"></div>
-                            <a id = "exit" class = "dropdown-item" href = "{{path_for('login.logout')}}"><i class="fas fa-power-off"></i> Sair</a>
+                        <div class= "dropdown-menu dropdown-menu-right mt-2 text-left" aria-labelledby="user-dropdown">
+                            {% if not attributes.administrator %}
+                                <a class = "dropdown-item" href = "{{path_for('dashboard.profile')}}"><i class = "fas fa-eye"></i> Ver Perfil</a>
+                            {% else %}
+                                <a class = "dropdown-item" href = "{{path_for('dashboard.profile.edit')}}"><i class = "fas fa-edit"></i> Editar Perfil</a>
+                            {% endif %}
+                            <div class = "dropdown-divider"></div>
+                            <a class = "dropdown-item" href = "{{path_for('login.logout')}}" style = "color: #771017"><i class="fas fa-power-off"></i> Sair</a>
                         </div>
                     </li>
                 </ul>
@@ -149,7 +157,17 @@
             {% block content %}{% endblock %}
         </div>
 
-        <footer class="footer bg-cosmo-color-2 py-2">
+        <div id="loader-modal" class="loader d-none">
+            <div class="row d-flex align-items-center">
+                <div class="loader-spinner col-12 text-center">
+                    <div class="spinner-border text-light" role="status">
+                        <span class="sr-only">Carregando...</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer class="footer bg-cosmo-color-2 py-2" style = "width: 100%; bottom: 0">
             <div class="container">
                 <div class="row">
                     <div class="col-6 text-left">
@@ -163,20 +181,18 @@
             </div>
         </footer>
 
-        <div id="loader-modal" class="loader d-none">
-            <div class="row d-flex align-items-center">
-                <div class="loader-spinner col-12 text-center">
-                    <div class="spinner-border text-light" role="status">
-                        <span class="sr-only">Carregando...</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    
         <script type="text/javascript">
             window.base_url = "{{ base_url() }}";
         </script>
         
         {% block scripts %}{% endblock %}
+        <script>
+            function openNav() {
+                document.getElementById("sidebar").style.width = "250px";
+            }
+            function closeNav() {
+                document.getElementById("sidebar").style.width = "0";
+            }
+        </script>
     </body>
 </html>

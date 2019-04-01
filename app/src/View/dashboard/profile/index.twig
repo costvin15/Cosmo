@@ -50,10 +50,10 @@
     <div class = "row">
         <div class = "col-md-4 mt-2">
             <div class="card">
-                <div class="card-header d-flex justify-content-center">
-                    <span class="p-2">
+                <div class="card-header d-flex justify-content-center" style = "word-break: break-all;">
+                    <h4 class="p-2">
                         Conquistas de {{attributes.fullname}}
-                    </span>
+                    </h4>
                 </div>
 
                 <div class="card border-cosmo-color-1 mx-sm-1 p-3 mt-4 ">
@@ -282,10 +282,10 @@
 
         <div class="col-md-4 mt-2">
             <div class = "card p-card">
-                <div class="card-header d-flex justify-content-center">
-                    <span class="p-2">
+                <div class="card-header d-flex justify-content-center" style = "word-break: break-all;">
+                    <h4 class="p-2">
                         Sua foto e seus dados
-                    </span>
+                    </h4>
                 </div>
 
                 <div class="card-up"></div>
@@ -307,11 +307,13 @@
                                 <!-- <span id="dynamic" title="Pontos de Conhecimento" class="progress progress-bar progress-bar-striped" role="progressbar" style="width: 10%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></span> -->
                             </div>
                         </div>
+
                         <div class = "row">
                             <div class = "d-flex justify-content-center">
                                 <i class="coins"> </i> <span class = "p-2">Moedas: {{attributes.moedas}}</span>
                             </div>
                         </div>
+                        
                         <div class = "row">
                             <div class = "d-flex justify-content-center">
                                 <i class="papyrus"></i> <span class = "p-2">
@@ -323,30 +325,15 @@
                             </div>
                         </div>
                     </div>
-
-
-
-                      {# <h3>
-                        <span >Título: {{attributes.fulltitle}}</span>
-
-
-                            <div class="progress">
-                                <div id="dynamic" class="progress-bar progress-bar-striped" role="progressbar" style="width: 10%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-
-
-                        <span> <i class="coins"> </i> :{{attributes.moedas}} moedas</span>
-
-                        <span>Questões feitas: {{attributes.answered_activities}}</span>
-                        <span>Submissões: 120</span>   #}
+            
                 </div>
 
                 <div class = "card-footer p-footer d-flex flex-column">
                     <div class = "p-2 text-center">
-                        <a class = "btn btn-cosmo-color-8" href = "{{ path_for("dashboard.profile.edit") }}"> Editar Perfil </a>
+                        <a class = "btn p-btn btn-primary" href = "{{ path_for("dashboard.profile.edit") }}"> Editar Perfil </a>
                     </div>
                     <div class  = "p-2 text-center">
-                        <a class = "btn btn-cosmo-color-8" href = "{{ path_for("dashboard.history") }}"> Histórico </a>
+                        <a class = "btn p-btn btn-primary" href = "{{ path_for("dashboard.history") }}"> Histórico </a>
                     </div>
                 </div>
             </div>

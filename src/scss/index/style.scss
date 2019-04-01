@@ -3,11 +3,14 @@
   overflow-y: hidden;
   white-space: nowrap;
   padding-bottom: 10px;
-
-  .col-2 {
+  .col-2{
     display: inline-block;
+  img{
+    max-width: 120px;
+    max-height: 120px;
   }
+}
+
 }::-webkit-scrollbar-thumb {
   height: 6px;
-  background-color: gray;
 }

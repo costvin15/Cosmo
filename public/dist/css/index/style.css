@@ -5,7 +5,9 @@
   padding-bottom: 10px; }
   #students-container .col-2 {
     display: inline-block; }
+    #students-container .col-2 img {
+      max-width: 120px;
+      max-height: 120px; }
 
 ::-webkit-scrollbar-thumb {
-  height: 6px;
-  background-color: gray; }
+  height: 6px; }

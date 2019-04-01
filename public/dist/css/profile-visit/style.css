@@ -10,64 +10,35 @@
   position: absolute;
   left: 42%;
   top: -20px;
-  border-radius: 50%; }
+  border-radius: 70%; }
 
-.card-scroll {
-  height: 320px;
-  overflow-y: scroll; }
-
-.p-card .avatar img {
-  margin-top: -55px;
-  width: 130;
-  height: 110;
-  max-width: 140px;
-  max-height: 110px;
-  border-radius: 50%;
-  overflow: hidden;
-  border: 5px solid #fff; }
-
-.p-card .card-up {
-  overflow: hidden;
-  height: 120px;
-  -webkit-border-top-left-radius: .25rem;
-  border-top-left-radius: .25rem;
-  -webkit-border-top-right-radius: .25rem;
-  border-top-right-radius: .25rem;
-  background-color: #5ba4fd; }
-
-.coins {
-  position: relative;
-  background-image: url("../../../icons/piggy-bank.png");
-  height: 32px;
-  width: 32px;
-  display: inline-block; }
-
-.brain {
-  background-image: url("../../../icons/brain.png");
-  height: 32px;
-  width: 32px;
-  display: inline-block; }
-
-.papyrus {
-  background-image: url("../../../icons/papyrus.png");
-  height: 32px;
-  width: 32px;
-  display: inline-block; }
-
-.medal {
-  background-image: url("../../../icons/medal.png");
-  height: 24px;
-  width: 24px;
-  display: inline-block; }
-
-.trophy {
-  background-image: url("../../../icons/trophy.png");
-  height: 24px;
-  width: 24px;
-  display: inline-block; }
+.p-card {
+  word-break: break-all; }
+  .p-card .avatar img {
+    margin-top: -55px;
+    width: 130;
+    height: 110;
+    max-width: 140px;
+    max-height: 110px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 5px solid #fff; }
+  .p-card .card-up {
+    overflow: hidden;
+    height: 120px;
+    -webkit-border-top-left-radius: .25rem;
+    border-top-left-radius: .25rem;
+    -webkit-border-top-right-radius: .25rem;
+    border-top-right-radius: .25rem;
+    background-color: #5ba4fd; }
 
 .progress {
   top: -20%;
   max-width: 85%;
   margin-left: 3%;
   display: inline-block; }
+
+.p-btn:hover {
+  color: #1CB0F6;
+  background-color: white;
+  transition: background-color 0.6s; }

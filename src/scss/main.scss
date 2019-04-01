@@ -10,6 +10,69 @@ body {
    min-height: 100vh;
    flex-direction: column;
    font-family: "Montserrat", sans-serif;
+   .coins {
+      position: relative;
+      background-image: url("../icons/gold-ingots.png");
+      height: 32px;
+      width: 32px;
+      display: inline-block;
+  }
+  .brain {
+      background-image: url("../icons/brain.png");
+      height: 32px;
+      width: 32px;
+      display: inline-block;
+  }
+  
+  .papyrus{
+      background-image: url("../icons/scroll.png");
+      height: 32px;
+      width: 32px;
+      display: inline-block;
+  }
+  
+  .medal {
+      background-image: url("../icons/medal.png");
+      height: 32px;
+      width: 32px;
+      display: inline-block;
+  }
+  
+  .trophy {
+      background-image: url("../icons/trophy.png");
+      height: 32px;
+      width: 32px;
+      display: inline-block;
+  }
+  
+  .top-3 {
+      background-image: url("../icons/badge.png");
+      height: 32px;
+      width: 32px;
+      display: inline-block;
+   }
+
+   .crown {
+      background-image: url("../icons/crown.png");
+      height: 32px;
+      width: 32px;
+      display: inline-block;
+   }
+
+   .signature {
+      background-image: url("../icons/contract.png");
+      height: 32px;
+      width: 32px;
+      display: inline-block;
+   }
+   
+   .correct {
+      background-image: url("../icons/correct.png");
+      height: 32px;
+      width: 32px;
+      display: inline-block;
+   }
+
 }
 
 .stop-scrolling {
@@ -62,6 +125,61 @@ body {
 
 .dropdown-menu #exit:hover {
    color: #b4131d;
+}
+
+#sidebar {
+   height: 100%; /* 100% Full-height */
+   width: 0; /* 0 width - change this with JavaScript */
+   position: fixed; /* Stay in place */
+   z-index: 1; /* Stay on top */
+   top: 0; /* Stay at the top */
+   left: -5;
+   background-color: #111; /* Black*/
+   overflow-x: hidden; /* Disable horizontal scroll */
+   padding-top: 5px; /* Place content 60px from the top */
+   transition: 0.3s; /* 0.5 second transition effect to slide in the sidenav */
+}
+
+#sidebar .closebtn {
+   position: absolute;
+   top: 0;
+   right: 25px;
+   font-size: 36px;
+   margin-left: 50px;
+ }
+
+ /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+@media screen and (max-height: 450px) {
+   #sidebar {padding-top: 15px;}
+   #sidebar a {font-size: 18px;}
+ }
+ 
+.side-card {
+   margin-bottom: 10px; 
+   .avatar img{
+      margin-top: -55px;
+      width: 130;
+      height: 110;
+      max-width: 140px;
+      max-height: 110px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 5px solid #fff;
+   }
+   .card-up{
+      overflow: hidden;
+      height: 60px;
+      -webkit-border-top-left-radius: .25rem;
+      border-top-left-radius: .25rem;
+      -webkit-border-top-right-radius: .25rem;
+      border-top-right-radius: .25rem;
+}
+
+.card-info {
+   word-break: break-all;
+   height: 100%;
+   width: 100%;
+}
 }
 
 .pvp-dropdown-menu {
