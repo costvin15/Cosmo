@@ -12476,7 +12476,7 @@ body {
   /* Stay on top */
   top: 0;
   /* Stay at the top */
-  left: 0;
+  left: -5;
   background-color: #111;
   /* Black*/
   overflow-x: hidden;

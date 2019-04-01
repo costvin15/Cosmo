@@ -133,7 +133,7 @@ body {
    position: fixed; /* Stay in place */
    z-index: 1; /* Stay on top */
    top: 0; /* Stay at the top */
-   left: 0;
+   left: -5;
    background-color: #111; /* Black*/
    overflow-x: hidden; /* Disable horizontal scroll */
    padding-top: 5px; /* Place content 60px from the top */
@@ -181,8 +181,6 @@ body {
    width: 100%;
 }
 }
-
-
 
 .pvp-dropdown-menu {
    width: 250px;
