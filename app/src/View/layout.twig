@@ -159,6 +159,8 @@
                             <img class="rounded-circle" src="{{ attributes.avatar }}" style = "width: 32px;height: 32px;"/> {{ attributes.nickname }}
                         </a>
                         <div class= "dropdown-menu dropdown-menu-right mt-2" aria-labelledby="user-dropdown">
+                            <a class = "dropdown-item" href = "{{path_for('dashboard.profile.edit')}}"><i class = "fas fa-cogs"></i> Editar Perfil</a>
+                            <div class = "dropdown-divider"></div>
                             <a class = "dropdown-item" href = "{{path_for('login.logout')}}" style = "color: #771017"><i class="fas fa-power-off"></i> Sair</a>
                         </div>
                     </li>
