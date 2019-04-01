@@ -1,6 +1,6 @@
 function extraInformationsAlert(){
     let success = (content: any) => {
-        if (content.sexo == "")
+        if (content.sexo == "" || content.sexo == null )
             window.cosmo.dialog.info("Alerta", "Complete seu perfil", () => {
                 window.location.href = window.base_url + window.cosmo.routes_name.user_update_profile_view
             });

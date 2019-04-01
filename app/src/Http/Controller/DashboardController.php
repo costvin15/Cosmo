@@ -420,9 +420,9 @@ class DashboardController extends AbstractController
             $this->_dm->flush();
         }
 
-        $questions_answered = $this->_dm->createQueryBuilder(HistoryActivities::class)
+       $questions_answered = $this->_dm->createQueryBuilder(HistoryActivities::class)
             ->field("user")->equals($user)
-            ->getQuery()->execute();
+            ->getQuery()->execute(); 
         $questions_answered_array = array();
         $questions_answered_ids = array();
         foreach($questions_answered as $question){

@@ -5,6 +5,7 @@ namespace App\Mapper;
 use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
 use App\Model\Util\ImageBase64;
 use App\Facilitator\App\ContainerFacilitator;
+use App\Mapper\Achievements;
 
 /**
  * @ODM\Document(collection="User", repositoryClass="App\Mapper\Repository\UserRepository")
@@ -161,8 +162,6 @@ class User
         $this->achievements[] = new Achievements("badge","Acumulador",0);
         $this->achievements[] = new Achievements("badge","Devorador",0);
         $this->achievements[] = new Achievements("badge","Gastador",0);
-        $this->achievements[] = new Achievements("trophie","Aprendiz",0);
-        $this->achievements[] = new Achievements("trophie","De Primeira",0);
 
     }
 
@@ -406,6 +405,11 @@ class User
     public function setAnsweredActivities($answered_activities){
         $exists = false;
         $this->answered_activities = $answered_activities;
+        
+        if ($this->answered_activities == 1){
+            $this->achievements[] = new Achievements("trophie","Aprendiz", 1);
+        }
+        
         foreach($this->achievements->toArray() as $achievement){
             if ($achievement->getName() == "Devorador" && $achievement->getType() == "badge"){
                 if($this->answered_activities >= 10)
