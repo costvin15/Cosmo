@@ -33,11 +33,13 @@
                     </div>
                     <div id="students-container" class="col-12">
                         {% for user in class.getStudents %}
+                            {% if not user.getAdministrator %}
                             <div class="col-2 d-inline">
                                 <a href="{{ path_for("dashboard.profile.visit", {id: user.id}) }}" style = "text-decoration: none;">
                                     <img class="img-fluid rounded-circle" src="{{ user.getAvatar }}"/>
                                 </a>
                             </div>
+                            {% endif %}
                         {% endfor %}
                     </div>
                 </div>
