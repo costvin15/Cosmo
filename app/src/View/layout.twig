@@ -7,148 +7,130 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-
         <link rel="stylesheet" href="{{ base_url() }}/dist/css/main.min.css">
+        <script type="text/javascript"> window.base_url = "{{ base_url() }}" </script>
+        <script type="text/javascript" src="{{ base_url() }}/dist/js/main.js"></script>
+        <script type="text/javascript" src="{{ base_url() }}/dist/js/script.min.js"></script>
 
         {% block styles %}{% endblock %}
         <script type="text/javascript" src="{{ base_url() }}/dist/js/main.js"></script>
         <script type="text/javascript" src="{{ base_url() }}/dist/js/script.min.js"></script>
+        {% block script %}{% endblock %}
         <title>{{ page_title }} - {{ appname }}</title>
     </head>
     
     <body>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-cosmo-color-2">
-            <a href="{{ path_for("dashboard.index") }}" class="navbar-brand"><b>{{ appname }}</b>Telemídia</a>
 
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-content-collapse" aria-controls="navbar-content-collapse" aria-expanded="false" aria-toggle="Alternar navegação">
-                <i class="navbar-toggler-icon"></i>
-            </button>
+        <div class = "d-flex" id="content-wrapper">
+    
+            <div class="bg-light border-right text-center" id="sidebar">
+                <div class="sidebar-heading">
+                    <span class="badge badge-pill p-2 badge-primary"><b>{{ appname }}Telemídia</b></span></br>
+                </div>
 
-            <div id="navbar-content-collapse" class="collapse navbar-collapse">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item">
-                        <a href="{{ path_for("dashboard.index") }}" class="nav-link text-white">
-                            <i class="fas fa-tachometer-alt"></i> Dashboard
-                        </a>
-                    </li>
-
-                    {# <li class="nav-item">
-                        <a href="{{ path_for("dashboard.ranking") }}" class="nav-link">
-                            <i class="fas fa-chart-bar"></i> Ranking
-                        </a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a href="#" class="nav-link">
-                            <i class="fas fa-book"></i> Habilidades
-                        </a>
-                    </li>
-                    
-                    <li class="nav-item">
-                        <a href="#" class="nav-link">
-                            <i class="fas fa-shopping-cart"></i> Loja
-                        </a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a href="#" class="nav-link">
-                            <i class="fa fa-skull"></i> Desafios
-                        </a>
-                    </li> #}
-                </ul>
-
-                 <ul class="navbar-nav ml-auto">
-                    {% if attributes.administrator %}
-                        <li class="nav-item">
-                            <a href="{{ path_for("administrator.control.index") }}" class="nav-link">
-                                <i class="fas fa-wrench"></i> Administração
-                            </a>
-                        </li>
-                    {% endif %}
-
-                    <li class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle align-self-center" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <i class="fas fa-gamepad"></i>
-                        </a>
-
-                        <div class="pvp-dropdown-menu dropdown-menu dropdown-menu-right mt-2 px-2">
-                            <h5 class="card-title">PVP</h5>
-                            
-                            <ul class="list-group">
-                                {% set pvp_count = 0 %}
-                                {% for pvp in pvps %}
-                                    {% if not pvp.getCompleted %}
-                                        <li class="list-group-item px-0 py-0">
-                                            <div class="card-body">
-                                                <p class="mb-0">Você foi desafiado por {{ pvp.getChallenger.getFullname }}</p>
-                                                <small>Atividade: {{ pvp.getActivity.getTitle }}</small>
-                                                <hr />
-
-                                                <div class="row">
-                                                    <div class="col-6">
-                                                        <a href="{{ path_for("activities.pvp", {challenge: pvp.getId}) }}" class="btn btn-success w-100"><i class="fas fa-check"></i></a>
-                                                    </div>
-
-                                                    <div class="col-6">
-                                                        <a href="{{ path_for("activities.deny", {id: pvp.getId}) }}" class="btn btn-danger w-100"><i class="fas fa-times"></i></a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        {% set pvp_count = pvp_count + 1 %}
-                                    {% endif %}
-                                {% endfor %}
-
-                                {% if pvp_count == 0 %}
-                                    <div class="row">
-                                        <div class="col-12 text-center">
-                                            <p class="my-3">Você não tem nenhum desafio pendente</p>
-                                        </div>
-                                    </div>
-                                {% endif %}
-                            </ul>
-
-                            <div class="row mt-2">
-                                <div class="col-6">
-                                    <a href="{{ path_for("dashboard.pvp.new") }}" class="btn btn-cosmo-color-2 w-100">
-                                        <i class="fas fa-plus-square"></i>
-                                    </a>
-                                </div>
-
-                                <div class="col-6">
-                                    <a href="{{ path_for("dashboard.pvp.history") }}" class="btn btn-cosmo-color-2 w-100">
-                                        <i class="fas fa-clock"></i>
-                                    </a>
-                                </div>
+                <ul class="list-group">
+                    <li class="list-group-item"><h5><i class = "fas fa-user text-success mb-1"></i> <span class = "badge badge-success">Meu perfil</span></h5>
+                        <div class = "card side-card">
+                            <div class = "card-up bg-cosmo-color-3"></div>
+                            <div class = "avatar"> 
+                                <img class="img-fluid mb-1 " src="{{ attributes.avatar }}" style = "width: 64px; height:64px;"/>
+                            </div>
+                            <div class = "card-body card-info">
+                                <a href="{{ path_for("dashboard.profile.visit", {id: user.id}) }}" style = "text-decoration: none;"><i class="fas fa-user text-success"></i> <span class = "text-success"> {{attributes.fullname}}</span></a>
+                            </div>
+                            <div class = "card-footer d-block justify-content-center">
+                                <a href = "{{path_for("dashboard.profile")}}" class = "align-content-middle mb-2 badge badge-cosmo-color-3 text-white">
+                                    <i class = "fas fa-user"></i><span> Ver Perfil</span>
+                                </a></br>
+                                <a href = "{{path_for('login.logout')}}" class = "align-content-middle mt-2 badge badge-cosmo-color-5 text-white">
+                                    <i class="fa fa-power-off"></i><span> Sair</span>
+                                </a>
                             </div>
                         </div>
                     </li>
-                    
-                    <li class="nav-item dropdown">
-                        <a id="user-dropdown" href="#" class="nav-link dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <img class="rounded-circle" src="{{ attributes.avatar }}" style = "width: 32px;height: 32px;" > {{ attributes.nickname }}
-                        </a>
 
-                        <div class= "dropdown-menu dropdown-menu-right mt-2" aria-labelledby="user-dropdown">
-                            <a class = "dropdown-item" href = "{{path_for("dashboard.profile.edit")}}"><i class = "fas fa-user"></i> Editar Perfil</a>
-                            <a class = "dropdown-item" href = "{{path_for("dashboard.profile")}}"><i class = "fas fa-user"></i> Ver Perfil</a>
-                            {# <a class = "dropdown-item" href = "{{}}"><i class="fas fa-exclamation-triangle"></i> Historico</a> #}
-                            {#<a class = "dropdown-item" href="{{ path_for("dashboard.index") }}"><i class="fas fa-book"></i> Tarefas</a>#}
-                            <div class="dropdown-divider"></div>
-                            <a id = "exit" class = "dropdown-item" href = "{{path_for('login.logout')}}"><i class="fas fa-power-off"></i> Sair</a>
-                        </div>
-                    </li>
+                    {% if class.getStudents %}
+                        <li class="list-group-item class-card"><h5><i class = "fas fa-users text-primary mb-1"></i> <span class = "badge badge-primary">Minha Turma</span></h5>
+                            {% for user in class.getStudents %}
+                                {% if user.getFullname != attributes.fullname %}
+                                    <div class = "card side-card">
+                                        <div class = "card-up bg-cosmo-color-1"></div>
+                                        <div class = "avatar"> 
+                                            <img class="img-fluid mb-1 " src="{{ user.getAvatar }}" style = "width: 64px; height:64px;"/>
+                                        </div>
+                                        <div class = "card-body card-info text-center">
+                                            <a href="{{ path_for("dashboard.profile.visit", {id: user.id}) }}" style = "text-decoration: none;"><i class="fas fa-user"></i> <span> {{user.getFullname}}</span></a>
+                                        </div>
+                                    </div>
+                                {% endif %}
+                            {% endfor %}
+                        </li>
+                    {% endif %} 
                 </ul>
-            </div>    
-        </nav>
+            </div>
+            
+            <div id="page-content-wrapper">
+                <nav class="navbar navbar-expand-lg navbar-dark bg-cosmo-color-2">
+                    {% if not attributes.administrator %}
+                        <button id="menu-toggle" class="btn btn-sm btn-light rounded-circle mr-3">
+                            <i class="fas fa-users"></i>
+                        </button>
+                    {% endif %}
+                    <a href="{{ path_for("dashboard.index") }}" class="navbar-brand"><b>{{ appname }}</b>Telemídia</a>
 
-        <div class="container my-2 wrapper">
-            <span class="display-4">{{ page_title }}</span>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-content-collapse" aria-controls="navbar-content-collapse" aria-expanded="false" aria-toggle="Alternar navegação">
+                        <i class="navbar-toggler-icon"></i>
+                    </button>
 
-            {% block breakcrumb %}{% endblock %}
-            {% block content %}{% endblock %}
+                    <div id="navbar-content-collapse" class="collapse navbar-collapse">
+                        <ul class="navbar-nav mr-auto">
+                            <li class="nav-item">
+                                <a href="{{ path_for("dashboard.index") }}" class="nav-link text-white">
+                                    <i class="fas fa-tachometer-alt"></i> Dashboard
+                                </a>
+                            </li>     
+                        </ul>
+
+                        <ul class="navbar-nav ml-auto">
+                            {% if attributes.administrator %}
+                                <li class="nav-item">
+                                    <a href="{{ path_for("administrator.control.index") }}" class="nav-link">
+                                        <i class="fas fa-wrench"></i> Administração
+                                    </a>
+                                </li>
+                            {% endif %}
+                            {# <li class="nav-item dropdown">
+                                <a id="user-dropdown" href="#" class="nav-link dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <img class="rounded-circle" src="{{ attributes.avatar }}" style = "width: 32px;height: 32px;" > {{ attributes.nickname }}
+                                </a>
+                                <div class= "dropdown-menu dropdown-menu-right mt-2" aria-labelledby="user-dropdown">
+                                    <a class = "dropdown-item" href = "{{path_for("dashboard.profile.edit")}}"><i class = "fas fa-user"></i> Editar Perfil</a>
+                                    <a class = "dropdown-item" href = "{{path_for("dashboard.profile")}}"><i class = "fas fa-user"></i> Ver Perfil</a>
+                                    <a id = "exit" class = "dropdown-item" href = "{{path_for('login.logout')}}"><i class="fas fa-power-off"></i> Sair</a>
+                                </div>
+                            </li> #}
+                        </ul>   
+                    </div>
+                 </nav>
+
+                 <div class="container my-2 wrapper">
+
+                    <span class="display-4">{{ page_title }}</span>
+
+                    {% block breakcrumb %}{% endblock %}
+
+                    {% block content %}{% endblock %}
+                </div>
+                
+                <script>
+                    $("#menu-toggle").click(function(e) {
+                        e.preventDefault();
+                        $("#content-wrapper").toggleClass("toggled");
+                    });
+                </script>
+            </div>
+            
         </div>
-
         <footer class="footer bg-cosmo-color-2 py-2">
             <div class="container">
                 <div class="row">

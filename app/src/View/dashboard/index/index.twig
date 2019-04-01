@@ -6,16 +6,8 @@
     {% set page_title = "Dashboard" %}
 {% endif %}
 
-{% block scripts %}   
-    <script>
-        function openNav() {
-            document.getElementById("mySidenav").style.width = "250px";
-        }
-        
-        function closeNav() {
-            document.getElementById("mySidenav").style.width = "0";
-        }
-    </script>
+{% block scripts %}
+     
     <script type="text/javascript" src="{{ base_url() }}/dist/js/index.js"></script>
 {% endblock %}
 
@@ -37,16 +29,15 @@
             <div class="col-12">
                 <div class="row mb-2">
                     <div class="col-12">
-                        <span class="display-4 text-muted">Alunos</span>                 
+                        <span class="display-4 text-muted">Mestres da turma</span><i class = "top-3"></i>
                     </div>
-
                     <div id="students-container" class="col-12">
                         {% for user in class.getStudents %}
-                            <div class="col-2">
-                                <a href="{{ path_for("dashboard.profile.visit", {id: user.id}) }}">
-                                    <img class="img-fluid mr-2 rounded-circle" src="{{ user.getAvatar }}"></img>
-                                </a>
-                            </div>
+                                <div class="col-2 d-inline">
+                                    <a href="{{ path_for("dashboard.profile.visit", {id: user.id}) }}" style = "text-decoration: none;">
+                                        <img class="img-fluid rounded-circle" src="{{ user.getAvatar }}"/>
+                                    </a>
+                                </div>
                         {% endfor %}
                     </div>
                 </div>

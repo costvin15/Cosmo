@@ -10,6 +10,69 @@ body {
    min-height: 100vh;
    flex-direction: column;
    font-family: "Montserrat", sans-serif;
+   .coins {
+      position: relative;
+      background-image: url("../icons/gold-ingots.png");
+      height: 32px;
+      width: 32px;
+      display: inline-block;
+  }
+  .brain {
+      background-image: url("../icons/brain.png");
+      height: 32px;
+      width: 32px;
+      display: inline-block;
+  }
+  
+  .papyrus{
+      background-image: url("../icons/scroll.png");
+      height: 32px;
+      width: 32px;
+      display: inline-block;
+  }
+  
+  .medal {
+      background-image: url("../icons/medal.png");
+      height: 32px;
+      width: 32px;
+      display: inline-block;
+  }
+  
+  .trophy {
+      background-image: url("../icons/trophy.png");
+      height: 32px;
+      width: 32px;
+      display: inline-block;
+  }
+  
+  .top-3 {
+      background-image: url("../icons/badge.png");
+      height: 32px;
+      width: 32px;
+      display: inline-block;
+   }
+
+   .crown {
+      background-image: url("../icons/crown.png");
+      height: 32px;
+      width: 32px;
+      display: inline-block;
+   }
+
+   .signature {
+      background-image: url("../icons/contract.png");
+      height: 32px;
+      width: 32px;
+      display: inline-block;
+   }
+   
+   .correct {
+      background-image: url("../icons/correct.png");
+      height: 32px;
+      width: 32px;
+      display: inline-block;
+   }
+
 }
 
 .stop-scrolling {
@@ -64,7 +127,77 @@ body {
    color: #b4131d;
 }
 
+<<<<<<< HEAD
+#sidebar {
+   min-height: 100vh;
+   margin-left: -15rem;
+   -webkit-transition: margin .25s ease-out;
+   -moz-transition: margin .25s ease-out;
+   -o-transition: margin .25s ease-out;
+   transition: margin .20s ease-out;
+ }
+ 
+ #sidebar .sidebar-heading {
+   padding: 0.75rem 1.30rem;
+   font-size: 1.2rem;
+ }
+ 
+ #sidebar .list-group {
+   width: 15rem;
+ }
+ 
+ #page-content-wrapper {
+   min-width: 100vw;
+ }
+ 
+ #content-wrapper.toggled #sidebar {
+   margin-left: 0;
+ }
+ 
+ @media (min-width: 768px) {
+   #sidebar {
+     margin-left: 0;
+   }
+ 
+   #content-wrapper #sidebar {
+     margin-left: -243px;
+   }
+ }
+ 
+ .side-card {
+   margin-bottom: 10px;
+   max-width: auto;
+   .avatar img{
+      margin-top: -55px;
+      width: 130;
+      height: 110;
+      max-width: 140px;
+      max-height: 110px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 5px solid #fff;
+   }
+   .card-up{
+      overflow: hidden;
+      height: 60px;
+      -webkit-border-top-left-radius: .25rem;
+      border-top-left-radius: .25rem;
+      -webkit-border-top-right-radius: .25rem;
+      border-top-right-radius: .25rem;
+   }
+   
+   .card-info {
+      word-break: break-all;
+      height: 100%;
+      width: 100%;
+   }
+}
+
+
+
+=======
 .pvp-dropdown-menu {
    width: 250px;
 }
 
+>>>>>>> master

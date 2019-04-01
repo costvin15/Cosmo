@@ -52,7 +52,7 @@
             <div class="card">
                 <div class="card-header d-flex justify-content-center">
                     <span class="p-2">
-                        Conquistas de {{attributes.fullname}}
+                        Conquistas de {{user.fullname}}
                     </span>
                 </div>
 
@@ -291,62 +291,49 @@
                 <div class="card-up"></div>
 
                 <div class="avatar mx-auto">
-                    <img id="img-frmuser-avatar" src= "{{attributes.avatar}}" class="rounded-circle" alt=""/>
+                    <img id="img-frmuser-avatar" src= "{{user.avatar}}" class="rounded-circle" alt=""/>
                 </div>
 
                 <div class = "card-body p-body mt-0">
                     <div class="d-flex justify-content-center">
-                        <h5 = "p-2">{{attributes.fullname}}</h5>
+                        <h5 = "p-2">{{user.fullname}}</h5>
                     </div>
                     <hr>
 
                     <div class = "card-body">
                         <div class = "row">
                             <div class = "d-flex justify-content-center">
-                                <i class="brain" ></i> <span class = "p-2"> Conhecimento: {{attributes.xp}}</span>
+                                <i class="brain" ></i> <span class = "p-2"> Conhecimento: {{user.xp}}</span>
                                 <!-- <span id="dynamic" title="Pontos de Conhecimento" class="progress progress-bar progress-bar-striped" role="progressbar" style="width: 10%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></span> -->
                             </div>
                         </div>
+
                         <div class = "row">
                             <div class = "d-flex justify-content-center">
-                                <i class="coins"> </i> <span class = "p-2">Moedas: {{attributes.moedas}}</span>
+                                <i class="coins"> </i> <span class = "p-2">Moedas: {{user.moedas}}</span>
                             </div>
                         </div>
+                        
                         <div class = "row">
                             <div class = "d-flex justify-content-center">
                                 <i class="papyrus"></i> <span class = "p-2">
                                 {# {% if attributes.answered_activities >= 3 %} #}
-                                    Título: {{attributes.fulltitle}}</span>
+                                    Título: {{user.fulltitle}}</span>
                                 {# {% elseif attributes.answered_activities < 3 %}
                                     Título: Sem título</span>
                                 {% endif %} #}
                             </div>
                         </div>
                     </div>
-
-
-
-                      {# <h3>
-                        <span >Título: {{attributes.fulltitle}}</span>
-
-
-                            <div class="progress">
-                                <div id="dynamic" class="progress-bar progress-bar-striped" role="progressbar" style="width: 10%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-
-
-                        <span> <i class="coins"> </i> :{{attributes.moedas}} moedas</span>
-
-                        <span>Questões feitas: {{attributes.answered_activities}}</span>
-                        <span>Submissões: 120</span>   #}
+            
                 </div>
 
                 <div class = "card-footer p-footer d-flex flex-column">
                     <div class = "p-2 text-center">
-                        <a class = "btn btn-cosmo-color-8" href = "{{ path_for("dashboard.profile.edit") }}"> Editar Perfil </a>
+                        <a class = "btn p-btn btn-primary" href = "{{ path_for("dashboard.profile.edit") }}"> Editar Perfil </a>
                     </div>
                     <div class  = "p-2 text-center">
-                        <a class = "btn btn-cosmo-color-8" href = "{{ path_for("dashboard.history") }}"> Histórico </a>
+                        <a class = "btn p-btn btn-primary" href = "{{ path_for("dashboard.history") }}"> Histórico </a>
                     </div>
                 </div>
             </div>
@@ -356,7 +343,7 @@
             <div class = "card">
                 <div class="card-header">
                     <h5 class=" text-center">
-                        Habilidades de {{attributes.fullname}}
+                        Habilidades de {{user.fullname}}
                     </span>
                 </div>
                 <div class = "card-body d-flex flex-column">
