@@ -27,40 +27,18 @@
             </div>
                 
             <ul class="list-group">
-                <li class="list-group-item"><h5><i class = "fas fa-user text-success mb-1"></i> <span class = "badge badge-success">Meu perfil</span></h5>
-                    <div class = "card side-card">
-                        <div class = "card-up bg-cosmo-color-3"></div>
-                        <div class = "avatar"> 
-                            <img class="img-fluid mb-1 " src="{{ attributes.avatar }}" style = "width: 64px; height:64px;"/>
-                        </div>
-                        <div class = "card-body card-info">
-                            <a href="{{ path_for("dashboard.profile.visit", {id: user.id}) }}" style = "text-decoration: none;"><i class="fas fa-user text-success"></i> <span class = "text-success"> {{attributes.fullname}}</span></a>
-                        </div>
-                        <div class = "card-footer d-block justify-content-center">
-                            <a href = "{{path_for("dashboard.profile")}}" class = "align-content-middle mb-2 badge badge-cosmo-color-3 text-white">
-                                <i class = "fas fa-user"></i><span> Ver Perfil</span>
-                            </a></br>
-                            <a href = "{{path_for('login.logout')}}" class = "align-content-middle mt-2 badge badge-cosmo-color-5 text-white">
-                                <i class="fa fa-power-off"></i><span> Sair</span>
-                            </a>
-                        </div>
-                    </div>
-                </li>
-
                 {% if class.getStudents %}
-                    <li class="list-group-item class-card"><h5><i class = "fas fa-users text-primary mb-1"></i> <span class = "badge badge-primary">Minha Turma</span></h5>
+                    <li class="list-group-item class-card"><h5><i class = "fas fa-users text-primary mb-1"></i> <span>Minha Turma</span></h5>
                         {% for user in class.getStudents %}
-                            {% if user.getFullname != attributes.fullname %}
-                                <div class = "card side-card">
-                                    <div class = "card-up bg-cosmo-color-1"></div>
-                                    <div class = "avatar"> 
-                                        <img class="img-fluid mb-1 " src="{{ user.getAvatar }}" style = "width: 64px; height:64px;"/>
-                                    </div>
-                                    <div class = "card-body card-info text-center">
-                                        <a href="{{ path_for("dashboard.profile.visit", {id: user.id}) }}" style = "text-decoration: none;"><i class="fas fa-user"></i> <span> {{user.getFullname}}</span></a>
-                                    </div>
+                            <div class = "card side-card">
+                                <div class = "card-up bg-cosmo-color-1"></div>
+                                <div class = "avatar"> 
+                                    <img class="img-fluid mb-1 " src="{{ user.getAvatar }}" style = "width: 64px; height:64px;"/>
                                 </div>
-                            {% endif %}
+                                <div class = "card-body card-info text-center">
+                                    <a href="{{ path_for("dashboard.profile.visit", {id: user.id}) }}" style = "text-decoration: none;"><i class="fas fa-user"></i> <span> {{user.getFullname}}</span></a>
+                                </div>
+                            </div>
                         {% endfor %}
                     </li>
                 {% endif %} 
@@ -102,10 +80,10 @@
                             <i class="fas fa-gamepad fa"></i>
                         </a>
 
-                        <div class="pvp-dropdown-menu dropdown-menu dropdown-menu-right mt-2 px-2">
+                        <div class="pvp-dropdown-menu dropdown-menu dropdown-menu-right mt-2 px-2 text-center">
                             <h5 class="card-title">PVP</h5>
                             
-                            <ul class="list-group">
+                            <ul class="list-group card">
                                 {% set pvp_count = 0 %}
                                 {% for pvp in pvps %}
                                     {% if not pvp.getCompleted %}
@@ -158,8 +136,12 @@
                         <a id="user-dropdown" href="#" class="nav-link dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <img class="rounded-circle" src="{{ attributes.avatar }}" style = "width: 32px;height: 32px;"/> {{ attributes.nickname }}
                         </a>
-                        <div class= "dropdown-menu dropdown-menu-right mt-2" aria-labelledby="user-dropdown">
-                            <a class = "dropdown-item" href = "{{path_for('dashboard.profile.edit')}}"><i class = "fas fa-cogs"></i> Editar Perfil</a>
+                        <div class= "dropdown-menu dropdown-menu-right mt-2 text-left" aria-labelledby="user-dropdown">
+                            {% if not attributes.administrator %}
+                                <a class = "dropdown-item" href = "{{path_for('dashboard.profile')}}"><i class = "fas fa-eye"></i> Ver Perfil</a>
+                            {% else %}
+                                <a class = "dropdown-item" href = "{{path_for('dashboard.profile.edit')}}"><i class = "fas fa-edit"></i> Editar Perfil</a>
+                            {% endif %}
                             <div class = "dropdown-divider"></div>
                             <a class = "dropdown-item" href = "{{path_for('login.logout')}}" style = "color: #771017"><i class="fas fa-power-off"></i> Sair</a>
                         </div>
