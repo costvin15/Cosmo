@@ -449,9 +449,7 @@ class DashboardController extends AbstractController
         $this->setAttributeView("categories", $this->_dm->getRepository(CategoryActivities::class)->findAll());
         $star = $this->_dm->getRepository(Star::class)->findStar($user,$group,$category);
 
-        if($star){
-
-        }
+        
         return $this->view->render($response, "View/dashboard/skill/categories.twig", $this->getAttributeView());
     }
      /**
@@ -481,20 +479,36 @@ class DashboardController extends AbstractController
             $this->_dm->flush();
         }
 
-        $activities = [];
-        foreach($group->getActivity() as $activity){
+        $questions_answered = $this->_dm->createQueryBuilder(HistoryActivities::class)
+            ->field("user")->equals($user)
+            ->getQuery()->execute();
+        $questions_answered_array = array();
+        $questions_answered_ids = array();
+        foreach($questions_answered as $question){
+            $questions_answered_array[] = $question->getActivity();
+            $questions_answered_ids[] = $question->getActivity()->getId();
+        }
+        $questions = $this->_dm->createQueryBuilder(Activities::class)
+            ->field("id")->notIn($questions_answered_ids)
+            ->field("group", $group)
+            ->getQuery()->execute();
+        $activities = array();
+        foreach($questions as $activity){
             if($activity->getCategory() == $category->getCategory()){
                 $activities[] = $activity;
             }
         }
+
         $this->setAttributeView("price", false);
         if($category->getCategory() == InterfaceCategory::CHALLENGE){
             $this->setAttributeView("price", true);
             $this->setAttributeView("payments", $user->getPurchasedActivities());
             $this->setAttributeView("coins", $user->getMoedas());
         }
+        $this->setAttributeView("skill", $group);
         $this->setAttributeView("activities", $activities);
         $this->setAttributeView("idGroup", $idGroup);
+        $this->setAttributeView("questions_answered", $questions_answered_array);
         return $this->view->render($response, "View/dashboard/skill/index.twig", $this->getAttributeView());
     }
 
