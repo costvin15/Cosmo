@@ -75,68 +75,9 @@ class DashboardController extends AbstractController
 
             $stars =  $this->_dm->getRepository(Star::class)->findStarWithUser($user);
             $this->setAttributeView("stars", $stars);
-
-            // $db_challenges = $user->getClass()->getChallenges();
-            // $challenges = array();
-            // for ($i = 0, $k = 0; $i < count($db_challenges); $i++){
-            //     $search = $this->_dm->getRepository(ChallengeHistory::class)->findBy(array(
-            //         "user" => $user,
-            //         "challenge" => $db_challenges[$i]
-            //     ));
-            //     if (count($search) == 0){
-            //         $challenges[$k] = $db_challenges[$i]->toArray();
-            //         for ($j = 0; $j < count($challenges[$k]["questions"]); $j++){
-            //             $challenges[$k]["questions"][$j]["id"] = $this->_dm->getRepository(Activities::class)->find($challenges[$k]["questions"][$j]["id"]);
-            //         }
-            //         $k++;
-            //     }
-            // }
-            // $this->setAttributeView("challenges", $challenges);
             $this->setAttributeView("class", $user->getClass());
         }
 
-        // $user = $this->_dm->getRepository(User::class)->find($attributes['id']);
-        // $queryBuilderHistory = $this->_dm->createQueryBuilder(HistoryActivities::class)
-            // ->field('user')->references($user)
-            // ->getQuery()->execute();
-
-        // $idActivitiesUser = [];
-        // foreach($queryBuilderHistory as $activies) {
-            // $idActivitiesUser[] = $activies->getActivity()->getId();
-        // }
-
-//        $groupActivities = $this->_dm->getRepository(GroupActivities::class)->find("581a10bd7b3ceb04bb7b47cd");
-
-        // $allActivities = [];
-        // for($i = 0; $i <= $questionNumber - 1; $i++) {
-            // $qb = $this->_dm->createQueryBuilder(Activities::class)
-                // ->field('id')
-                // ->notIn($idActivitiesUser);
-//                ->in(['580ff69b5bd49c0ac5809682'])
-//                ->field('group');
-//                ->references($groupActivities);
-
-            // $count =  $qb->getQuery()->count();
-
-            // $random_position = rand(0, $count - 1);
-
-            // $activeRandom = $qb
-                // ->skip($random_position)
-                // ->limit(1)
-                // ->sort('order', 'asc')
-                // ->getQuery()
-                // ->execute();
-
-            // if ($activeRandom->count() == 0) {
-                // break 1;
-            // }
-
-            // $activies = $activeRandom->getNext();
-            // $allActivities[] = $activies;
-            // $idActivitiesUser[] = $activies->getId();
-        // }
-
-        // $this->setAttributeView('allActivities', $allActivities);
         return $this->view->render($response, 'View/dashboard/index/index.twig', $this->getAttributeView());
     }
 
