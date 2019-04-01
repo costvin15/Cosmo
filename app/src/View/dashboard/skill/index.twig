@@ -14,7 +14,7 @@
                 <span class="display-6 text-muted">Compre uma questão e responda para ganhar uma estrela.</span>
             {% endif %}
             <div class="row">
-                {% for activity in activities %}
+                {% for activity in activities if activity.group.id ==  skill.id %}
                     <div class="col-md-4 my-2">
                         <div class="card">
                             <div class="card-header">
@@ -44,7 +44,7 @@
                         </div>
                     </div>
                 {% endfor %}
-                {% for activity in questions_answered %}
+                {% for activity in questions_answered  if activity.group.id ==  skill.id %}
                     <div class="col-md-4 my-2">
                         <div class="card">
                             <div class="card-header">
