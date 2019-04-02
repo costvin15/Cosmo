@@ -81,8 +81,8 @@
                                                     {% if count_activity < 2 %}
                                                         <div class="col-lg-6">
                                                             <div class="card">
+                                                                <div class = "card-header text-center"><a href="{{ path_for("activities", {id: activity.getId, idGroup: skill.id}) }}">{{ activity.getTitle }}</a></div>
                                                                 <div class="card-body">
-                                                                <span class="card-title mb-0"><a href="{{ path_for("activities", {id: activity.getId, idGroup: skill.id}) }}">{{ activity.getTitle }}</a></span>
                                                                 <p class="text-muted mb-0">{{ activity.getQuestion }}</p>
                                                                 </div>
                                                             </div>
