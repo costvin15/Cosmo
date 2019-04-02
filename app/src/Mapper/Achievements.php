@@ -41,7 +41,7 @@ class Achievements{
     {
         $this->type = $type;
         $this->name = $name;
-        $this->level = 0;
+        $this->level = $level;
     }
     public function toArray(){
         return array(

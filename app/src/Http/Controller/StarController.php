@@ -53,17 +53,14 @@ class StarController extends AbstractController
         $history = $this->_dm->getRepository(HistoryActivities::class)->findHistories($user,$group);
         $optional = [];
 
-        if($category->getCategory() == InterfaceCategory::REQUIRED){
+        if($category->getCategory() == InterfaceCategory::REQUIRED)
             $checker = new CategoryRequired();
-        }
         if($category->getCategory() == InterfaceCategory::AGAINST_TIME){
             $optional = ["time"=>$star->getTimeEnd()-$star->getTimeStart()];
             $checker = new CategoryAgainstTime();
         }
-        if($category->getCategory() == InterfaceCategory::CHALLENGE){
+        if($category->getCategory() == InterfaceCategory::CHALLENGE)
             $checker = new CategoryTheInvestor();   
-        }
-
         if($checker->check($history,$star,$user)){
             $star->setCompleted(true);
             $star->setTimeEnd(time());

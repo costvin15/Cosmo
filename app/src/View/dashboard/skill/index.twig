@@ -2,7 +2,7 @@
 {% set page_title = skill.getName %}
 
 {% block content %}
-    <ul class="breadcrumb">
+    <ul class="breadcrumb mt-4">
         <li class="breadcrumb-item"><a href="{{ path_for("dashboard.index") }}">Dashboard</a></li>
         <li class="breadcrumb-item active">Habilidade</li>
     </ul>
@@ -14,7 +14,7 @@
                 <span class="display-6 text-muted">Compre uma questão e responda para ganhar uma estrela.</span>
             {% endif %}
             <div class="row">
-                {% for activity in activities %}
+                {% for activity in activities if activity.group.id ==  skill.id %}
                     <div class="col-md-4 my-2">
                         <div class="card">
                             <div class="card-header">
@@ -41,6 +41,24 @@
                                     <a href="{{ path_for("activities", {id: activity.getId,idGroup: idGroup}) }}" class="btn btn-cosmo-color-1">Responder</a>
                                 </div>
                             {% endif %}
+                        </div>
+                    </div>
+                {% endfor %}
+                {% for activity in questions_answered if activity.group.id ==  skill.id %}
+                    <div class="col-md-4 my-2">
+                        <div class="card">
+                            <div class="card-header">
+                                <h5 class="card-title mb-0">{{ activity.getTitle }}</h5>
+                            </div>
+
+                            <div class="card-body">
+                                <span class="text-muted mb-0">{{ activity.getQuestion }}</span><br>
+                                Categoria: <span class="text-muted mb-0">{{ activity.category }}</span>
+                            </div>
+                            
+                            <div class="card-footer">
+                                <a class="btn btn-success">Respondida</a>
+                            </div>
                         </div>
                     </div>
                 {% endfor %}

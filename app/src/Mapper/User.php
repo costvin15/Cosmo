@@ -5,6 +5,7 @@ namespace App\Mapper;
 use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
 use App\Model\Util\ImageBase64;
 use App\Facilitator\App\ContainerFacilitator;
+use App\Mapper\Achievements;
 
 /**
  * @ODM\Document(collection="User", repositoryClass="App\Mapper\Repository\UserRepository")
@@ -222,17 +223,17 @@ class User
         ];
     }
 
-    public function getAchievements(){
-        return $this->achievements;
-    }
+    // public function getAchievements(){
+    //     return $this->achievements;
+    // }
 
-    public function setAchievements(Achievements $achievement){
-        foreach ($this->achievements as $value){
-            if($achievement->type == "badge"){
+    // public function setAchievements(Achievements $achievement){
+    //     foreach ($this->achievements as $value){
+    //         if($achievement->type == "badge"){
                 
-            }
-       }
-    }
+    //         }
+    //    }
+    // }
     
     /**
      * @return mixed
@@ -404,6 +405,11 @@ class User
     public function setAnsweredActivities($answered_activities){
         $exists = false;
         $this->answered_activities = $answered_activities;
+        
+        if ($this->answered_activities == 1){
+            $this->achievements[] = new Achievements("trophie","Aprendiz", 1);
+        }
+        
         foreach($this->achievements->toArray() as $achievement){
             if ($achievement->getName() == "Devorador" && $achievement->getType() == "badge"){
                 if($this->answered_activities >= 10)
@@ -597,17 +603,17 @@ class User
         $this->class = $class;
     }
 
-    // /**
-    //  * @return mixed
-    //  */
-    // public function getAchievements(){
-    //     return $this->achievements;
-    // }
+    /**
+     * @return mixed
+     */
+    public function getAchievements(){
+        return $this->achievements;
+    }
 
-    // /**
-    //  * @param mixed $achievements
-    //  */
-    // public function setAchievements($achievements){
-    //     $this->achievements = $achievements;
-    // }
+    /**
+     * @param mixed $achievements
+     */
+    public function setAchievements($achievements){
+        $this->achievements = $achievements;
+    }
 }

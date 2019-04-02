@@ -106,7 +106,6 @@ class ProblemsValidate
             if (!$history){
                 $history = new ChallengeHistory();
                 $user->setAnsweredActivities($user->getAnsweredActivities() + 1);
-                $user->setMoedas($user->getMoedas()+$activity->getMoedas());
                 $user->updateAcumulo($activity->getMoedas());
                 $user->setXP($user->getXP() + $activity->getXP());
 
@@ -155,7 +154,6 @@ class ProblemsValidate
                 //     }
                 // }else{
                     $user->setAnsweredActivities($user->getAnsweredActivities() + 1);
-                    $user->setMoedas($user->getMoedas()+$activity->getMoedas());
                     $user->updateAcumulo($activity->getMoedas());
                     $user->setXP($user->getXP() + $activity->getXP());
                 //}

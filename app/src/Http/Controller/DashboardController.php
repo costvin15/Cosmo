@@ -75,68 +75,9 @@ class DashboardController extends AbstractController
 
             $stars =  $this->_dm->getRepository(Star::class)->findStarWithUser($user);
             $this->setAttributeView("stars", $stars);
-
-            // $db_challenges = $user->getClass()->getChallenges();
-            // $challenges = array();
-            // for ($i = 0, $k = 0; $i < count($db_challenges); $i++){
-            //     $search = $this->_dm->getRepository(ChallengeHistory::class)->findBy(array(
-            //         "user" => $user,
-            //         "challenge" => $db_challenges[$i]
-            //     ));
-            //     if (count($search) == 0){
-            //         $challenges[$k] = $db_challenges[$i]->toArray();
-            //         for ($j = 0; $j < count($challenges[$k]["questions"]); $j++){
-            //             $challenges[$k]["questions"][$j]["id"] = $this->_dm->getRepository(Activities::class)->find($challenges[$k]["questions"][$j]["id"]);
-            //         }
-            //         $k++;
-            //     }
-            // }
-            // $this->setAttributeView("challenges", $challenges);
             $this->setAttributeView("class", $user->getClass());
         }
 
-        // $user = $this->_dm->getRepository(User::class)->find($attributes['id']);
-        // $queryBuilderHistory = $this->_dm->createQueryBuilder(HistoryActivities::class)
-            // ->field('user')->references($user)
-            // ->getQuery()->execute();
-
-        // $idActivitiesUser = [];
-        // foreach($queryBuilderHistory as $activies) {
-            // $idActivitiesUser[] = $activies->getActivity()->getId();
-        // }
-
-//        $groupActivities = $this->_dm->getRepository(GroupActivities::class)->find("581a10bd7b3ceb04bb7b47cd");
-
-        // $allActivities = [];
-        // for($i = 0; $i <= $questionNumber - 1; $i++) {
-            // $qb = $this->_dm->createQueryBuilder(Activities::class)
-                // ->field('id')
-                // ->notIn($idActivitiesUser);
-//                ->in(['580ff69b5bd49c0ac5809682'])
-//                ->field('group');
-//                ->references($groupActivities);
-
-            // $count =  $qb->getQuery()->count();
-
-            // $random_position = rand(0, $count - 1);
-
-            // $activeRandom = $qb
-                // ->skip($random_position)
-                // ->limit(1)
-                // ->sort('order', 'asc')
-                // ->getQuery()
-                // ->execute();
-
-            // if ($activeRandom->count() == 0) {
-                // break 1;
-            // }
-
-            // $activies = $activeRandom->getNext();
-            // $allActivities[] = $activies;
-            // $idActivitiesUser[] = $activies->getId();
-        // }
-
-        // $this->setAttributeView('allActivities', $allActivities);
         return $this->view->render($response, 'View/dashboard/index/index.twig', $this->getAttributeView());
     }
 
@@ -320,6 +261,8 @@ class DashboardController extends AbstractController
                     ->field("id")->notIn($user_history_ids)->getQuery()->execute();
                 $groups[$i] = $group;
             }
+            $stars =  $this->_dm->getRepository(Star::class)->findStarWithUser($user);
+            $this->setAttributeView("stars", $stars);
             $this->setAttributeView("groups", $groups);
             $this->setAttributeView("user", $user);
             $this->setAttributeView("class", $user->getClass());
@@ -337,6 +280,25 @@ class DashboardController extends AbstractController
      * @Get(name="/profile/{id}", middleware={"App\Http\Middleware\SessionMiddleware"}, alias="dashboard.profile.visit")
      */
     public function visitAnotherProfile(Request $request, Response $response, array $args){
+        $attributes = SessionFacilitator::getAttributeSession();
+        $user = $this->_dm->getRepository(User::class)->find($args["id"]);
+        $stars =  $this->_dm->getRepository(Star::class)->findStarWithUser($user);
+        $user_history = $this->_dm->createQueryBuilder(HistoryActivities::class)
+                ->field("user")->references($user)->getQuery()->execute();
+            $user_history_ids = array();
+            foreach ($user_history as $activity)
+                $user_history_ids[] = $activity->getActivity()->getId();
+
+            $groups = $this->_dm->getRepository(GroupActivities::class)->findBy(array("class" => $user->getClass()));
+            for ($i = 0; $i < count($groups); $i++){
+                $group = $groups[$i]->toArray();
+                $group["activities"] = $this->_dm->createQueryBuilder(Activities::class)
+                    ->field("group")->references($groups[$i])
+                    ->field("id")->notIn($user_history_ids)->getQuery()->execute();
+                $groups[$i] = $group;
+            }
+        $this->setAttributeView("stars", $stars);
+        $this->setAttributeView("groups", $groups);
         $this->setAttributeView("user", $this->_dm->getRepository(User::class)->find($args["id"]));
         return $this->view->render($response, "View/dashboard/profile/profile_visit.twig", $this->getAttributeView());
     }
@@ -428,9 +390,7 @@ class DashboardController extends AbstractController
         $this->setAttributeView("categories", $this->_dm->getRepository(CategoryActivities::class)->findAll());
         $star = $this->_dm->getRepository(Star::class)->findStar($user,$group,$category);
 
-        if($star){
-
-        }
+        
         return $this->view->render($response, "View/dashboard/skill/categories.twig", $this->getAttributeView());
     }
      /**
@@ -460,20 +420,36 @@ class DashboardController extends AbstractController
             $this->_dm->flush();
         }
 
-        $activities = [];
-        foreach($group->getActivity() as $activity){
+       $questions_answered = $this->_dm->createQueryBuilder(HistoryActivities::class)
+            ->field("user")->equals($user)
+            ->getQuery()->execute(); 
+        $questions_answered_array = array();
+        $questions_answered_ids = array();
+        foreach($questions_answered as $question){
+            $questions_answered_array[] = $question->getActivity();
+            $questions_answered_ids[] = $question->getActivity()->getId();
+        }
+        $questions = $this->_dm->createQueryBuilder(Activities::class)
+            ->field("id")->notIn($questions_answered_ids)
+            ->field("group", $group)
+            ->getQuery()->execute();
+        $activities = array();
+        foreach($questions as $activity){
             if($activity->getCategory() == $category->getCategory()){
                 $activities[] = $activity;
             }
         }
+
         $this->setAttributeView("price", false);
         if($category->getCategory() == InterfaceCategory::CHALLENGE){
             $this->setAttributeView("price", true);
             $this->setAttributeView("payments", $user->getPurchasedActivities());
             $this->setAttributeView("coins", $user->getMoedas());
         }
+        $this->setAttributeView("skill", $group);
         $this->setAttributeView("activities", $activities);
         $this->setAttributeView("idGroup", $idGroup);
+        $this->setAttributeView("questions_answered", $questions_answered_array);
         return $this->view->render($response, "View/dashboard/skill/index.twig", $this->getAttributeView());
     }
 

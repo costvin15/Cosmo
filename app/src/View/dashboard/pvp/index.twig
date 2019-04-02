@@ -30,7 +30,9 @@
                                     <select id="form-activity" class="form-control">
                                         {% for group in class.groups %}
                                             {% for activity in group.getActivity %}
-                                                <option value="{{ activity.getId }}">{{ activity.getTitle }}</option>
+                                                {% if activity.category == "PvP" %}
+                                                    <option value="{{ activity.getId }}">{{ activity.getTitle }}</option>
+                                                {% endif %}
                                             {% endfor %}
                                         {% endfor %}
                                     </select>

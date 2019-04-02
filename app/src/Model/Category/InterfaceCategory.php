@@ -12,7 +12,8 @@ interface InterfaceCategory{
     const AGAINST_TIME = "Contra o tempo";
     const REQUIRED = "Obrigatória";
     const CHALLENGE = "O Investidor";
-    const CATEGORIES = [InterfaceCategory::AGAINST_TIME,InterfaceCategory::REQUIRED,InterfaceCategory::CHALLENGE];
+    const PVP = "PvP";
+    const CATEGORIES = [InterfaceCategory::AGAINST_TIME,InterfaceCategory::REQUIRED,InterfaceCategory::CHALLENGE, InterfaceCategory::PVP];
 
     public function check($historyActivities, $star, $user);
 

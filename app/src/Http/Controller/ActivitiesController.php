@@ -204,15 +204,10 @@ class ActivitiesController extends AbstractController
                 $this->_dm->flush();
                     
                 return $response->withJson([ 'return' => true,  'message' => 'Sua resposta está correta, veja seu resultado no painel de desafios!', 'user' => $user->toArray()], 200);
-            } else {
-                $validateInstanced->saveHistory($params);
-                return $response->withJson([ 'return' => true,  'message' => 'A resposta está correta!', 'user' => $user->toArray()], 200);
             }
 
             $validateInstanced->saveHistory($params);
-
             $categoryType = $this->_dm->getRepository(CategoryActivities::class)->findCategory($activity->getCategory())->getId();
-            
             $router = $this->_ci->get("router");
             return $response->withRedirect($router->pathFor("star.check",["id_group" => $params['id_group'],"id_category"=>$categoryType]));
         }
