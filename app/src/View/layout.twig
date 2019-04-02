@@ -29,7 +29,7 @@
             <ul class="list-group">
                 {% if class.getStudents %}
                     <li class="list-group-item class-card"><h5><i class = "fas fa-users text-primary mb-1"></i> <span>Minha Turma</span></h5>
-                        {% for user in class.getStudents %}
+                        {% for user in class.getStudents if user.id != attributes.id %}
                             <div class = "card side-card">
                                 <div class = "card-up bg-cosmo-color-1"></div>
                                 <div class = "avatar"> 

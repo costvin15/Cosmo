@@ -172,7 +172,10 @@ class DashboardController extends AbstractController
      */
     public function profileAction(Request $request, Response $response){
         $attributes = SessionFacilitator::getAttributeSession();
-        return $this->view->render($response, "View/dashboard/profile/profile_edit.twig", ["attributes" => $attributes]);
+        $user = $this->_dm->getRepository(User::class)->find($attributes["id"]);
+        $this->setAttributeView("attributes", $attributes);
+        $this->setAttributeView("user", $user);
+        return $this->view->render($response, "View/dashboard/profile/profile_edit.twig", $this->getAttributeView());
     }
 
     /**

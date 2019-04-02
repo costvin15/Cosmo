@@ -66,7 +66,8 @@
                                                         <i class="fa fa-star text-cosmo-color-7" style="float:right;"></i>
                                                         {% set count = count + 1 %}
                                                     {% endfor %}
-                                                    {% for i in 1..( 3 - count) %}                                                
+                                                    
+                                                    {% for i in 1..( 3 - count) if count < 3%}                                                
                                                         <i class="fa fa-star text-cosmo-color-10" style="float:right;"></i>
                                                     {% endfor %}
                                                 </div>
@@ -74,16 +75,16 @@
                                         </div>
 
                                         <div class="card-body">
-                                            <span class="text-muted">Questões mais recentes</span>
+                                            {# <span class="text-muted">Questões mais recentes</span> #}
                                             <div class="row mt-2">
                                                 {% set count_activity = 0 %}
-                                                {% for activity in skill.activities %}
+                                                {% for activity in skill.activities if count < 3%}
                                                     {% if count_activity < 2 %}
                                                         <div class="col-lg-6">
                                                             <div class="card">
                                                                 <div class="card-body">
-                                                                <span class="card-title mb-0"><a href="{{ path_for("activities", {id: activity.getId, idGroup: skill.id}) }}">{{ activity.getTitle }}</a></span>
-                                                                <p class="text-muted mb-0">{{ activity.getQuestion }}</p>
+                                                                    <span class="card-title mb-0"><a href="{{ path_for("activities", {id: activity.getId, idGroup: skill.id}) }}">{{ activity.getTitle }}</a></span>
+                                                                    <p class="text-muted mb-0">{{ activity.getQuestion }}</p>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -91,25 +92,31 @@
                                                     {% endif %}                                                
                                                     {% set count_activity = count_activity + 1 %}
                                                 {% endfor %}
-                                            </div>         
-                                            {% if count_activity == 0 %}
-                                                <div class="text-center w-100">
-                                                    <div class="row">
-                                                        <div class="col-12">
-                                                            <i class="display-4 fas fa-smile-wink"></i>
-                                                        </div>
+                                                   
+                                                {% if count == 3 %}
+                                                    <div class="text-center w-100">
+                                                        <div class="row">
+                                                            <div class="col-12">
+                                                                <i class="display-4 fas fa-smile-wink"></i>
+                                                            </div>
 
-                                                        <div class="col-12">
-                                                            <span class="display-5 text-muted">Você completou essa habilidade!</span>
+                                                            <div class="col-12">
+                                                                <span class="display-5 text-muted">Você completou essa habilidade!</span>
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                            {% endif %}
+                                                {% endif %}
+                                            </div> 
                                         </div>
-
-                                        <div class="card-footer d-flex align-items-center">
-                                            <a href="{{ path_for("dashboard.skill", {idGroup: skill.id}) }}" class="btn btn-cosmo-color-1">Ver habilidade</a>
-                                        </div>
+                                        {% if count < 3 %}
+                                            <div class="card-footer d-flex align-items-center">
+                                                <a href="{{ path_for("dashboard.skill", {idGroup: skill.id}) }}" class="btn btn-cosmo-color-1">Ver habilidade</a>
+                                            </div>
+                                        {% else %}
+                                            <div class="card-footer d-flex align-items-center">
+                                                <a class="btn btn-success cosmo-color-3 text-white">Completa</a>
+                                            </div>
+                                        {% endif %}
                                     </div>
                                 </div>
                             {% endfor %}
