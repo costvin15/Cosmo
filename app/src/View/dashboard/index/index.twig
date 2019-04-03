@@ -78,8 +78,8 @@
                                             {# <span class="text-muted">Questões mais recentes</span> #}
                                             <div class="row mt-2">
                                                 {% set count_activity = 0 %}
-                                                {% for activity in skill.activities if count < 3%}
-                                                    {% if count_activity < 2 %}
+                                                {% for activity in skill.activities if count == 0 %}
+                                                    {% if activity.category == "Obrigatória" and count_activity < 2 %}
                                                         <div class="col-lg-6">
                                                             <div class="card">
                                                                 <div class = "card-header text-center"><a href="{{ path_for("activities", {id: activity.getId, idGroup: skill.id}) }}">{{ activity.getTitle }}</a></div>
@@ -89,11 +89,22 @@
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                       
-                                                    {% endif %}                                                
+                                                    {% endif %}                            
                                                     {% set count_activity = count_activity + 1 %}
                                                 {% endfor %}
-                                                   
+                                                {% if count > 0 and count < 3 %}
+                                                    <div class="text-center w-100">
+                                                        <div class="row">
+                                                            <div class="col-12">
+                                                                <i class="display-4 fas fa-smile"></i>
+                                                            </div>
+
+                                                            <div class="col-12">
+                                                                <span class="display-5 text-muted">Você ainda pode ganhar mais estrelas!<br>Faça os Desafios!</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                {% endif %}       
                                                 {% if count == 3 %}
                                                     <div class="text-center w-100">
                                                         <div class="row">
