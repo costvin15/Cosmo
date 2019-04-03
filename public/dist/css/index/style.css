@@ -11,3 +11,9 @@
 
 ::-webkit-scrollbar-thumb {
   height: 6px; }
+
+.q-group:hover {
+  -webkit-box-shadow: 3px 3px 5px 6px #d6d4d4;
+  -moz-box-shadow: 3px 3px 5px 6px #d6d4d4;
+  box-shadow: 3px 3px 5px 6px #d6d4d4;
+  transition: all 0.4s; }

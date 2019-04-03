@@ -80,10 +80,10 @@
                                                 {% for activity in skill.activities %}
                                                     {% if count_activity < 2 %}
                                                         <div class="col-lg-6">
-                                                            <div class="card">
-                                                                <div class = "card-header text-center"><a href="{{ path_for("activities", {id: activity.getId, idGroup: skill.id}) }}">{{ activity.getTitle }}</a></div>
-                                                                <div class="card-body">
-                                                                <p class="text-muted mb-0">{{ activity.getQuestion }}</p>
+                                                            <div class="card q-group mb-3">
+                                                                <div class = "card-header text-center"><a class = "badge badge-cosmo-color-1 "href="{{ path_for("activities", {id: activity.getId, idGroup: skill.id}) }}">{{ activity.getTitle }}</a></div>
+                                                                <div class="card-body text-center">
+                                                                    <p class="text-muted mb-0">{{ activity.getQuestion }}</p>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -107,7 +107,7 @@
                                             {% endif %}
                                         </div>
 
-                                        <div class="card-footer d-flex align-items-center">
+                                        <div class="card-footer text-center">
                                             <a href="{{ path_for("dashboard.skill", {idGroup: skill.id}) }}" class="btn btn-cosmo-color-1">Ver habilidade</a>
                                         </div>
                                     </div>

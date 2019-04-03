@@ -14,3 +14,17 @@
 }::-webkit-scrollbar-thumb {
   height: 6px;
 }
+
+.q-group:hover {
+  -webkit-box-shadow: 3px 3px 5px 6px rgb(214, 212, 212); 
+  -moz-box-shadow:    3px 3px 5px 6px rgb(214, 212, 212);
+  box-shadow:         3px 3px 5px 6px rgb(214, 212, 212);
+  transition: all 0.4s;
+}
+// .q-group:hover {
+//   box-shadow: 1px 1px 0 rgba(0,0,0,.3);
+// }
+
+// .q-group{
+//   box-shadow: 1px 1px 0 rgba(0,0,0,.3);;
+// }

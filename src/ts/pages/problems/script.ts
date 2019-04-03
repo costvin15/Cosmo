@@ -16,6 +16,7 @@ class PluginProblems {
     constructor(){
         this.editor = ace.edit("editor");
         this.editor.setTheme("ace/theme/monokai");
+        this.editor.setFontSize("18px");
         this.editor.getSession().setMode("ace/mode/lua");
 
         (<HTMLInputElement> document.getElementById("language-selector")).addEventListener("change", (event: any) => {
