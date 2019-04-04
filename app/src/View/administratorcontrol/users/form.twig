@@ -5,7 +5,7 @@
 {% endif %}
 
 {% if formUpdate is defined %}
-    {% set page_title = "Editando " ~ user.fullname %}
+    {% set page_title = "Editando " ~ newuser.fullname %}
 {% endif %}
 
 {% block scripts %}
@@ -16,20 +16,20 @@
     <ul class="breadcrumb">
         <li class="breadcrumb-item"><a href="{{ path_for("administrator.control.index") }}">Administração</a></li>
         <li class="breadcrumb-item"><a href="{{ path_for("administrator.control.users") }}">Usuários</a></li>
-        <li class="breadcrumb-item active">Novo Usuário</li>
+        <li class="breadcrumb-item active">{% if formUpdate is defined %} Editar Usuário {% else %} Novo Usuário {% endif %}</li>
     </ul>
     <div class="row mb-4">
         <div class="col-md-3 mt-4">
             <div class="card">
                 <div class="card-header">
-                    <img id="img-frmuser-avatar" class="card-img-top" {% if formUpdate is defined %} src="{{ user.avatar }}" {% endif %}>
+                    <img id="img-frmuser-avatar" class="card-img-top" {% if formUpdate is defined %} src="{{ newuser.avatar }}" {% endif %}>
                 </div>
 
                 {% if formUpdate is defined %}
                 <div class="card-body">
-                    <h5 class="card-title">{{ user.fullname }}</h5>
-                    <h6 class="card-subtitle">{{ user.nickname }}</h6>
-                    <p class="text-muted mb-0"><small>{{ user.username }}</small></p>
+                    <h5 class="card-title">{{ newuser.fullname }}</h5>
+                    <h6 class="card-subtitle">{{ newuser.nickname }}</h6>
+                    <p class="text-muted mb-0"><small>{{ newuser.username }}</small></p>
                 </div>
                 {% endif %}
 
@@ -55,7 +55,7 @@
                                 <div class="input-group-prepend">
                                         <span class="input-group-text bg-light"><i class="fas fa-user"></i></span>
                                 </div>
-                                <input id="input-frmuser-name" type="text" class="form-control" placeholder="Nome completo" {% if formUpdate is defined %} value="{{ user.fullname }}" {% endif %}></input>
+                                <input id="input-frmuser-name" type="text" class="form-control" placeholder="Nome completo" {% if formUpdate is defined %} value="{{ newuser.fullname }}" {% endif %}></input>
                             </div>
                         </div>
                         
@@ -65,17 +65,17 @@
                                     <div class="input-group-prepend">
                                         <span class="input-group-text bg-light"><i class="fas fa-at"></i></span>
                                     </div>
-                                    <input id="input-frmuser-nickname" type="text" class="form-control" placeholder="Nome de usuário" {% if formUpdate is defined %} value="{{ user.nickname }}" {% endif %} aria-label="Nome de Usuário"></input>                                </div>
+                                    <input id="input-frmuser-nickname" type="text" class="form-control" placeholder="Nome de usuário" {% if formUpdate is defined %} value="{{ newuser.nickname }}" {% endif %} aria-label="Nome de Usuário"></input>                                </div>
                             </div> 
                         
                         <div class="form-group">
                             <label for="input-frmuser-sexo-group">Sexo</label>
                             <div class="input-group " id="input-frmuser-sexo-group">
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" id="input-frmuser-sexo-male" name="input-frmuser-sexo" value="Masculino" {% if user.sexo == "Masculino" %} checked {% endif %}><label class="form-check-label" for="input-frmuser-sexo-male"> Masculino </label></input>
+                                    <input class="form-check-input" type="radio" id="input-frmuser-sexo-male" name="input-frmuser-sexo" value="Masculino" {% if newuser.sexo == "Masculino" %} checked {% endif %}><label class="form-check-label" for="input-frmuser-sexo-male"> Masculino </label></input>
                                 </div>
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" id="input-frmuser-sexo-female" name="input-frmuser-sexo" value="Feminino" {% if user.sexo == "Feminino" %} checked {% endif %}><label class="form-check-label" for="input-frmuser-sexo-female"> Feminino</label></input>
+                                    <input class="form-check-input" type="radio" id="input-frmuser-sexo-female" name="input-frmuser-sexo" value="Feminino" {% if newuser.sexo == "Feminino" %} checked {% endif %}><label class="form-check-label" for="input-frmuser-sexo-female"> Feminino</label></input>
                                 </div>
                             </div>
                         </div> 
@@ -86,7 +86,7 @@
                                 <div class= "input-group-prepend">
                                     <span class="input-group-text bg-light"><i class="fas fa-envelope"></i></span>
                                 </div>
-                                <input id="input-frmuser-email" type="text" class="form-control" placeholder="Email" {% if formUpdate is defined %} value="{{ user.username }}" {% endif %}></input>
+                                <input id="input-frmuser-email" type="text" class="form-control" placeholder="Email" {% if formUpdate is defined %} value="{{ newuser.username }}" {% endif %}></input>
                             </div>
                         </div>
                         
@@ -108,7 +108,7 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text bg-light"><i class="fas fa-crown"></i></span>
                                 </div>
-                                <input class="form-control" disabled id = "input-frmuser-fulltitle" placeholder="Título" {% if formUpdate is defined %} value="{{ user.fulltitle }}" {% else %} value="Camponês(a)" {% endif %}></input>
+                                <input class="form-control" disabled id = "input-frmuser-fulltitle" placeholder="Título" {% if formUpdate is defined %} value="{{ newuser.fulltitle }}" {% else %} value="Camponês(a)" {% endif %}></input>
                             </div>
                         </div>
 
@@ -128,19 +128,19 @@
                         </div>
                        
                         <div class="form-check">
-                            <input id="input-frmuser-administrator" type="checkbox" class="form-check-input" {% if formUpdate is defined and user.administrator %} checked {% endif %}>
+                            <input id="input-frmuser-administrator" type="checkbox" class="form-check-input" {% if formUpdate is defined and newuser.administrator %} checked {% endif %}>
                             <label for="input-frmuser-administrator" class="form-check-label">Administrador</label>
                         </div>
                        
                         {% if formUpdate is defined %}
                             <div class="form-check">
-                                <input id="input-frmuser-block" type="checkbox" class="form-check-input" {% if formUpdate is defined and user.blocked and user.blocked.status %} checked {% endif %}>
+                                <input id="input-frmuser-block" type="checkbox" class="form-check-input" {% if formUpdate is defined and newuser.blocked and newuser.blocked.status %} checked {% endif %}>
                                 <label for="input-frmuser-block" class="form-check-label">Bloqueado</label>
                             </div>
 
                             <div class="form-group mt-2">
                                 <label for="input-frmuser-reason">Razão do bloqueio</label>
-                                <input id="input-frmuser-reason" type="text" class="form-control" placeholder="Razão do bloqueio" {% if formUpdate is defined and user.blocked %} value="{{ user.blocked.reason }}" {% endif %}></input>
+                                <input id="input-frmuser-reason" type="text" class="form-control" placeholder="Razão do bloqueio" {% if formUpdate is defined and newuser.blocked %} value="{{ newuser.blocked.reason }}" {% endif %}></input>
                             </div>
                         {% endif %}
                     </form>
@@ -152,12 +152,15 @@
                     {% endif %}
 
                     {% if formUpdate is defined %}
-                        <input id="input-hidden-id" type="hidden" value="{{ user.id }}">
+                        <input id="input-hidden-id" type="hidden" value="{{ newuser.id }}">
                         <button id="btn-close-profile" class="btn btn-danger">Encerrar conta</button>
                         <button id="btn-update-profile" type="submit" class="btn btn-cosmo-color-2">Salvar</button>
                     {% endif %}
                 </div>
             </div>
         </div>
+    </div>
+    <div class="">
+        <a href="{{ path_for("administrator.control.users") }}" class="btn btn-danger cosmo-color-1 float-right">Voltar</a>
     </div>
 {% endblock %}

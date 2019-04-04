@@ -2,6 +2,10 @@
 {% set page_title = "Visualizando: " ~ group.title %}
 
 {% block content %}
+<ul class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{{ path_for("administrator.control.index") }}">Administração</a></li>
+        <li class="breadcrumb-item active">Grupo de Atividades</li>
+    </ul>
     <div class="row my-4">
         <div class="col-md-4">
             <div class="card">
@@ -114,5 +118,8 @@
                 </div>
             </div>
         </div>
+    </div>
+    <div class="">
+        <a href="javascript:history.back()" class="btn btn-danger cosmo-color-1 float-right">Voltar</a>
     </div>
 {% endblock %}

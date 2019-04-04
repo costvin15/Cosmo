@@ -2,7 +2,10 @@
 {% set page_title = "Administração do Cosmo" %}
 
 {% block content %}
-   
+    <ul class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{{ path_for("dashboard.index") }}">Dashboard</a></li>
+        <li class="breadcrumb-item active">Administração</li>
+    </ul>
     <div class="row my-4">
         <div class="col-md-4 mb-2">
             <div class="card">
@@ -67,5 +70,8 @@
                 </div>
             </div>
         </div>
+    </div>
+    <div class="">
+            <a href="{{ path_for("dashboard.index") }}" class="btn btn-danger cosmo-color-1 float-right">Voltar</a>
     </div>
 {% endblock %}

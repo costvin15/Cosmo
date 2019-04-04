@@ -56,6 +56,9 @@ class AdministratorControlController extends AbstractController
                 "group_activities" => count($this->_dm->getRepository(GroupActivities::class)->findAll()),
             ],
         );
+        $attributes2 = SessionFacilitator::getAttributeSession();
+        $user = $this->_dm->getRepository(User::class)->find($attributes2["id"]);
+        $this->setAttributeView("user", $user);
         return $this->view->render($response, 'View/administratorcontrol/index.twig', array_merge($attributes, $this->getAttributeView()));
     }
 
@@ -68,6 +71,9 @@ class AdministratorControlController extends AbstractController
      */
     public function usersAction(Request $request, Response $response) {
         $users = $this->_dm->getRepository(User::class)->findAll();
+        $attributes = SessionFacilitator::getAttributeSession();
+        $user = $this->_dm->getRepository(User::class)->find($attributes["id"]);
+        $this->setAttributeView("user", $user);
         $this->setAttributeView("users", $users);
         return $this->view->render($response, 'View/administratorcontrol/users/index.twig', $this->getAttributeView());
     }
@@ -103,6 +109,9 @@ class AdministratorControlController extends AbstractController
      * @Log(type="INFO", persist={"verb", "attributes", "session"}, message="Acessou o página adminstrativa de criação de usuário.")
      */
     public function newUserAction(Request $request, Response $response) {
+        $attributes = SessionFacilitator::getAttributeSession();
+        $user = $this->_dm->getRepository(User::class)->find($attributes["id"]);
+        $this->setAttributeView("user", $user);
         $this->setAttributeView('show_adm', true);
         $this->setAttributeView('formCreate', true);
         $this->setAttributeView("classes", $this->_dm->getRepository(Classes::class)->findAll());
@@ -119,13 +128,16 @@ class AdministratorControlController extends AbstractController
      * @Log(type="INFO", persist={"verb", "attributes", "session"}, message="Acessou a página administrativa de modificação de usuário.")
      */
     public function modifyUserAction(Request $request, Response $response, array $args) {
+        $attributes = SessionFacilitator::getAttributeSession();
+        $user = $this->_dm->getRepository(User::class)->find($attributes["id"]);
+        $this->setAttributeView("user", $user);
         $this->setAttributeView('show_adm', true);
         $this->setAttributeView('formUpdate', true);
 
         $id = $args['id'];
-        $user = $this->_dm->getRepository(User::class)->find($id);
+        $newuser = $this->_dm->getRepository(User::class)->find($id);
 
-        if ($user == null)
+        if ($newuser == null)
             throw new \Exception('Usuário não encontrado');
 
         $image64 = new ImageBase64();
@@ -141,7 +153,7 @@ class AdministratorControlController extends AbstractController
         $avatarBase64 = $image64->castPathFile($fileAvatar);
 
         $this->setAttributeView('id', $id);
-        $this->setAttributeView('user', $user->toArray());
+        $this->setAttributeView('newuser', $newuser->toArray());
         $this->setAttributeView("classes", $this->_dm->getRepository(Classes::class)->findAll());
         return $this->view->render($response, 'View/administratorcontrol/users/form.twig', $this->getAttributeView());
     }
@@ -328,9 +340,12 @@ class AdministratorControlController extends AbstractController
      * @Log(type="INFO", persist={"verb", "attributes", "session"}, message="Acessou a página administrativa de atividades.")
      */
     public function activitiesAction(Request $request, Response $response){
+        $attributes = SessionFacilitator::getAttributeSession();
+        $user = $this->_dm->getRepository(User::class)->find($attributes["id"]);
+        $this->setAttributeView("user", $user);
         $activities = $this->_dm->getRepository(Activities::class)->findAll();
         $this->setAttributeView("activities", $activities);
-
+        
         return $this->view->render($response, "View/administratorcontrol/activities/index.twig", $this->getAttributeView());
     }
 
@@ -342,6 +357,9 @@ class AdministratorControlController extends AbstractController
      * @Log(type="INFO", persist={"verb", "attributes", "session"}, message="Acessou o página adminstrativa de criação de atividade.")
      */
     public function newActivityAction(Request $request, Response $response){
+        $attributes = SessionFacilitator::getAttributeSession();
+        $user = $this->_dm->getRepository(User::class)->find($attributes["id"]);
+        $this->setAttributeView("user", $user);
         $this->setAttributeView("formCreate", true);
         $this->setAttributeView("categories", InterfaceCategory::CATEGORIES);
         $this->setAttributeView("group_activities", $this->_dm->getRepository(GroupActivities::class)->findAll());
@@ -357,6 +375,9 @@ class AdministratorControlController extends AbstractController
      * @Log(type="INFO", persist={"verb", "attributes", "session"}, message="Acessou o página adminstrativa de modificação de atividade.")
      */
     public function modifyActivityAction(Request $request, Response $response, array $args){
+        $attributes = SessionFacilitator::getAttributeSession();
+        $user = $this->_dm->getRepository(User::class)->find($attributes["id"]);
+        $this->setAttributeView("user", $user);
         $id = $args["id"];
 
         if (!$id)
@@ -480,6 +501,9 @@ class AdministratorControlController extends AbstractController
      * @Log(type="INFO", persist={"verb", "attributes", "session"}, message="Acessou o página adminstrativa de grupos de atividades.")
      */
     public function groupActivitiesAction(Request $request, Response $response){
+        $attributes = SessionFacilitator::getAttributeSession();
+        $user = $this->_dm->getRepository(User::class)->find($attributes["id"]);
+        $this->setAttributeView("user", $user);
         $this->setAttributeView("group_activities", $this->_dm->getRepository(GroupActivities::class)->findAll());
         return $this->view->render($response, "View/administratorcontrol/groupactivities/index.twig", $this->getAttributeView());
     }
@@ -492,6 +516,9 @@ class AdministratorControlController extends AbstractController
      * @Log(type="INFO", persist={"verb", "attributes", "session"}, message="Acessou o página adminstrativa de criação de grupo de atividade.")
      */
     public function newGroupActivityAction(Request $request, Response $response){
+        $attributes = SessionFacilitator::getAttributeSession();
+        $user = $this->_dm->getRepository(User::class)->find($attributes["id"]);
+        $this->setAttributeView("user", $user);
         $this->setAttributeView("formCreate", true);
         return $this->view->render($response, "View/administratorcontrol/groupactivities/form.twig", $this->getAttributeView());
     }
@@ -505,6 +532,9 @@ class AdministratorControlController extends AbstractController
      * @Log(type="INFO", persist={"verb", "attributes", "session"}, message="Acessou o página adminstrativa de modificação de grupo de atividade.")
      */
     public function modifyGroupActivityAction(Request $request, Response $response, array $args){
+        $attributes = SessionFacilitator::getAttributeSession();
+        $user = $this->_dm->getRepository(User::class)->find($attributes["id"]);
+        $this->setAttributeView("user", $user);
         $id = $args["id"];
 
         if (!$id)
@@ -586,6 +616,9 @@ class AdministratorControlController extends AbstractController
      * @Log(type="INFO", persist={"verb", "attributes", "session"}, message="O administrador removeu um grupo de atividade.")
      */
     public function viewGroupActivityAction(Request $request, Response $response, array $args){
+        $attributes = SessionFacilitator::getAttributeSession();
+        $user = $this->_dm->getRepository(User::class)->find($attributes["id"]);
+        $this->setAttributeView("user", $user);
         $group = $this->_dm->getRepository(GroupActivities::class)->find($args["id"]);
         if (!$group)
             return $response->withJson(["Grupo não encontrado."], 500);
@@ -615,6 +648,9 @@ class AdministratorControlController extends AbstractController
      * @Log(type="INFO", persist={"verb", "attributes", "session"}, message="O administrador acessou o painel de turmas.")
      */
     public function classesAction(Request $request, Response $response){
+        $attributes = SessionFacilitator::getAttributeSession();
+        $user = $this->_dm->getRepository(User::class)->find($attributes["id"]);
+        $this->setAttributeView("user", $user);
         $this->setAttributeView("classes", $this->_dm->getRepository(Classes::class)->findAll());
         return $this->view->render($response, "View/administratorcontrol/classes/index.twig", $this->getAttributeView());
     }
@@ -627,6 +663,9 @@ class AdministratorControlController extends AbstractController
      * @Log(type="INFO", persist={"verb", "attributes", "session"}, message="O administrador acessou o painel de criação de turmas.")
      */
     public function newClassesAction(Request $request, Response $response){
+        $attributes = SessionFacilitator::getAttributeSession();
+        $user = $this->_dm->getRepository(User::class)->find($attributes["id"]);
+        $this->setAttributeView("user", $user);
         $this->setAttributeView("formCreate", true);
         return $this->view->render($response, "View/administratorcontrol/classes/form.twig", $this->getAttributeView());
     }
@@ -640,6 +679,9 @@ class AdministratorControlController extends AbstractController
      * @Log(type="INFO", persist={"verb", "attributes", "session"}, message="O administrador acessou uma turma.")
      */
     public function viewClassesAction(Request $request, Response $response, array $args){
+        $attributes = SessionFacilitator::getAttributeSession();
+        $user = $this->_dm->getRepository(User::class)->find($attributes["id"]);
+        $this->setAttributeView("user", $user);
         $id = $args["id"];
         $class = $this->_dm->getRepository(Classes::class)->find($id);
         if (!$class)

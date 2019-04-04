@@ -6,6 +6,11 @@
 {% endblock %}
 
 {% block content %}
+<ul class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{{ path_for("administrator.control.index") }}">Administração</a></li>
+        <li class="breadcrumb-item"><a href="{{ path_for("administrator.control.classes") }}">Turmas</a></li>
+        <li class="breadcrumb-item active">Ver Turma - {{class.title}}</li>
+    </ul>
     <div class="row my-4">
         <div class="col-md-4">
             <div class="card">
@@ -130,5 +135,8 @@
                 </table>
             </div>
         </div>
+    </div>
+    <div class="">
+        <a href="{{ path_for("administrator.control.classes") }}" class="btn btn-danger cosmo-color-1 float-right">Voltar</a>
     </div>
 {% endblock %}

@@ -2,6 +2,10 @@
 {% set page_title = "Turmas" %}
 
 {% block content %}
+    <ul class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{{ path_for("administrator.control.index") }}">Administração</a></li>
+        <li class="breadcrumb-item active">Turmas</li>
+    </ul>
     <div class="row">
         <div class="col-12">
             <a href="{{ path_for("administrator.control.classes.new") }}" class="btn btn-cosmo-color-2 float-right">Novo</a>
@@ -9,14 +13,14 @@
     </div>
 
     <div class="row my-4">
-        <div class="col-md-4">
+        {# <div class="col-md-4">
             <div class="nav flex-column nav-pills mb-4" role="tablist" aria-orientation="vertical">
                 <a class="nav-link" href="{{ path_for("administrator.control.users") }}">Usuários</a>
                 <a class="nav-link" href="{{ path_for("administrator.control.activities") }}">Atividades</a>
                 <a class="nav-link" href="{{ path_for("administrator.control.groupactivities") }}">Grupo de atividades</a>
                 <a class="nav-link active" href="{{ path_for("administrator.control.classes") }}">Turmas</a>
             </div>
-        </div>
+        </div> #}
 
         <div class="col-md-8">
             <div class="row">
@@ -47,5 +51,8 @@
                 {% endfor %}
             </div>
         </div>
+    </div>
+    <div class="">
+        <a href="{{ path_for("administrator.control.index") }}" class="btn btn-danger cosmo-color-1 float-right">Voltar</a>
     </div>
 {% endblock %}
