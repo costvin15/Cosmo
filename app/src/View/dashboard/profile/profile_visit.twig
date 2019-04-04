@@ -71,6 +71,8 @@
                                 {% set devorador = 0 %}
                                 {% set acumulador = 0 %}
                                 {% set gastador = 0 %}
+                                {% set aprendiz = 0 %}
+                                {% set deprimeira = 0 %}
     
                                 {% for achiv in student.getAchievements %}
                                     {% if achiv.getName == "Gastador" %}
@@ -81,6 +83,12 @@
                                     {% endif %}
                                     {% if achiv.getName == "Acumulador" %}
                                         {% set acumulador = achiv.getLevel %}
+                                    {% endif %}
+                                    {% if achiv.getName == "Aprendiz" %}
+                                        {% set aprendiz = achiv.getLevel %}
+                                    {% endif %}
+                                    {% if achiv.getName == "De Primeira" %}
+                                        {% set deprimeira = achiv.getLevel %}
                                     {% endif %}
                                 {% endfor %}
                                 <div class = "d-flex justify-content-center">
@@ -197,23 +205,29 @@
                             <hr>
 
                             <div class="row">
-                                <h5>Gafanhoto :</h5>
-                                <button class = "btn btn-sm btn-cosmo-color-8 ml-2" type="button" data-toggle="collapse" data-target="#bge-4"> 
-                                    <i class = "fas fa-trophy text-cosmo-color-7"></i>
-                                </button>
-                                <div class="collapse mt-3" id="bge-4">
-                                    <div class="card text-cosmo-color-3">
-                                        <div class = "card-header text-center">Requisitos</div>
-                                        <div class = "card-body">
-                                            <div class = "d-flex flex-column">
-                                                <div class = "p-2"> Responder sua primeira questão.</div>
+                                    <h5>Aprendiz :</h5>
+                                
+                                    <button class = "btn btn-sm btn-cosmo-color-8 ml-2" type="button" data-toggle="collapse" data-target="#bge-4">
+                                        
+                                        {% if aprendiz %}
+                                            <i class = "fas fa-trophy text-cosmo-color-7"></i>
+                                        {% else %}
+                                            <i class = "fas fa-trophy"></i>
+                                        {% endif %}
+                                    </button>
+                                    <div class="collapse mt-3" id="bge-4">
+                                        <div class="card text-cosmo-color-3">
+                                            <div class = "card-header text-center">Requisitos</div>
+                                            <div class = "card-body">
+                                                <div class = "d-flex flex-column">
+                                                    <div class = "p-2"> Responder sua primeira questão.</div>
+                                                </div>
                                             </div>
                                         </div> 
                                     </div>
-                                </div>
                             </div>
                             
-                            <hr>
+                            {# <hr>
 
                             <div class="row">
                                 <h5>Decorador :</h5>
@@ -230,25 +244,29 @@
                                         </div> 
                                     </div>
                                 </div>
-                            </div>
+                            </div> #}
 
                             <hr>
 
                             <div class="row">
-                                <h5>De primeira :</h5>
-                                <button class = "btn btn-sm btn-cosmo-color-8 ml-2" type="button" data-toggle="collapse" data-target="#bge-6"> 
-                                    <i class = "fas fa-trophy"></i>
-                                </button>
-                                <div class="collapse mt-3" id="bge-6">
-                                    <div class="card text-cosmo-color-3">
-                                        <div class = "card-header text-center">Requisitos</div>
-                                        <div class = "card-body">
-                                            <div class = "d-inline-flex p-2">
-                                                Responder uma questão sem errar, uma única vez.
+                                    <h5>De Primeira :</h5>
+                                    <button class = "btn btn-sm btn-cosmo-color-8 ml-2" type="button" data-toggle="collapse" data-target="#bge-6">
+                                        {% if deprimeira %}
+                                            <i class = "fas fa-trophy text-cosmo-color-7"></i>
+                                        {% else %}
+                                            <i class = "fas fa-trophy"></i>
+                                        {% endif %}
+                                    </button>
+                                    <div class="collapse mt-3" id="bge-6">
+                                        <div class="card text-cosmo-color-3">
+                                            <div class = "card-header text-center">Requisitos</div>
+                                            <div class = "card-body">
+                                                <div class = "d-inline-flex p-2">
+                                                    Responder uma questão sem errar, uma única vez.
+                                                </div>
                                             </div>
                                         </div> 
                                     </div>
-                                </div>
                             </div>
                         </div>
                 </div>
@@ -308,7 +326,7 @@
                 </div>
 
                 <div class = "card-footer p-footer text-center">
-                    <a class = "btn btn-cosmo-color-1" href = "{{ path_for("dashboard.index") }}"> Voltar </a>
+                    <a class = "btn btn-danger" href = "{{ path_for("dashboard.index") }}"> Voltar </a>
                 </div>
             </div> 
         </div>
@@ -331,7 +349,7 @@
                                                     <i class="fa fa-star fa-1x text-cosmo-color-7" style="float:right;"></i>
                                                     {% set count = count + 1 %}
                                                 {% endfor %}
-                                                {% for i in 1..( 3 - count) %}                                                
+                                                {% for i in 1..( 3 - count) if count < 3 %}                                                
                                                     <i class="fa fa-star fa-1x " style="float:right;"></i>
                                                 {% endfor %}
                                         </button>

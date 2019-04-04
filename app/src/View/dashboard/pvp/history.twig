@@ -2,6 +2,10 @@
 {% set page_title = "Histórico de PVPs" %}
 
 {% block content %}
+    <ul class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{{ path_for("dashboard.index") }}">Dashboard</a></li>
+        <li class="breadcrumb-item active">Meu Perfil</li>
+    </ul>
     <div class="row">
         {% for pvp in pvps_history %}
             <div class="col-md-4">
@@ -86,5 +90,8 @@
                 </div>
             </div>
         {% endfor %}
+    </div>
+    <div class="">
+            <a href="javascript:history.back()" class="btn btn-danger cosmo-color-1 float-right">Voltar</a>
     </div>
 {% endblock %}

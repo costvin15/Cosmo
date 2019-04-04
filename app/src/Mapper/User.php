@@ -162,7 +162,9 @@ class User
         $this->achievements[] = new Achievements("badge","Acumulador",0);
         $this->achievements[] = new Achievements("badge","Devorador",0);
         $this->achievements[] = new Achievements("badge","Gastador",0);
-
+        // $this->achievements[] = new Achievements("trophie","Aprendiz",0);
+        // $this->achievements[] = new Achievements("trophie","De Primeira",0);
+    
     }
 
     public function getAvatar(){
@@ -614,6 +616,6 @@ class User
      * @param mixed $achievements
      */
     public function setAchievements($achievements){
-        $this->achievements = $achievements;
+        $this->achievements[] = $achievements;
     }
 }

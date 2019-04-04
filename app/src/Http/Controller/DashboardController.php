@@ -174,7 +174,9 @@ class DashboardController extends AbstractController
     public function profileAction(Request $request, Response $response){
         $attributes = SessionFacilitator::getAttributeSession();
         $user = $this->_dm->getRepository(User::class)->find($attributes["id"]);
-        return $this->view->render($response, "View/dashboard/profile/profile_edit.twig", ["user" => $user]);
+        $this->setAttributeView("attributes", $attributes);
+        $this->setAttributeView("user", $user);
+        return $this->view->render($response, "View/dashboard/profile/profile_edit.twig", $this->getAttributeView());
     }
 
     /**
@@ -413,7 +415,6 @@ class DashboardController extends AbstractController
         $category = $this->_dm->getRepository(CategoryActivities::class)->find($idCategory);
         $group = $this->_dm->getRepository(GroupActivities::class)->find($idGroup);
         $star = $this->_dm->getRepository(Star::class)->findStar($user,$group,$category);
-
         if(!$star){
             $star = new Star();
             $star->setUser($user);
@@ -453,6 +454,7 @@ class DashboardController extends AbstractController
         $this->setAttributeView("skill", $group);
         $this->setAttributeView("activities", $activities);
         $this->setAttributeView("idGroup", $idGroup);
+        $this->setAttributeView("category", $category->getCategory());
         $this->setAttributeView("questions_answered", $questions_answered_array);
         return $this->view->render($response, "View/dashboard/skill/index.twig", $this->getAttributeView());
     }
