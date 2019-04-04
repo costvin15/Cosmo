@@ -63,7 +63,7 @@ class ActivitiesController extends AbstractController
 
         $this->_dm->persist($user);
         $this->_dm->flush();
-
+        $this->setAttributeView("user", $user);
         $this->setAttributeView("activity", $this->activity);
         $this->setAttributeView("idGroup", $args["idGroup"]);
 
@@ -107,7 +107,7 @@ class ActivitiesController extends AbstractController
         
         $this->_dm->persist($challenge);
         $this->_dm->flush();
-        
+        $this->setAttributeView("user", $user);
         $this->setAttributeView("challenge", $challenge);
 
         if ($challenge->getStartTimeChallenger() && $challenge->getSubmissionTimeChallenger())

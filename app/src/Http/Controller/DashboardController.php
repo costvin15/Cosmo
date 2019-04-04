@@ -387,6 +387,7 @@ class DashboardController extends AbstractController
         $group = $this->_dm->getRepository(GroupActivities::class)->find($idGroup);
         $star = $this->_dm->getRepository(Star::class)->findStar($user,$group,$category);
         
+        $this->setAttributeView("user", $user);
         $this->setAttributeView("required", InterfaceCategory::REQUIRED);
         if($star)
             $this->setAttributeView("blocked", !$star->getCompleted());
@@ -444,7 +445,7 @@ class DashboardController extends AbstractController
                 $activities[] = $activity;
             }
         }
-
+        $this->setAttributeView("user", $user);
         $this->setAttributeView("price", false);
         if($category->getCategory() == InterfaceCategory::CHALLENGE){
             $this->setAttributeView("price", true);
@@ -483,6 +484,7 @@ class DashboardController extends AbstractController
                     ->field("id")->notIn($user_history_ids)->getQuery()->execute();
                 $groups[$i] = $group;
             }
+            $this->setAttributeView("user", $user);
             $this->setAttributeView("groups", $groups);
             $this->setAttributeView("class", $user->getClass());
         }
