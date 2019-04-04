@@ -52,7 +52,7 @@
             <div class="card">
                 <div class="card-header d-flex justify-content-center">
                     <span class="p-2">
-                        Conquistas de {{user.fullname}}
+                        Conquistas de {{student.fullname}}
                     </span>
                 </div>
 
@@ -72,7 +72,7 @@
                                 {% set acumulador = 0 %}
                                 {% set gastador = 0 %}
     
-                                {% for achiv in user.getAchievements %}
+                                {% for achiv in student.getAchievements %}
                                     {% if achiv.getName == "Gastador" %}
                                         {% set gastador = achiv.getLevel %}
                                     {% endif %}
@@ -260,40 +260,40 @@
             <div class = "card p-card">
                 <div class="card-header d-flex justify-content-center" style = "word-break: break-all;">
                     <h4 class="p-2">
-                        Fotos e dados de {{user.fullname}}
+                        Fotos e dados de {{student.fullname}}
                     </h4>
                 </div>
 
                 <div class="card-up"></div>
 
                 <div class="avatar mx-auto">
-                    <img id="img-frmuser-avatar" src= "{{user.avatar}}" class="rounded-circle" alt=""/>
+                    <img id="img-frmuser-avatar" src= "{{student.avatar}}" class="rounded-circle" alt=""/>
                 </div>
 
                 <div class = "card-body p-body mt-0">
                     <div class="d-flex justify-content-center">
-                        <h5 = "p-2">{{user.fullname}}</h5>
+                        <h5 = "p-2">{{student.fullname}}</h5>
                     </div>
                     <hr>
 
                     <div class = "card-body">
                         <div class = "row">
                             <div class = "d-flex justify-content-center">
-                                <i class="brain" ></i> <span class = "p-2"> Conhecimento: {{user.xp}}</span>
+                                <i class="brain" ></i> <span class = "p-2"> Conhecimento: {{student.xp}}</span>
                                 <!-- <span id="dynamic" title="Pontos de Conhecimento" class="progress progress-bar progress-bar-striped" role="progressbar" style="width: 10%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></span> -->                
                             </div>
                         </div>
                         <div class = "row">
                             <div class = "d-flex justify-content-center">
-                                <i class="coins"> </i> <span class = "p-2">Moedas: {{user.moedas}}</span>
+                                <i class="coins"> </i> <span class = "p-2">Moedas: {{student.moedas}}</span>
                             </div>
                         </div>
                         <div class = "row">
                             <div class = "d-flex justify-content-center">
                                 <i class="papyrus"></i> <span class = "p-2">
-                                {% if user.answered_activities >= 3 %}
-                                    Título: {{user.fulltitle}}</span>
-                                {% elseif user.answered_activities < 3 %}
+                                {% if student.answered_activities >= 3 %}
+                                    Título: {{student.fulltitle}}</span>
+                                {% elseif student.answered_activities < 3 %}
                                     Título: Sem título</span>
                                 {% endif %}
                             </div>
@@ -317,7 +317,7 @@
             <div class = "card">
                 <div class="card-header">
                     <h5 class=" text-center">
-                        Habilidades de {{user.fullname}}
+                        Habilidades de {{student.fullname}}
                     </span>
                 </div>
                 <div class = "card-body d-flex flex-column">

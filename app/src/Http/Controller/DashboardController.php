@@ -75,6 +75,7 @@ class DashboardController extends AbstractController
 
             $stars =  $this->_dm->getRepository(Star::class)->findStarWithUser($user);
             $this->setAttributeView("stars", $stars);
+            $this->setAttributeView("user", $user);
             $this->setAttributeView("class", $user->getClass());
         }
 
@@ -172,7 +173,8 @@ class DashboardController extends AbstractController
      */
     public function profileAction(Request $request, Response $response){
         $attributes = SessionFacilitator::getAttributeSession();
-        return $this->view->render($response, "View/dashboard/profile/profile_edit.twig", ["attributes" => $attributes]);
+        $user = $this->_dm->getRepository(User::class)->find($attributes["id"]);
+        return $this->view->render($response, "View/dashboard/profile/profile_edit.twig", ["user" => $user]);
     }
 
     /**
@@ -281,10 +283,11 @@ class DashboardController extends AbstractController
      */
     public function visitAnotherProfile(Request $request, Response $response, array $args){
         $attributes = SessionFacilitator::getAttributeSession();
-        $user = $this->_dm->getRepository(User::class)->find($args["id"]);
-        $stars =  $this->_dm->getRepository(Star::class)->findStarWithUser($user);
+        $user = $this->_dm->getRepository(User::class)->find($attributes["id"]);
+        $student = $this->_dm->getRepository(User::class)->find($args["id"]);
+        $stars =  $this->_dm->getRepository(Star::class)->findStarWithUser($student);
         $user_history = $this->_dm->createQueryBuilder(HistoryActivities::class)
-                ->field("user")->references($user)->getQuery()->execute();
+                ->field("user")->references($student)->getQuery()->execute();
             $user_history_ids = array();
             foreach ($user_history as $activity)
                 $user_history_ids[] = $activity->getActivity()->getId();
@@ -297,9 +300,10 @@ class DashboardController extends AbstractController
                     ->field("id")->notIn($user_history_ids)->getQuery()->execute();
                 $groups[$i] = $group;
             }
+        $this->setAttributeView("user", $user);
         $this->setAttributeView("stars", $stars);
         $this->setAttributeView("groups", $groups);
-        $this->setAttributeView("user", $this->_dm->getRepository(User::class)->find($args["id"]));
+        $this->setAttributeView("student", $student);
         return $this->view->render($response, "View/dashboard/profile/profile_visit.twig", $this->getAttributeView());
     }
 
