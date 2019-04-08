@@ -20,8 +20,9 @@
                 </span>
             {% endif %}
             <div class="row">
+               
                 {% for activity in activities if activity.group.id ==  skill.id and activity.category == category %}
-                    
+                     
                         <div class="col-md-4 my-2">
                             <div class="card">
                                 <div class="card-header">

@@ -142,23 +142,26 @@
                             </div>
                         </div>
                     </li>
+                    <li>
+                            <div class = "myStats text-center">
+                                    <span class="animated infinite pulse  coin-badge badge badge-pill badge-cosmo-color-7 text-white">
+                                        <div class = "d-flex justify-content-center">
+                                            <i class="fas fa-coins fa-2x"> </i> <span class = "p-2">¢ {{user.moedas}}</span>
+                                        </div>
+                                    </span> 
+                                    <span class = "animated infinite pulse xp-badge badge badge-pill badge-cosmo-color-8">
+                                            <div class = "d-flex justify-content-center">
+                                                <i class="fas fa-brain fa-2x" ></i> <span class = "p-2"> {{user.xp}}</span>
+                                            </div>
+                                    </span>
+                                </div>
+                    </li>
                     <li class="nav-item dropdown">
                         <a id="user-dropdown" href="#" class="nav-link dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <img class="rounded-circle" src="{{ user.avatar }}" style = "width: 32px;height: 32px;"/> {{ user.nickname }}
                         </a>
                         <div class= "dropdown-menu dropdown-menu-right mt-2" aria-labelledby="user-dropdown">
-                            <div class = "myStats text-center">
-                                <span class="animated infinite pulse  coin-badge badge badge-pill badge-cosmo-color-7 text-white">
-                                    <div class = "d-flex justify-content-center">
-                                        <i class="fas fa-coins fa-2x"> </i> <span class = "p-2">¢ {{user.moedas}}</span>
-                                    </div>
-                                </span> 
-                                <span class = "animated infinite pulse xp-badge badge badge-pill badge-cosmo-color-8">
-                                        <div class = "d-flex justify-content-center">
-                                            <i class="fas fa-brain fa-2x" ></i> <span class = "p-2"> {{user.xp}}</span>
-                                        </div>
-                                </span>
-                            </div>
+                        
                             <div class = "dropdown-divider"></div>
                             <a class = "dropdown-item" href = "{{path_for('dashboard.profile')}}"><i class = "fas fa-eye"></i> Ver Perfil</a>
                             <a class = "dropdown-item" href = "{{path_for('dashboard.profile.edit')}}"><i class = "fas fa-edit"></i> Editar Perfil</a>
