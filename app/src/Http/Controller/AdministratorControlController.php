@@ -437,7 +437,7 @@ class AdministratorControlController extends AbstractController
                 $output_description = $request->getParam("output_description");
                 $output_example = $request->getParam("output_example");
                 $casos_de_teste = $request->getParam("casos_testes");
-
+                $order = $request->getParam("order");
                 $dateCreate = date("Y-m-d H:i:s");
                 $uploader = $this->_dm->getRepository(User::class)->find($attributes['id']);
                 $moedas = $request->getParam("moedas");
@@ -471,6 +471,8 @@ class AdministratorControlController extends AbstractController
                 $activity->setXP($xp);
                 $activity->setCust($cust);
                 $activity->setCategory($category);
+                $activity->setOrder($order);
+
 
                 if (!$id){
                     $activity->setDateCreate($dateCreate);

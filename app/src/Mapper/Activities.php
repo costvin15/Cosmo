@@ -149,6 +149,7 @@ class Activities
             "activities" => $this->getActivities(),
             "tasks" => $this->activities["tasks"],
             "group" => $this->group,
+            "order" => $this->order,
             "moedas" => $this->moedas,
             "cust" => $this->cust,
             "xp" => $this->xp,
@@ -228,6 +229,23 @@ class Activities
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * @param mixed $id
+     */
+    public function setOrder($order)
+    {
+        $this->order = $order;
+    }
+
+
+    /**
+     * @return mixed
+     */
+    public function getOrder()
+    {
+        return $this->order;
     }
 
     /**

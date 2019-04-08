@@ -16,6 +16,7 @@ interface Activity {
     cust: string;
     xp: string;
     category: string;
+    order: string;
 }
 
 abstract class AbstractActivity {
@@ -50,6 +51,7 @@ abstract class AbstractActivity {
             output_example: (<HTMLTextAreaElement> document.getElementById("input-frmactivity-example-output")).value,
             casos_testes: casos_testes,
             moedas: (<HTMLInputElement> document.getElementById("input-frmactivity-moedas")).value,
+            order: (<HTMLInputElement> document.getElementById("input-frmactivity-order")).value,
             cust: (<HTMLInputElement> document.getElementById("input-frmactivity-cust")).value,
             xp: (<HTMLInputElement> document.getElementById("input-frmactivity-xp")).value,
             category:  (<HTMLInputElement> document.getElementById("input-frmactivity-category")).value
