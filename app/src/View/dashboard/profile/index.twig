@@ -323,11 +323,7 @@
                             <div class = "d-flex justify-content-center">
                                 <i class="fas fa-scroll fa-2x text-cosmo-color-1"></i> </i> 
                                 <span class = "p-2">
-                                    {% if user.getAnsweredActivities >= 3 %} #}
-                                        Título: {{user.getFullTitle}}</span>
-                                    {% elseif user.getAnsweredActivities < 3 %}
-                                        Título: *Sem título*</span>
-                                    {% endif %} </span>
+                                    Título: {{user.fulltitle}}</span> 
                             </div>
                         </div>
 
