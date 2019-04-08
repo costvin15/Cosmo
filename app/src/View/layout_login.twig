@@ -7,7 +7,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
         <link rel="stylesheet" href="{{ base_url() }}/dist/css/main.min.css">
 
         {% block styles %}<link rel="stylesheet" href="/dist/css/login/style.min.css">{% endblock %}
@@ -15,8 +15,8 @@
         <title>{{ page_title }} - {{ appname }}</title>
     </head>
     
-    <body class="bg-dark">
-        <div class="container my-2 wrapper">
+    <body class = "bg-cosmo-color-6">
+        <div class="container my-2 wrapper animated fadeInDown">
             {% block content %}{% endblock %}
         </div>
 

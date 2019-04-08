@@ -22,7 +22,7 @@
         <div class="col-md-3 mt-4">
             <div class="card">
                 <div class="card-header">
-                    <img id="img-frmuser-avatar" class="card-img-top" {% if formUpdate is defined %} src="{{ newuser.avatar }}" {% endif %}>
+                    <img id="img-frmuser-avatar" class="card-img-top" alt = "user img {{user.getFullname}}"{% if formUpdate is defined %} src="{{ newuser.avatar }}" {% endif %}>
                 </div>
 
                 {% if formUpdate is defined %}
