@@ -16,7 +16,7 @@
 {% endblock %}
 
 {% block content %}
-    <div class="row my-2">
+    <div class="row my-2 animated zoomIn">
         {% if not class is defined %}
             <div class="col-12 text-center mt-4 mb-2">
                 <span class="display-4">Você não está cadastrado em nenhum turma.</span>
@@ -82,7 +82,7 @@
                                                 {% for activity in skill.activities if count == 0 %}
                                                     {% if activity.category == "Obrigatória" and count_activity < 2 %}
                                                         <div class="col-lg-6">
-                                                            <div class="card q-group mb-3">
+                                                            <div class="card q-group mb-3 animated zoomInLeft delay-1s">
                                                                 <div class = "card-header text-center"><a class = "badge badge-cosmo-color-1 "href="{{ path_for("activities", {id: activity.getId, idGroup: skill.id}) }}">{{ activity.getTitle }}</a></div>
                                                                 <div class="card-body text-center">
                                                                     <p class="text-muted mb-0">{{ activity.getQuestion }}</p>
