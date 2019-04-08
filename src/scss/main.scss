@@ -10,27 +10,6 @@ body {
    min-height: 100vh;
    flex-direction: column;
    font-family: "Montserrat", sans-serif;
-   .coins {
-      position: relative;
-      background-image: url("../icons/gold-ingots.png");
-      height: 32px;
-      width: 32px;
-      display: inline-block;
-  }
-  .brain {
-      background-image: url("../icons/brain.png");
-      height: 32px;
-      width: 32px;
-      display: inline-block;
-  }
-  
-  .papyrus{
-      background-image: url("../icons/scroll.png");
-      height: 32px;
-      width: 32px;
-      display: inline-block;
-  }
-  
   .medal {
       background-image: url("../icons/medal.png");
       height: 32px;
@@ -51,28 +30,6 @@ body {
       width: 32px;
       display: inline-block;
    }
-
-   .crown {
-      background-image: url("../icons/crown.png");
-      height: 32px;
-      width: 32px;
-      display: inline-block;
-   }
-
-   .signature {
-      background-image: url("../icons/contract.png");
-      height: 32px;
-      width: 32px;
-      display: inline-block;
-   }
-   
-   .correct {
-      background-image: url("../icons/correct.png");
-      height: 32px;
-      width: 32px;
-      display: inline-block;
-   }
-
 }
 
 .stop-scrolling {

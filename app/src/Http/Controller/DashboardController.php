@@ -527,7 +527,7 @@ class DashboardController extends AbstractController
     public function getPvpHistory(Request $request, Response $response){
         $attributes = SessionFacilitator::getAttributeSession();
         $user = $this->_dm->getRepository(User::class)->find($attributes['id']);
-
+        $this->setAttributeView("user", $user);
         $pvps_challenger_query = $this->_dm->createQueryBuilder(PVP::class)
             ->field("challenger")->references($user)->getQuery()->execute();
         $pvps_challenged_query = $this->_dm->createQueryBuilder(PVP::class)
