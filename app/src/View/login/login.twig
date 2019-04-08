@@ -11,6 +11,7 @@
 {% endblock %}
 
 {% block content %}
+    
     <div class="login-container row d-flex justify-content-center align-content-center">
         <div class="col-md-5 bg-login">
             <div class="card text-center">
@@ -42,11 +43,11 @@
                 </div>
 
                 <div class="card-footer">
-                    <button id="btnLogin" class="btn btn-cosmo-color-2 w-100">Entrar</button>
+                    <button id="btnLogin" class="btn btn-cosmo-color-2 w-100" aria-label="btn login" >Entrar</button>
                 </div>
             </div>
 
-            <p class="my-2 text-center"><a class="text-white" href="{{ path_for("register.index") }}">Não tenho uma conta</a></p>
+            <p class="my-2 text-center"><a class="text-white" href="{{ path_for("register.index") }}" aria-label="btn novaConta">Não tenho uma conta</a></p>
         </div>
-    </div>
+    </div>  
 {% endblock %}

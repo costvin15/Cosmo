@@ -7,7 +7,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
         <link rel="stylesheet" href="{{ base_url() }}/dist/css/main.min.css">
 
         {% block styles %}{% endblock %}
@@ -33,7 +33,7 @@
                             <div class = "card side-card">
                                 <div class = "card-up bg-cosmo-color-1"></div>
                                 <div class = "avatar"> 
-                                    <img class="img-fluid mb-1 " src="{{ student.getAvatar }}" style = "width: 64px; height:64px;"/>
+                                    <img class="img-fluid mb-1 " src="{{ student.getAvatar }}" style = "width: 64px; height:64px;" alt="img top-3{{user.Fullname}}"/>
                                 </div>
                                 <div class = "card-body card-info text-center">
                                     <a href="{{ path_for("dashboard.profile.visit", {id: student.id}) }}" style = "text-decoration: none;"><i class="fas fa-user"></i> <span> {{student.getFullname}}</span></a>
@@ -47,7 +47,7 @@
 
         <nav class="navbar navbar-expand-lg navbar-dark bg-cosmo-color-2">
             {% if not user.administrator %}
-                <button id="menu-toggle" class="btn btn-sm btn-light rounded-circle mr-3" onclick = "openNav()">
+                <button id="menu-toggle" class="animated infinite pulse btn btn-sm btn-light rounded-circle mr-3" onclick = "openNav()">
                     <i class="fas fa-users"></i>
                 </button>
             {% endif %}
@@ -77,6 +77,7 @@
 
                     <li class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle align-self-center" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <span class="badge badge-pill badge-white"><i class="animated infinite pulse text-danger fas fa-gamepad fa-2x"></i></span>
                             {% set pvp_count = 0 %}
                             {% for pvp in pvps %}
                                 {% if not pvp.getCompleted %}
@@ -147,26 +148,24 @@
                             <img class="rounded-circle" src="{{ user.avatar }}" style = "width: 32px;height: 32px;"/> {{ user.nickname }}
                         </a>
                         <div class= "dropdown-menu dropdown-menu-right mt-2" aria-labelledby="user-dropdown">
-                            
+                            <div class = "myStats text-center">
+                                <span class="animated infinite pulse  coin-badge badge badge-pill badge-cosmo-color-7 text-white">
+                                    <div class = "d-flex justify-content-center">
+                                        <i class="fas fa-coins fa-2x"> </i> <span class = "p-2">¢ {{user.moedas}}</span>
+                                    </div>
+                                </span> 
+                                <span class = "animated infinite pulse xp-badge badge badge-pill badge-cosmo-color-8">
+                                        <div class = "d-flex justify-content-center">
+                                            <i class="fas fa-brain fa-2x" ></i> <span class = "p-2"> {{user.xp}}</span>
+                                        </div>
+                                </span>
+                            </div>
+                            <div class = "dropdown-divider"></div>
                             <a class = "dropdown-item" href = "{{path_for('dashboard.profile')}}"><i class = "fas fa-eye"></i> Ver Perfil</a>
                             <a class = "dropdown-item" href = "{{path_for('dashboard.profile.edit')}}"><i class = "fas fa-edit"></i> Editar Perfil</a>
                         
                             <div class = "dropdown-divider"></div>
                             <a class = "dropdown-item" href = "{{path_for('login.logout')}}" style = "color: #771017"><i class="fas fa-power-off"></i> Sair</a>
-                        </div>
-                    </li>
-                    <li>
-                        <div class = "myStats text-center">
-                            <button type="button" class="btn btn-cosmo-color-7">
-                                <div class = "d-flex justify-content-center">
-                                    <i class="coins"> </i> <span class = "p-2">¢ {{user.moedas}}</span>
-                                </div>
-                            </button> 
-                            <button class = "btn btn-cosmo-color-10">
-                                    <div class = "d-flex justify-content-center">
-                                        <i class="brain" ></i> <span class = "p-2"> {{user.xp}}</span>
-                                    </div>
-                            </button> 
                         </div>
                     </li>
                 </ul>

@@ -12456,7 +12456,11 @@ body {
   color: #C2CDD6; }
 
 .dropdown-menu {
-  min-width: 70px !important;
+  -webkit-transition: all 0.6s;
+  -moz-transition: all 0.6s;
+  -o-transition: all 0.6s;
+  transition: all 0.6s;
+  min-width: 70px;
   transition: color 1s; }
 
 .dropdown-menu a:hover {
@@ -12519,3 +12523,14 @@ body {
 
 .pvp-dropdown-menu {
   width: 250px; }
+
+.xp-badge, .coin-badge {
+  -webkit-transition: all 0.6s;
+  -moz-transition: all 0.6s;
+  -o-transition: all 0.6s ease-in-out;
+  transition: all 0.6s ease-in-out;
+  box-shadow: 3px 3px 3px #C2CDD6; }
+
+.xp-badge:hover, .coin-badge:hover {
+  background-color: #1CB0F6;
+  box-shadow: 3px 3px 3px #dfe1e2; }
