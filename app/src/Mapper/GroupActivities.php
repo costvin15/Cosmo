@@ -21,7 +21,7 @@ class GroupActivities {
     /**
      * @ODM\Field(name="visible", type="boolean")
      */
-    private $visible;
+    private $visible = false;
 
     /**
      * @ODM\Field(name="tags", type="hash")
