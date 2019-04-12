@@ -128,6 +128,7 @@ window.cosmo = {
     ajax: new Ajax(),
     dialog: new Dialog(),
     routes_name: {
+        ranking: "/dashboard/ranking",
         dashboard_index: "/dashboard",
         activities_history: "/dashboard/history",
         auth: "/login/auth",

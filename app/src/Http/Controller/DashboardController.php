@@ -26,6 +26,7 @@ use App\Model\Category\InterfaceCategory;
 use App\Mapper\PVP;
 use SlimAuth\SlimAuthFacade;
 use App\Auth\Adapters\UserWithPassword;
+use App\Mapper\AttemptActivities;
 
 /**
  * Class DashboardController
@@ -341,35 +342,55 @@ class DashboardController extends AbstractController
     public function rankingAction(Request $request, Response $response){
         $attributeSession = SessionFacilitator::getAttributeSession();
         $user = $this->_dm->getRepository(User::class)->find($attributeSession["id"]);
+        $stars =  $this->_dm->getRepository(Star::class)->findAll();
+        $attempts =  $this->_dm->getRepository(AttemptActivities::class)->findAll();
         $router = $this->_ci->get("router");
-        if ($user)
-            $this->setAttributeView("attributes", $user->toArray());
-        else
+       
+        $students = $this->_dm->createQueryBuilder(User::class)
+                    ->field("class")->references($user->getClass())
+                    ->sort('answered_activities', 'desc')
+                    ->getQuery()->execute();
+
+        /* $attempts2 = [];
+        foreach ($students->toArray() as $student){
+             $attempts2[] = $this->_dm->createQueryBuilder(AttemptActivities::class)
+             ->field("user")->references($student)->count()
+             ->getQuery()->execute();
+         }
+ */
+        if ($user){
+            $this->setAttributeView("user", $user);
+            $this->setAttributeView("class", $user->getClass());
+            $this->setAttributeView("stars", $stars);
+            $this->setAttributeView("students", $students);
+            $this->setAttributeView("attempts", $attempts);
+            /* $this->setAttributeView("attempts2", $attempts2); */
+        }else
             return $response->withRedirect($router->pathFor("login.index"));
         return $this->view->render($response, "View/dashboard/ranking/index.twig", $this->getAttributeView());
     }
 
-    /**
-     * @param Request $request
-     * @param Response $response
-     * @return mixed
-     * @Post(name="/ranking", middleware={"App\Http\Middleware\SessionMiddleware"}, alias="dashboard.ranking")
-     */
-    public function getRakingAction(Request $request, Response $response){
-        $usuarios = $this->_dm->getRepository(User::class)->findAll();
+    // /**
+    //  * @param Request $request
+    //  * @param Response $response
+    //  * @return mixed
+    //  * @Post(name="/ranking", middleware={"App\Http\Middleware\SessionMiddleware"}, alias="dashboard.ranking")
+    //  */
+    // public function getRakingAction(Request $request, Response $response){
+    //     $usuarios = $this->_dm->getRepository(User::class)->findAll();
 
-        for ($i = 0; $i < count($usuarios) - 1; $i++)
-            for ($j = $i + 1; $j < count($usuarios); $j++)
-                if ($usuarios[$i]->getAnsweredActivities() < $usuarios[$j]->getAnsweredActivities()){
-                    $aux = $usuarios[$i];
-                    $usuarios[$i] = $usuarios[$j];
-                    $usuarios[$j] = $aux;
-                }
-        for ($i = 0; $i < count($usuarios); $i++)
-            $usuarios[$i] = $usuarios[$i] ->toRankingArray();
+    //     for ($i = 0; $i < count($usuarios) - 1; $i++)
+    //         for ($j = $i + 1; $j < count($usuarios); $j++)
+    //             if ($usuarios[$i]->getAnsweredActivities() < $usuarios[$j]->getAnsweredActivities()){
+    //                 $aux = $usuarios[$i];
+    //                 $usuarios[$i] = $usuarios[$j];
+    //                 $usuarios[$j] = $aux;
+    //             }
+    //     for ($i = 0; $i < count($usuarios); $i++)
+    //         $usuarios[$i] = $usuarios[$i] ->toRankingArray();
 
-        return $response->withJson($usuarios, 200);
-    }
+    //     return $response->withJson($usuarios, 200);
+    // }
 
     /**
      * @param Request $request

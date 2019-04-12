@@ -11,7 +11,7 @@ abstract class AbstractGroup {
         return {
             name: (<HTMLInputElement> document.getElementById("input-frmgroup-title")).value,
             tags: (<HTMLInputElement> document.getElementById("input-frmgroup-tags")).value,
-            visible: (<HTMLInputElement> document.getElementById("input-frmgroup-visible")).checked
+            visible: (<HTMLInputElement> document.getElementById("input-frmgroup-visible")).checked ? true:false
         };
     }
 
