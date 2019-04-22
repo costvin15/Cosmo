@@ -52,8 +52,7 @@
 
                     <div class="col-12">
                         <div class="row">
-                            {% for skill in groups %}
-                                {# {% if skill.id == "5c92cf27ae6c6e1864079fa9" and user.administrator %} #}
+                            {% for skill in groups if user.administrator %}
                                 <div class="col-lg-6 my-2">
                                     <div class="card">
                                         <div class="card-header">
@@ -127,7 +126,6 @@
                                         </div>
                                     </div>
                                 </div>
-                                {# {% endif %} #}
                             {% endfor %}
                         </div>
                     </div>
