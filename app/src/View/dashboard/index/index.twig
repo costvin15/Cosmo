@@ -80,6 +80,7 @@
                                             <div class="row mt-2">
                                                 {% set count_activity = 0 %}
                                                 {% for activity in skill.activities if count == 0 %}
+                                                    {# <p>{{ activity.category }} - </p> #}
                                                     {% if activity.category == "Obrigatória" and count_activity < 2 %}
                                                         <div class="col-lg-6">
                                                             <div class="card q-group mb-3 animated zoomInLeft delay-1s">
@@ -89,8 +90,8 @@
                                                                 </div>
                                                             </div>
                                                         </div>
+                                                        {% set count_activity = count_activity + 1 %}
                                                     {% endif %}                            
-                                                    {% set count_activity = count_activity + 1 %}
                                                 {% endfor %}
                                                 {% if count > 0 and count < 3 %}
                                                     <div class="text-center w-100">
