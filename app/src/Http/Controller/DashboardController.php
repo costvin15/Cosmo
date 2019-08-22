@@ -76,9 +76,10 @@ class DashboardController extends AbstractController
 
             $stars =  $this->_dm->getRepository(Star::class)->findStarWithUser($user);
             $this->setAttributeView("stars", $stars);
-            $this->setAttributeView("user", $user);
             $this->setAttributeView("class", $user->getClass());
         }
+        
+        $this->setAttributeView("user", $user);
 
         return $this->view->render($response, 'View/dashboard/index/index.twig', $this->getAttributeView());
     }
