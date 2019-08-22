@@ -408,18 +408,18 @@ class DashboardController extends AbstractController
 
         $category = $this->_dm->getRepository(CategoryActivities::class)->findCategory(InterfaceCategory::REQUIRED);
         $group = $this->_dm->getRepository(GroupActivities::class)->find($idGroup);
-        $star = $this->_dm->getRepository(Star::class)->findStar($user,$group,$category);
+        
+        if ($category){
+            $star = $this->_dm->getRepository(Star::class)->findStar($user,$group,$category);
+            $this->setAttributeView("blocked", !$star->getCompleted());
+        } else {
+            $this->setAttributeView("blocked",true);
+        }
         
         $this->setAttributeView("user", $user);
         $this->setAttributeView("required", InterfaceCategory::REQUIRED);
-        if($star)
-            $this->setAttributeView("blocked", !$star->getCompleted());
-        else
-            $this->setAttributeView("blocked",true);
         $this->setAttributeView("group", $group);
         $this->setAttributeView("categories", $this->_dm->getRepository(CategoryActivities::class)->findAll());
-        $star = $this->_dm->getRepository(Star::class)->findStar($user,$group,$category);
-
         
         return $this->view->render($response, "View/dashboard/skill/categories.twig", $this->getAttributeView());
     }
