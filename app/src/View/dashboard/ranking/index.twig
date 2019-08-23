@@ -52,7 +52,7 @@
                                 <tr>
                                     <th scope="col">Pos.</th>
                                     <th scope="col">Nome</th>
-                                    <th scope="col"> Estrelas</th>
+                                    <th scope="col">Estrelas</th>
                                     <th scope="col">Problemas <br>Resolvidos </th>
                                     <th scope="col">Total de <br>Tentativas</th>
                                 </tr>
@@ -60,16 +60,12 @@
 
                             <tbody>
                                
-                                {% set count = 0 %}
+                                {% set count = 1 %}
                                 {# {% set count2 = 1 %} #}
                                 {% for student in students if not student.getAdministrator %}
                                         <tr>
                                             <th scope="row">{{count}}</th>
-                                            {% if student.getId == user.id %}
-                                                <td class="animated infinite pulse table-primary">{{ student.fullname }}</td>
-                                            {% else %}
-                                                <td> -- </td>
-                                            {% endif %}
+                                            <td>{{ student.fullname }}</td>
                                             <td>
                                                 {% set countStar = 0 %}
                                                 {% for star in stars if star.getUser.id  == student.id and star.completed %}
