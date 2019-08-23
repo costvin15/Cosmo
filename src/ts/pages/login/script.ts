@@ -1,6 +1,7 @@
 class Login {
     constructor(){
-        (<HTMLInputElement> document.getElementById("btnLogin")).addEventListener("click", () => {
+        (<HTMLInputElement> document.getElementById("login-form")).addEventListener("submit", (event) => {
+            event.preventDefault();
             if (this.validate())
                 this.auth();
         });

@@ -23,28 +23,26 @@
                     </span>
                 </div>
 
-                <div class="card-body">
-                    <form>
+                <form id="login-form">
+                    <div class="card-body">
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="fas fa-user"></i></span>
                             </div>
-
                             <input id="frmlogin-email" type="text" class="form-control" placeholder="Email ou Nome de Usuário" aria-label="Email ou Nome de Usuário">
                         </div>
-
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="fas fa-key"></i></span>
                             </div>
                             <input id="frmlogin-password" type="password" class="form-control" placeholder="Senha" aria-label="Senha">
                         </div>
-                    </form>
-                </div>
+                    </div>
 
-                <div class="card-footer">
-                    <button id="btnLogin" class="btn btn-cosmo-color-2 w-100" aria-label="btn login" >Entrar</button>
-                </div>
+                    <div class="card-footer">
+                        <button id="btnLogin" type="submit" class="btn btn-cosmo-color-2 w-100" aria-label="btn login" >Entrar</button>
+                    </div>
+                </form>
             </div>
 
             <p class="my-2 text-center"><a class="text-white" href="{{ path_for("register.index") }}" aria-label="btn novaConta">Não tenho uma conta</a></p>
