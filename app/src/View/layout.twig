@@ -27,13 +27,13 @@
             </div>
                 
             <ul class="list-group">
-                {% if class.getStudents %}
+                {# {% if class.getStudents %}
                     <li class="list-group-item class-card"><h5><i class = "fas fa-users text-primary mb-1"></i> <span>Minha Turma</span></h5>
                         {% for student in class.getStudents if student.id != user.id %}
                             <div class = "card side-card">
                                 <div class = "card-up bg-cosmo-color-1"></div>
                                 <div class = "avatar"> 
-                                    {# <img class="img-fluid mb-1 " src="{{ student.getAvatar }}" style = "width: 64px; height:64px;" alt="img top-3{{user.Fullname}}"/> #}
+                                    <img class="img-fluid mb-1 " src="{{ student.getAvatar }}" style = "width: 64px; height:64px;" alt="img top-3{{user.Fullname}}"/>
                                 </div>
                                 <div class = "card-body card-info text-center">
                                     <a href="{{ path_for("dashboard.profile.visit", {id: student.id}) }}" style = "text-decoration: none;"><i class="fas fa-user"></i> <span> {{student.getFullname}}</span></a>
@@ -41,7 +41,7 @@
                             </div>
                         {% endfor %}
                     </li>
-                {% endif %} 
+                {% endif %}  #}
             </ul>
         </div>
 
