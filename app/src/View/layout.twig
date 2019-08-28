@@ -33,7 +33,7 @@
                             <div class = "card side-card">
                                 <div class = "card-up bg-cosmo-color-1"></div>
                                 <div class = "avatar"> 
-                                    <img class="img-fluid mb-1 " src="{{ student.getAvatar }}" style = "width: 64px; height:64px;" alt="img top-3{{user.Fullname}}"/>
+                                    {# <img class="img-fluid mb-1 " src="{{ student.getAvatar }}" style = "width: 64px; height:64px;" alt="img top-3{{user.Fullname}}"/> #}
                                 </div>
                                 <div class = "card-body card-info text-center">
                                     <a href="{{ path_for("dashboard.profile.visit", {id: student.id}) }}" style = "text-decoration: none;"><i class="fas fa-user"></i> <span> {{student.getFullname}}</span></a>
