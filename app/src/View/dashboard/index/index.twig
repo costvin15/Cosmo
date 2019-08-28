@@ -1,19 +1,1 @@
 {% extends "View/layout.twig" %}
-
-{% if class is defined %}
-    {% set page_title = class.getTitle %}
-{% else %}
-    {% set page_title = "Dashboard" %}
-{% endif %}
-
-{% block scripts %}
-     
-    <script type="text/javascript" src="{{ base_url() }}/dist/js/index.js"></script>
-{% endblock %}
-
-{% block styles %}
-    <link rel="stylesheet" href="{{ base_url() }}/dist/css/index/style.min.css">
-{% endblock %}
-
-{% block content %}
-{% endblock %}
