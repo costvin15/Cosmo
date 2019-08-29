@@ -99,7 +99,22 @@ class LoginController extends AbstractController
     public function informationAction(Request $request, Response $response) {
         $attributes = SessionFacilitator::getAttributeSession();
         if($attributes)
-            return $response->withJson($attributes, 200);
+            return $response->withJson(array(
+                "id" => $attributes["id"],
+                "username" => $attributes["username"],
+                "fullname" => $attributes["fullname"],
+                "sexo" => $attributes["sexo"],
+                "fulltitle" => $attributes["fulltitle"],
+                "administrator" => $attributes["administrator"],
+                "blocked" => $attributes["blocked"],
+                "answered_activities" => $attributes["answered_activities"],
+                "attemp_activities" => $attributes["attemp_activities"],
+                "class" => $attributes["class"],
+                "moeadas" => $attributes["moedas"],
+                "acummulo" => $attributes["acummulo"],
+                "gastos" => $attributes["gastos"],
+                "xp" => $attributes["xp"]
+            ), 200);
         else
             return $response->withJson(array("message" => "O usuário não foi encontrado"), 500);
     }
