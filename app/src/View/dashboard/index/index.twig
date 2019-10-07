@@ -62,13 +62,17 @@
 
                                                 <div class="col-4">
                                                     {% set count = 0 %}
+
                                                     {% for star in stars if star.completed and star.getGroupActivities.id == skill.id %}
-                                                        <i class="fa fa-star text-cosmo-color-7" style="float:right;"></i>
                                                         {% set count = count + 1 %}
                                                     {% endfor %}
                                                     
                                                     {% for i in 1..( 3 - count) if count < 3%}                                                
                                                         <i class="fa fa-star text-cosmo-color-10" style="float:right;"></i>
+                                                    {% endfor %}
+                                                    
+                                                    {% for star in stars if star.completed and star.getGroupActivities.id == skill.id %}
+                                                        <i class="fa fa-star text-cosmo-color-7" style="float:right;"></i>
                                                     {% endfor %}
                                                 </div>
                                             </div>
