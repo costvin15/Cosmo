@@ -1,6 +1,6 @@
 class Login {
     constructor(){
-        (<HTMLInputElement> document.getElementById("login-form")).addEventListener("submit", (event) => {
+        (<HTMLInputElement> document.getElementById("login-form")).addEventListener("submit", event => {
             event.preventDefault();
             if (this.validate())
                 this.auth();
@@ -41,7 +41,6 @@ class Login {
             window.location.href = content.callback;
         };
         let fail = (content: any) => {
-            console.log(content);
             if (content.responseJSON)
                 if (content.responseJSON[0] && content.responseJSON["callback"])
                     window.cosmo.dialog.error("Oops", content.responseJSON[0], () => {

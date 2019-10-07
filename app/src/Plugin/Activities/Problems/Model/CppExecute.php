@@ -60,7 +60,7 @@ class CppExecute {
 
         $executavel = $this->criaArquivoTemporario();
 
-        shell_exec("g++ \"" . $this->codigo . "\" -o \"" . $executavel . "\"");
+        shell_exec("sudo g++ \"" . $this->codigo . "\" -o \"" . $executavel . "\"");
 
         foreach ($this->getEntradas() as $entrada){
             $arquivo = $this->criaArquivoTemporario($entrada);
