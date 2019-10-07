@@ -41,15 +41,16 @@ class Login {
             window.location.href = content.callback;
         };
         let fail = (content: any) => {
-            if (content.responseJSON)
-                if (content.responseJSON[0] && content.responseJSON["callback"])
-                    window.cosmo.dialog.error("Oops", content.responseJSON[0], () => {
-                        window.location.href = content.responseJSON["callback"];
-                    });
-                else if(content.responseJSON[0])
-                    window.cosmo.dialog.error("Oops", content.responseJSON[0], () => {});
-            else
-                window.cosmo.dialog.error("Oops", "Erro desconhecido", () => {});    
+            console.log(content);
+            //if (content.responseJSON)
+            //    if (content.responseJSON[0] && content.responseJSON["callback"])
+            //        window.cosmo.dialog.error("Oops", content.responseJSON[0], () => {
+            //            window.location.href = content.responseJSON["callback"];
+            //        });
+            //    else if(content.responseJSON[0])
+            //        window.cosmo.dialog.error("Oops", content.responseJSON[0], () => {});
+            //else
+            //    window.cosmo.dialog.error("Oops", "Erro desconhecido", () => {});    
         };
         let ajax = window.cosmo.ajax.getDefaults();
         ajax.url = window.base_url + window.cosmo.routes_name.auth;
