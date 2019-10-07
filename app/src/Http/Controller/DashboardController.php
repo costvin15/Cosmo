@@ -409,9 +409,9 @@ class DashboardController extends AbstractController
         $category = $this->_dm->getRepository(CategoryActivities::class)->findCategory(InterfaceCategory::REQUIRED);
         $group = $this->_dm->getRepository(GroupActivities::class)->find($idGroup);
         
-        if ($category){
+        if ($category != null){
             $star = $this->_dm->getRepository(Star::class)->findStar($user,$group,$category);
-            $this->setAttributeView("blocked", !$star->getCompleted());
+            $this->setAttributeView("blocked", $star != null ? !$star->getCompleted() : true);
         } else {
             $this->setAttributeView("blocked",true);
         }
