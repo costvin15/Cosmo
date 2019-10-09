@@ -9,6 +9,8 @@ use App\Mapper\User;
 
 class CategoryRequired implements InterfaceCategory {
     public function check($historyActivities,$star,$user){
+        if ($star == null)
+            return false;
         if ($star->getCompleted())
             return false;
         $count = 0;
