@@ -61,7 +61,7 @@ abstract class AbstractController
 
         if ($user){
             $pvp_query = $this->_dm->createQueryBuilder(PVP::class)
-                ->field("challenged")->references($user)->getQuery()->execute();
+                ->field("accepted")->equals(false)->field("challenged")->references($user)->getQuery()->execute();
             $this->setAttributeView("pvps", $pvp_query);
         }
     }

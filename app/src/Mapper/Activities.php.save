@@ -357,10 +357,10 @@ class Activities
             foreach ($this->activity_example[$i] as $key => $value){
 		$result[$i][$key] = $value->bin;
 	    	for ($j = 0; $j < strlen($result[$i][$key]); $j++){
-		    //if ($result[$i][$key][$j] == '\n'){
-		    	//$result[$i][$key][$j] == '-';
+		    if ($result[$i][$key][$j] === '\n'){
+			//$result[$i][$key][$j] == '-';
 			//substr_replace($result[$i][$key], "<br>", $j);
-	 	    //}
+	 	    }
 		}
 	    }
         }
